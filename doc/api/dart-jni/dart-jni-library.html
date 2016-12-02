@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="dart:jni library API docs, for the Dart programming language.">
+  <title>dart:jni library - Dart API</title>
+  <!-- required because all the links are pseudo-absolute -->
+  <base href="..">
+
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Code+Pro|Roboto:500,400italic,300,400' type='text/css'>
+  <link rel="stylesheet" href="static-assets/prettify.css">
+  <link rel="stylesheet" href="static-assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static-assets/styles.css">
+  <link rel="icon" href="static-assets/favicon.png">
+
+  <!-- Do not remove placeholder -->
+  <!-- Header Placeholder -->
+</head>
+
+<body>
+
+<div id="overlay-under-drawer"></div>
+
+<header class="container-fluid" id="title">
+  <nav class="navbar navbar-fixed-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 contents">
+          <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+          <ol class="breadcrumbs gt-separated hidden-xs">
+            <li><a href="index.html">flutter_sprites</a></li>
+            <li class="self-crumb">dart:jni</li>
+          </ol>
+          <div class="self-name">dart:jni</div>
+          <form class="search navbar-right" role="search">
+            <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+          </form>
+        </div> <!-- /col -->
+      </div> <!-- /row -->
+    </div> <!-- /container -->
+  </nav>
+
+  <div class="container masthead">
+    <div class="row">
+      <div class="col-sm-12 contents">
+        <ol class="breadcrumbs gt-separated visible-xs">
+          <li><a href="index.html">flutter_sprites</a></li>
+          <li class="self-crumb">dart:jni</li>
+        </ol>
+        <div class="title-description">
+          <h1 class="title">
+            <span class="kind">library</span> dart:jni
+          </h1>
+        </div>
+        <ul class="subnav">
+          <li><a href="dart-jni/dart-jni-library.html#classes">Classes</a></li>
+          <li><a href="dart-jni/dart-jni-library.html#exceptions">Exceptions</a></li>
+        </ul>
+      </div> <!-- /col -->
+    </div> <!-- /row -->
+  </div> <!-- /container -->
+
+</header>
+
+<div class="container body">
+  <div class="row">
+
+  <div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
+    <h5><a href="index.html">flutter_sprites</a></h5>
+
+
+    <ol>
+      <li class="section-title"><a href="index.html#libraries">Libraries</a></li>
+      <li><a href="dart-async/dart-async-library.html">dart:async</a></li>
+      <li><a href="dart-collection/dart-collection-library.html">dart:collection</a></li>
+      <li><a href="dart-convert/dart-convert-library.html">dart:convert</a></li>
+      <li><a href="dart-core/dart-core-library.html">dart:core</a></li>
+      <li><a href="dart-developer/dart-developer-library.html">dart:developer</a></li>
+      <li><a href="dart-io/dart-io-library.html">dart:io</a></li>
+      <li><a href="dart-isolate/dart-isolate-library.html">dart:isolate</a></li>
+      <li><a href="dart-jni/dart-jni-library.html">dart:jni</a></li>
+      <li><a href="dart-math/dart-math-library.html">dart:math</a></li>
+      <li><a href="dart-typed_data/dart-typed_data-library.html">dart:typed_data</a></li>
+      <li><a href="dart-ui/dart-ui-library.html">dart:ui</a></li>
+      <li><a href="flutter_sprites/flutter_sprites-library.html">flutter_sprites</a></li>
+    </ol>
+  </div>
+
+  <div class="col-xs-12 col-sm-9 col-md-8 main-content">
+
+    <section class="desc markdown">
+      <p>Invoke Java Native Interface APIs from Dart.</p>
+<p>To use, import <code>dart:jni</code>.</p>
+<p>Example:</p>
+<pre class="prettyprint language-dart"><code>JavaClass dateFormatClass = Java.getClass('java.text.SimpleDateFormat');
+JavaObject format = dateFormatClass.newInstance('yyyy.MM.dd');
+print(format.parse('2016.01.01').getYear());
+</code></pre>
+<p>This library provides a way to access Java classes that are accessible to
+the Android runtime hosting Flutter (including Android system APIs).</p>
+<p>The library consists of two parts: a raw module that offers Dart access
+to low-level JNI functions, and a helper module that uses reflection to
+build Java object wrappers that act like standard Dart objects.</p>
+<h1>Raw JNI</h1>
+<p>Call <a href="dart-jni/JniClass/fromName.html">JniClass.fromName</a> to load a JNI class given its fully-qualified name.
+The resulting <a href="dart-jni/JniClass-class.html">JniClass</a> object provides methods for constructing instances,
+looking up field and method IDs, getting and setting static fields, and calling
+static methods. These methods closely match the JNI functions provided by the VM.</p>
+<p>Getters/setters of object fields and calls to methods that return objects will
+return instances of <a href="dart-jni/JniObject-class.html">JniObject</a>.  <a href="dart-jni/JniObject-class.html">JniObject</a> similarly offers wrappers of the
+JNI functions that get and set object fields and call object methods.</p>
+<p>Array instances are represented by <a href="dart-jni/JniArray-class.html">JniArray</a> and its subclasses, which provide
+a Dart <a href="dart-core/List-class.html">List</a> interface backed by an underlying Java array.</p>
+<h1>Java Object Wrappers</h1>
+<p>Call <a href="dart-jni/Java/getClass.html">Java.getClass</a> to create a <a href="dart-jni/JavaClass-class.html">JavaClass</a> instance that acts as a higher-level
+wrapper for a Java class.  Using this wrapper, you can call static methods and read
+and write static fields using standard Dart field and method syntax.  The wrapper
+will use reflection to locate the corresponding Java fields and methods and map Dart
+operations to JNI calls.</p>
+<p>Use the <code>JavaClass.newInstance</code> method to construct instances of the class.
+<code>newInstance</code> will pass its arguments to the appropriate constructor.</p>
+<p>Instances of Java objects are represented by <a href="dart-jni/JavaObject-class.html">JavaObject</a>, which similarly exposes
+field and method accessors derived via reflection.</p>
+<p>Dart boolean, number, and string types as well as <a href="dart-jni/JavaObject-class.html">JavaObject</a> instances can be passed
+as arguments to wrapped Java methods.  The JNI libraries will convert these arguments
+from Dart types to the matching Java type.</p>
+<p>Dart does not support function overloading, and as a result the Java method
+wrappers need to locate the method on the underlying Java class that most closely
+matches the arguments passed to the wrapper.  If there are multiple Java method overloads
+that could be suitable for a given set of arguments and the wrappers do not choose the
+desired overload, then you can obtain the <a href="dart-jni/JniObject-class.html">JniObject</a> wrapped by the <a href="dart-jni/JavaObject-class.html">JavaObject</a> and
+use the raw JNI library to invoke the method.</p>
+    </section>
+    
+
+
+
+
+
+    <section class="summary offset-anchor" id="classes">
+      <h2>Classes</h2>
+
+      <dl>
+        <dt id="Java">
+          <span class="name "><a href="dart-jni/Java-class.html">Java</a></span>
+        </dt>
+        <dd>
+          <p>A class that provides access to Java objects from within Dart.</p>
+        </dd>
+        <dt id="JavaClass">
+          <span class="name "><a href="dart-jni/JavaClass-class.html">JavaClass</a></span>
+        </dt>
+        <dd>
+          <p>A wrapper for a JNI class that uses reflection to provide access to the
+class' static fields, methods, and constructors.</p>
+        </dd>
+        <dt id="JavaObject">
+          <span class="name "><a href="dart-jni/JavaObject-class.html">JavaObject</a></span>
+        </dt>
+        <dd>
+          <p>A wrapper for a JNI object that provides access to the object's fields
+and methods.</p>
+        </dd>
+        <dt id="JniApi">
+          <span class="name "><a href="dart-jni/JniApi-class.html">JniApi</a></span>
+        </dt>
+        <dd>
+          <p>A group of methods which invoke Java Native Interface APIs from Dart.</p>
+        </dd>
+        <dt id="JniArray">
+          <span class="name "><a href="dart-jni/JniArray-class.html">JniArray</a></span>
+        </dt>
+        <dd>
+          <p>Wrapper for a Java array.</p>
+        </dd>
+        <dt id="JniBooleanArray">
+          <span class="name "><a href="dart-jni/JniBooleanArray-class.html">JniBooleanArray</a></span>
+        </dt>
+        <dd>
+          <p>Wrapper for a Java <code>boolean</code> array.</p>
+        </dd>
+        <dt id="JniByteArray">
+          <span class="name "><a href="dart-jni/JniByteArray-class.html">JniByteArray</a></span>
+        </dt>
+        <dd>
+          <p>Wrapper for a Java <code>byte</code> array.</p>
+        </dd>
+        <dt id="JniCharArray">
+          <span class="name "><a href="dart-jni/JniCharArray-class.html">JniCharArray</a></span>
+        </dt>
+        <dd>
+          <p>Wrapper for a Java <code>char</code> array.</p>
+        </dd>
+        <dt id="JniClass">
+          <span class="name "><a href="dart-jni/JniClass-class.html">JniClass</a></span>
+        </dt>
+        <dd>
+          <p>Low-level wrapper for a Java class accessed via JNI.
+These methods map directly to the corresponding JNI functions.  See the JNI
+documentation for more information.</p>
+        </dd>
+        <dt id="JniDoubleArray">
+          <span class="name "><a href="dart-jni/JniDoubleArray-class.html">JniDoubleArray</a></span>
+        </dt>
+        <dd>
+          <p>Wrapper for a Java <code>double</code> array.</p>
+        </dd>
+        <dt id="JniFloat">
+          <span class="name "><a href="dart-jni/JniFloat-class.html">JniFloat</a></span>
+        </dt>
+        <dd>
+          <p>Used to pass arguments of type "float" to Java methods.</p>
+        </dd>
+        <dt id="JniFloatArray">
+          <span class="name "><a href="dart-jni/JniFloatArray-class.html">JniFloatArray</a></span>
+        </dt>
+        <dd>
+          <p>Wrapper for a Java <code>float</code> array.</p>
+        </dd>
+        <dt id="JniIntArray">
+          <span class="name "><a href="dart-jni/JniIntArray-class.html">JniIntArray</a></span>
+        </dt>
+        <dd>
+          <p>Wrapper for a Java <code>int</code> array.</p>
+        </dd>
+        <dt id="JniLongArray">
+          <span class="name "><a href="dart-jni/JniLongArray-class.html">JniLongArray</a></span>
+        </dt>
+        <dd>
+          <p>Wrapper for a Java <code>long</code> array.</p>
+        </dd>
+        <dt id="JniObject">
+          <span class="name "><a href="dart-jni/JniObject-class.html">JniObject</a></span>
+        </dt>
+        <dd>
+          <p>Low-level wrapper for a Java object accessed via JNI.
+These methods map directly to the corresponding JNI functions.  See the JNI
+documentation for more information.</p>
+        </dd>
+        <dt id="JniObjectArray">
+          <span class="name "><a href="dart-jni/JniObjectArray-class.html">JniObjectArray</a></span>
+        </dt>
+        <dd>
+          <p>Wrapper for a Java <code>Object</code> array.</p>
+        </dd>
+        <dt id="JniShortArray">
+          <span class="name "><a href="dart-jni/JniShortArray-class.html">JniShortArray</a></span>
+        </dt>
+        <dd>
+          <p>Wrapper for a Java <code>short</code> array.</p>
+        </dd>
+        <dt id="JniString">
+          <span class="name "><a href="dart-jni/JniString-class.html">JniString</a></span>
+        </dt>
+        <dd>
+          <p>Wrapper for a Java string.</p>
+        </dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="exceptions">
+      <h2>Exceptions / Errors</h2>
+
+      <dl>
+        <dt id="JavaError">
+          <span class="name "><a href="dart-jni/JavaError-class.html">JavaError</a></span>
+        </dt>
+        <dd>
+          <p></p>
+        </dd>
+      </dl>
+    </section>
+
+  </div> <!-- /.main-content -->
+
+  <div class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
+    <h5>dart:jni</h5>
+    <ol>
+    
+    
+    
+    
+    
+      <li class="section-title"><a href="dart-jni/dart-jni-library.html#classes">Classes</a></li>
+      <li><a href="dart-jni/Java-class.html">Java</a></li>
+      <li><a href="dart-jni/JavaClass-class.html">JavaClass</a></li>
+      <li><a href="dart-jni/JavaObject-class.html">JavaObject</a></li>
+      <li><a href="dart-jni/JniApi-class.html">JniApi</a></li>
+      <li><a href="dart-jni/JniArray-class.html">JniArray</a></li>
+      <li><a href="dart-jni/JniBooleanArray-class.html">JniBooleanArray</a></li>
+      <li><a href="dart-jni/JniByteArray-class.html">JniByteArray</a></li>
+      <li><a href="dart-jni/JniCharArray-class.html">JniCharArray</a></li>
+      <li><a href="dart-jni/JniClass-class.html">JniClass</a></li>
+      <li><a href="dart-jni/JniDoubleArray-class.html">JniDoubleArray</a></li>
+      <li><a href="dart-jni/JniFloat-class.html">JniFloat</a></li>
+      <li><a href="dart-jni/JniFloatArray-class.html">JniFloatArray</a></li>
+      <li><a href="dart-jni/JniIntArray-class.html">JniIntArray</a></li>
+      <li><a href="dart-jni/JniLongArray-class.html">JniLongArray</a></li>
+      <li><a href="dart-jni/JniObject-class.html">JniObject</a></li>
+      <li><a href="dart-jni/JniObjectArray-class.html">JniObjectArray</a></li>
+      <li><a href="dart-jni/JniShortArray-class.html">JniShortArray</a></li>
+      <li><a href="dart-jni/JniString-class.html">JniString</a></li>
+    
+      <li class="section-title"><a href="dart-jni/dart-jni-library.html#exceptions">Exceptions</a></li>
+      <li><a href="dart-jni/JavaError-class.html">JavaError</a></li>
+    </ol>
+  </div><!--/sidebar-offcanvas-right-->
+
+</div> <!-- row -->
+</div> <!-- container -->
+
+<footer>
+  <div class="container-fluid">
+    <div class="container">
+      <p class="text-center">
+        <span class="no-break">
+          flutter_sprites 0.0.15
+        </span>
+        &bull;
+        <span class="no-break">
+          <a href="https://www.dartlang.org">
+            <img src="static-assets/favicon.png" alt="Dart" title="Dart" width="16" height="16">
+          </a>
+        </span>
+        &bull;
+        <span class="copyright no-break">
+          <a href="http://creativecommons.org/licenses/by-sa/4.0/">cc license</a>
+        </span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="static-assets/typeahead.bundle.min.js"></script>
+<script src="static-assets/prettify.js"></script>
+<script src="static-assets/URI.js"></script>
+<script src="static-assets/script.js"></script>
+<!-- Do not remove placeholder -->
+<!-- Footer Placeholder -->
+
+</body>
+
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="API docs for the convert method from the JsonUtf8Encoder class, for the Dart programming language.">
+  <title>convert method - JsonUtf8Encoder class - dart:convert library - Dart API</title>
+  <!-- required because all the links are pseudo-absolute -->
+  <base href="../..">
+
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Code+Pro|Roboto:500,400italic,300,400' type='text/css'>
+  <link rel="stylesheet" href="static-assets/prettify.css">
+  <link rel="stylesheet" href="static-assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static-assets/styles.css">
+  <link rel="icon" href="static-assets/favicon.png">
+
+  <!-- Do not remove placeholder -->
+  <!-- Header Placeholder -->
+</head>
+
+<body>
+
+<div id="overlay-under-drawer"></div>
+
+<header class="container-fluid" id="title">
+  <nav class="navbar navbar-fixed-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 contents">
+          <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+          <ol class="breadcrumbs gt-separated hidden-xs">
+            <li><a href="index.html">flutter_sprites</a></li>
+            <li><a href="dart-convert/dart-convert-library.html">dart:convert</a></li>
+            <li><a href="dart-convert/JsonUtf8Encoder-class.html">JsonUtf8Encoder</a></li>
+            <li class="self-crumb">convert</li>
+          </ol>
+          <div class="self-name">convert</div>
+          <form class="search navbar-right" role="search">
+            <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+          </form>
+        </div> <!-- /col -->
+      </div> <!-- /row -->
+    </div> <!-- /container -->
+  </nav>
+
+  <div class="container masthead">
+    <div class="row">
+      <div class="col-sm-12 contents">
+        <ol class="breadcrumbs gt-separated visible-xs">
+          <li><a href="index.html">flutter_sprites</a></li>
+          <li><a href="dart-convert/dart-convert-library.html">dart:convert</a></li>
+          <li><a href="dart-convert/JsonUtf8Encoder-class.html">JsonUtf8Encoder</a></li>
+          <li class="self-crumb">convert</li>
+        </ol>
+        <div class="title-description">
+          <h1 class="title">
+            <span class="kind">method</span> convert
+          </h1>
+        </div>
+        <ul class="subnav">
+          <li><a href="dart-convert/JsonUtf8Encoder/convert.html#source">Source</a></li>
+        </ul>
+      </div> <!-- /col -->
+    </div> <!-- /row -->
+  </div> <!-- /container -->
+
+</header>
+
+<div class="container body">
+  <div class="row">
+
+  <div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
+    <h5><a href="index.html">flutter_sprites</a></h5>
+    <h5><a href="dart-convert/dart-convert-library.html">dart:convert</a></h5>
+    <h5><a href="dart-convert/JsonUtf8Encoder-class.html">JsonUtf8Encoder</a></h5>
+
+    <ol>
+      <li class="section-title"><a href="dart-convert/JsonUtf8Encoder-class.html#constants">Constants</a></li>
+      <li><a href="dart-convert/JsonUtf8Encoder/DEFAULT_BUFFER_SIZE-constant.html">DEFAULT_BUFFER_SIZE</a></li>
+    
+    
+    
+      <li class="section-title"><a href="dart-convert/JsonUtf8Encoder-class.html#constructors">Constructors</a></li>
+      <li><a href="dart-convert/JsonUtf8Encoder/JsonUtf8Encoder.html">JsonUtf8Encoder</a></li>
+    
+      <li class="section-title inherited">
+        <a href="dart-convert/JsonUtf8Encoder-class.html#instance-properties">Properties</a>
+      </li>
+      <li class="inherited"><a href="dart-core/Object/hashCode.html">hashCode</a></li>
+      <li class="inherited"><a href="dart-core/Object/runtimeType.html">runtimeType</a></li>
+    
+      <li class="section-title inherited"><a href="dart-convert/JsonUtf8Encoder-class.html#operators">Operators</a></li>
+      <li class="inherited"><a href="dart-core/Object/operator_equals.html">operator ==</a></li>
+    
+      <li class="section-title"><a href="dart-convert/JsonUtf8Encoder-class.html#instance-methods">Methods</a></li>
+      <li><a href="dart-convert/JsonUtf8Encoder/bind.html">bind</a></li>
+      <li><a href="dart-convert/JsonUtf8Encoder/convert.html">convert</a></li>
+      <li class="inherited"><a href="dart-convert/Converter/fuse.html">fuse</a></li>
+      <li class="inherited"><a href="dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+      <li><a href="dart-convert/JsonUtf8Encoder/startChunkedConversion.html">startChunkedConversion</a></li>
+      <li class="inherited"><a href="dart-core/Object/toString.html">toString</a></li>
+    </ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+  <div class="col-xs-12 col-sm-9 col-md-8 main-content">
+    <section class="multi-line-signature">
+      <span class="returntype"><a href="dart-core/List-class.html">List</a>&lt;<a href="dart-core/int-class.html">int</a>&gt;</span>
+      <span class="name ">convert</span>(<wbr><span class="parameter" id="convert-param-object"><span class="type-annotation"><a href="dart-core/Object-class.html">Object</a></span> <span class="parameter-name">object</span></span>)
+    </section>
+    <section class="desc markdown">
+      <p>Convert <code>object</code> into UTF-8 encoded JSON.</p>
+    </section>
+    
+    <section class="summary source-code" id="source">
+      <h2><span>Source</span> </h2>
+      <pre class="prettyprint language-dart">List&lt;int&gt; convert(Object object) {
+  List&lt;List&lt;int&gt;&gt; bytes = [];
+  &#47;&#47; The `stringify` function always converts into chunks.
+  &#47;&#47; Collect the chunks into the `bytes` list, then combine them afterwards.
+  void addChunk(Uint8List chunk, int start, int end) {
+    if (start &gt; 0 || end &lt; chunk.length) {
+      int length = end - start;
+      chunk = new Uint8List.view(chunk.buffer,
+                                 chunk.offsetInBytes + start,
+                                 length);
+    }
+    bytes.add(chunk);
+  }
+  _JsonUtf8Stringifier.stringify(object,
+                                 _indent,
+                                 _toEncodable,
+                                 _bufferSize,
+                                 addChunk);
+  if (bytes.length == 1) return bytes[0];
+  int length = 0;
+  for (int i = 0; i &lt; bytes.length; i++) {
+    length += bytes[i].length;
+  }
+  Uint8List result = new Uint8List(length);
+  for (int i = 0, offset = 0; i &lt; bytes.length; i++) {
+    var byteList = bytes[i];
+    int end = offset + byteList.length;
+    result.setRange(offset, end, byteList);
+    offset = end;
+  }
+  return result;
+}</pre>
+    </section>
+
+  </div> <!-- /.main-content -->
+
+</div> <!-- row -->
+</div> <!-- container -->
+
+<footer>
+  <div class="container-fluid">
+    <div class="container">
+      <p class="text-center">
+        <span class="no-break">
+          flutter_sprites 0.0.15
+        </span>
+        &bull;
+        <span class="no-break">
+          <a href="https://www.dartlang.org">
+            <img src="static-assets/favicon.png" alt="Dart" title="Dart" width="16" height="16">
+          </a>
+        </span>
+        &bull;
+        <span class="copyright no-break">
+          <a href="http://creativecommons.org/licenses/by-sa/4.0/">cc license</a>
+        </span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="static-assets/typeahead.bundle.min.js"></script>
+<script src="static-assets/prettify.js"></script>
+<script src="static-assets/URI.js"></script>
+<script src="static-assets/script.js"></script>
+<!-- Do not remove placeholder -->
+<!-- Footer Placeholder -->
+
+</body>
+
+</html>

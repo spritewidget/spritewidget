@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="API docs for the SplayTreeMap class from the dart:collection library, for the Dart programming language.">
+  <title>SplayTreeMap class - dart:collection library - Dart API</title>
+  <!-- required because all the links are pseudo-absolute -->
+  <base href="..">
+
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Code+Pro|Roboto:500,400italic,300,400' type='text/css'>
+  <link rel="stylesheet" href="static-assets/prettify.css">
+  <link rel="stylesheet" href="static-assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static-assets/styles.css">
+  <link rel="icon" href="static-assets/favicon.png">
+
+  <!-- Do not remove placeholder -->
+  <!-- Header Placeholder -->
+</head>
+
+<body>
+
+<div id="overlay-under-drawer"></div>
+
+<header class="container-fluid" id="title">
+  <nav class="navbar navbar-fixed-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 contents">
+          <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+          <ol class="breadcrumbs gt-separated hidden-xs">
+            <li><a href="index.html">flutter_sprites</a></li>
+            <li><a href="dart-collection/dart-collection-library.html">dart:collection</a></li>
+            <li class="self-crumb">SplayTreeMap</li>
+          </ol>
+          <div class="self-name">SplayTreeMap</div>
+          <form class="search navbar-right" role="search">
+            <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+          </form>
+        </div> <!-- /col -->
+      </div> <!-- /row -->
+    </div> <!-- /container -->
+  </nav>
+
+  <div class="container masthead">
+    <div class="row">
+      <div class="col-sm-12 contents">
+        <ol class="breadcrumbs gt-separated visible-xs">
+          <li><a href="index.html">flutter_sprites</a></li>
+          <li><a href="dart-collection/dart-collection-library.html">dart:collection</a></li>
+          <li class="self-crumb">SplayTreeMap</li>
+        </ol>
+        <div class="title-description">
+          <h1 class="title">
+            <span class="kind">class</span> SplayTreeMap&lt;K, V&gt;
+          </h1>
+        </div>
+        <ul class="subnav">
+          <li><a href="dart-collection/SplayTreeMap-class.html#instance-properties">Properties</a></li>
+          <li><a href="dart-collection/SplayTreeMap-class.html#constructors">Constructors</a></li>
+          <li><a href="dart-collection/SplayTreeMap-class.html#operators">Operators</a></li>
+          <li><a href="dart-collection/SplayTreeMap-class.html#instance-methods">Methods</a></li>
+        </ul>
+      </div> <!-- /col -->
+    </div> <!-- /row -->
+  </div> <!-- /container -->
+
+</header>
+
+<div class="container body">
+  <div class="row">
+
+  <div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
+    <h5><a href="index.html">flutter_sprites</a></h5>
+    <h5><a href="dart-collection/dart-collection-library.html">dart:collection</a></h5>
+
+    <ol>
+    
+    
+    
+    
+    
+      <li class="section-title"><a href="dart-collection/dart-collection-library.html#classes">Classes</a></li>
+      <li><a href="dart-collection/DoubleLinkedQueue-class.html">DoubleLinkedQueue</a></li>
+      <li><a href="dart-collection/DoubleLinkedQueueEntry-class.html">DoubleLinkedQueueEntry</a></li>
+      <li><a href="dart-collection/HashMap-class.html">HashMap</a></li>
+      <li><a href="dart-collection/HashSet-class.html">HashSet</a></li>
+      <li><a href="dart-collection/HasNextIterator-class.html">HasNextIterator</a></li>
+      <li><a href="dart-collection/IterableBase-class.html">IterableBase</a></li>
+      <li><a href="dart-collection/IterableMixin-class.html">IterableMixin</a></li>
+      <li><a href="dart-collection/LinkedHashMap-class.html">LinkedHashMap</a></li>
+      <li><a href="dart-collection/LinkedHashSet-class.html">LinkedHashSet</a></li>
+      <li><a href="dart-collection/LinkedList-class.html">LinkedList</a></li>
+      <li><a href="dart-collection/LinkedListEntry-class.html">LinkedListEntry</a></li>
+      <li><a href="dart-collection/ListBase-class.html">ListBase</a></li>
+      <li><a href="dart-collection/ListMixin-class.html">ListMixin</a></li>
+      <li><a href="dart-collection/ListQueue-class.html">ListQueue</a></li>
+      <li><a href="dart-collection/MapBase-class.html">MapBase</a></li>
+      <li><a href="dart-collection/MapMixin-class.html">MapMixin</a></li>
+      <li><a href="dart-collection/Maps-class.html">Maps</a></li>
+      <li><a href="dart-collection/MapView-class.html">MapView</a></li>
+      <li><a href="dart-collection/Queue-class.html">Queue</a></li>
+      <li><a href="dart-collection/SetBase-class.html">SetBase</a></li>
+      <li><a href="dart-collection/SetMixin-class.html">SetMixin</a></li>
+      <li><a href="dart-collection/SplayTreeMap-class.html">SplayTreeMap</a></li>
+      <li><a href="dart-collection/SplayTreeSet-class.html">SplayTreeSet</a></li>
+      <li><a href="dart-collection/UnmodifiableListView-class.html">UnmodifiableListView</a></li>
+      <li><a href="dart-collection/UnmodifiableMapBase-class.html">UnmodifiableMapBase</a></li>
+      <li><a href="dart-collection/UnmodifiableMapView-class.html">UnmodifiableMapView</a></li>
+    
+    </ol>
+  </div>
+
+  <div class="col-xs-12 col-sm-9 col-md-8 main-content">
+
+    <section class="desc markdown">
+      <p>A <a href="dart-core/Map-class.html">Map</a> of objects that can be ordered relative to each other.</p>
+<p>The map is based on a self-balancing binary tree. It allows most operations
+in amortized logarithmic time.</p>
+<p>Keys of the map are compared using the <code>compare</code> function passed in
+the constructor, both for ordering and for equality.
+If the map contains only the key <code>a</code>, then <code>map.containsKey(b)</code>
+will return <code>true</code> if and only if <code>compare(a, b) == 0</code>,
+and the value of <code>a == b</code> is not even checked.
+If the compare function is omitted, the objects are assumed to be
+<a href="dart-core/Comparable-class.html">Comparable</a>, and are compared using their <a href="dart-core/Comparable/compareTo.html">Comparable.compareTo</a> method.
+Non-comparable objects (including <code>null</code>) will not work as keys
+in that case.</p>
+<p>To allow calling <code>operator[]</code>, <a href="dart-collection/SplayTreeMap/remove.html">remove</a> or <a href="dart-collection/SplayTreeMap/containsKey.html">containsKey</a> with objects
+that are not supported by the <code>compare</code> function, an extra <code>isValidKey</code>
+predicate function can be supplied. This function is tested before
+using the <code>compare</code> function on an argument value that may not be a <code>K</code>
+value. If omitted, the <code>isValidKey</code> function defaults to testing if the
+value is a <code>K</code>.</p>
+    </section>
+    
+    <section>
+      <dl class="dl-horizontal">
+
+        <dt>Implements</dt>
+        <dd>
+          <ul class="comma-separated clazz-relationships">
+            <li><a href="dart-core/Map-class.html">Map</a>&lt;K, V&gt;</li>
+          </ul>
+        </dd>
+
+
+
+      </dl>
+    </section>
+
+
+
+
+    <section class="summary offset-anchor" id="constructors">
+      <h2>Constructors</h2>
+
+      <dl class="constructor-summary-list">
+        <dt id="SplayTreeMap" class="callable">
+          <span class="name"><a href="dart-collection/SplayTreeMap/SplayTreeMap.html">SplayTreeMap</a></span><span class="signature">([<span class="parameter" id="-param-compare"><span class="type-annotation"><a href="dart-core/int-class.html">int</a></span> <span class="parameter-name">compare</span>(<span class="parameter" id="compare-param-key1"><span class="type-annotation">K</span> <span class="parameter-name">key1</span>, </span> <span class="parameter" id="compare-param-key2"><span class="type-annotation">K</span> <span class="parameter-name">key2</span></span>), </span> <span class="parameter" id="-param-isValidKey"><span class="type-annotation"><a href="dart-core/bool-class.html">bool</a></span> <span class="parameter-name">isValidKey</span>(<span class="parameter" id="isValidKey-param-potentialKey"><span class="parameter-name">potentialKey</span></span>)</span> ])</span>
+        </dt>
+        <dd>
+          <p></p>
+        </dd>
+        <dt id="SplayTreeMap.from" class="callable">
+          <span class="name"><a href="dart-collection/SplayTreeMap/SplayTreeMap.from.html">SplayTreeMap.from</a></span><span class="signature">(<span class="parameter" id="from-param-other"><span class="type-annotation"><a href="dart-core/Map-class.html">Map</a></span> <span class="parameter-name">other</span>, [</span> <span class="parameter" id="from-param-compare"><span class="type-annotation"><a href="dart-core/int-class.html">int</a></span> <span class="parameter-name">compare</span>(<span class="parameter" id="compare-param-key1"><span class="type-annotation">K</span> <span class="parameter-name">key1</span>, </span> <span class="parameter" id="compare-param-key2"><span class="type-annotation">K</span> <span class="parameter-name">key2</span></span>), </span> <span class="parameter" id="from-param-isValidKey"><span class="type-annotation"><a href="dart-core/bool-class.html">bool</a></span> <span class="parameter-name">isValidKey</span>(<span class="parameter" id="isValidKey-param-potentialKey"><span class="parameter-name">potentialKey</span></span>)</span> ])</span>
+        </dt>
+        <dd>
+          <p>Creates a <a href="dart-collection/SplayTreeMap-class.html">SplayTreeMap</a> that contains all key/value pairs of <code>other</code>.</p>
+          <div class="constructor-modifier features">factory</div>
+        </dd>
+        <dt id="SplayTreeMap.fromIterable" class="callable">
+          <span class="name"><a href="dart-collection/SplayTreeMap/SplayTreeMap.fromIterable.html">SplayTreeMap.fromIterable</a></span><span class="signature">(<span class="parameter" id="fromIterable-param-iterable"><span class="type-annotation"><a href="dart-core/Iterable-class.html">Iterable</a></span> <span class="parameter-name">iterable</span>, {</span> <span class="parameter" id="fromIterable-param-key"><span class="type-annotation">K</span> <span class="parameter-name">key</span>(<span class="parameter" id="key-param-element"><span class="parameter-name">element</span></span>), </span> <span class="parameter" id="fromIterable-param-value"><span class="type-annotation">V</span> <span class="parameter-name">value</span>(<span class="parameter" id="value-param-element"><span class="parameter-name">element</span></span>), </span> <span class="parameter" id="fromIterable-param-compare"><span class="type-annotation"><a href="dart-core/int-class.html">int</a></span> <span class="parameter-name">compare</span>(<span class="parameter" id="compare-param-key1"><span class="type-annotation">K</span> <span class="parameter-name">key1</span>, </span> <span class="parameter" id="compare-param-key2"><span class="type-annotation">K</span> <span class="parameter-name">key2</span></span>), </span> <span class="parameter" id="fromIterable-param-isValidKey"><span class="type-annotation"><a href="dart-core/bool-class.html">bool</a></span> <span class="parameter-name">isValidKey</span>(<span class="parameter" id="isValidKey-param-potentialKey"><span class="parameter-name">potentialKey</span></span>)</span> })</span>
+        </dt>
+        <dd>
+          <p>Creates a <a href="dart-collection/SplayTreeMap-class.html">SplayTreeMap</a> where the keys and values are computed from the
+<code>iterable</code>.</p>
+          <div class="constructor-modifier features">factory</div>
+        </dd>
+        <dt id="SplayTreeMap.fromIterables" class="callable">
+          <span class="name"><a href="dart-collection/SplayTreeMap/SplayTreeMap.fromIterables.html">SplayTreeMap.fromIterables</a></span><span class="signature">(<span class="parameter" id="fromIterables-param-keys"><span class="type-annotation"><a href="dart-core/Iterable-class.html">Iterable</a>&lt;K&gt;</span> <span class="parameter-name">keys</span>, </span> <span class="parameter" id="fromIterables-param-values"><span class="type-annotation"><a href="dart-core/Iterable-class.html">Iterable</a>&lt;V&gt;</span> <span class="parameter-name">values</span>, [</span> <span class="parameter" id="fromIterables-param-compare"><span class="type-annotation"><a href="dart-core/int-class.html">int</a></span> <span class="parameter-name">compare</span>(<span class="parameter" id="compare-param-key1"><span class="type-annotation">K</span> <span class="parameter-name">key1</span>, </span> <span class="parameter" id="compare-param-key2"><span class="type-annotation">K</span> <span class="parameter-name">key2</span></span>), </span> <span class="parameter" id="fromIterables-param-isValidKey"><span class="type-annotation"><a href="dart-core/bool-class.html">bool</a></span> <span class="parameter-name">isValidKey</span>(<span class="parameter" id="isValidKey-param-potentialKey"><span class="parameter-name">potentialKey</span></span>)</span> ])</span>
+        </dt>
+        <dd>
+          <p>Creates a <a href="dart-collection/SplayTreeMap-class.html">SplayTreeMap</a> associating the given <code>keys</code> to <code>values</code>.</p>
+          <div class="constructor-modifier features">factory</div>
+        </dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="instance-properties">
+      <h2>Properties</h2>
+
+      <dl class="properties">
+        <dt id="hashCode" class="property inherited">
+          <span class="name"><a href="dart-core/Object/hashCode.html">hashCode</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>Get a hash code for this object.</p>
+          <div class="features">
+    read-only, inherited
+  </div>
+</dd>
+        <dt id="isEmpty" class="property">
+          <span class="name"><a href="dart-collection/SplayTreeMap/isEmpty.html">isEmpty</a></span>
+          <span class="signature">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div class="features">
+    read-only
+  </div>
+</dd>
+        <dt id="isNotEmpty" class="property">
+          <span class="name"><a href="dart-collection/SplayTreeMap/isNotEmpty.html">isNotEmpty</a></span>
+          <span class="signature">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div class="features">
+    read-only
+  </div>
+</dd>
+        <dt id="keys" class="property">
+          <span class="name"><a href="dart-collection/SplayTreeMap/keys.html">keys</a></span>
+          <span class="signature">&#8594; <a href="dart-core/Iterable-class.html">Iterable</a>&lt;K&gt;</span>
+        </dt>
+        <dd>
+          <p></p>
+          <div class="features">
+    read-only
+  </div>
+</dd>
+        <dt id="length" class="property">
+          <span class="name"><a href="dart-collection/SplayTreeMap/length.html">length</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div class="features">
+    read-only
+  </div>
+</dd>
+        <dt id="runtimeType" class="property inherited">
+          <span class="name"><a href="dart-core/Object/runtimeType.html">runtimeType</a></span>
+          <span class="signature">&#8594; <a href="dart-core/Type-class.html">Type</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>A representation of the runtime type of the object.</p>
+          <div class="features">
+    read-only, inherited
+  </div>
+</dd>
+        <dt id="values" class="property">
+          <span class="name"><a href="dart-collection/SplayTreeMap/values.html">values</a></span>
+          <span class="signature">&#8594; <a href="dart-core/Iterable-class.html">Iterable</a>&lt;V&gt;</span>
+        </dt>
+        <dd>
+          <p></p>
+          <div class="features">
+    read-only
+  </div>
+</dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="operators">
+      <h2>Operators</h2>
+      <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+          <span class="name"><a href="dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>The equality operator.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="operator []" class="callable">
+          <span class="name"><a href="dart-collection/SplayTreeMap/operator_get.html">operator []</a></span><span class="signature">(<wbr><span class="parameter" id="[]-param-key"><span class="type-annotation"><a href="dart-core/Object-class.html">Object</a></span> <span class="parameter-name">key</span></span>)
+            <span class="returntype parameter">&#8594; V</span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns the value for the given <code>key</code> or null if <code>key</code> is not in the map.</p>
+        </dd>
+        <dt id="operator []=" class="callable">
+          <span class="name"><a href="dart-collection/SplayTreeMap/operator_put.html">operator []=</a></span><span class="signature">(<wbr><span class="parameter" id="[]=-param-key"><span class="type-annotation">K</span> <span class="parameter-name">key</span>, </span> <span class="parameter" id="[]=-param-value"><span class="type-annotation">V</span> <span class="parameter-name">value</span></span>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+        </dt>
+        <dd>
+          <p>Associates the <code>key</code> with the given <code>value</code>.</p>
+        </dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="instance-methods">
+      <h2>Methods</h2>
+      <dl class="callables">
+        <dt id="addAll" class="callable">
+          <span class="name"><a href="dart-collection/SplayTreeMap/addAll.html">addAll</a></span><span class="signature">(<wbr><span class="parameter" id="addAll-param-other"><span class="type-annotation"><a href="dart-core/Map-class.html">Map</a>&lt;K, V&gt;</span> <span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+        </dt>
+        <dd>
+          <p>Adds all key-value pairs of <code>other</code> to this map.</p>
+        </dd>
+        <dt id="clear" class="callable">
+          <span class="name"><a href="dart-collection/SplayTreeMap/clear.html">clear</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+        </dt>
+        <dd>
+          <p>Removes all pairs from the map.</p>
+        </dd>
+        <dt id="containsKey" class="callable">
+          <span class="name"><a href="dart-collection/SplayTreeMap/containsKey.html">containsKey</a></span><span class="signature">(<wbr><span class="parameter" id="containsKey-param-key"><span class="type-annotation"><a href="dart-core/Object-class.html">Object</a></span> <span class="parameter-name">key</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns true if this map contains the given <code>key</code>.</p>
+        </dd>
+        <dt id="containsValue" class="callable">
+          <span class="name"><a href="dart-collection/SplayTreeMap/containsValue.html">containsValue</a></span><span class="signature">(<wbr><span class="parameter" id="containsValue-param-value"><span class="type-annotation"><a href="dart-core/Object-class.html">Object</a></span> <span class="parameter-name">value</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns true if this map contains the given <code>value</code>.</p>
+        </dd>
+        <dt id="firstKey" class="callable">
+          <span class="name"><a href="dart-collection/SplayTreeMap/firstKey.html">firstKey</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; K</span>
+          </span>
+        </dt>
+        <dd>
+          <p>Get the first key in the map. Returns <code>null</code> if the map is empty.</p>
+        </dd>
+        <dt id="firstKeyAfter" class="callable">
+          <span class="name"><a href="dart-collection/SplayTreeMap/firstKeyAfter.html">firstKeyAfter</a></span><span class="signature">(<wbr><span class="parameter" id="firstKeyAfter-param-key"><span class="type-annotation">K</span> <span class="parameter-name">key</span></span>)
+            <span class="returntype parameter">&#8594; K</span>
+          </span>
+        </dt>
+        <dd>
+          <p>Get the first key in the map that is strictly larger than <code>key</code>. Returns
+<code>null</code> if no key was not found.</p>
+        </dd>
+        <dt id="forEach" class="callable">
+          <span class="name"><a href="dart-collection/SplayTreeMap/forEach.html">forEach</a></span><span class="signature">(<wbr><span class="parameter" id="forEach-param-f"><span class="type-annotation">void</span> <span class="parameter-name">f</span>(<span class="parameter" id="f-param-key"><span class="type-annotation">K</span> <span class="parameter-name">key</span>, </span> <span class="parameter" id="f-param-value"><span class="type-annotation">V</span> <span class="parameter-name">value</span></span>)</span>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+        </dt>
+        <dd>
+          <p>Applies <code>f</code> to each key-value pair of the map.</p>
+        </dd>
+        <dt id="lastKey" class="callable">
+          <span class="name"><a href="dart-collection/SplayTreeMap/lastKey.html">lastKey</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; K</span>
+          </span>
+        </dt>
+        <dd>
+          <p>Get the last key in the map. Returns <code>null</code> if the map is empty.</p>
+        </dd>
+        <dt id="lastKeyBefore" class="callable">
+          <span class="name"><a href="dart-collection/SplayTreeMap/lastKeyBefore.html">lastKeyBefore</a></span><span class="signature">(<wbr><span class="parameter" id="lastKeyBefore-param-key"><span class="type-annotation">K</span> <span class="parameter-name">key</span></span>)
+            <span class="returntype parameter">&#8594; K</span>
+          </span>
+        </dt>
+        <dd>
+          <p>Get the last key in the map that is strictly smaller than <code>key</code>. Returns
+<code>null</code> if no key was not found.</p>
+        </dd>
+        <dt id="noSuchMethod" class="callable inherited">
+          <span class="name"><a href="dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+            <span class="returntype parameter">&#8594; dynamic</span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Invoked when a non-existent method or property is accessed.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="putIfAbsent" class="callable">
+          <span class="name"><a href="dart-collection/SplayTreeMap/putIfAbsent.html">putIfAbsent</a></span><span class="signature">(<wbr><span class="parameter" id="putIfAbsent-param-key"><span class="type-annotation">K</span> <span class="parameter-name">key</span>, </span> <span class="parameter" id="putIfAbsent-param-ifAbsent"><span class="type-annotation">V</span> <span class="parameter-name">ifAbsent</span>()</span>)
+            <span class="returntype parameter">&#8594; V</span>
+          </span>
+        </dt>
+        <dd>
+          <p>Look up the value of <code>key</code>, or add a new value if it isn't there.</p>
+        </dd>
+        <dt id="remove" class="callable">
+          <span class="name"><a href="dart-collection/SplayTreeMap/remove.html">remove</a></span><span class="signature">(<wbr><span class="parameter" id="remove-param-key"><span class="type-annotation"><a href="dart-core/Object-class.html">Object</a></span> <span class="parameter-name">key</span></span>)
+            <span class="returntype parameter">&#8594; V</span>
+          </span>
+        </dt>
+        <dd>
+          <p>Removes <code>key</code> and its associated value, if present, from the map.</p>
+        </dd>
+        <dt id="toString" class="callable">
+          <span class="name"><a href="dart-collection/SplayTreeMap/toString.html">toString</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; <a href="dart-core/String-class.html">String</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns a string representation of this object.</p>
+        </dd>
+      </dl>
+    </section>
+
+  </div> <!-- /.main-content -->
+
+  <div class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
+    <h5>SplayTreeMap</h5>
+    <ol>
+    
+    
+    
+      <li class="section-title"><a href="dart-collection/SplayTreeMap-class.html#constructors">Constructors</a></li>
+      <li><a href="dart-collection/SplayTreeMap/SplayTreeMap.html">SplayTreeMap</a></li>
+      <li><a href="dart-collection/SplayTreeMap/SplayTreeMap.from.html">from</a></li>
+      <li><a href="dart-collection/SplayTreeMap/SplayTreeMap.fromIterable.html">fromIterable</a></li>
+      <li><a href="dart-collection/SplayTreeMap/SplayTreeMap.fromIterables.html">fromIterables</a></li>
+    
+      <li class="section-title">
+        <a href="dart-collection/SplayTreeMap-class.html#instance-properties">Properties</a>
+      </li>
+      <li class="inherited"><a href="dart-core/Object/hashCode.html">hashCode</a></li>
+      <li><a href="dart-collection/SplayTreeMap/isEmpty.html">isEmpty</a></li>
+      <li><a href="dart-collection/SplayTreeMap/isNotEmpty.html">isNotEmpty</a></li>
+      <li><a href="dart-collection/SplayTreeMap/keys.html">keys</a></li>
+      <li><a href="dart-collection/SplayTreeMap/length.html">length</a></li>
+      <li class="inherited"><a href="dart-core/Object/runtimeType.html">runtimeType</a></li>
+      <li><a href="dart-collection/SplayTreeMap/values.html">values</a></li>
+    
+      <li class="section-title"><a href="dart-collection/SplayTreeMap-class.html#operators">Operators</a></li>
+      <li class="inherited"><a href="dart-core/Object/operator_equals.html">operator ==</a></li>
+      <li><a href="dart-collection/SplayTreeMap/operator_get.html">operator []</a></li>
+      <li><a href="dart-collection/SplayTreeMap/operator_put.html">operator []=</a></li>
+    
+      <li class="section-title"><a href="dart-collection/SplayTreeMap-class.html#instance-methods">Methods</a></li>
+      <li><a href="dart-collection/SplayTreeMap/addAll.html">addAll</a></li>
+      <li><a href="dart-collection/SplayTreeMap/clear.html">clear</a></li>
+      <li><a href="dart-collection/SplayTreeMap/containsKey.html">containsKey</a></li>
+      <li><a href="dart-collection/SplayTreeMap/containsValue.html">containsValue</a></li>
+      <li><a href="dart-collection/SplayTreeMap/firstKey.html">firstKey</a></li>
+      <li><a href="dart-collection/SplayTreeMap/firstKeyAfter.html">firstKeyAfter</a></li>
+      <li><a href="dart-collection/SplayTreeMap/forEach.html">forEach</a></li>
+      <li><a href="dart-collection/SplayTreeMap/lastKey.html">lastKey</a></li>
+      <li><a href="dart-collection/SplayTreeMap/lastKeyBefore.html">lastKeyBefore</a></li>
+      <li class="inherited"><a href="dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+      <li><a href="dart-collection/SplayTreeMap/putIfAbsent.html">putIfAbsent</a></li>
+      <li><a href="dart-collection/SplayTreeMap/remove.html">remove</a></li>
+      <li><a href="dart-collection/SplayTreeMap/toString.html">toString</a></li>
+    </ol>
+  </div><!--/.sidebar-offcanvas-->
+
+</div> <!-- row -->
+</div> <!-- container -->
+
+<footer>
+  <div class="container-fluid">
+    <div class="container">
+      <p class="text-center">
+        <span class="no-break">
+          flutter_sprites 0.0.15
+        </span>
+        &bull;
+        <span class="no-break">
+          <a href="https://www.dartlang.org">
+            <img src="static-assets/favicon.png" alt="Dart" title="Dart" width="16" height="16">
+          </a>
+        </span>
+        &bull;
+        <span class="copyright no-break">
+          <a href="http://creativecommons.org/licenses/by-sa/4.0/">cc license</a>
+        </span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="static-assets/typeahead.bundle.min.js"></script>
+<script src="static-assets/prettify.js"></script>
+<script src="static-assets/URI.js"></script>
+<script src="static-assets/script.js"></script>
+<!-- Do not remove placeholder -->
+<!-- Footer Placeholder -->
+
+</body>
+
+</html>

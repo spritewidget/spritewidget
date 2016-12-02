@@ -7,8 +7,8 @@ homepage: http://flutter.io
 dependencies:
   box2d: '>=0.3.0 <0.4.0'
   flutter:
-    path: ../flutter
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
-    path: ../flutter_test
+    path: ../../../dev/flutter/packages/flutter_test

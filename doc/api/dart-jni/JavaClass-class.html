@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="API docs for the JavaClass class from the dart:jni library, for the Dart programming language.">
+  <title>JavaClass class - dart:jni library - Dart API</title>
+  <!-- required because all the links are pseudo-absolute -->
+  <base href="..">
+
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Code+Pro|Roboto:500,400italic,300,400' type='text/css'>
+  <link rel="stylesheet" href="static-assets/prettify.css">
+  <link rel="stylesheet" href="static-assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static-assets/styles.css">
+  <link rel="icon" href="static-assets/favicon.png">
+
+  <!-- Do not remove placeholder -->
+  <!-- Header Placeholder -->
+</head>
+
+<body>
+
+<div id="overlay-under-drawer"></div>
+
+<header class="container-fluid" id="title">
+  <nav class="navbar navbar-fixed-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 contents">
+          <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+          <ol class="breadcrumbs gt-separated hidden-xs">
+            <li><a href="index.html">flutter_sprites</a></li>
+            <li><a href="dart-jni/dart-jni-library.html">dart:jni</a></li>
+            <li class="self-crumb">JavaClass</li>
+          </ol>
+          <div class="self-name">JavaClass</div>
+          <form class="search navbar-right" role="search">
+            <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+          </form>
+        </div> <!-- /col -->
+      </div> <!-- /row -->
+    </div> <!-- /container -->
+  </nav>
+
+  <div class="container masthead">
+    <div class="row">
+      <div class="col-sm-12 contents">
+        <ol class="breadcrumbs gt-separated visible-xs">
+          <li><a href="index.html">flutter_sprites</a></li>
+          <li><a href="dart-jni/dart-jni-library.html">dart:jni</a></li>
+          <li class="self-crumb">JavaClass</li>
+        </ol>
+        <div class="title-description">
+          <h1 class="title">
+            <span class="kind">class</span> JavaClass
+          </h1>
+        </div>
+        <ul class="subnav">
+          <li><a href="dart-jni/JavaClass-class.html#instance-properties">Properties</a></li>
+          <li><a href="dart-jni/JavaClass-class.html#operators">Operators</a></li>
+          <li><a href="dart-jni/JavaClass-class.html#instance-methods">Methods</a></li>
+        </ul>
+      </div> <!-- /col -->
+    </div> <!-- /row -->
+  </div> <!-- /container -->
+
+</header>
+
+<div class="container body">
+  <div class="row">
+
+  <div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
+    <h5><a href="index.html">flutter_sprites</a></h5>
+    <h5><a href="dart-jni/dart-jni-library.html">dart:jni</a></h5>
+
+    <ol>
+    
+    
+    
+    
+    
+      <li class="section-title"><a href="dart-jni/dart-jni-library.html#classes">Classes</a></li>
+      <li><a href="dart-jni/Java-class.html">Java</a></li>
+      <li><a href="dart-jni/JavaClass-class.html">JavaClass</a></li>
+      <li><a href="dart-jni/JavaObject-class.html">JavaObject</a></li>
+      <li><a href="dart-jni/JniApi-class.html">JniApi</a></li>
+      <li><a href="dart-jni/JniArray-class.html">JniArray</a></li>
+      <li><a href="dart-jni/JniBooleanArray-class.html">JniBooleanArray</a></li>
+      <li><a href="dart-jni/JniByteArray-class.html">JniByteArray</a></li>
+      <li><a href="dart-jni/JniCharArray-class.html">JniCharArray</a></li>
+      <li><a href="dart-jni/JniClass-class.html">JniClass</a></li>
+      <li><a href="dart-jni/JniDoubleArray-class.html">JniDoubleArray</a></li>
+      <li><a href="dart-jni/JniFloat-class.html">JniFloat</a></li>
+      <li><a href="dart-jni/JniFloatArray-class.html">JniFloatArray</a></li>
+      <li><a href="dart-jni/JniIntArray-class.html">JniIntArray</a></li>
+      <li><a href="dart-jni/JniLongArray-class.html">JniLongArray</a></li>
+      <li><a href="dart-jni/JniObject-class.html">JniObject</a></li>
+      <li><a href="dart-jni/JniObjectArray-class.html">JniObjectArray</a></li>
+      <li><a href="dart-jni/JniShortArray-class.html">JniShortArray</a></li>
+      <li><a href="dart-jni/JniString-class.html">JniString</a></li>
+    
+      <li class="section-title"><a href="dart-jni/dart-jni-library.html#exceptions">Exceptions</a></li>
+      <li><a href="dart-jni/JavaError-class.html">JavaError</a></li>
+    </ol>
+  </div>
+
+  <div class="col-xs-12 col-sm-9 col-md-8 main-content">
+
+    <section class="desc markdown">
+      <p>A wrapper for a JNI class that uses reflection to provide access to the
+class' static fields, methods, and constructors.</p>
+    </section>
+    
+
+
+
+
+
+    <section class="summary offset-anchor" id="instance-properties">
+      <h2>Properties</h2>
+
+      <dl class="properties">
+        <dt id="asJavaObject" class="property">
+          <span class="name"><a href="dart-jni/JavaClass/asJavaObject.html">asJavaObject</a></span>
+          <span class="signature">&#8594; <a href="dart-jni/JavaObject-class.html">JavaObject</a></span>
+        </dt>
+        <dd>
+          <p>A <code>JavaObject</code> representing the java.lang.Class instance for this class</p>
+          <div class="features">
+    read-only
+  </div>
+</dd>
+        <dt id="className" class="property">
+          <span class="name"><a href="dart-jni/JavaClass/className.html">className</a></span>
+          <span class="signature">&#8594; <a href="dart-core/String-class.html">String</a></span>
+        </dt>
+        <dd>
+          <p>The name of the wrapped Java class.</p>
+          <div class="features">
+    read-only
+  </div>
+</dd>
+        <dt id="hashCode" class="property inherited">
+          <span class="name"><a href="dart-core/Object/hashCode.html">hashCode</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>Get a hash code for this object.</p>
+          <div class="features">
+    read-only, inherited
+  </div>
+</dd>
+        <dt id="jniClass" class="property">
+          <span class="name"><a href="dart-jni/JavaClass/jniClass.html">jniClass</a></span>
+          <span class="signature">&#8594; <a href="dart-jni/JniClass-class.html">JniClass</a></span>
+        </dt>
+        <dd>
+          <p>A raw <code>JniClass</code> representing the java.lang.Class instance for this class</p>
+          <div class="features">
+    read-only
+  </div>
+</dd>
+        <dt id="runtimeType" class="property inherited">
+          <span class="name"><a href="dart-core/Object/runtimeType.html">runtimeType</a></span>
+          <span class="signature">&#8594; <a href="dart-core/Type-class.html">Type</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>A representation of the runtime type of the object.</p>
+          <div class="features">
+    read-only, inherited
+  </div>
+</dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor inherited" id="operators">
+      <h2>Operators</h2>
+      <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+          <span class="name"><a href="dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>The equality operator.</p>
+          <div class="features">inherited</div>
+        </dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="instance-methods">
+      <h2>Methods</h2>
+      <dl class="callables">
+        <dt id="noSuchMethod" class="callable">
+          <span class="name"><a href="dart-jni/JavaClass/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+            <span class="returntype parameter">&#8594; dynamic</span>
+          </span>
+        </dt>
+        <dd>
+          <p>Invoked when a non-existent method or property is accessed.</p>
+        </dd>
+        <dt id="toString" class="callable">
+          <span class="name"><a href="dart-jni/JavaClass/toString.html">toString</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; <a href="dart-core/String-class.html">String</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns a string representation of this object.</p>
+        </dd>
+      </dl>
+    </section>
+
+  </div> <!-- /.main-content -->
+
+  <div class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
+    <h5>JavaClass</h5>
+    <ol>
+    
+    
+    
+    
+      <li class="section-title">
+        <a href="dart-jni/JavaClass-class.html#instance-properties">Properties</a>
+      </li>
+      <li><a href="dart-jni/JavaClass/asJavaObject.html">asJavaObject</a></li>
+      <li><a href="dart-jni/JavaClass/className.html">className</a></li>
+      <li class="inherited"><a href="dart-core/Object/hashCode.html">hashCode</a></li>
+      <li><a href="dart-jni/JavaClass/jniClass.html">jniClass</a></li>
+      <li class="inherited"><a href="dart-core/Object/runtimeType.html">runtimeType</a></li>
+    
+      <li class="section-title inherited"><a href="dart-jni/JavaClass-class.html#operators">Operators</a></li>
+      <li class="inherited"><a href="dart-core/Object/operator_equals.html">operator ==</a></li>
+    
+      <li class="section-title"><a href="dart-jni/JavaClass-class.html#instance-methods">Methods</a></li>
+      <li><a href="dart-jni/JavaClass/noSuchMethod.html">noSuchMethod</a></li>
+      <li><a href="dart-jni/JavaClass/toString.html">toString</a></li>
+    </ol>
+  </div><!--/.sidebar-offcanvas-->
+
+</div> <!-- row -->
+</div> <!-- container -->
+
+<footer>
+  <div class="container-fluid">
+    <div class="container">
+      <p class="text-center">
+        <span class="no-break">
+          flutter_sprites 0.0.15
+        </span>
+        &bull;
+        <span class="no-break">
+          <a href="https://www.dartlang.org">
+            <img src="static-assets/favicon.png" alt="Dart" title="Dart" width="16" height="16">
+          </a>
+        </span>
+        &bull;
+        <span class="copyright no-break">
+          <a href="http://creativecommons.org/licenses/by-sa/4.0/">cc license</a>
+        </span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="static-assets/typeahead.bundle.min.js"></script>
+<script src="static-assets/prettify.js"></script>
+<script src="static-assets/URI.js"></script>
+<script src="static-assets/script.js"></script>
+<!-- Do not remove placeholder -->
+<!-- Footer Placeholder -->
+
+</body>
+
+</html>

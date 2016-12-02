@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="dart:isolate library API docs, for the Dart programming language.">
+  <title>dart:isolate library - Dart API</title>
+  <!-- required because all the links are pseudo-absolute -->
+  <base href="..">
+
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Code+Pro|Roboto:500,400italic,300,400' type='text/css'>
+  <link rel="stylesheet" href="static-assets/prettify.css">
+  <link rel="stylesheet" href="static-assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static-assets/styles.css">
+  <link rel="icon" href="static-assets/favicon.png">
+
+  <!-- Do not remove placeholder -->
+  <!-- Header Placeholder -->
+</head>
+
+<body>
+
+<div id="overlay-under-drawer"></div>
+
+<header class="container-fluid" id="title">
+  <nav class="navbar navbar-fixed-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 contents">
+          <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+          <ol class="breadcrumbs gt-separated hidden-xs">
+            <li><a href="index.html">flutter_sprites</a></li>
+            <li class="self-crumb">dart:isolate</li>
+          </ol>
+          <div class="self-name">dart:isolate</div>
+          <form class="search navbar-right" role="search">
+            <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+          </form>
+        </div> <!-- /col -->
+      </div> <!-- /row -->
+    </div> <!-- /container -->
+  </nav>
+
+  <div class="container masthead">
+    <div class="row">
+      <div class="col-sm-12 contents">
+        <ol class="breadcrumbs gt-separated visible-xs">
+          <li><a href="index.html">flutter_sprites</a></li>
+          <li class="self-crumb">dart:isolate</li>
+        </ol>
+        <div class="title-description">
+          <h1 class="title">
+            <span class="kind">library</span> dart:isolate
+          </h1>
+        </div>
+        <ul class="subnav">
+          <li><a href="dart-isolate/dart-isolate-library.html#classes">Classes</a></li>
+          <li><a href="dart-isolate/dart-isolate-library.html#exceptions">Exceptions</a></li>
+        </ul>
+      </div> <!-- /col -->
+    </div> <!-- /row -->
+  </div> <!-- /container -->
+
+</header>
+
+<div class="container body">
+  <div class="row">
+
+  <div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
+    <h5><a href="index.html">flutter_sprites</a></h5>
+
+
+    <ol>
+      <li class="section-title"><a href="index.html#libraries">Libraries</a></li>
+      <li><a href="dart-async/dart-async-library.html">dart:async</a></li>
+      <li><a href="dart-collection/dart-collection-library.html">dart:collection</a></li>
+      <li><a href="dart-convert/dart-convert-library.html">dart:convert</a></li>
+      <li><a href="dart-core/dart-core-library.html">dart:core</a></li>
+      <li><a href="dart-developer/dart-developer-library.html">dart:developer</a></li>
+      <li><a href="dart-io/dart-io-library.html">dart:io</a></li>
+      <li><a href="dart-isolate/dart-isolate-library.html">dart:isolate</a></li>
+      <li><a href="dart-jni/dart-jni-library.html">dart:jni</a></li>
+      <li><a href="dart-math/dart-math-library.html">dart:math</a></li>
+      <li><a href="dart-typed_data/dart-typed_data-library.html">dart:typed_data</a></li>
+      <li><a href="dart-ui/dart-ui-library.html">dart:ui</a></li>
+      <li><a href="flutter_sprites/flutter_sprites-library.html">flutter_sprites</a></li>
+    </ol>
+  </div>
+
+  <div class="col-xs-12 col-sm-9 col-md-8 main-content">
+
+    <section class="desc markdown">
+      <p>Concurrent programming using <em>isolates</em>:
+independent workers that are similar to threads
+but don't share memory,
+communicating only via messages.</p>
+<p>To use this library in your code:</p>
+<pre class="prettyprint language-dart"><code>import 'dart:isolate';
+</code></pre>
+    </section>
+    
+
+
+
+
+
+    <section class="summary offset-anchor" id="classes">
+      <h2>Classes</h2>
+
+      <dl>
+        <dt id="Capability">
+          <span class="name "><a href="dart-isolate/Capability-class.html">Capability</a></span>
+        </dt>
+        <dd>
+          <p>An unforgeable object that comes back as equal when passed through other
+isolates.</p>
+        </dd>
+        <dt id="Isolate">
+          <span class="name "><a href="dart-isolate/Isolate-class.html">Isolate</a></span>
+        </dt>
+        <dd>
+          <p>An isolated Dart execution context.</p>
+        </dd>
+        <dt id="RawReceivePort">
+          <span class="name "><a href="dart-isolate/RawReceivePort-class.html">RawReceivePort</a></span>
+        </dt>
+        <dd>
+          <p></p>
+        </dd>
+        <dt id="ReceivePort">
+          <span class="name "><a href="dart-isolate/ReceivePort-class.html">ReceivePort</a></span>
+        </dt>
+        <dd>
+          <p>Together with <a href="dart-isolate/SendPort-class.html">SendPort</a>, the only means of communication between isolates.</p>
+        </dd>
+        <dt id="SendPort">
+          <span class="name "><a href="dart-isolate/SendPort-class.html">SendPort</a></span>
+        </dt>
+        <dd>
+          <p>Sends messages to its <a href="dart-isolate/ReceivePort-class.html">ReceivePort</a>s.</p>
+        </dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="exceptions">
+      <h2>Exceptions / Errors</h2>
+
+      <dl>
+        <dt id="IsolateSpawnException">
+          <span class="name "><a href="dart-isolate/IsolateSpawnException-class.html">IsolateSpawnException</a></span>
+        </dt>
+        <dd>
+          <p>Thrown when an isolate cannot be created.</p>
+        </dd>
+        <dt id="RemoteError">
+          <span class="name "><a href="dart-isolate/RemoteError-class.html">RemoteError</a></span>
+        </dt>
+        <dd>
+          <p>Description of an error from another isolate.</p>
+        </dd>
+      </dl>
+    </section>
+
+  </div> <!-- /.main-content -->
+
+  <div class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
+    <h5>dart:isolate</h5>
+    <ol>
+    
+    
+    
+    
+    
+      <li class="section-title"><a href="dart-isolate/dart-isolate-library.html#classes">Classes</a></li>
+      <li><a href="dart-isolate/Capability-class.html">Capability</a></li>
+      <li><a href="dart-isolate/Isolate-class.html">Isolate</a></li>
+      <li><a href="dart-isolate/RawReceivePort-class.html">RawReceivePort</a></li>
+      <li><a href="dart-isolate/ReceivePort-class.html">ReceivePort</a></li>
+      <li><a href="dart-isolate/SendPort-class.html">SendPort</a></li>
+    
+      <li class="section-title"><a href="dart-isolate/dart-isolate-library.html#exceptions">Exceptions</a></li>
+      <li><a href="dart-isolate/IsolateSpawnException-class.html">IsolateSpawnException</a></li>
+      <li><a href="dart-isolate/RemoteError-class.html">RemoteError</a></li>
+    </ol>
+  </div><!--/sidebar-offcanvas-right-->
+
+</div> <!-- row -->
+</div> <!-- container -->
+
+<footer>
+  <div class="container-fluid">
+    <div class="container">
+      <p class="text-center">
+        <span class="no-break">
+          flutter_sprites 0.0.15
+        </span>
+        &bull;
+        <span class="no-break">
+          <a href="https://www.dartlang.org">
+            <img src="static-assets/favicon.png" alt="Dart" title="Dart" width="16" height="16">
+          </a>
+        </span>
+        &bull;
+        <span class="copyright no-break">
+          <a href="http://creativecommons.org/licenses/by-sa/4.0/">cc license</a>
+        </span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="static-assets/typeahead.bundle.min.js"></script>
+<script src="static-assets/prettify.js"></script>
+<script src="static-assets/URI.js"></script>
+<script src="static-assets/script.js"></script>
+<!-- Do not remove placeholder -->
+<!-- Footer Placeholder -->
+
+</body>
+
+</html>

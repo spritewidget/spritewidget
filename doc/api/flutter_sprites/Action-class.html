@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="API docs for the Action class from the flutter_sprites library, for the Dart programming language.">
+  <title>Action class - flutter_sprites library - Dart API</title>
+  <!-- required because all the links are pseudo-absolute -->
+  <base href="..">
+
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Code+Pro|Roboto:500,400italic,300,400' type='text/css'>
+  <link rel="stylesheet" href="static-assets/prettify.css">
+  <link rel="stylesheet" href="static-assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static-assets/styles.css">
+  <link rel="icon" href="static-assets/favicon.png">
+
+  <!-- Do not remove placeholder -->
+  <!-- Header Placeholder -->
+</head>
+
+<body>
+
+<div id="overlay-under-drawer"></div>
+
+<header class="container-fluid" id="title">
+  <nav class="navbar navbar-fixed-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 contents">
+          <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+          <ol class="breadcrumbs gt-separated hidden-xs">
+            <li><a href="index.html">flutter_sprites</a></li>
+            <li><a href="flutter_sprites/flutter_sprites-library.html">flutter_sprites</a></li>
+            <li class="self-crumb">Action</li>
+          </ol>
+          <div class="self-name">Action</div>
+          <form class="search navbar-right" role="search">
+            <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+          </form>
+        </div> <!-- /col -->
+      </div> <!-- /row -->
+    </div> <!-- /container -->
+  </nav>
+
+  <div class="container masthead">
+    <div class="row">
+      <div class="col-sm-12 contents">
+        <ol class="breadcrumbs gt-separated visible-xs">
+          <li><a href="index.html">flutter_sprites</a></li>
+          <li><a href="flutter_sprites/flutter_sprites-library.html">flutter_sprites</a></li>
+          <li class="self-crumb">Action</li>
+        </ol>
+        <div class="title-description">
+          <h1 class="title">
+            <span class="kind">abstract class</span> Action
+          </h1>
+        </div>
+        <ul class="subnav">
+          <li><a href="flutter_sprites/Action-class.html#instance-properties">Properties</a></li>
+          <li><a href="flutter_sprites/Action-class.html#constructors">Constructors</a></li>
+          <li><a href="flutter_sprites/Action-class.html#operators">Operators</a></li>
+          <li><a href="flutter_sprites/Action-class.html#instance-methods">Methods</a></li>
+        </ul>
+      </div> <!-- /col -->
+    </div> <!-- /row -->
+  </div> <!-- /container -->
+
+</header>
+
+<div class="container body">
+  <div class="row">
+
+  <div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
+    <h5><a href="index.html">flutter_sprites</a></h5>
+    <h5><a href="flutter_sprites/flutter_sprites-library.html">flutter_sprites</a></h5>
+
+    <ol>
+    
+      <li class="section-title"><a href="flutter_sprites/flutter_sprites-library.html#typedefs">Typedefs</a></li>
+      <li><a href="flutter_sprites/ActionCallback.html">ActionCallback</a></li>
+      <li><a href="flutter_sprites/PointSetterCallback.html">PointSetterCallback</a></li>
+      <li><a href="flutter_sprites/SetterCallback.html">SetterCallback</a></li>
+    
+    
+      <li class="section-title"><a href="flutter_sprites/flutter_sprites-library.html#functions">Functions</a></li>
+      <li><a href="flutter_sprites/convertDegrees2Radians.html">convertDegrees2Radians</a></li>
+      <li><a href="flutter_sprites/convertRadians2Degrees.html">convertRadians2Degrees</a></li>
+      <li><a href="flutter_sprites/randomBool.html">randomBool</a></li>
+      <li><a href="flutter_sprites/randomDouble.html">randomDouble</a></li>
+      <li><a href="flutter_sprites/randomInt.html">randomInt</a></li>
+      <li><a href="flutter_sprites/randomSignedDouble.html">randomSignedDouble</a></li>
+    
+      <li class="section-title"><a href="flutter_sprites/flutter_sprites-library.html#enums">Enums</a></li>
+      <li><a href="flutter_sprites/EffectLineAnimationMode-class.html">EffectLineAnimationMode</a></li>
+      <li><a href="flutter_sprites/EffectLineWidthMode-class.html">EffectLineWidthMode</a></li>
+      <li><a href="flutter_sprites/SpriteBoxTransformMode-class.html">SpriteBoxTransformMode</a></li>
+    
+      <li class="section-title"><a href="flutter_sprites/flutter_sprites-library.html#classes">Classes</a></li>
+      <li><a href="flutter_sprites/Action-class.html">Action</a></li>
+      <li><a href="flutter_sprites/ActionCallFunction-class.html">ActionCallFunction</a></li>
+      <li><a href="flutter_sprites/ActionController-class.html">ActionController</a></li>
+      <li><a href="flutter_sprites/ActionDelay-class.html">ActionDelay</a></li>
+      <li><a href="flutter_sprites/ActionGroup-class.html">ActionGroup</a></li>
+      <li><a href="flutter_sprites/ActionInstant-class.html">ActionInstant</a></li>
+      <li><a href="flutter_sprites/ActionInterval-class.html">ActionInterval</a></li>
+      <li><a href="flutter_sprites/ActionRemoveNode-class.html">ActionRemoveNode</a></li>
+      <li><a href="flutter_sprites/ActionRepeat-class.html">ActionRepeat</a></li>
+      <li><a href="flutter_sprites/ActionRepeatForever-class.html">ActionRepeatForever</a></li>
+      <li><a href="flutter_sprites/ActionSequence-class.html">ActionSequence</a></li>
+      <li><a href="flutter_sprites/ActionSpline-class.html">ActionSpline</a></li>
+      <li><a href="flutter_sprites/ActionTween-class.html">ActionTween</a></li>
+      <li><a href="flutter_sprites/ColorSequence-class.html">ColorSequence</a></li>
+      <li><a href="flutter_sprites/Constraint-class.html">Constraint</a></li>
+      <li><a href="flutter_sprites/ConstraintPositionToNode-class.html">ConstraintPositionToNode</a></li>
+      <li><a href="flutter_sprites/ConstraintRotationToMovement-class.html">ConstraintRotationToMovement</a></li>
+      <li><a href="flutter_sprites/ConstraintRotationToNode-class.html">ConstraintRotationToNode</a></li>
+      <li><a href="flutter_sprites/ConstraintRotationToNodeRotation-class.html">ConstraintRotationToNodeRotation</a></li>
+      <li><a href="flutter_sprites/EffectLine-class.html">EffectLine</a></li>
+      <li><a href="flutter_sprites/GameMath-class.html">GameMath</a></li>
+      <li><a href="flutter_sprites/ImageMap-class.html">ImageMap</a></li>
+      <li><a href="flutter_sprites/Label-class.html">Label</a></li>
+      <li><a href="flutter_sprites/Layer-class.html">Layer</a></li>
+      <li><a href="flutter_sprites/NineSliceSprite-class.html">NineSliceSprite</a></li>
+      <li><a href="flutter_sprites/Node-class.html">Node</a></li>
+      <li><a href="flutter_sprites/Node3D-class.html">Node3D</a></li>
+      <li><a href="flutter_sprites/NodeWithSize-class.html">NodeWithSize</a></li>
+      <li><a href="flutter_sprites/ParticleSystem-class.html">ParticleSystem</a></li>
+      <li><a href="flutter_sprites/Sprite-class.html">Sprite</a></li>
+      <li><a href="flutter_sprites/SpriteBox-class.html">SpriteBox</a></li>
+      <li><a href="flutter_sprites/SpriteBoxEvent-class.html">SpriteBoxEvent</a></li>
+      <li><a href="flutter_sprites/SpritePaint-class.html">SpritePaint</a></li>
+      <li><a href="flutter_sprites/SpriteSheet-class.html">SpriteSheet</a></li>
+      <li><a href="flutter_sprites/SpriteWidget-class.html">SpriteWidget</a></li>
+      <li><a href="flutter_sprites/Texture-class.html">Texture</a></li>
+      <li><a href="flutter_sprites/TexturedLine-class.html">TexturedLine</a></li>
+      <li><a href="flutter_sprites/TexturedLinePainter-class.html">TexturedLinePainter</a></li>
+      <li><a href="flutter_sprites/VirtualJoystick-class.html">VirtualJoystick</a></li>
+    
+    </ol>
+  </div>
+
+  <div class="col-xs-12 col-sm-9 col-md-8 main-content">
+
+    <section class="desc markdown">
+      <p>Actions are used to animate properties of nodes or any other type of
+objects. The actions are powered by an <a href="flutter_sprites/ActionController-class.html">ActionController</a>, typically
+associated with a <a href="flutter_sprites/Node-class.html">Node</a>. The most commonly used action is the
+<a href="flutter_sprites/ActionTween-class.html">ActionTween</a> which interpolates a property between two values over time.</p>
+<p>Actions can be nested in different ways; played in sequence using the
+<a href="flutter_sprites/ActionSequence-class.html">ActionSequence</a>, or looped using the <a href="flutter_sprites/ActionRepeat-class.html">ActionRepeat</a>.</p>
+<p>You should typically not override this class directly, instead override
+<a href="flutter_sprites/ActionInterval-class.html">ActionInterval</a> or <a href="flutter_sprites/ActionInstant-class.html">ActionInstant</a> if you need to create a new action
+class.</p>
+    </section>
+    
+    <section>
+      <dl class="dl-horizontal">
+
+
+
+        <dt>Implemented by</dt>
+        <dd><ul class="comma-separated clazz-relationships">
+          <li><a href="flutter_sprites/ActionInstant-class.html">ActionInstant</a></li>
+          <li><a href="flutter_sprites/ActionInterval-class.html">ActionInterval</a></li>
+          <li><a href="flutter_sprites/ActionRepeatForever-class.html">ActionRepeatForever</a></li>
+        </ul></dd>
+
+      </dl>
+    </section>
+
+
+
+
+    <section class="summary offset-anchor" id="constructors">
+      <h2>Constructors</h2>
+
+      <dl class="constructor-summary-list">
+        <dt id="Action" class="callable">
+          <span class="name"><a href="flutter_sprites/Action/Action.html">Action</a></span><span class="signature">()</span>
+        </dt>
+        <dd>
+          <p></p>
+        </dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="instance-properties">
+      <h2>Properties</h2>
+
+      <dl class="properties">
+        <dt id="duration" class="property">
+          <span class="name"><a href="flutter_sprites/Action/duration.html">duration</a></span>
+          <span class="signature">&#8594; <a href="dart-core/double-class.html">double</a></span>
+        </dt>
+        <dd>
+          <p>The total time it will take to complete the action, in seconds.</p>
+          <div class="features">
+    read-only
+  </div>
+</dd>
+        <dt id="hashCode" class="property inherited">
+          <span class="name"><a href="dart-core/Object/hashCode.html">hashCode</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>Get a hash code for this object.</p>
+          <div class="features">
+    read-only, inherited
+  </div>
+</dd>
+        <dt id="runtimeType" class="property inherited">
+          <span class="name"><a href="dart-core/Object/runtimeType.html">runtimeType</a></span>
+          <span class="signature">&#8594; <a href="dart-core/Type-class.html">Type</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>A representation of the runtime type of the object.</p>
+          <div class="features">
+    read-only, inherited
+  </div>
+</dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor inherited" id="operators">
+      <h2>Operators</h2>
+      <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+          <span class="name"><a href="dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>The equality operator.</p>
+          <div class="features">inherited</div>
+        </dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="instance-methods">
+      <h2>Methods</h2>
+      <dl class="callables">
+        <dt id="noSuchMethod" class="callable inherited">
+          <span class="name"><a href="dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+            <span class="returntype parameter">&#8594; dynamic</span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Invoked when a non-existent method or property is accessed.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="step" class="callable">
+          <span class="name"><a href="flutter_sprites/Action/step.html">step</a></span><span class="signature">(<wbr><span class="parameter" id="step-param-dt"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">dt</span></span>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+        </dt>
+        <dd>
+          <p>Moves to the next time step in an action, <code>dt</code> is the delta time since
+the last time step in seconds. Typically this method is called from the
+<a href="flutter_sprites/ActionController-class.html">ActionController</a>.</p>
+        </dd>
+        <dt id="toString" class="callable inherited">
+          <span class="name"><a href="dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; <a href="dart-core/String-class.html">String</a></span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Returns a string representation of this object.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="update" class="callable">
+          <span class="name"><a href="flutter_sprites/Action/update.html">update</a></span><span class="signature">(<wbr><span class="parameter" id="update-param-t"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">t</span></span>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+        </dt>
+        <dd>
+          <p>Sets the action to a specific point in time. The <code>t</code> value that is passed
+in is a normalized value 0.0 to 1.0 of the duration of the action. Every
+action will always recieve a callback with the end time point (1.0),
+unless it is cancelled.</p>
+        </dd>
+      </dl>
+    </section>
+
+  </div> <!-- /.main-content -->
+
+  <div class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
+    <h5>Action</h5>
+    <ol>
+    
+    
+    
+      <li class="section-title"><a href="flutter_sprites/Action-class.html#constructors">Constructors</a></li>
+      <li><a href="flutter_sprites/Action/Action.html">Action</a></li>
+    
+      <li class="section-title">
+        <a href="flutter_sprites/Action-class.html#instance-properties">Properties</a>
+      </li>
+      <li><a href="flutter_sprites/Action/duration.html">duration</a></li>
+      <li class="inherited"><a href="dart-core/Object/hashCode.html">hashCode</a></li>
+      <li class="inherited"><a href="dart-core/Object/runtimeType.html">runtimeType</a></li>
+    
+      <li class="section-title inherited"><a href="flutter_sprites/Action-class.html#operators">Operators</a></li>
+      <li class="inherited"><a href="dart-core/Object/operator_equals.html">operator ==</a></li>
+    
+      <li class="section-title"><a href="flutter_sprites/Action-class.html#instance-methods">Methods</a></li>
+      <li class="inherited"><a href="dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+      <li><a href="flutter_sprites/Action/step.html">step</a></li>
+      <li class="inherited"><a href="dart-core/Object/toString.html">toString</a></li>
+      <li><a href="flutter_sprites/Action/update.html">update</a></li>
+    </ol>
+  </div><!--/.sidebar-offcanvas-->
+
+</div> <!-- row -->
+</div> <!-- container -->
+
+<footer>
+  <div class="container-fluid">
+    <div class="container">
+      <p class="text-center">
+        <span class="no-break">
+          flutter_sprites 0.0.15
+        </span>
+        &bull;
+        <span class="no-break">
+          <a href="https://www.dartlang.org">
+            <img src="static-assets/favicon.png" alt="Dart" title="Dart" width="16" height="16">
+          </a>
+        </span>
+        &bull;
+        <span class="copyright no-break">
+          <a href="http://creativecommons.org/licenses/by-sa/4.0/">cc license</a>
+        </span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="static-assets/typeahead.bundle.min.js"></script>
+<script src="static-assets/prettify.js"></script>
+<script src="static-assets/URI.js"></script>
+<script src="static-assets/script.js"></script>
+<!-- Do not remove placeholder -->
+<!-- Footer Placeholder -->
+
+</body>
+
+</html>

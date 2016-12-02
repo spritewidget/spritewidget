@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="API docs for the NineSliceSprite class from the flutter_sprites library, for the Dart programming language.">
+  <title>NineSliceSprite class - flutter_sprites library - Dart API</title>
+  <!-- required because all the links are pseudo-absolute -->
+  <base href="..">
+
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Code+Pro|Roboto:500,400italic,300,400' type='text/css'>
+  <link rel="stylesheet" href="static-assets/prettify.css">
+  <link rel="stylesheet" href="static-assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static-assets/styles.css">
+  <link rel="icon" href="static-assets/favicon.png">
+
+  <!-- Do not remove placeholder -->
+  <!-- Header Placeholder -->
+</head>
+
+<body>
+
+<div id="overlay-under-drawer"></div>
+
+<header class="container-fluid" id="title">
+  <nav class="navbar navbar-fixed-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 contents">
+          <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+          <ol class="breadcrumbs gt-separated hidden-xs">
+            <li><a href="index.html">flutter_sprites</a></li>
+            <li><a href="flutter_sprites/flutter_sprites-library.html">flutter_sprites</a></li>
+            <li class="self-crumb">NineSliceSprite</li>
+          </ol>
+          <div class="self-name">NineSliceSprite</div>
+          <form class="search navbar-right" role="search">
+            <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+          </form>
+        </div> <!-- /col -->
+      </div> <!-- /row -->
+    </div> <!-- /container -->
+  </nav>
+
+  <div class="container masthead">
+    <div class="row">
+      <div class="col-sm-12 contents">
+        <ol class="breadcrumbs gt-separated visible-xs">
+          <li><a href="index.html">flutter_sprites</a></li>
+          <li><a href="flutter_sprites/flutter_sprites-library.html">flutter_sprites</a></li>
+          <li class="self-crumb">NineSliceSprite</li>
+        </ol>
+        <div class="title-description">
+          <h1 class="title">
+            <span class="kind">class</span> NineSliceSprite
+          </h1>
+        </div>
+        <ul class="subnav">
+          <li><a href="flutter_sprites/NineSliceSprite-class.html#instance-properties">Properties</a></li>
+          <li><a href="flutter_sprites/NineSliceSprite-class.html#constructors">Constructors</a></li>
+          <li><a href="flutter_sprites/NineSliceSprite-class.html#operators">Operators</a></li>
+          <li><a href="flutter_sprites/NineSliceSprite-class.html#instance-methods">Methods</a></li>
+        </ul>
+      </div> <!-- /col -->
+    </div> <!-- /row -->
+  </div> <!-- /container -->
+
+</header>
+
+<div class="container body">
+  <div class="row">
+
+  <div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
+    <h5><a href="index.html">flutter_sprites</a></h5>
+    <h5><a href="flutter_sprites/flutter_sprites-library.html">flutter_sprites</a></h5>
+
+    <ol>
+    
+      <li class="section-title"><a href="flutter_sprites/flutter_sprites-library.html#typedefs">Typedefs</a></li>
+      <li><a href="flutter_sprites/ActionCallback.html">ActionCallback</a></li>
+      <li><a href="flutter_sprites/PointSetterCallback.html">PointSetterCallback</a></li>
+      <li><a href="flutter_sprites/SetterCallback.html">SetterCallback</a></li>
+    
+    
+      <li class="section-title"><a href="flutter_sprites/flutter_sprites-library.html#functions">Functions</a></li>
+      <li><a href="flutter_sprites/convertDegrees2Radians.html">convertDegrees2Radians</a></li>
+      <li><a href="flutter_sprites/convertRadians2Degrees.html">convertRadians2Degrees</a></li>
+      <li><a href="flutter_sprites/randomBool.html">randomBool</a></li>
+      <li><a href="flutter_sprites/randomDouble.html">randomDouble</a></li>
+      <li><a href="flutter_sprites/randomInt.html">randomInt</a></li>
+      <li><a href="flutter_sprites/randomSignedDouble.html">randomSignedDouble</a></li>
+    
+      <li class="section-title"><a href="flutter_sprites/flutter_sprites-library.html#enums">Enums</a></li>
+      <li><a href="flutter_sprites/EffectLineAnimationMode-class.html">EffectLineAnimationMode</a></li>
+      <li><a href="flutter_sprites/EffectLineWidthMode-class.html">EffectLineWidthMode</a></li>
+      <li><a href="flutter_sprites/SpriteBoxTransformMode-class.html">SpriteBoxTransformMode</a></li>
+    
+      <li class="section-title"><a href="flutter_sprites/flutter_sprites-library.html#classes">Classes</a></li>
+      <li><a href="flutter_sprites/Action-class.html">Action</a></li>
+      <li><a href="flutter_sprites/ActionCallFunction-class.html">ActionCallFunction</a></li>
+      <li><a href="flutter_sprites/ActionController-class.html">ActionController</a></li>
+      <li><a href="flutter_sprites/ActionDelay-class.html">ActionDelay</a></li>
+      <li><a href="flutter_sprites/ActionGroup-class.html">ActionGroup</a></li>
+      <li><a href="flutter_sprites/ActionInstant-class.html">ActionInstant</a></li>
+      <li><a href="flutter_sprites/ActionInterval-class.html">ActionInterval</a></li>
+      <li><a href="flutter_sprites/ActionRemoveNode-class.html">ActionRemoveNode</a></li>
+      <li><a href="flutter_sprites/ActionRepeat-class.html">ActionRepeat</a></li>
+      <li><a href="flutter_sprites/ActionRepeatForever-class.html">ActionRepeatForever</a></li>
+      <li><a href="flutter_sprites/ActionSequence-class.html">ActionSequence</a></li>
+      <li><a href="flutter_sprites/ActionSpline-class.html">ActionSpline</a></li>
+      <li><a href="flutter_sprites/ActionTween-class.html">ActionTween</a></li>
+      <li><a href="flutter_sprites/ColorSequence-class.html">ColorSequence</a></li>
+      <li><a href="flutter_sprites/Constraint-class.html">Constraint</a></li>
+      <li><a href="flutter_sprites/ConstraintPositionToNode-class.html">ConstraintPositionToNode</a></li>
+      <li><a href="flutter_sprites/ConstraintRotationToMovement-class.html">ConstraintRotationToMovement</a></li>
+      <li><a href="flutter_sprites/ConstraintRotationToNode-class.html">ConstraintRotationToNode</a></li>
+      <li><a href="flutter_sprites/ConstraintRotationToNodeRotation-class.html">ConstraintRotationToNodeRotation</a></li>
+      <li><a href="flutter_sprites/EffectLine-class.html">EffectLine</a></li>
+      <li><a href="flutter_sprites/GameMath-class.html">GameMath</a></li>
+      <li><a href="flutter_sprites/ImageMap-class.html">ImageMap</a></li>
+      <li><a href="flutter_sprites/Label-class.html">Label</a></li>
+      <li><a href="flutter_sprites/Layer-class.html">Layer</a></li>
+      <li><a href="flutter_sprites/NineSliceSprite-class.html">NineSliceSprite</a></li>
+      <li><a href="flutter_sprites/Node-class.html">Node</a></li>
+      <li><a href="flutter_sprites/Node3D-class.html">Node3D</a></li>
+      <li><a href="flutter_sprites/NodeWithSize-class.html">NodeWithSize</a></li>
+      <li><a href="flutter_sprites/ParticleSystem-class.html">ParticleSystem</a></li>
+      <li><a href="flutter_sprites/Sprite-class.html">Sprite</a></li>
+      <li><a href="flutter_sprites/SpriteBox-class.html">SpriteBox</a></li>
+      <li><a href="flutter_sprites/SpriteBoxEvent-class.html">SpriteBoxEvent</a></li>
+      <li><a href="flutter_sprites/SpritePaint-class.html">SpritePaint</a></li>
+      <li><a href="flutter_sprites/SpriteSheet-class.html">SpriteSheet</a></li>
+      <li><a href="flutter_sprites/SpriteWidget-class.html">SpriteWidget</a></li>
+      <li><a href="flutter_sprites/Texture-class.html">Texture</a></li>
+      <li><a href="flutter_sprites/TexturedLine-class.html">TexturedLine</a></li>
+      <li><a href="flutter_sprites/TexturedLinePainter-class.html">TexturedLinePainter</a></li>
+      <li><a href="flutter_sprites/VirtualJoystick-class.html">VirtualJoystick</a></li>
+    
+    </ol>
+  </div>
+
+  <div class="col-xs-12 col-sm-9 col-md-8 main-content">
+
+    <section class="desc markdown">
+      <p>A NineSliceSprite is similar to a <a href="flutter_sprites/Sprite-class.html">Sprite</a>, but it it can strech its
+inner area to fit the size of the <a href="flutter_sprites/Node-class.html">Node</a>. This is ideal for fast drawing
+of things like buttons.</p>
+    </section>
+    
+    <section>
+      <dl class="dl-horizontal">
+        <dt>Inheritance</dt>
+        <dd><ul class="gt-separated dark clazz-relationships">
+          <li><a href="dart-core/Object-class.html">Object</a></li>
+          <li><a href="flutter_sprites/Node-class.html">Node</a></li>
+          <li><a href="flutter_sprites/NodeWithSize-class.html">NodeWithSize</a></li>
+          <li>NineSliceSprite</li>
+        </ul></dd>
+
+
+        <dt>Mixes-in</dt>
+        <dd><ul class="comma-separated clazz-relationships">
+          <li><a href="flutter_sprites/SpritePaint-class.html">SpritePaint</a></li>
+        </ul></dd>
+
+
+      </dl>
+    </section>
+
+
+
+
+    <section class="summary offset-anchor" id="constructors">
+      <h2>Constructors</h2>
+
+      <dl class="constructor-summary-list">
+        <dt id="NineSliceSprite" class="callable">
+          <span class="name"><a href="flutter_sprites/NineSliceSprite/NineSliceSprite.html">NineSliceSprite</a></span><span class="signature">(<span class="parameter" id="-param-texture"><span class="type-annotation"><a href="flutter_sprites/Texture-class.html">Texture</a></span> <span class="parameter-name">texture</span>, </span> <span class="parameter" id="-param-size"><span class="type-annotation"><a href="dart-ui/Size-class.html">Size</a></span> <span class="parameter-name">size</span>, </span> <span class="parameter" id="-param-insets"><span class="type-annotation">EdgeInsets</span> <span class="parameter-name">insets</span></span>)</span>
+        </dt>
+        <dd>
+          <p>Creates a new NineSliceSprite from the privided <code>texture</code>, <code>size</code>, and
+texture <code>insets</code>.</p>
+        </dd>
+        <dt id="NineSliceSprite.fromImage" class="callable">
+          <span class="name"><a href="flutter_sprites/NineSliceSprite/NineSliceSprite.fromImage.html">NineSliceSprite.fromImage</a></span><span class="signature">(<span class="parameter" id="fromImage-param-image"><span class="type-annotation"><a href="dart-ui/Image-class.html">Image</a></span> <span class="parameter-name">image</span>, </span> <span class="parameter" id="fromImage-param-size"><span class="type-annotation"><a href="dart-ui/Size-class.html">Size</a></span> <span class="parameter-name">size</span>, </span> <span class="parameter" id="fromImage-param-insets"><span class="type-annotation">EdgeInsets</span> <span class="parameter-name">insets</span></span>)</span>
+        </dt>
+        <dd>
+          <p>Creates a new NineSliceSprite from the provided <code>image</code>, <code>size</code>, and
+texture <code>insets</code>.</p>
+        </dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="instance-properties">
+      <h2>Properties</h2>
+
+      <dl class="properties">
+        <dt id="actions" class="property inherited">
+          <span class="name"><a href="flutter_sprites/Node/actions.html">actions</a></span>
+          <span class="signature">&#8594; <a href="flutter_sprites/ActionController-class.html">ActionController</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>The <code>ActionController</code> associated with this node.</p>
+          <div class="features">
+    read-only, inherited
+  </div>
+</dd>
+        <dt id="children" class="property inherited">
+          <span class="name"><a href="flutter_sprites/Node/children.html">children</a></span>
+          <span class="signature">&#8594; <a href="dart-core/List-class.html">List</a>&lt;<a href="flutter_sprites/Node-class.html">Node</a>&gt;</span>
+        </dt>
+        <dd class="inherited">
+          <p>A list of the children of this node.</p>
+          <div class="features">
+    read-only, inherited
+  </div>
+</dd>
+        <dt id="colorOverlay" class="property inherited">
+          <span class="name"><a href="flutter_sprites/SpritePaint/colorOverlay.html">colorOverlay</a></span>
+          <span class="signature">&#8594; <a href="dart-ui/Color-class.html">Color</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>The color to draw on top of the sprite, null if no color overlay is used.</p>
+          <div class="features">
+    read / write, inherited
+  </div>
+</dd>
+        <dt id="constraints" class="property inherited">
+          <span class="name"><a href="flutter_sprites/Node/constraints.html">constraints</a></span>
+          <span class="signature">&#8594; <a href="dart-core/List-class.html">List</a>&lt;<a href="flutter_sprites/Constraint-class.html">Constraint</a>&gt;</span>
+        </dt>
+        <dd class="inherited">
+          <p>A <code>List</code> of <code>Constraint</code>s that will be applied to the node.
+The constraints are applied after the <code>update</code> method has been called.</p>
+          <div class="features">
+    read / write, inherited
+  </div>
+</dd>
+        <dt id="drawCenterPart" class="property">
+          <span class="name"><a href="flutter_sprites/NineSliceSprite/drawCenterPart.html">drawCenterPart</a></span>
+          <span class="signature">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
+        </dt>
+        <dd>
+          <p>If true, the center part of the sprite will be drawn, this is the default
+behavior.</p>
+          <div class="features">
+    read / write
+  </div>
+</dd>
+        <dt id="handleMultiplePointers" class="property inherited">
+          <span class="name"><a href="flutter_sprites/Node/handleMultiplePointers.html">handleMultiplePointers</a></span>
+          <span class="signature">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>If set to true the node will receive multiple pointers, otherwise it will only receive events the first pointer.</p>
+          <div class="features">
+    read / write, inherited
+  </div>
+</dd>
+        <dt id="hashCode" class="property inherited">
+          <span class="name"><a href="dart-core/Object/hashCode.html">hashCode</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>Get a hash code for this object.</p>
+          <div class="features">
+    read-only, inherited
+  </div>
+</dd>
+        <dt id="insets" class="property">
+          <span class="name"><a href="flutter_sprites/NineSliceSprite/insets.html">insets</a></span>
+          <span class="signature">&#8594; EdgeInsets</span>
+        </dt>
+        <dd>
+          <p>The insets of the texture as normalized values. The insets define the
+areas of the texture that will not be deformed as the sprite stretches.</p>
+          <div class="features">
+    read / write
+  </div>
+</dd>
+        <dt id="inverseTransformMatrix" class="property inherited">
+          <span class="name"><a href="flutter_sprites/Node/inverseTransformMatrix.html">inverseTransformMatrix</a></span>
+          <span class="signature">&#8594; Matrix4</span>
+        </dt>
+        <dd class="inherited">
+          <p>The inverse transform matrix used by this node.</p>
+          <div class="features">
+    read-only, inherited
+  </div>
+</dd>
+        <dt id="opacity" class="property inherited">
+          <span class="name"><a href="flutter_sprites/SpritePaint/opacity.html">opacity</a></span>
+          <span class="signature">&#8594; <a href="dart-core/double-class.html">double</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>The opacity of the sprite in the range 0.0 to 1.0.</p>
+          <div class="features">
+    read / write, inherited
+  </div>
+</dd>
+        <dt id="parent" class="property inherited">
+          <span class="name"><a href="flutter_sprites/Node/parent.html">parent</a></span>
+          <span class="signature">&#8594; <a href="flutter_sprites/Node-class.html">Node</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>The parent of this node, or null if it doesn't have a parent.</p>
+          <div class="features">
+    read-only, inherited
+  </div>
+</dd>
+        <dt id="paused" class="property inherited">
+          <span class="name"><a href="flutter_sprites/Node/paused.html">paused</a></span>
+          <span class="signature">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>Decides if the node and its children is currently paused.</p>
+          <div class="features">
+    read / write, inherited
+  </div>
+</dd>
+        <dt id="pivot" class="property inherited">
+          <span class="name"><a href="flutter_sprites/NodeWithSize/pivot.html">pivot</a></span>
+          <span class="signature">&#8594; <a href="dart-ui/Point-class.html">Point</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>The normalized point which the node is transformed around.</p>
+          <div class="features">
+    read / write, inherited
+  </div>
+</dd>
+        <dt id="position" class="property inherited">
+          <span class="name"><a href="flutter_sprites/Node/position.html">position</a></span>
+          <span class="signature">&#8594; <a href="dart-ui/Point-class.html">Point</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>The position of this node relative to its parent.</p>
+          <div class="features">
+    read / write, inherited
+  </div>
+</dd>
+        <dt id="rotation" class="property inherited">
+          <span class="name"><a href="flutter_sprites/Node/rotation.html">rotation</a></span>
+          <span class="signature">&#8594; <a href="dart-core/double-class.html">double</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>The rotation of this node in degrees.</p>
+          <div class="features">
+    read / write, inherited
+  </div>
+</dd>
+        <dt id="runtimeType" class="property inherited">
+          <span class="name"><a href="dart-core/Object/runtimeType.html">runtimeType</a></span>
+          <span class="signature">&#8594; <a href="dart-core/Type-class.html">Type</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>A representation of the runtime type of the object.</p>
+          <div class="features">
+    read-only, inherited
+  </div>
+</dd>
+        <dt id="scale" class="property inherited">
+          <span class="name"><a href="flutter_sprites/Node/scale.html">scale</a></span>
+          <span class="signature">&#8594; <a href="dart-core/double-class.html">double</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>The scale of this node relative its parent.</p>
+          <div class="features">
+    read / write, inherited
+  </div>
+</dd>
+        <dt id="scaleX" class="property inherited">
+          <span class="name"><a href="flutter_sprites/Node/scaleX.html">scaleX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/double-class.html">double</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>The horizontal scale of this node relative its parent.</p>
+          <div class="features">
+    read / write, inherited
+  </div>
+</dd>
+        <dt id="scaleY" class="property inherited">
+          <span class="name"><a href="flutter_sprites/Node/scaleY.html">scaleY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/double-class.html">double</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>The vertical scale of this node relative its parent.</p>
+          <div class="features">
+    read / write, inherited
+  </div>
+</dd>
+        <dt id="size" class="property">
+          <span class="name"><a href="flutter_sprites/NineSliceSprite/size.html">size</a></span>
+          <span class="signature">&#8594; <a href="dart-ui/Size-class.html">Size</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div class="features">
+    write-only
+  </div>
+</dd>
+        <dt id="skewX" class="property inherited">
+          <span class="name"><a href="flutter_sprites/Node/skewX.html">skewX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/double-class.html">double</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>The skew along the x-axis of this node in degrees.</p>
+          <div class="features">
+    read / write, inherited
+  </div>
+</dd>
+        <dt id="skewY" class="property inherited">
+          <span class="name"><a href="flutter_sprites/Node/skewY.html">skewY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/double-class.html">double</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>The skew along the y-axis of this node in degrees.</p>
+          <div class="features">
+    read / write, inherited
+  </div>
+</dd>
+        <dt id="spriteBox" class="property inherited">
+          <span class="name"><a href="flutter_sprites/Node/spriteBox.html">spriteBox</a></span>
+          <span class="signature">&#8594; <a href="flutter_sprites/SpriteBox-class.html">SpriteBox</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>The <code>SpriteBox</code> this node is added to, or null if it's not currently added to a <code>SpriteBox</code>.</p>
+          <div class="features">
+    read-only, inherited
+  </div>
+</dd>
+        <dt id="texture" class="property">
+          <span class="name"><a href="flutter_sprites/NineSliceSprite/texture.html">texture</a></span>
+          <span class="signature">&#8594; <a href="flutter_sprites/Texture-class.html">Texture</a></span>
+        </dt>
+        <dd>
+          <p>The texture that the sprite will render to screen. Cannot be null.</p>
+          <div class="features">
+    read / write
+  </div>
+</dd>
+        <dt id="transferMode" class="property inherited">
+          <span class="name"><a href="flutter_sprites/SpritePaint/transferMode.html">transferMode</a></span>
+          <span class="signature">&#8594; <a href="dart-ui/TransferMode-class.html">TransferMode</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>The transfer mode used when drawing the sprite to screen.</p>
+          <div class="features">
+    read / write, inherited
+  </div>
+</dd>
+        <dt id="transformMatrix" class="property inherited">
+          <span class="name"><a href="flutter_sprites/Node/transformMatrix.html">transformMatrix</a></span>
+          <span class="signature">&#8594; Matrix4</span>
+        </dt>
+        <dd class="inherited">
+          <p>The transformMatrix describes the transformation from the node's parent.</p>
+          <div class="features">
+    read-only, inherited
+  </div>
+</dd>
+        <dt id="userInteractionEnabled" class="property inherited">
+          <span class="name"><a href="flutter_sprites/Node/userInteractionEnabled.html">userInteractionEnabled</a></span>
+          <span class="signature">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>The node will receive user interactions, such as pointer (touch or mouse) events.</p>
+          <div class="features">
+    read / write, inherited
+  </div>
+</dd>
+        <dt id="visible" class="property inherited">
+          <span class="name"><a href="flutter_sprites/Node/visible.html">visible</a></span>
+          <span class="signature">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>The visibility of this node and its children.</p>
+          <div class="features">
+    read / write, inherited
+  </div>
+</dd>
+        <dt id="zPosition" class="property inherited">
+          <span class="name"><a href="flutter_sprites/Node/zPosition.html">zPosition</a></span>
+          <span class="signature">&#8594; <a href="dart-core/double-class.html">double</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>The draw order of this node compared to its parent and its siblings.</p>
+          <div class="features">
+    read / write, inherited
+  </div>
+</dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor inherited" id="operators">
+      <h2>Operators</h2>
+      <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+          <span class="name"><a href="dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>The equality operator.</p>
+          <div class="features">inherited</div>
+        </dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="instance-methods">
+      <h2>Methods</h2>
+      <dl class="callables">
+        <dt id="addChild" class="callable inherited">
+          <span class="name"><a href="flutter_sprites/Node/addChild.html">addChild</a></span><span class="signature">(<wbr><span class="parameter" id="addChild-param-child"><span class="type-annotation"><a href="flutter_sprites/Node-class.html">Node</a></span> <span class="parameter-name">child</span></span>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Adds a child to this node.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="applyConstraints" class="callable inherited">
+          <span class="name"><a href="flutter_sprites/Node/applyConstraints.html">applyConstraints</a></span><span class="signature">(<wbr><span class="parameter" id="applyConstraints-param-dt"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">dt</span></span>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Called to apply the <a href="flutter_sprites/Node/constraints.html">constraints</a> to the node. Normally, this method is
+called automatically by the <a href="flutter_sprites/SpriteBox-class.html">SpriteBox</a>, but it can be called manually
+if the constraints need to be applied immediately.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="applyTransformForPivot" class="callable inherited">
+          <span class="name"><a href="flutter_sprites/NodeWithSize/applyTransformForPivot.html">applyTransformForPivot</a></span><span class="signature">(<wbr><span class="parameter" id="applyTransformForPivot-param-canvas"><span class="type-annotation"><a href="dart-ui/Canvas-class.html">Canvas</a></span> <span class="parameter-name">canvas</span></span>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Call this method in your <a href="flutter_sprites/Node/paint.html">paint</a> method if you want the origin of your drawing to be the top left corner of the
+node's bounding box.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="computeTransformMatrix" class="callable inherited">
+          <span class="name"><a href="flutter_sprites/Node/computeTransformMatrix.html">computeTransformMatrix</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; Matrix4</span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Computes the transformation matrix of this node. This method can be
+overriden if a custom matrix is required. There is usually no reason to
+call this method directly.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="convertPointFromNode" class="callable inherited">
+          <span class="name"><a href="flutter_sprites/Node/convertPointFromNode.html">convertPointFromNode</a></span><span class="signature">(<wbr><span class="parameter" id="convertPointFromNode-param-point"><span class="type-annotation"><a href="dart-ui/Point-class.html">Point</a></span> <span class="parameter-name">point</span>, </span> <span class="parameter" id="convertPointFromNode-param-node"><span class="type-annotation"><a href="flutter_sprites/Node-class.html">Node</a></span> <span class="parameter-name">node</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-ui/Point-class.html">Point</a></span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Converts a <code>point</code> from another <code>node</code>s coordinate system into the local coordinate system of this node.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="convertPointToBoxSpace" class="callable inherited">
+          <span class="name"><a href="flutter_sprites/Node/convertPointToBoxSpace.html">convertPointToBoxSpace</a></span><span class="signature">(<wbr><span class="parameter" id="convertPointToBoxSpace-param-nodePoint"><span class="type-annotation"><a href="dart-ui/Point-class.html">Point</a></span> <span class="parameter-name">nodePoint</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-ui/Point-class.html">Point</a></span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Converts a point from the local coordinate system of the node to the coordinate system of the <a href="flutter_sprites/SpriteBox-class.html">SpriteBox</a>.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="convertPointToNodeSpace" class="callable inherited">
+          <span class="name"><a href="flutter_sprites/Node/convertPointToNodeSpace.html">convertPointToNodeSpace</a></span><span class="signature">(<wbr><span class="parameter" id="convertPointToNodeSpace-param-boxPoint"><span class="type-annotation"><a href="dart-ui/Point-class.html">Point</a></span> <span class="parameter-name">boxPoint</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-ui/Point-class.html">Point</a></span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Converts a point from the coordinate system of the <a href="flutter_sprites/SpriteBox-class.html">SpriteBox</a> to the local coordinate system of the node.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="handleEvent" class="callable inherited">
+          <span class="name"><a href="flutter_sprites/Node/handleEvent.html">handleEvent</a></span><span class="signature">(<wbr><span class="parameter" id="handleEvent-param-event"><span class="type-annotation"><a href="flutter_sprites/SpriteBoxEvent-class.html">SpriteBoxEvent</a></span> <span class="parameter-name">event</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Handles an event, such as a pointer (touch or mouse) event.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="invalidateTransformMatrix" class="callable inherited">
+          <span class="name"><a href="flutter_sprites/Node/invalidateTransformMatrix.html">invalidateTransformMatrix</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Invalidates the current transform matrix. If the <a href="flutter_sprites/Node/computeTransformMatrix.html">computeTransformMatrix</a>
+method is overidden, this method should be called whenever a property
+changes that affects the matrix.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="isPointInside" class="callable inherited">
+          <span class="name"><a href="flutter_sprites/NodeWithSize/isPointInside.html">isPointInside</a></span><span class="signature">(<wbr><span class="parameter" id="isPointInside-param-nodePoint"><span class="type-annotation"><a href="dart-ui/Point-class.html">Point</a></span> <span class="parameter-name">nodePoint</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Returns true if the <code>point</code> is inside the node, the <code>point</code> is in the local coordinate system of the node.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="noSuchMethod" class="callable inherited">
+          <span class="name"><a href="dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+            <span class="returntype parameter">&#8594; dynamic</span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Invoked when a non-existent method or property is accessed.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="paint" class="callable">
+          <span class="name"><a href="flutter_sprites/NineSliceSprite/paint.html">paint</a></span><span class="signature">(<wbr><span class="parameter" id="paint-param-canvas"><span class="type-annotation"><a href="dart-ui/Canvas-class.html">Canvas</a></span> <span class="parameter-name">canvas</span></span>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+        </dt>
+        <dd>
+          <p>Paints this node to the canvas.</p>
+        </dd>
+        <dt id="removeAllChildren" class="callable inherited">
+          <span class="name"><a href="flutter_sprites/Node/removeAllChildren.html">removeAllChildren</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Removes all children of this node.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="removeChild" class="callable inherited">
+          <span class="name"><a href="flutter_sprites/Node/removeChild.html">removeChild</a></span><span class="signature">(<wbr><span class="parameter" id="removeChild-param-child"><span class="type-annotation"><a href="flutter_sprites/Node-class.html">Node</a></span> <span class="parameter-name">child</span></span>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Removes a child from this node.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="removeFromParent" class="callable inherited">
+          <span class="name"><a href="flutter_sprites/Node/removeFromParent.html">removeFromParent</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Removes this node from its parent node.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="spriteBoxPerformedLayout" class="callable inherited">
+          <span class="name"><a href="flutter_sprites/Node/spriteBoxPerformedLayout.html">spriteBoxPerformedLayout</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Called whenever the <a href="flutter_sprites/SpriteBox-class.html">SpriteBox</a> is modified or resized, or if the device is rotated.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="toString" class="callable inherited">
+          <span class="name"><a href="dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; <a href="dart-core/String-class.html">String</a></span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Returns a string representation of this object.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="update" class="callable inherited">
+          <span class="name"><a href="flutter_sprites/Node/update.html">update</a></span><span class="signature">(<wbr><span class="parameter" id="update-param-dt"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">dt</span></span>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Called before a frame is drawn.</p>
+          <div class="features">inherited</div>
+        </dd>
+      </dl>
+    </section>
+
+  </div> <!-- /.main-content -->
+
+  <div class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
+    <h5>NineSliceSprite</h5>
+    <ol>
+    
+    
+    
+      <li class="section-title"><a href="flutter_sprites/NineSliceSprite-class.html#constructors">Constructors</a></li>
+      <li><a href="flutter_sprites/NineSliceSprite/NineSliceSprite.html">NineSliceSprite</a></li>
+      <li><a href="flutter_sprites/NineSliceSprite/NineSliceSprite.fromImage.html">fromImage</a></li>
+    
+      <li class="section-title">
+        <a href="flutter_sprites/NineSliceSprite-class.html#instance-properties">Properties</a>
+      </li>
+      <li class="inherited"><a href="flutter_sprites/Node/actions.html">actions</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/children.html">children</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpritePaint/colorOverlay.html">colorOverlay</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/constraints.html">constraints</a></li>
+      <li><a href="flutter_sprites/NineSliceSprite/drawCenterPart.html">drawCenterPart</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/handleMultiplePointers.html">handleMultiplePointers</a></li>
+      <li class="inherited"><a href="dart-core/Object/hashCode.html">hashCode</a></li>
+      <li><a href="flutter_sprites/NineSliceSprite/insets.html">insets</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/inverseTransformMatrix.html">inverseTransformMatrix</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpritePaint/opacity.html">opacity</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/parent.html">parent</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/paused.html">paused</a></li>
+      <li class="inherited"><a href="flutter_sprites/NodeWithSize/pivot.html">pivot</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/position.html">position</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/rotation.html">rotation</a></li>
+      <li class="inherited"><a href="dart-core/Object/runtimeType.html">runtimeType</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/scale.html">scale</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/scaleX.html">scaleX</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/scaleY.html">scaleY</a></li>
+      <li><a href="flutter_sprites/NineSliceSprite/size.html">size</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/skewX.html">skewX</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/skewY.html">skewY</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/spriteBox.html">spriteBox</a></li>
+      <li><a href="flutter_sprites/NineSliceSprite/texture.html">texture</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpritePaint/transferMode.html">transferMode</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/transformMatrix.html">transformMatrix</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/userInteractionEnabled.html">userInteractionEnabled</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/visible.html">visible</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/zPosition.html">zPosition</a></li>
+    
+      <li class="section-title inherited"><a href="flutter_sprites/NineSliceSprite-class.html#operators">Operators</a></li>
+      <li class="inherited"><a href="dart-core/Object/operator_equals.html">operator ==</a></li>
+    
+      <li class="section-title"><a href="flutter_sprites/NineSliceSprite-class.html#instance-methods">Methods</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/addChild.html">addChild</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/applyConstraints.html">applyConstraints</a></li>
+      <li class="inherited"><a href="flutter_sprites/NodeWithSize/applyTransformForPivot.html">applyTransformForPivot</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/computeTransformMatrix.html">computeTransformMatrix</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/convertPointFromNode.html">convertPointFromNode</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/convertPointToBoxSpace.html">convertPointToBoxSpace</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/convertPointToNodeSpace.html">convertPointToNodeSpace</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/handleEvent.html">handleEvent</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/invalidateTransformMatrix.html">invalidateTransformMatrix</a></li>
+      <li class="inherited"><a href="flutter_sprites/NodeWithSize/isPointInside.html">isPointInside</a></li>
+      <li class="inherited"><a href="dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+      <li><a href="flutter_sprites/NineSliceSprite/paint.html">paint</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/removeAllChildren.html">removeAllChildren</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/removeChild.html">removeChild</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/removeFromParent.html">removeFromParent</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/spriteBoxPerformedLayout.html">spriteBoxPerformedLayout</a></li>
+      <li class="inherited"><a href="dart-core/Object/toString.html">toString</a></li>
+      <li class="inherited"><a href="flutter_sprites/Node/update.html">update</a></li>
+    </ol>
+  </div><!--/.sidebar-offcanvas-->
+
+</div> <!-- row -->
+</div> <!-- container -->
+
+<footer>
+  <div class="container-fluid">
+    <div class="container">
+      <p class="text-center">
+        <span class="no-break">
+          flutter_sprites 0.0.15
+        </span>
+        &bull;
+        <span class="no-break">
+          <a href="https://www.dartlang.org">
+            <img src="static-assets/favicon.png" alt="Dart" title="Dart" width="16" height="16">
+          </a>
+        </span>
+        &bull;
+        <span class="copyright no-break">
+          <a href="http://creativecommons.org/licenses/by-sa/4.0/">cc license</a>
+        </span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="static-assets/typeahead.bundle.min.js"></script>
+<script src="static-assets/prettify.js"></script>
+<script src="static-assets/URI.js"></script>
+<script src="static-assets/script.js"></script>
+<!-- Do not remove placeholder -->
+<!-- Footer Placeholder -->
+
+</body>
+
+</html>

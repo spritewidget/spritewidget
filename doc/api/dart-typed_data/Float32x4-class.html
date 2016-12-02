@@ -1,0 +1,3407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="API docs for the Float32x4 class from the dart:typed_data library, for the Dart programming language.">
+  <title>Float32x4 class - dart:typed_data library - Dart API</title>
+  <!-- required because all the links are pseudo-absolute -->
+  <base href="..">
+
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Code+Pro|Roboto:500,400italic,300,400' type='text/css'>
+  <link rel="stylesheet" href="static-assets/prettify.css">
+  <link rel="stylesheet" href="static-assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static-assets/styles.css">
+  <link rel="icon" href="static-assets/favicon.png">
+
+  <!-- Do not remove placeholder -->
+  <!-- Header Placeholder -->
+</head>
+
+<body>
+
+<div id="overlay-under-drawer"></div>
+
+<header class="container-fluid" id="title">
+  <nav class="navbar navbar-fixed-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 contents">
+          <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+          <ol class="breadcrumbs gt-separated hidden-xs">
+            <li><a href="index.html">flutter_sprites</a></li>
+            <li><a href="dart-typed_data/dart-typed_data-library.html">dart:typed_data</a></li>
+            <li class="self-crumb">Float32x4</li>
+          </ol>
+          <div class="self-name">Float32x4</div>
+          <form class="search navbar-right" role="search">
+            <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+          </form>
+        </div> <!-- /col -->
+      </div> <!-- /row -->
+    </div> <!-- /container -->
+  </nav>
+
+  <div class="container masthead">
+    <div class="row">
+      <div class="col-sm-12 contents">
+        <ol class="breadcrumbs gt-separated visible-xs">
+          <li><a href="index.html">flutter_sprites</a></li>
+          <li><a href="dart-typed_data/dart-typed_data-library.html">dart:typed_data</a></li>
+          <li class="self-crumb">Float32x4</li>
+        </ol>
+        <div class="title-description">
+          <h1 class="title">
+            <span class="kind">abstract class</span> Float32x4
+          </h1>
+        </div>
+        <ul class="subnav">
+          <li><a href="dart-typed_data/Float32x4-class.html#constants">Constants</a></li>
+          <li><a href="dart-typed_data/Float32x4-class.html#instance-properties">Properties</a></li>
+          <li><a href="dart-typed_data/Float32x4-class.html#constructors">Constructors</a></li>
+          <li><a href="dart-typed_data/Float32x4-class.html#operators">Operators</a></li>
+          <li><a href="dart-typed_data/Float32x4-class.html#instance-methods">Methods</a></li>
+        </ul>
+      </div> <!-- /col -->
+    </div> <!-- /row -->
+  </div> <!-- /container -->
+
+</header>
+
+<div class="container body">
+  <div class="row">
+
+  <div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
+    <h5><a href="index.html">flutter_sprites</a></h5>
+    <h5><a href="dart-typed_data/dart-typed_data-library.html">dart:typed_data</a></h5>
+
+    <ol>
+    
+    
+    
+    
+    
+      <li class="section-title"><a href="dart-typed_data/dart-typed_data-library.html#classes">Classes</a></li>
+      <li><a href="dart-typed_data/ByteBuffer-class.html">ByteBuffer</a></li>
+      <li><a href="dart-typed_data/ByteData-class.html">ByteData</a></li>
+      <li><a href="dart-typed_data/Endianness-class.html">Endianness</a></li>
+      <li><a href="dart-typed_data/Float32List-class.html">Float32List</a></li>
+      <li><a href="dart-typed_data/Float32x4-class.html">Float32x4</a></li>
+      <li><a href="dart-typed_data/Float32x4List-class.html">Float32x4List</a></li>
+      <li><a href="dart-typed_data/Float64List-class.html">Float64List</a></li>
+      <li><a href="dart-typed_data/Float64x2-class.html">Float64x2</a></li>
+      <li><a href="dart-typed_data/Float64x2List-class.html">Float64x2List</a></li>
+      <li><a href="dart-typed_data/Int8List-class.html">Int8List</a></li>
+      <li><a href="dart-typed_data/Int16List-class.html">Int16List</a></li>
+      <li><a href="dart-typed_data/Int32List-class.html">Int32List</a></li>
+      <li><a href="dart-typed_data/Int32x4-class.html">Int32x4</a></li>
+      <li><a href="dart-typed_data/Int32x4List-class.html">Int32x4List</a></li>
+      <li><a href="dart-typed_data/Int64List-class.html">Int64List</a></li>
+      <li><a href="dart-typed_data/TypedData-class.html">TypedData</a></li>
+      <li><a href="dart-typed_data/Uint8ClampedList-class.html">Uint8ClampedList</a></li>
+      <li><a href="dart-typed_data/Uint8List-class.html">Uint8List</a></li>
+      <li><a href="dart-typed_data/Uint16List-class.html">Uint16List</a></li>
+      <li><a href="dart-typed_data/Uint32List-class.html">Uint32List</a></li>
+      <li><a href="dart-typed_data/Uint64List-class.html">Uint64List</a></li>
+    
+    </ol>
+  </div>
+
+  <div class="col-xs-12 col-sm-9 col-md-8 main-content">
+
+    <section class="desc markdown">
+      <p>Float32x4 immutable value type and operations.</p>
+<p>Float32x4 stores 4 32-bit floating point values in "lanes".
+The lanes are "x", "y", "z", and "w" respectively.</p>
+    </section>
+    
+
+    <section class="summary offset-anchor" id="constants">
+      <h2>Constants</h2>
+
+      <dl class="properties">
+        <dt id="WWWW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WWWW-constant.html">WWWW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xFF</code></span>
+          </div>
+        </dd>
+        <dt id="WWWX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WWWX-constant.html">WWWX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x3F</code></span>
+          </div>
+        </dd>
+        <dt id="WWWY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WWWY-constant.html">WWWY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x7F</code></span>
+          </div>
+        </dd>
+        <dt id="WWWZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WWWZ-constant.html">WWWZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xBF</code></span>
+          </div>
+        </dd>
+        <dt id="WWXW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WWXW-constant.html">WWXW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xCF</code></span>
+          </div>
+        </dd>
+        <dt id="WWXX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WWXX-constant.html">WWXX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xF</code></span>
+          </div>
+        </dd>
+        <dt id="WWXY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WWXY-constant.html">WWXY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x4F</code></span>
+          </div>
+        </dd>
+        <dt id="WWXZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WWXZ-constant.html">WWXZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x8F</code></span>
+          </div>
+        </dd>
+        <dt id="WWYW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WWYW-constant.html">WWYW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xDF</code></span>
+          </div>
+        </dd>
+        <dt id="WWYX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WWYX-constant.html">WWYX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x1F</code></span>
+          </div>
+        </dd>
+        <dt id="WWYY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WWYY-constant.html">WWYY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x5F</code></span>
+          </div>
+        </dd>
+        <dt id="WWYZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WWYZ-constant.html">WWYZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x9F</code></span>
+          </div>
+        </dd>
+        <dt id="WWZW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WWZW-constant.html">WWZW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xEF</code></span>
+          </div>
+        </dd>
+        <dt id="WWZX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WWZX-constant.html">WWZX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x2F</code></span>
+          </div>
+        </dd>
+        <dt id="WWZY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WWZY-constant.html">WWZY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x6F</code></span>
+          </div>
+        </dd>
+        <dt id="WWZZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WWZZ-constant.html">WWZZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xAF</code></span>
+          </div>
+        </dd>
+        <dt id="WXWW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WXWW-constant.html">WXWW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xF3</code></span>
+          </div>
+        </dd>
+        <dt id="WXWX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WXWX-constant.html">WXWX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x33</code></span>
+          </div>
+        </dd>
+        <dt id="WXWY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WXWY-constant.html">WXWY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x73</code></span>
+          </div>
+        </dd>
+        <dt id="WXWZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WXWZ-constant.html">WXWZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xB3</code></span>
+          </div>
+        </dd>
+        <dt id="WXXW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WXXW-constant.html">WXXW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xC3</code></span>
+          </div>
+        </dd>
+        <dt id="WXXX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WXXX-constant.html">WXXX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x3</code></span>
+          </div>
+        </dd>
+        <dt id="WXXY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WXXY-constant.html">WXXY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x43</code></span>
+          </div>
+        </dd>
+        <dt id="WXXZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WXXZ-constant.html">WXXZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x83</code></span>
+          </div>
+        </dd>
+        <dt id="WXYW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WXYW-constant.html">WXYW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xD3</code></span>
+          </div>
+        </dd>
+        <dt id="WXYX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WXYX-constant.html">WXYX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x13</code></span>
+          </div>
+        </dd>
+        <dt id="WXYY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WXYY-constant.html">WXYY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x53</code></span>
+          </div>
+        </dd>
+        <dt id="WXYZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WXYZ-constant.html">WXYZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x93</code></span>
+          </div>
+        </dd>
+        <dt id="WXZW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WXZW-constant.html">WXZW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xE3</code></span>
+          </div>
+        </dd>
+        <dt id="WXZX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WXZX-constant.html">WXZX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x23</code></span>
+          </div>
+        </dd>
+        <dt id="WXZY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WXZY-constant.html">WXZY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x63</code></span>
+          </div>
+        </dd>
+        <dt id="WXZZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WXZZ-constant.html">WXZZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xA3</code></span>
+          </div>
+        </dd>
+        <dt id="WYWW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WYWW-constant.html">WYWW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xF7</code></span>
+          </div>
+        </dd>
+        <dt id="WYWX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WYWX-constant.html">WYWX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x37</code></span>
+          </div>
+        </dd>
+        <dt id="WYWY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WYWY-constant.html">WYWY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x77</code></span>
+          </div>
+        </dd>
+        <dt id="WYWZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WYWZ-constant.html">WYWZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xB7</code></span>
+          </div>
+        </dd>
+        <dt id="WYXW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WYXW-constant.html">WYXW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xC7</code></span>
+          </div>
+        </dd>
+        <dt id="WYXX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WYXX-constant.html">WYXX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x7</code></span>
+          </div>
+        </dd>
+        <dt id="WYXY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WYXY-constant.html">WYXY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x47</code></span>
+          </div>
+        </dd>
+        <dt id="WYXZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WYXZ-constant.html">WYXZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x87</code></span>
+          </div>
+        </dd>
+        <dt id="WYYW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WYYW-constant.html">WYYW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xD7</code></span>
+          </div>
+        </dd>
+        <dt id="WYYX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WYYX-constant.html">WYYX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x17</code></span>
+          </div>
+        </dd>
+        <dt id="WYYY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WYYY-constant.html">WYYY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x57</code></span>
+          </div>
+        </dd>
+        <dt id="WYYZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WYYZ-constant.html">WYYZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x97</code></span>
+          </div>
+        </dd>
+        <dt id="WYZW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WYZW-constant.html">WYZW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xE7</code></span>
+          </div>
+        </dd>
+        <dt id="WYZX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WYZX-constant.html">WYZX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x27</code></span>
+          </div>
+        </dd>
+        <dt id="WYZY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WYZY-constant.html">WYZY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x67</code></span>
+          </div>
+        </dd>
+        <dt id="WYZZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WYZZ-constant.html">WYZZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xA7</code></span>
+          </div>
+        </dd>
+        <dt id="WZWW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WZWW-constant.html">WZWW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xFB</code></span>
+          </div>
+        </dd>
+        <dt id="WZWX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WZWX-constant.html">WZWX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x3B</code></span>
+          </div>
+        </dd>
+        <dt id="WZWY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WZWY-constant.html">WZWY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x7B</code></span>
+          </div>
+        </dd>
+        <dt id="WZWZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WZWZ-constant.html">WZWZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xBB</code></span>
+          </div>
+        </dd>
+        <dt id="WZXW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WZXW-constant.html">WZXW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xCB</code></span>
+          </div>
+        </dd>
+        <dt id="WZXX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WZXX-constant.html">WZXX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xB</code></span>
+          </div>
+        </dd>
+        <dt id="WZXY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WZXY-constant.html">WZXY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x4B</code></span>
+          </div>
+        </dd>
+        <dt id="WZXZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WZXZ-constant.html">WZXZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x8B</code></span>
+          </div>
+        </dd>
+        <dt id="WZYW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WZYW-constant.html">WZYW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xDB</code></span>
+          </div>
+        </dd>
+        <dt id="WZYX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WZYX-constant.html">WZYX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x1B</code></span>
+          </div>
+        </dd>
+        <dt id="WZYY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WZYY-constant.html">WZYY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x5B</code></span>
+          </div>
+        </dd>
+        <dt id="WZYZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WZYZ-constant.html">WZYZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x9B</code></span>
+          </div>
+        </dd>
+        <dt id="WZZW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WZZW-constant.html">WZZW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xEB</code></span>
+          </div>
+        </dd>
+        <dt id="WZZX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WZZX-constant.html">WZZX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x2B</code></span>
+          </div>
+        </dd>
+        <dt id="WZZY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WZZY-constant.html">WZZY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x6B</code></span>
+          </div>
+        </dd>
+        <dt id="WZZZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/WZZZ-constant.html">WZZZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xAB</code></span>
+          </div>
+        </dd>
+        <dt id="XWWW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XWWW-constant.html">XWWW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xFC</code></span>
+          </div>
+        </dd>
+        <dt id="XWWX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XWWX-constant.html">XWWX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x3C</code></span>
+          </div>
+        </dd>
+        <dt id="XWWY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XWWY-constant.html">XWWY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x7C</code></span>
+          </div>
+        </dd>
+        <dt id="XWWZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XWWZ-constant.html">XWWZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xBC</code></span>
+          </div>
+        </dd>
+        <dt id="XWXW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XWXW-constant.html">XWXW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xCC</code></span>
+          </div>
+        </dd>
+        <dt id="XWXX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XWXX-constant.html">XWXX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xC</code></span>
+          </div>
+        </dd>
+        <dt id="XWXY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XWXY-constant.html">XWXY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x4C</code></span>
+          </div>
+        </dd>
+        <dt id="XWXZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XWXZ-constant.html">XWXZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x8C</code></span>
+          </div>
+        </dd>
+        <dt id="XWYW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XWYW-constant.html">XWYW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xDC</code></span>
+          </div>
+        </dd>
+        <dt id="XWYX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XWYX-constant.html">XWYX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x1C</code></span>
+          </div>
+        </dd>
+        <dt id="XWYY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XWYY-constant.html">XWYY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x5C</code></span>
+          </div>
+        </dd>
+        <dt id="XWYZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XWYZ-constant.html">XWYZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x9C</code></span>
+          </div>
+        </dd>
+        <dt id="XWZW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XWZW-constant.html">XWZW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xEC</code></span>
+          </div>
+        </dd>
+        <dt id="XWZX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XWZX-constant.html">XWZX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x2C</code></span>
+          </div>
+        </dd>
+        <dt id="XWZY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XWZY-constant.html">XWZY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x6C</code></span>
+          </div>
+        </dd>
+        <dt id="XWZZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XWZZ-constant.html">XWZZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xAC</code></span>
+          </div>
+        </dd>
+        <dt id="XXWW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XXWW-constant.html">XXWW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xF0</code></span>
+          </div>
+        </dd>
+        <dt id="XXWX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XXWX-constant.html">XXWX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x30</code></span>
+          </div>
+        </dd>
+        <dt id="XXWY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XXWY-constant.html">XXWY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x70</code></span>
+          </div>
+        </dd>
+        <dt id="XXWZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XXWZ-constant.html">XXWZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xB0</code></span>
+          </div>
+        </dd>
+        <dt id="XXXW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XXXW-constant.html">XXXW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xC0</code></span>
+          </div>
+        </dd>
+        <dt id="XXXX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XXXX-constant.html">XXXX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p>Mask passed to <a href="dart-typed_data/Float32x4/shuffle.html">shuffle</a> or <a href="dart-typed_data/Float32x4/shuffleMix.html">shuffleMix</a>.</p>
+          <div>
+            <span class="signature"><code>0x0</code></span>
+          </div>
+        </dd>
+        <dt id="XXXY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XXXY-constant.html">XXXY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x40</code></span>
+          </div>
+        </dd>
+        <dt id="XXXZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XXXZ-constant.html">XXXZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x80</code></span>
+          </div>
+        </dd>
+        <dt id="XXYW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XXYW-constant.html">XXYW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xD0</code></span>
+          </div>
+        </dd>
+        <dt id="XXYX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XXYX-constant.html">XXYX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x10</code></span>
+          </div>
+        </dd>
+        <dt id="XXYY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XXYY-constant.html">XXYY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x50</code></span>
+          </div>
+        </dd>
+        <dt id="XXYZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XXYZ-constant.html">XXYZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x90</code></span>
+          </div>
+        </dd>
+        <dt id="XXZW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XXZW-constant.html">XXZW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xE0</code></span>
+          </div>
+        </dd>
+        <dt id="XXZX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XXZX-constant.html">XXZX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x20</code></span>
+          </div>
+        </dd>
+        <dt id="XXZY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XXZY-constant.html">XXZY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x60</code></span>
+          </div>
+        </dd>
+        <dt id="XXZZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XXZZ-constant.html">XXZZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xA0</code></span>
+          </div>
+        </dd>
+        <dt id="XYWW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XYWW-constant.html">XYWW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xF4</code></span>
+          </div>
+        </dd>
+        <dt id="XYWX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XYWX-constant.html">XYWX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x34</code></span>
+          </div>
+        </dd>
+        <dt id="XYWY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XYWY-constant.html">XYWY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x74</code></span>
+          </div>
+        </dd>
+        <dt id="XYWZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XYWZ-constant.html">XYWZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xB4</code></span>
+          </div>
+        </dd>
+        <dt id="XYXW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XYXW-constant.html">XYXW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xC4</code></span>
+          </div>
+        </dd>
+        <dt id="XYXX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XYXX-constant.html">XYXX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x4</code></span>
+          </div>
+        </dd>
+        <dt id="XYXY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XYXY-constant.html">XYXY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x44</code></span>
+          </div>
+        </dd>
+        <dt id="XYXZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XYXZ-constant.html">XYXZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x84</code></span>
+          </div>
+        </dd>
+        <dt id="XYYW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XYYW-constant.html">XYYW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xD4</code></span>
+          </div>
+        </dd>
+        <dt id="XYYX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XYYX-constant.html">XYYX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x14</code></span>
+          </div>
+        </dd>
+        <dt id="XYYY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XYYY-constant.html">XYYY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x54</code></span>
+          </div>
+        </dd>
+        <dt id="XYYZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XYYZ-constant.html">XYYZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x94</code></span>
+          </div>
+        </dd>
+        <dt id="XYZW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XYZW-constant.html">XYZW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xE4</code></span>
+          </div>
+        </dd>
+        <dt id="XYZX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XYZX-constant.html">XYZX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x24</code></span>
+          </div>
+        </dd>
+        <dt id="XYZY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XYZY-constant.html">XYZY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x64</code></span>
+          </div>
+        </dd>
+        <dt id="XYZZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XYZZ-constant.html">XYZZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xA4</code></span>
+          </div>
+        </dd>
+        <dt id="XZWW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XZWW-constant.html">XZWW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xF8</code></span>
+          </div>
+        </dd>
+        <dt id="XZWX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XZWX-constant.html">XZWX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x38</code></span>
+          </div>
+        </dd>
+        <dt id="XZWY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XZWY-constant.html">XZWY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x78</code></span>
+          </div>
+        </dd>
+        <dt id="XZWZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XZWZ-constant.html">XZWZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xB8</code></span>
+          </div>
+        </dd>
+        <dt id="XZXW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XZXW-constant.html">XZXW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xC8</code></span>
+          </div>
+        </dd>
+        <dt id="XZXX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XZXX-constant.html">XZXX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x8</code></span>
+          </div>
+        </dd>
+        <dt id="XZXY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XZXY-constant.html">XZXY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x48</code></span>
+          </div>
+        </dd>
+        <dt id="XZXZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XZXZ-constant.html">XZXZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x88</code></span>
+          </div>
+        </dd>
+        <dt id="XZYW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XZYW-constant.html">XZYW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xD8</code></span>
+          </div>
+        </dd>
+        <dt id="XZYX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XZYX-constant.html">XZYX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x18</code></span>
+          </div>
+        </dd>
+        <dt id="XZYY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XZYY-constant.html">XZYY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x58</code></span>
+          </div>
+        </dd>
+        <dt id="XZYZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XZYZ-constant.html">XZYZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x98</code></span>
+          </div>
+        </dd>
+        <dt id="XZZW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XZZW-constant.html">XZZW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xE8</code></span>
+          </div>
+        </dd>
+        <dt id="XZZX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XZZX-constant.html">XZZX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x28</code></span>
+          </div>
+        </dd>
+        <dt id="XZZY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XZZY-constant.html">XZZY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x68</code></span>
+          </div>
+        </dd>
+        <dt id="XZZZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/XZZZ-constant.html">XZZZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xA8</code></span>
+          </div>
+        </dd>
+        <dt id="YWWW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YWWW-constant.html">YWWW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xFD</code></span>
+          </div>
+        </dd>
+        <dt id="YWWX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YWWX-constant.html">YWWX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x3D</code></span>
+          </div>
+        </dd>
+        <dt id="YWWY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YWWY-constant.html">YWWY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x7D</code></span>
+          </div>
+        </dd>
+        <dt id="YWWZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YWWZ-constant.html">YWWZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xBD</code></span>
+          </div>
+        </dd>
+        <dt id="YWXW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YWXW-constant.html">YWXW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xCD</code></span>
+          </div>
+        </dd>
+        <dt id="YWXX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YWXX-constant.html">YWXX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xD</code></span>
+          </div>
+        </dd>
+        <dt id="YWXY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YWXY-constant.html">YWXY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x4D</code></span>
+          </div>
+        </dd>
+        <dt id="YWXZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YWXZ-constant.html">YWXZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x8D</code></span>
+          </div>
+        </dd>
+        <dt id="YWYW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YWYW-constant.html">YWYW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xDD</code></span>
+          </div>
+        </dd>
+        <dt id="YWYX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YWYX-constant.html">YWYX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x1D</code></span>
+          </div>
+        </dd>
+        <dt id="YWYY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YWYY-constant.html">YWYY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x5D</code></span>
+          </div>
+        </dd>
+        <dt id="YWYZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YWYZ-constant.html">YWYZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x9D</code></span>
+          </div>
+        </dd>
+        <dt id="YWZW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YWZW-constant.html">YWZW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xED</code></span>
+          </div>
+        </dd>
+        <dt id="YWZX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YWZX-constant.html">YWZX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x2D</code></span>
+          </div>
+        </dd>
+        <dt id="YWZY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YWZY-constant.html">YWZY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x6D</code></span>
+          </div>
+        </dd>
+        <dt id="YWZZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YWZZ-constant.html">YWZZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xAD</code></span>
+          </div>
+        </dd>
+        <dt id="YXWW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YXWW-constant.html">YXWW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xF1</code></span>
+          </div>
+        </dd>
+        <dt id="YXWX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YXWX-constant.html">YXWX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x31</code></span>
+          </div>
+        </dd>
+        <dt id="YXWY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YXWY-constant.html">YXWY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x71</code></span>
+          </div>
+        </dd>
+        <dt id="YXWZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YXWZ-constant.html">YXWZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xB1</code></span>
+          </div>
+        </dd>
+        <dt id="YXXW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YXXW-constant.html">YXXW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xC1</code></span>
+          </div>
+        </dd>
+        <dt id="YXXX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YXXX-constant.html">YXXX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x1</code></span>
+          </div>
+        </dd>
+        <dt id="YXXY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YXXY-constant.html">YXXY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x41</code></span>
+          </div>
+        </dd>
+        <dt id="YXXZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YXXZ-constant.html">YXXZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x81</code></span>
+          </div>
+        </dd>
+        <dt id="YXYW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YXYW-constant.html">YXYW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xD1</code></span>
+          </div>
+        </dd>
+        <dt id="YXYX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YXYX-constant.html">YXYX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x11</code></span>
+          </div>
+        </dd>
+        <dt id="YXYY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YXYY-constant.html">YXYY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x51</code></span>
+          </div>
+        </dd>
+        <dt id="YXYZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YXYZ-constant.html">YXYZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x91</code></span>
+          </div>
+        </dd>
+        <dt id="YXZW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YXZW-constant.html">YXZW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xE1</code></span>
+          </div>
+        </dd>
+        <dt id="YXZX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YXZX-constant.html">YXZX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x21</code></span>
+          </div>
+        </dd>
+        <dt id="YXZY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YXZY-constant.html">YXZY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x61</code></span>
+          </div>
+        </dd>
+        <dt id="YXZZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YXZZ-constant.html">YXZZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xA1</code></span>
+          </div>
+        </dd>
+        <dt id="YYWW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YYWW-constant.html">YYWW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xF5</code></span>
+          </div>
+        </dd>
+        <dt id="YYWX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YYWX-constant.html">YYWX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x35</code></span>
+          </div>
+        </dd>
+        <dt id="YYWY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YYWY-constant.html">YYWY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x75</code></span>
+          </div>
+        </dd>
+        <dt id="YYWZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YYWZ-constant.html">YYWZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xB5</code></span>
+          </div>
+        </dd>
+        <dt id="YYXW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YYXW-constant.html">YYXW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xC5</code></span>
+          </div>
+        </dd>
+        <dt id="YYXX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YYXX-constant.html">YYXX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x5</code></span>
+          </div>
+        </dd>
+        <dt id="YYXY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YYXY-constant.html">YYXY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x45</code></span>
+          </div>
+        </dd>
+        <dt id="YYXZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YYXZ-constant.html">YYXZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x85</code></span>
+          </div>
+        </dd>
+        <dt id="YYYW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YYYW-constant.html">YYYW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xD5</code></span>
+          </div>
+        </dd>
+        <dt id="YYYX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YYYX-constant.html">YYYX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x15</code></span>
+          </div>
+        </dd>
+        <dt id="YYYY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YYYY-constant.html">YYYY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x55</code></span>
+          </div>
+        </dd>
+        <dt id="YYYZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YYYZ-constant.html">YYYZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x95</code></span>
+          </div>
+        </dd>
+        <dt id="YYZW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YYZW-constant.html">YYZW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xE5</code></span>
+          </div>
+        </dd>
+        <dt id="YYZX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YYZX-constant.html">YYZX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x25</code></span>
+          </div>
+        </dd>
+        <dt id="YYZY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YYZY-constant.html">YYZY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x65</code></span>
+          </div>
+        </dd>
+        <dt id="YYZZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YYZZ-constant.html">YYZZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xA5</code></span>
+          </div>
+        </dd>
+        <dt id="YZWW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YZWW-constant.html">YZWW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xF9</code></span>
+          </div>
+        </dd>
+        <dt id="YZWX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YZWX-constant.html">YZWX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x39</code></span>
+          </div>
+        </dd>
+        <dt id="YZWY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YZWY-constant.html">YZWY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x79</code></span>
+          </div>
+        </dd>
+        <dt id="YZWZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YZWZ-constant.html">YZWZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xB9</code></span>
+          </div>
+        </dd>
+        <dt id="YZXW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YZXW-constant.html">YZXW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xC9</code></span>
+          </div>
+        </dd>
+        <dt id="YZXX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YZXX-constant.html">YZXX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x9</code></span>
+          </div>
+        </dd>
+        <dt id="YZXY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YZXY-constant.html">YZXY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x49</code></span>
+          </div>
+        </dd>
+        <dt id="YZXZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YZXZ-constant.html">YZXZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x89</code></span>
+          </div>
+        </dd>
+        <dt id="YZYW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YZYW-constant.html">YZYW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xD9</code></span>
+          </div>
+        </dd>
+        <dt id="YZYX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YZYX-constant.html">YZYX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x19</code></span>
+          </div>
+        </dd>
+        <dt id="YZYY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YZYY-constant.html">YZYY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x59</code></span>
+          </div>
+        </dd>
+        <dt id="YZYZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YZYZ-constant.html">YZYZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x99</code></span>
+          </div>
+        </dd>
+        <dt id="YZZW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YZZW-constant.html">YZZW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xE9</code></span>
+          </div>
+        </dd>
+        <dt id="YZZX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YZZX-constant.html">YZZX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x29</code></span>
+          </div>
+        </dd>
+        <dt id="YZZY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YZZY-constant.html">YZZY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x69</code></span>
+          </div>
+        </dd>
+        <dt id="YZZZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/YZZZ-constant.html">YZZZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xA9</code></span>
+          </div>
+        </dd>
+        <dt id="ZWWW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZWWW-constant.html">ZWWW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xFE</code></span>
+          </div>
+        </dd>
+        <dt id="ZWWX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZWWX-constant.html">ZWWX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x3E</code></span>
+          </div>
+        </dd>
+        <dt id="ZWWY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZWWY-constant.html">ZWWY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x7E</code></span>
+          </div>
+        </dd>
+        <dt id="ZWWZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZWWZ-constant.html">ZWWZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xBE</code></span>
+          </div>
+        </dd>
+        <dt id="ZWXW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZWXW-constant.html">ZWXW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xCE</code></span>
+          </div>
+        </dd>
+        <dt id="ZWXX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZWXX-constant.html">ZWXX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xE</code></span>
+          </div>
+        </dd>
+        <dt id="ZWXY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZWXY-constant.html">ZWXY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x4E</code></span>
+          </div>
+        </dd>
+        <dt id="ZWXZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZWXZ-constant.html">ZWXZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x8E</code></span>
+          </div>
+        </dd>
+        <dt id="ZWYW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZWYW-constant.html">ZWYW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xDE</code></span>
+          </div>
+        </dd>
+        <dt id="ZWYX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZWYX-constant.html">ZWYX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x1E</code></span>
+          </div>
+        </dd>
+        <dt id="ZWYY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZWYY-constant.html">ZWYY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x5E</code></span>
+          </div>
+        </dd>
+        <dt id="ZWYZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZWYZ-constant.html">ZWYZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x9E</code></span>
+          </div>
+        </dd>
+        <dt id="ZWZW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZWZW-constant.html">ZWZW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xEE</code></span>
+          </div>
+        </dd>
+        <dt id="ZWZX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZWZX-constant.html">ZWZX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x2E</code></span>
+          </div>
+        </dd>
+        <dt id="ZWZY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZWZY-constant.html">ZWZY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x6E</code></span>
+          </div>
+        </dd>
+        <dt id="ZWZZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZWZZ-constant.html">ZWZZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xAE</code></span>
+          </div>
+        </dd>
+        <dt id="ZXWW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZXWW-constant.html">ZXWW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xF2</code></span>
+          </div>
+        </dd>
+        <dt id="ZXWX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZXWX-constant.html">ZXWX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x32</code></span>
+          </div>
+        </dd>
+        <dt id="ZXWY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZXWY-constant.html">ZXWY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x72</code></span>
+          </div>
+        </dd>
+        <dt id="ZXWZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZXWZ-constant.html">ZXWZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xB2</code></span>
+          </div>
+        </dd>
+        <dt id="ZXXW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZXXW-constant.html">ZXXW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xC2</code></span>
+          </div>
+        </dd>
+        <dt id="ZXXX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZXXX-constant.html">ZXXX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x2</code></span>
+          </div>
+        </dd>
+        <dt id="ZXXY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZXXY-constant.html">ZXXY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x42</code></span>
+          </div>
+        </dd>
+        <dt id="ZXXZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZXXZ-constant.html">ZXXZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x82</code></span>
+          </div>
+        </dd>
+        <dt id="ZXYW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZXYW-constant.html">ZXYW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xD2</code></span>
+          </div>
+        </dd>
+        <dt id="ZXYX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZXYX-constant.html">ZXYX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x12</code></span>
+          </div>
+        </dd>
+        <dt id="ZXYY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZXYY-constant.html">ZXYY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x52</code></span>
+          </div>
+        </dd>
+        <dt id="ZXYZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZXYZ-constant.html">ZXYZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x92</code></span>
+          </div>
+        </dd>
+        <dt id="ZXZW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZXZW-constant.html">ZXZW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xE2</code></span>
+          </div>
+        </dd>
+        <dt id="ZXZX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZXZX-constant.html">ZXZX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x22</code></span>
+          </div>
+        </dd>
+        <dt id="ZXZY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZXZY-constant.html">ZXZY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x62</code></span>
+          </div>
+        </dd>
+        <dt id="ZXZZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZXZZ-constant.html">ZXZZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xA2</code></span>
+          </div>
+        </dd>
+        <dt id="ZYWW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZYWW-constant.html">ZYWW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xF6</code></span>
+          </div>
+        </dd>
+        <dt id="ZYWX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZYWX-constant.html">ZYWX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x36</code></span>
+          </div>
+        </dd>
+        <dt id="ZYWY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZYWY-constant.html">ZYWY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x76</code></span>
+          </div>
+        </dd>
+        <dt id="ZYWZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZYWZ-constant.html">ZYWZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xB6</code></span>
+          </div>
+        </dd>
+        <dt id="ZYXW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZYXW-constant.html">ZYXW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xC6</code></span>
+          </div>
+        </dd>
+        <dt id="ZYXX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZYXX-constant.html">ZYXX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x6</code></span>
+          </div>
+        </dd>
+        <dt id="ZYXY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZYXY-constant.html">ZYXY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x46</code></span>
+          </div>
+        </dd>
+        <dt id="ZYXZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZYXZ-constant.html">ZYXZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x86</code></span>
+          </div>
+        </dd>
+        <dt id="ZYYW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZYYW-constant.html">ZYYW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xD6</code></span>
+          </div>
+        </dd>
+        <dt id="ZYYX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZYYX-constant.html">ZYYX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x16</code></span>
+          </div>
+        </dd>
+        <dt id="ZYYY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZYYY-constant.html">ZYYY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x56</code></span>
+          </div>
+        </dd>
+        <dt id="ZYYZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZYYZ-constant.html">ZYYZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x96</code></span>
+          </div>
+        </dd>
+        <dt id="ZYZW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZYZW-constant.html">ZYZW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xE6</code></span>
+          </div>
+        </dd>
+        <dt id="ZYZX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZYZX-constant.html">ZYZX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x26</code></span>
+          </div>
+        </dd>
+        <dt id="ZYZY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZYZY-constant.html">ZYZY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x66</code></span>
+          </div>
+        </dd>
+        <dt id="ZYZZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZYZZ-constant.html">ZYZZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xA6</code></span>
+          </div>
+        </dd>
+        <dt id="ZZWW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZZWW-constant.html">ZZWW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xFA</code></span>
+          </div>
+        </dd>
+        <dt id="ZZWX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZZWX-constant.html">ZZWX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x3A</code></span>
+          </div>
+        </dd>
+        <dt id="ZZWY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZZWY-constant.html">ZZWY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x7A</code></span>
+          </div>
+        </dd>
+        <dt id="ZZWZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZZWZ-constant.html">ZZWZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xBA</code></span>
+          </div>
+        </dd>
+        <dt id="ZZXW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZZXW-constant.html">ZZXW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xCA</code></span>
+          </div>
+        </dd>
+        <dt id="ZZXX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZZXX-constant.html">ZZXX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xA</code></span>
+          </div>
+        </dd>
+        <dt id="ZZXY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZZXY-constant.html">ZZXY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x4A</code></span>
+          </div>
+        </dd>
+        <dt id="ZZXZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZZXZ-constant.html">ZZXZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x8A</code></span>
+          </div>
+        </dd>
+        <dt id="ZZYW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZZYW-constant.html">ZZYW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xDA</code></span>
+          </div>
+        </dd>
+        <dt id="ZZYX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZZYX-constant.html">ZZYX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x1A</code></span>
+          </div>
+        </dd>
+        <dt id="ZZYY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZZYY-constant.html">ZZYY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x5A</code></span>
+          </div>
+        </dd>
+        <dt id="ZZYZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZZYZ-constant.html">ZZYZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x9A</code></span>
+          </div>
+        </dd>
+        <dt id="ZZZW" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZZZW-constant.html">ZZZW</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xEA</code></span>
+          </div>
+        </dd>
+        <dt id="ZZZX" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZZZX-constant.html">ZZZX</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x2A</code></span>
+          </div>
+        </dd>
+        <dt id="ZZZY" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZZZY-constant.html">ZZZY</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0x6A</code></span>
+          </div>
+        </dd>
+        <dt id="ZZZZ" class="constant">
+          <span class="name "><a href="dart-typed_data/Float32x4/ZZZZ-constant.html">ZZZZ</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p></p>
+          <div>
+            <span class="signature"><code>0xAA</code></span>
+          </div>
+        </dd>
+      </dl>
+    </section>
+
+
+
+    <section class="summary offset-anchor" id="constructors">
+      <h2>Constructors</h2>
+
+      <dl class="constructor-summary-list">
+        <dt id="Float32x4" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/Float32x4.html">Float32x4</a></span><span class="signature">(<span class="parameter" id="-param-x"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">x</span>, </span> <span class="parameter" id="-param-y"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">y</span>, </span> <span class="parameter" id="-param-z"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">z</span>, </span> <span class="parameter" id="-param-w"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">w</span></span>)</span>
+        </dt>
+        <dd>
+          <p></p>
+          <div class="constructor-modifier features">factory</div>
+        </dd>
+        <dt id="Float32x4.fromFloat64x2" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/Float32x4.fromFloat64x2.html">Float32x4.fromFloat64x2</a></span><span class="signature">(<span class="parameter" id="fromFloat64x2-param-v"><span class="type-annotation"><a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span> <span class="parameter-name">v</span></span>)</span>
+        </dt>
+        <dd>
+          <p>Sets the x and y lanes to their respective values in <code>v</code> and sets the z
+and w lanes to 0.0.</p>
+          <div class="constructor-modifier features">factory</div>
+        </dd>
+        <dt id="Float32x4.fromInt32x4Bits" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/Float32x4.fromInt32x4Bits.html">Float32x4.fromInt32x4Bits</a></span><span class="signature">(<span class="parameter" id="fromInt32x4Bits-param-x"><span class="type-annotation"><a href="dart-typed_data/Int32x4-class.html">Int32x4</a></span> <span class="parameter-name">x</span></span>)</span>
+        </dt>
+        <dd>
+          <p></p>
+          <div class="constructor-modifier features">factory</div>
+        </dd>
+        <dt id="Float32x4.splat" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/Float32x4.splat.html">Float32x4.splat</a></span><span class="signature">(<span class="parameter" id="splat-param-v"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">v</span></span>)</span>
+        </dt>
+        <dd>
+          <p></p>
+          <div class="constructor-modifier features">factory</div>
+        </dd>
+        <dt id="Float32x4.zero" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/Float32x4.zero.html">Float32x4.zero</a></span><span class="signature">()</span>
+        </dt>
+        <dd>
+          <p></p>
+          <div class="constructor-modifier features">factory</div>
+        </dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="instance-properties">
+      <h2>Properties</h2>
+
+      <dl class="properties">
+        <dt id="hashCode" class="property inherited">
+          <span class="name"><a href="dart-core/Object/hashCode.html">hashCode</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>Get a hash code for this object.</p>
+          <div class="features">
+    read-only, inherited
+  </div>
+</dd>
+        <dt id="runtimeType" class="property inherited">
+          <span class="name"><a href="dart-core/Object/runtimeType.html">runtimeType</a></span>
+          <span class="signature">&#8594; <a href="dart-core/Type-class.html">Type</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>A representation of the runtime type of the object.</p>
+          <div class="features">
+    read-only, inherited
+  </div>
+</dd>
+        <dt id="signMask" class="property">
+          <span class="name"><a href="dart-typed_data/Float32x4/signMask.html">signMask</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p>Extract the sign bits from each lane return them in the first 4 bits.
+"x" lane is bit 0.
+"y" lane is bit 1.
+"z" lane is bit 2.
+"w" lane is bit 3.</p>
+          <div class="features">
+    read-only
+  </div>
+</dd>
+        <dt id="w" class="property">
+          <span class="name"><a href="dart-typed_data/Float32x4/w.html">w</a></span>
+          <span class="signature">&#8594; <a href="dart-core/double-class.html">double</a></span>
+        </dt>
+        <dd>
+          <p>Extracted w value.</p>
+          <div class="features">
+    read-only
+  </div>
+</dd>
+        <dt id="x" class="property">
+          <span class="name"><a href="dart-typed_data/Float32x4/x.html">x</a></span>
+          <span class="signature">&#8594; <a href="dart-core/double-class.html">double</a></span>
+        </dt>
+        <dd>
+          <p>Extracted x value.</p>
+          <div class="features">
+    read-only
+  </div>
+</dd>
+        <dt id="y" class="property">
+          <span class="name"><a href="dart-typed_data/Float32x4/y.html">y</a></span>
+          <span class="signature">&#8594; <a href="dart-core/double-class.html">double</a></span>
+        </dt>
+        <dd>
+          <p>Extracted y value.</p>
+          <div class="features">
+    read-only
+  </div>
+</dd>
+        <dt id="z" class="property">
+          <span class="name"><a href="dart-typed_data/Float32x4/z.html">z</a></span>
+          <span class="signature">&#8594; <a href="dart-core/double-class.html">double</a></span>
+        </dt>
+        <dd>
+          <p>Extracted z value.</p>
+          <div class="features">
+    read-only
+  </div>
+</dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="operators">
+      <h2>Operators</h2>
+      <dl class="callables">
+        <dt id="operator *" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/operator_multiply.html">operator *</a></span><span class="signature">(<wbr><span class="parameter" id="*-param-other"><span class="type-annotation"><a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span> <span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Multiplication operator.</p>
+        </dd>
+        <dt id="operator +" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/operator_plus.html">operator +</a></span><span class="signature">(<wbr><span class="parameter" id="+-param-other"><span class="type-annotation"><a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span> <span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Addition operator.</p>
+        </dd>
+        <dt id="operator -" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/operator_minus.html">operator -</a></span><span class="signature">(<wbr><span class="parameter" id="--param-other"><span class="type-annotation"><a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span> <span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Subtraction operator.</p>
+        </dd>
+        <dt id="operator /" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/operator_divide.html">operator /</a></span><span class="signature">(<wbr><span class="parameter" id="/-param-other"><span class="type-annotation"><a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span> <span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Division operator.</p>
+        </dd>
+        <dt id="operator ==" class="callable inherited">
+          <span class="name"><a href="dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>The equality operator.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="operator unary-" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/operator_unary_minus.html">operator unary-</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Negate operator.</p>
+        </dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="instance-methods">
+      <h2>Methods</h2>
+      <dl class="callables">
+        <dt id="abs" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/abs.html">abs</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns the lane-wise absolute value of this <a href="dart-typed_data/Float32x4-class.html">Float32x4</a>.</p>
+        </dd>
+        <dt id="clamp" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/clamp.html">clamp</a></span><span class="signature">(<wbr><span class="parameter" id="clamp-param-lowerLimit"><span class="type-annotation"><a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span> <span class="parameter-name">lowerLimit</span>, </span> <span class="parameter" id="clamp-param-upperLimit"><span class="type-annotation"><a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span> <span class="parameter-name">upperLimit</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Lane-wise clamp <code>this</code> to be in the range <code>lowerLimit</code>-<code>upperLimit</code>.</p>
+        </dd>
+        <dt id="equal" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/equal.html">equal</a></span><span class="signature">(<wbr><span class="parameter" id="equal-param-other"><span class="type-annotation"><a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span> <span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Int32x4-class.html">Int32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Relational equal.</p>
+        </dd>
+        <dt id="greaterThan" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/greaterThan.html">greaterThan</a></span><span class="signature">(<wbr><span class="parameter" id="greaterThan-param-other"><span class="type-annotation"><a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span> <span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Int32x4-class.html">Int32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Relational greater than.</p>
+        </dd>
+        <dt id="greaterThanOrEqual" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/greaterThanOrEqual.html">greaterThanOrEqual</a></span><span class="signature">(<wbr><span class="parameter" id="greaterThanOrEqual-param-other"><span class="type-annotation"><a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span> <span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Int32x4-class.html">Int32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Relational greater than or equal.</p>
+        </dd>
+        <dt id="lessThan" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/lessThan.html">lessThan</a></span><span class="signature">(<wbr><span class="parameter" id="lessThan-param-other"><span class="type-annotation"><a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span> <span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Int32x4-class.html">Int32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Relational less than.</p>
+        </dd>
+        <dt id="lessThanOrEqual" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/lessThanOrEqual.html">lessThanOrEqual</a></span><span class="signature">(<wbr><span class="parameter" id="lessThanOrEqual-param-other"><span class="type-annotation"><a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span> <span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Int32x4-class.html">Int32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Relational less than or equal.</p>
+        </dd>
+        <dt id="max" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/max.html">max</a></span><span class="signature">(<wbr><span class="parameter" id="max-param-other"><span class="type-annotation"><a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span> <span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns the lane-wise maximum value in <code>this</code> or <code>other</code>.</p>
+        </dd>
+        <dt id="min" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/min.html">min</a></span><span class="signature">(<wbr><span class="parameter" id="min-param-other"><span class="type-annotation"><a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span> <span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns the lane-wise minimum value in <code>this</code> or <code>other</code>.</p>
+        </dd>
+        <dt id="noSuchMethod" class="callable inherited">
+          <span class="name"><a href="dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+            <span class="returntype parameter">&#8594; dynamic</span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Invoked when a non-existent method or property is accessed.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="notEqual" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/notEqual.html">notEqual</a></span><span class="signature">(<wbr><span class="parameter" id="notEqual-param-other"><span class="type-annotation"><a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span> <span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Int32x4-class.html">Int32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Relational not-equal.</p>
+        </dd>
+        <dt id="reciprocal" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/reciprocal.html">reciprocal</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns the reciprocal of <code>this</code>.</p>
+        </dd>
+        <dt id="reciprocalSqrt" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/reciprocalSqrt.html">reciprocalSqrt</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns the square root of the reciprocal of <code>this</code>.</p>
+        </dd>
+        <dt id="scale" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/scale.html">scale</a></span><span class="signature">(<wbr><span class="parameter" id="scale-param-s"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">s</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns a copy of <code>this</code> each lane being scaled by <code>s</code>.
+Equivalent to this * new Float32x4.splat(s)</p>
+        </dd>
+        <dt id="shuffle" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/shuffle.html">shuffle</a></span><span class="signature">(<wbr><span class="parameter" id="shuffle-param-mask"><span class="type-annotation"><a href="dart-core/int-class.html">int</a></span> <span class="parameter-name">mask</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Shuffle the lane values. <code>mask</code> must be one of the 256 shuffle constants.</p>
+        </dd>
+        <dt id="shuffleMix" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/shuffleMix.html">shuffleMix</a></span><span class="signature">(<wbr><span class="parameter" id="shuffleMix-param-other"><span class="type-annotation"><a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span> <span class="parameter-name">other</span>, </span> <span class="parameter" id="shuffleMix-param-mask"><span class="type-annotation"><a href="dart-core/int-class.html">int</a></span> <span class="parameter-name">mask</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Shuffle the lane values in <code>this</code> and <code>other</code>. The returned
+Float32x4 will have XY lanes from <code>this</code> and ZW lanes from <code>other</code>.
+Uses the same <code>mask</code> as <a href="dart-typed_data/Float32x4/shuffle.html">shuffle</a>.</p>
+        </dd>
+        <dt id="sqrt" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/sqrt.html">sqrt</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns the square root of <code>this</code>.</p>
+        </dd>
+        <dt id="toString" class="callable inherited">
+          <span class="name"><a href="dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; <a href="dart-core/String-class.html">String</a></span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Returns a string representation of this object.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="withW" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/withW.html">withW</a></span><span class="signature">(<wbr><span class="parameter" id="withW-param-w"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">w</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns a new <a href="dart-typed_data/Float32x4-class.html">Float32x4</a> copied from <code>this</code> with a new w value.</p>
+        </dd>
+        <dt id="withX" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/withX.html">withX</a></span><span class="signature">(<wbr><span class="parameter" id="withX-param-x"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">x</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns a new <a href="dart-typed_data/Float32x4-class.html">Float32x4</a> copied from <code>this</code> with a new x value.</p>
+        </dd>
+        <dt id="withY" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/withY.html">withY</a></span><span class="signature">(<wbr><span class="parameter" id="withY-param-y"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">y</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns a new <a href="dart-typed_data/Float32x4-class.html">Float32x4</a> copied from <code>this</code> with a new y value.</p>
+        </dd>
+        <dt id="withZ" class="callable">
+          <span class="name"><a href="dart-typed_data/Float32x4/withZ.html">withZ</a></span><span class="signature">(<wbr><span class="parameter" id="withZ-param-z"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">z</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns a new <a href="dart-typed_data/Float32x4-class.html">Float32x4</a> copied from <code>this</code> with a new z value.</p>
+        </dd>
+      </dl>
+    </section>
+
+  </div> <!-- /.main-content -->
+
+  <div class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
+    <h5>Float32x4</h5>
+    <ol>
+      <li class="section-title"><a href="dart-typed_data/Float32x4-class.html#constants">Constants</a></li>
+      <li><a href="dart-typed_data/Float32x4/WWWW-constant.html">WWWW</a></li>
+      <li><a href="dart-typed_data/Float32x4/WWWX-constant.html">WWWX</a></li>
+      <li><a href="dart-typed_data/Float32x4/WWWY-constant.html">WWWY</a></li>
+      <li><a href="dart-typed_data/Float32x4/WWWZ-constant.html">WWWZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/WWXW-constant.html">WWXW</a></li>
+      <li><a href="dart-typed_data/Float32x4/WWXX-constant.html">WWXX</a></li>
+      <li><a href="dart-typed_data/Float32x4/WWXY-constant.html">WWXY</a></li>
+      <li><a href="dart-typed_data/Float32x4/WWXZ-constant.html">WWXZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/WWYW-constant.html">WWYW</a></li>
+      <li><a href="dart-typed_data/Float32x4/WWYX-constant.html">WWYX</a></li>
+      <li><a href="dart-typed_data/Float32x4/WWYY-constant.html">WWYY</a></li>
+      <li><a href="dart-typed_data/Float32x4/WWYZ-constant.html">WWYZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/WWZW-constant.html">WWZW</a></li>
+      <li><a href="dart-typed_data/Float32x4/WWZX-constant.html">WWZX</a></li>
+      <li><a href="dart-typed_data/Float32x4/WWZY-constant.html">WWZY</a></li>
+      <li><a href="dart-typed_data/Float32x4/WWZZ-constant.html">WWZZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/WXWW-constant.html">WXWW</a></li>
+      <li><a href="dart-typed_data/Float32x4/WXWX-constant.html">WXWX</a></li>
+      <li><a href="dart-typed_data/Float32x4/WXWY-constant.html">WXWY</a></li>
+      <li><a href="dart-typed_data/Float32x4/WXWZ-constant.html">WXWZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/WXXW-constant.html">WXXW</a></li>
+      <li><a href="dart-typed_data/Float32x4/WXXX-constant.html">WXXX</a></li>
+      <li><a href="dart-typed_data/Float32x4/WXXY-constant.html">WXXY</a></li>
+      <li><a href="dart-typed_data/Float32x4/WXXZ-constant.html">WXXZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/WXYW-constant.html">WXYW</a></li>
+      <li><a href="dart-typed_data/Float32x4/WXYX-constant.html">WXYX</a></li>
+      <li><a href="dart-typed_data/Float32x4/WXYY-constant.html">WXYY</a></li>
+      <li><a href="dart-typed_data/Float32x4/WXYZ-constant.html">WXYZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/WXZW-constant.html">WXZW</a></li>
+      <li><a href="dart-typed_data/Float32x4/WXZX-constant.html">WXZX</a></li>
+      <li><a href="dart-typed_data/Float32x4/WXZY-constant.html">WXZY</a></li>
+      <li><a href="dart-typed_data/Float32x4/WXZZ-constant.html">WXZZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/WYWW-constant.html">WYWW</a></li>
+      <li><a href="dart-typed_data/Float32x4/WYWX-constant.html">WYWX</a></li>
+      <li><a href="dart-typed_data/Float32x4/WYWY-constant.html">WYWY</a></li>
+      <li><a href="dart-typed_data/Float32x4/WYWZ-constant.html">WYWZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/WYXW-constant.html">WYXW</a></li>
+      <li><a href="dart-typed_data/Float32x4/WYXX-constant.html">WYXX</a></li>
+      <li><a href="dart-typed_data/Float32x4/WYXY-constant.html">WYXY</a></li>
+      <li><a href="dart-typed_data/Float32x4/WYXZ-constant.html">WYXZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/WYYW-constant.html">WYYW</a></li>
+      <li><a href="dart-typed_data/Float32x4/WYYX-constant.html">WYYX</a></li>
+      <li><a href="dart-typed_data/Float32x4/WYYY-constant.html">WYYY</a></li>
+      <li><a href="dart-typed_data/Float32x4/WYYZ-constant.html">WYYZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/WYZW-constant.html">WYZW</a></li>
+      <li><a href="dart-typed_data/Float32x4/WYZX-constant.html">WYZX</a></li>
+      <li><a href="dart-typed_data/Float32x4/WYZY-constant.html">WYZY</a></li>
+      <li><a href="dart-typed_data/Float32x4/WYZZ-constant.html">WYZZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/WZWW-constant.html">WZWW</a></li>
+      <li><a href="dart-typed_data/Float32x4/WZWX-constant.html">WZWX</a></li>
+      <li><a href="dart-typed_data/Float32x4/WZWY-constant.html">WZWY</a></li>
+      <li><a href="dart-typed_data/Float32x4/WZWZ-constant.html">WZWZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/WZXW-constant.html">WZXW</a></li>
+      <li><a href="dart-typed_data/Float32x4/WZXX-constant.html">WZXX</a></li>
+      <li><a href="dart-typed_data/Float32x4/WZXY-constant.html">WZXY</a></li>
+      <li><a href="dart-typed_data/Float32x4/WZXZ-constant.html">WZXZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/WZYW-constant.html">WZYW</a></li>
+      <li><a href="dart-typed_data/Float32x4/WZYX-constant.html">WZYX</a></li>
+      <li><a href="dart-typed_data/Float32x4/WZYY-constant.html">WZYY</a></li>
+      <li><a href="dart-typed_data/Float32x4/WZYZ-constant.html">WZYZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/WZZW-constant.html">WZZW</a></li>
+      <li><a href="dart-typed_data/Float32x4/WZZX-constant.html">WZZX</a></li>
+      <li><a href="dart-typed_data/Float32x4/WZZY-constant.html">WZZY</a></li>
+      <li><a href="dart-typed_data/Float32x4/WZZZ-constant.html">WZZZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/XWWW-constant.html">XWWW</a></li>
+      <li><a href="dart-typed_data/Float32x4/XWWX-constant.html">XWWX</a></li>
+      <li><a href="dart-typed_data/Float32x4/XWWY-constant.html">XWWY</a></li>
+      <li><a href="dart-typed_data/Float32x4/XWWZ-constant.html">XWWZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/XWXW-constant.html">XWXW</a></li>
+      <li><a href="dart-typed_data/Float32x4/XWXX-constant.html">XWXX</a></li>
+      <li><a href="dart-typed_data/Float32x4/XWXY-constant.html">XWXY</a></li>
+      <li><a href="dart-typed_data/Float32x4/XWXZ-constant.html">XWXZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/XWYW-constant.html">XWYW</a></li>
+      <li><a href="dart-typed_data/Float32x4/XWYX-constant.html">XWYX</a></li>
+      <li><a href="dart-typed_data/Float32x4/XWYY-constant.html">XWYY</a></li>
+      <li><a href="dart-typed_data/Float32x4/XWYZ-constant.html">XWYZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/XWZW-constant.html">XWZW</a></li>
+      <li><a href="dart-typed_data/Float32x4/XWZX-constant.html">XWZX</a></li>
+      <li><a href="dart-typed_data/Float32x4/XWZY-constant.html">XWZY</a></li>
+      <li><a href="dart-typed_data/Float32x4/XWZZ-constant.html">XWZZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/XXWW-constant.html">XXWW</a></li>
+      <li><a href="dart-typed_data/Float32x4/XXWX-constant.html">XXWX</a></li>
+      <li><a href="dart-typed_data/Float32x4/XXWY-constant.html">XXWY</a></li>
+      <li><a href="dart-typed_data/Float32x4/XXWZ-constant.html">XXWZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/XXXW-constant.html">XXXW</a></li>
+      <li><a href="dart-typed_data/Float32x4/XXXX-constant.html">XXXX</a></li>
+      <li><a href="dart-typed_data/Float32x4/XXXY-constant.html">XXXY</a></li>
+      <li><a href="dart-typed_data/Float32x4/XXXZ-constant.html">XXXZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/XXYW-constant.html">XXYW</a></li>
+      <li><a href="dart-typed_data/Float32x4/XXYX-constant.html">XXYX</a></li>
+      <li><a href="dart-typed_data/Float32x4/XXYY-constant.html">XXYY</a></li>
+      <li><a href="dart-typed_data/Float32x4/XXYZ-constant.html">XXYZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/XXZW-constant.html">XXZW</a></li>
+      <li><a href="dart-typed_data/Float32x4/XXZX-constant.html">XXZX</a></li>
+      <li><a href="dart-typed_data/Float32x4/XXZY-constant.html">XXZY</a></li>
+      <li><a href="dart-typed_data/Float32x4/XXZZ-constant.html">XXZZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/XYWW-constant.html">XYWW</a></li>
+      <li><a href="dart-typed_data/Float32x4/XYWX-constant.html">XYWX</a></li>
+      <li><a href="dart-typed_data/Float32x4/XYWY-constant.html">XYWY</a></li>
+      <li><a href="dart-typed_data/Float32x4/XYWZ-constant.html">XYWZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/XYXW-constant.html">XYXW</a></li>
+      <li><a href="dart-typed_data/Float32x4/XYXX-constant.html">XYXX</a></li>
+      <li><a href="dart-typed_data/Float32x4/XYXY-constant.html">XYXY</a></li>
+      <li><a href="dart-typed_data/Float32x4/XYXZ-constant.html">XYXZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/XYYW-constant.html">XYYW</a></li>
+      <li><a href="dart-typed_data/Float32x4/XYYX-constant.html">XYYX</a></li>
+      <li><a href="dart-typed_data/Float32x4/XYYY-constant.html">XYYY</a></li>
+      <li><a href="dart-typed_data/Float32x4/XYYZ-constant.html">XYYZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/XYZW-constant.html">XYZW</a></li>
+      <li><a href="dart-typed_data/Float32x4/XYZX-constant.html">XYZX</a></li>
+      <li><a href="dart-typed_data/Float32x4/XYZY-constant.html">XYZY</a></li>
+      <li><a href="dart-typed_data/Float32x4/XYZZ-constant.html">XYZZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/XZWW-constant.html">XZWW</a></li>
+      <li><a href="dart-typed_data/Float32x4/XZWX-constant.html">XZWX</a></li>
+      <li><a href="dart-typed_data/Float32x4/XZWY-constant.html">XZWY</a></li>
+      <li><a href="dart-typed_data/Float32x4/XZWZ-constant.html">XZWZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/XZXW-constant.html">XZXW</a></li>
+      <li><a href="dart-typed_data/Float32x4/XZXX-constant.html">XZXX</a></li>
+      <li><a href="dart-typed_data/Float32x4/XZXY-constant.html">XZXY</a></li>
+      <li><a href="dart-typed_data/Float32x4/XZXZ-constant.html">XZXZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/XZYW-constant.html">XZYW</a></li>
+      <li><a href="dart-typed_data/Float32x4/XZYX-constant.html">XZYX</a></li>
+      <li><a href="dart-typed_data/Float32x4/XZYY-constant.html">XZYY</a></li>
+      <li><a href="dart-typed_data/Float32x4/XZYZ-constant.html">XZYZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/XZZW-constant.html">XZZW</a></li>
+      <li><a href="dart-typed_data/Float32x4/XZZX-constant.html">XZZX</a></li>
+      <li><a href="dart-typed_data/Float32x4/XZZY-constant.html">XZZY</a></li>
+      <li><a href="dart-typed_data/Float32x4/XZZZ-constant.html">XZZZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/YWWW-constant.html">YWWW</a></li>
+      <li><a href="dart-typed_data/Float32x4/YWWX-constant.html">YWWX</a></li>
+      <li><a href="dart-typed_data/Float32x4/YWWY-constant.html">YWWY</a></li>
+      <li><a href="dart-typed_data/Float32x4/YWWZ-constant.html">YWWZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/YWXW-constant.html">YWXW</a></li>
+      <li><a href="dart-typed_data/Float32x4/YWXX-constant.html">YWXX</a></li>
+      <li><a href="dart-typed_data/Float32x4/YWXY-constant.html">YWXY</a></li>
+      <li><a href="dart-typed_data/Float32x4/YWXZ-constant.html">YWXZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/YWYW-constant.html">YWYW</a></li>
+      <li><a href="dart-typed_data/Float32x4/YWYX-constant.html">YWYX</a></li>
+      <li><a href="dart-typed_data/Float32x4/YWYY-constant.html">YWYY</a></li>
+      <li><a href="dart-typed_data/Float32x4/YWYZ-constant.html">YWYZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/YWZW-constant.html">YWZW</a></li>
+      <li><a href="dart-typed_data/Float32x4/YWZX-constant.html">YWZX</a></li>
+      <li><a href="dart-typed_data/Float32x4/YWZY-constant.html">YWZY</a></li>
+      <li><a href="dart-typed_data/Float32x4/YWZZ-constant.html">YWZZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/YXWW-constant.html">YXWW</a></li>
+      <li><a href="dart-typed_data/Float32x4/YXWX-constant.html">YXWX</a></li>
+      <li><a href="dart-typed_data/Float32x4/YXWY-constant.html">YXWY</a></li>
+      <li><a href="dart-typed_data/Float32x4/YXWZ-constant.html">YXWZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/YXXW-constant.html">YXXW</a></li>
+      <li><a href="dart-typed_data/Float32x4/YXXX-constant.html">YXXX</a></li>
+      <li><a href="dart-typed_data/Float32x4/YXXY-constant.html">YXXY</a></li>
+      <li><a href="dart-typed_data/Float32x4/YXXZ-constant.html">YXXZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/YXYW-constant.html">YXYW</a></li>
+      <li><a href="dart-typed_data/Float32x4/YXYX-constant.html">YXYX</a></li>
+      <li><a href="dart-typed_data/Float32x4/YXYY-constant.html">YXYY</a></li>
+      <li><a href="dart-typed_data/Float32x4/YXYZ-constant.html">YXYZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/YXZW-constant.html">YXZW</a></li>
+      <li><a href="dart-typed_data/Float32x4/YXZX-constant.html">YXZX</a></li>
+      <li><a href="dart-typed_data/Float32x4/YXZY-constant.html">YXZY</a></li>
+      <li><a href="dart-typed_data/Float32x4/YXZZ-constant.html">YXZZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/YYWW-constant.html">YYWW</a></li>
+      <li><a href="dart-typed_data/Float32x4/YYWX-constant.html">YYWX</a></li>
+      <li><a href="dart-typed_data/Float32x4/YYWY-constant.html">YYWY</a></li>
+      <li><a href="dart-typed_data/Float32x4/YYWZ-constant.html">YYWZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/YYXW-constant.html">YYXW</a></li>
+      <li><a href="dart-typed_data/Float32x4/YYXX-constant.html">YYXX</a></li>
+      <li><a href="dart-typed_data/Float32x4/YYXY-constant.html">YYXY</a></li>
+      <li><a href="dart-typed_data/Float32x4/YYXZ-constant.html">YYXZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/YYYW-constant.html">YYYW</a></li>
+      <li><a href="dart-typed_data/Float32x4/YYYX-constant.html">YYYX</a></li>
+      <li><a href="dart-typed_data/Float32x4/YYYY-constant.html">YYYY</a></li>
+      <li><a href="dart-typed_data/Float32x4/YYYZ-constant.html">YYYZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/YYZW-constant.html">YYZW</a></li>
+      <li><a href="dart-typed_data/Float32x4/YYZX-constant.html">YYZX</a></li>
+      <li><a href="dart-typed_data/Float32x4/YYZY-constant.html">YYZY</a></li>
+      <li><a href="dart-typed_data/Float32x4/YYZZ-constant.html">YYZZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/YZWW-constant.html">YZWW</a></li>
+      <li><a href="dart-typed_data/Float32x4/YZWX-constant.html">YZWX</a></li>
+      <li><a href="dart-typed_data/Float32x4/YZWY-constant.html">YZWY</a></li>
+      <li><a href="dart-typed_data/Float32x4/YZWZ-constant.html">YZWZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/YZXW-constant.html">YZXW</a></li>
+      <li><a href="dart-typed_data/Float32x4/YZXX-constant.html">YZXX</a></li>
+      <li><a href="dart-typed_data/Float32x4/YZXY-constant.html">YZXY</a></li>
+      <li><a href="dart-typed_data/Float32x4/YZXZ-constant.html">YZXZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/YZYW-constant.html">YZYW</a></li>
+      <li><a href="dart-typed_data/Float32x4/YZYX-constant.html">YZYX</a></li>
+      <li><a href="dart-typed_data/Float32x4/YZYY-constant.html">YZYY</a></li>
+      <li><a href="dart-typed_data/Float32x4/YZYZ-constant.html">YZYZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/YZZW-constant.html">YZZW</a></li>
+      <li><a href="dart-typed_data/Float32x4/YZZX-constant.html">YZZX</a></li>
+      <li><a href="dart-typed_data/Float32x4/YZZY-constant.html">YZZY</a></li>
+      <li><a href="dart-typed_data/Float32x4/YZZZ-constant.html">YZZZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZWWW-constant.html">ZWWW</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZWWX-constant.html">ZWWX</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZWWY-constant.html">ZWWY</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZWWZ-constant.html">ZWWZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZWXW-constant.html">ZWXW</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZWXX-constant.html">ZWXX</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZWXY-constant.html">ZWXY</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZWXZ-constant.html">ZWXZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZWYW-constant.html">ZWYW</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZWYX-constant.html">ZWYX</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZWYY-constant.html">ZWYY</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZWYZ-constant.html">ZWYZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZWZW-constant.html">ZWZW</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZWZX-constant.html">ZWZX</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZWZY-constant.html">ZWZY</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZWZZ-constant.html">ZWZZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZXWW-constant.html">ZXWW</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZXWX-constant.html">ZXWX</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZXWY-constant.html">ZXWY</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZXWZ-constant.html">ZXWZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZXXW-constant.html">ZXXW</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZXXX-constant.html">ZXXX</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZXXY-constant.html">ZXXY</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZXXZ-constant.html">ZXXZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZXYW-constant.html">ZXYW</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZXYX-constant.html">ZXYX</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZXYY-constant.html">ZXYY</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZXYZ-constant.html">ZXYZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZXZW-constant.html">ZXZW</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZXZX-constant.html">ZXZX</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZXZY-constant.html">ZXZY</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZXZZ-constant.html">ZXZZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZYWW-constant.html">ZYWW</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZYWX-constant.html">ZYWX</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZYWY-constant.html">ZYWY</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZYWZ-constant.html">ZYWZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZYXW-constant.html">ZYXW</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZYXX-constant.html">ZYXX</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZYXY-constant.html">ZYXY</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZYXZ-constant.html">ZYXZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZYYW-constant.html">ZYYW</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZYYX-constant.html">ZYYX</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZYYY-constant.html">ZYYY</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZYYZ-constant.html">ZYYZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZYZW-constant.html">ZYZW</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZYZX-constant.html">ZYZX</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZYZY-constant.html">ZYZY</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZYZZ-constant.html">ZYZZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZZWW-constant.html">ZZWW</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZZWX-constant.html">ZZWX</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZZWY-constant.html">ZZWY</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZZWZ-constant.html">ZZWZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZZXW-constant.html">ZZXW</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZZXX-constant.html">ZZXX</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZZXY-constant.html">ZZXY</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZZXZ-constant.html">ZZXZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZZYW-constant.html">ZZYW</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZZYX-constant.html">ZZYX</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZZYY-constant.html">ZZYY</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZZYZ-constant.html">ZZYZ</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZZZW-constant.html">ZZZW</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZZZX-constant.html">ZZZX</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZZZY-constant.html">ZZZY</a></li>
+      <li><a href="dart-typed_data/Float32x4/ZZZZ-constant.html">ZZZZ</a></li>
+    
+    
+    
+      <li class="section-title"><a href="dart-typed_data/Float32x4-class.html#constructors">Constructors</a></li>
+      <li><a href="dart-typed_data/Float32x4/Float32x4.html">Float32x4</a></li>
+      <li><a href="dart-typed_data/Float32x4/Float32x4.fromFloat64x2.html">fromFloat64x2</a></li>
+      <li><a href="dart-typed_data/Float32x4/Float32x4.fromInt32x4Bits.html">fromInt32x4Bits</a></li>
+      <li><a href="dart-typed_data/Float32x4/Float32x4.splat.html">splat</a></li>
+      <li><a href="dart-typed_data/Float32x4/Float32x4.zero.html">zero</a></li>
+    
+      <li class="section-title">
+        <a href="dart-typed_data/Float32x4-class.html#instance-properties">Properties</a>
+      </li>
+      <li class="inherited"><a href="dart-core/Object/hashCode.html">hashCode</a></li>
+      <li class="inherited"><a href="dart-core/Object/runtimeType.html">runtimeType</a></li>
+      <li><a href="dart-typed_data/Float32x4/signMask.html">signMask</a></li>
+      <li><a href="dart-typed_data/Float32x4/w.html">w</a></li>
+      <li><a href="dart-typed_data/Float32x4/x.html">x</a></li>
+      <li><a href="dart-typed_data/Float32x4/y.html">y</a></li>
+      <li><a href="dart-typed_data/Float32x4/z.html">z</a></li>
+    
+      <li class="section-title"><a href="dart-typed_data/Float32x4-class.html#operators">Operators</a></li>
+      <li><a href="dart-typed_data/Float32x4/operator_multiply.html">operator *</a></li>
+      <li><a href="dart-typed_data/Float32x4/operator_plus.html">operator +</a></li>
+      <li><a href="dart-typed_data/Float32x4/operator_minus.html">operator -</a></li>
+      <li><a href="dart-typed_data/Float32x4/operator_divide.html">operator /</a></li>
+      <li class="inherited"><a href="dart-core/Object/operator_equals.html">operator ==</a></li>
+      <li><a href="dart-typed_data/Float32x4/operator_unary_minus.html">operator unary-</a></li>
+    
+      <li class="section-title"><a href="dart-typed_data/Float32x4-class.html#instance-methods">Methods</a></li>
+      <li><a href="dart-typed_data/Float32x4/abs.html">abs</a></li>
+      <li><a href="dart-typed_data/Float32x4/clamp.html">clamp</a></li>
+      <li><a href="dart-typed_data/Float32x4/equal.html">equal</a></li>
+      <li><a href="dart-typed_data/Float32x4/greaterThan.html">greaterThan</a></li>
+      <li><a href="dart-typed_data/Float32x4/greaterThanOrEqual.html">greaterThanOrEqual</a></li>
+      <li><a href="dart-typed_data/Float32x4/lessThan.html">lessThan</a></li>
+      <li><a href="dart-typed_data/Float32x4/lessThanOrEqual.html">lessThanOrEqual</a></li>
+      <li><a href="dart-typed_data/Float32x4/max.html">max</a></li>
+      <li><a href="dart-typed_data/Float32x4/min.html">min</a></li>
+      <li class="inherited"><a href="dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+      <li><a href="dart-typed_data/Float32x4/notEqual.html">notEqual</a></li>
+      <li><a href="dart-typed_data/Float32x4/reciprocal.html">reciprocal</a></li>
+      <li><a href="dart-typed_data/Float32x4/reciprocalSqrt.html">reciprocalSqrt</a></li>
+      <li><a href="dart-typed_data/Float32x4/scale.html">scale</a></li>
+      <li><a href="dart-typed_data/Float32x4/shuffle.html">shuffle</a></li>
+      <li><a href="dart-typed_data/Float32x4/shuffleMix.html">shuffleMix</a></li>
+      <li><a href="dart-typed_data/Float32x4/sqrt.html">sqrt</a></li>
+      <li class="inherited"><a href="dart-core/Object/toString.html">toString</a></li>
+      <li><a href="dart-typed_data/Float32x4/withW.html">withW</a></li>
+      <li><a href="dart-typed_data/Float32x4/withX.html">withX</a></li>
+      <li><a href="dart-typed_data/Float32x4/withY.html">withY</a></li>
+      <li><a href="dart-typed_data/Float32x4/withZ.html">withZ</a></li>
+    </ol>
+  </div><!--/.sidebar-offcanvas-->
+
+</div> <!-- row -->
+</div> <!-- container -->
+
+<footer>
+  <div class="container-fluid">
+    <div class="container">
+      <p class="text-center">
+        <span class="no-break">
+          flutter_sprites 0.0.15
+        </span>
+        &bull;
+        <span class="no-break">
+          <a href="https://www.dartlang.org">
+            <img src="static-assets/favicon.png" alt="Dart" title="Dart" width="16" height="16">
+          </a>
+        </span>
+        &bull;
+        <span class="copyright no-break">
+          <a href="http://creativecommons.org/licenses/by-sa/4.0/">cc license</a>
+        </span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="static-assets/typeahead.bundle.min.js"></script>
+<script src="static-assets/prettify.js"></script>
+<script src="static-assets/URI.js"></script>
+<script src="static-assets/script.js"></script>
+<!-- Do not remove placeholder -->
+<!-- Footer Placeholder -->
+
+</body>
+
+</html>

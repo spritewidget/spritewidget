@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="dart:typed_data library API docs, for the Dart programming language.">
+  <title>dart:typed_data library - Dart API</title>
+  <!-- required because all the links are pseudo-absolute -->
+  <base href="..">
+
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Code+Pro|Roboto:500,400italic,300,400' type='text/css'>
+  <link rel="stylesheet" href="static-assets/prettify.css">
+  <link rel="stylesheet" href="static-assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static-assets/styles.css">
+  <link rel="icon" href="static-assets/favicon.png">
+
+  <!-- Do not remove placeholder -->
+  <!-- Header Placeholder -->
+</head>
+
+<body>
+
+<div id="overlay-under-drawer"></div>
+
+<header class="container-fluid" id="title">
+  <nav class="navbar navbar-fixed-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 contents">
+          <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+          <ol class="breadcrumbs gt-separated hidden-xs">
+            <li><a href="index.html">flutter_sprites</a></li>
+            <li class="self-crumb">dart:typed_data</li>
+          </ol>
+          <div class="self-name">dart:typed_data</div>
+          <form class="search navbar-right" role="search">
+            <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+          </form>
+        </div> <!-- /col -->
+      </div> <!-- /row -->
+    </div> <!-- /container -->
+  </nav>
+
+  <div class="container masthead">
+    <div class="row">
+      <div class="col-sm-12 contents">
+        <ol class="breadcrumbs gt-separated visible-xs">
+          <li><a href="index.html">flutter_sprites</a></li>
+          <li class="self-crumb">dart:typed_data</li>
+        </ol>
+        <div class="title-description">
+          <h1 class="title">
+            <span class="kind">library</span> dart:typed_data
+          </h1>
+        </div>
+        <ul class="subnav">
+          <li><a href="dart-typed_data/dart-typed_data-library.html#classes">Classes</a></li>
+        </ul>
+      </div> <!-- /col -->
+    </div> <!-- /row -->
+  </div> <!-- /container -->
+
+</header>
+
+<div class="container body">
+  <div class="row">
+
+  <div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
+    <h5><a href="index.html">flutter_sprites</a></h5>
+
+
+    <ol>
+      <li class="section-title"><a href="index.html#libraries">Libraries</a></li>
+      <li><a href="dart-async/dart-async-library.html">dart:async</a></li>
+      <li><a href="dart-collection/dart-collection-library.html">dart:collection</a></li>
+      <li><a href="dart-convert/dart-convert-library.html">dart:convert</a></li>
+      <li><a href="dart-core/dart-core-library.html">dart:core</a></li>
+      <li><a href="dart-developer/dart-developer-library.html">dart:developer</a></li>
+      <li><a href="dart-io/dart-io-library.html">dart:io</a></li>
+      <li><a href="dart-isolate/dart-isolate-library.html">dart:isolate</a></li>
+      <li><a href="dart-jni/dart-jni-library.html">dart:jni</a></li>
+      <li><a href="dart-math/dart-math-library.html">dart:math</a></li>
+      <li><a href="dart-typed_data/dart-typed_data-library.html">dart:typed_data</a></li>
+      <li><a href="dart-ui/dart-ui-library.html">dart:ui</a></li>
+      <li><a href="flutter_sprites/flutter_sprites-library.html">flutter_sprites</a></li>
+    </ol>
+  </div>
+
+  <div class="col-xs-12 col-sm-9 col-md-8 main-content">
+
+    <section class="desc markdown">
+      <p>Lists that efficiently handle fixed sized data
+(for example, unsigned 8 byte integers) and SIMD numeric types.</p>
+<p>To use this library in your code:</p>
+<pre class="prettyprint language-dart"><code>import 'dart:typed_data';
+</code></pre>
+    </section>
+    
+
+
+
+
+
+    <section class="summary offset-anchor" id="classes">
+      <h2>Classes</h2>
+
+      <dl>
+        <dt id="ByteBuffer">
+          <span class="name "><a href="dart-typed_data/ByteBuffer-class.html">ByteBuffer</a></span>
+        </dt>
+        <dd>
+          <p>A sequence of bytes underlying a typed data object.</p>
+        </dd>
+        <dt id="ByteData">
+          <span class="name "><a href="dart-typed_data/ByteData-class.html">ByteData</a></span>
+        </dt>
+        <dd>
+          <p>A fixed-length, random-access sequence of bytes that also provides random
+and unaligned access to the fixed-width integers and floating point
+numbers represented by those bytes.</p>
+        </dd>
+        <dt id="Endianness">
+          <span class="name "><a href="dart-typed_data/Endianness-class.html">Endianness</a></span>
+        </dt>
+        <dd>
+          <p>Describes endianness to be used when accessing or updating a
+sequence of bytes.</p>
+        </dd>
+        <dt id="Float32List">
+          <span class="name "><a href="dart-typed_data/Float32List-class.html">Float32List</a></span>
+        </dt>
+        <dd>
+          <p>A fixed-length list of IEEE 754 single-precision binary floating-point
+numbers that is viewable as a <a href="dart-typed_data/TypedData-class.html">TypedData</a>.</p>
+        </dd>
+        <dt id="Float32x4">
+          <span class="name "><a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span>
+        </dt>
+        <dd>
+          <p>Float32x4 immutable value type and operations.</p>
+        </dd>
+        <dt id="Float32x4List">
+          <span class="name "><a href="dart-typed_data/Float32x4List-class.html">Float32x4List</a></span>
+        </dt>
+        <dd>
+          <p>A fixed-length list of Float32x4 numbers that is viewable as a
+<a href="dart-typed_data/TypedData-class.html">TypedData</a>.</p>
+        </dd>
+        <dt id="Float64List">
+          <span class="name "><a href="dart-typed_data/Float64List-class.html">Float64List</a></span>
+        </dt>
+        <dd>
+          <p>A fixed-length list of IEEE 754 double-precision binary floating-point
+numbers  that is viewable as a <a href="dart-typed_data/TypedData-class.html">TypedData</a>.</p>
+        </dd>
+        <dt id="Float64x2">
+          <span class="name "><a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span>
+        </dt>
+        <dd>
+          <p>Float64x2 immutable value type and operations.</p>
+        </dd>
+        <dt id="Float64x2List">
+          <span class="name "><a href="dart-typed_data/Float64x2List-class.html">Float64x2List</a></span>
+        </dt>
+        <dd>
+          <p>A fixed-length list of Float64x2 numbers that is viewable as a
+<a href="dart-typed_data/TypedData-class.html">TypedData</a>.</p>
+        </dd>
+        <dt id="Int8List">
+          <span class="name "><a href="dart-typed_data/Int8List-class.html">Int8List</a></span>
+        </dt>
+        <dd>
+          <p>A fixed-length list of 8-bit signed integers.</p>
+        </dd>
+        <dt id="Int16List">
+          <span class="name "><a href="dart-typed_data/Int16List-class.html">Int16List</a></span>
+        </dt>
+        <dd>
+          <p>A fixed-length list of 16-bit signed integers that is viewable as a
+<a href="dart-typed_data/TypedData-class.html">TypedData</a>.</p>
+        </dd>
+        <dt id="Int32List">
+          <span class="name "><a href="dart-typed_data/Int32List-class.html">Int32List</a></span>
+        </dt>
+        <dd>
+          <p>A fixed-length list of 32-bit signed integers that is viewable as a
+<a href="dart-typed_data/TypedData-class.html">TypedData</a>.</p>
+        </dd>
+        <dt id="Int32x4">
+          <span class="name "><a href="dart-typed_data/Int32x4-class.html">Int32x4</a></span>
+        </dt>
+        <dd>
+          <p>Int32x4 and operations.</p>
+        </dd>
+        <dt id="Int32x4List">
+          <span class="name "><a href="dart-typed_data/Int32x4List-class.html">Int32x4List</a></span>
+        </dt>
+        <dd>
+          <p>A fixed-length list of Int32x4 numbers that is viewable as a
+<a href="dart-typed_data/TypedData-class.html">TypedData</a>.</p>
+        </dd>
+        <dt id="Int64List">
+          <span class="name "><a href="dart-typed_data/Int64List-class.html">Int64List</a></span>
+        </dt>
+        <dd>
+          <p>A fixed-length list of 64-bit signed integers that is viewable as a
+<a href="dart-typed_data/TypedData-class.html">TypedData</a>.</p>
+        </dd>
+        <dt id="TypedData">
+          <span class="name "><a href="dart-typed_data/TypedData-class.html">TypedData</a></span>
+        </dt>
+        <dd>
+          <p>A typed view of a sequence of bytes.</p>
+        </dd>
+        <dt id="Uint8ClampedList">
+          <span class="name "><a href="dart-typed_data/Uint8ClampedList-class.html">Uint8ClampedList</a></span>
+        </dt>
+        <dd>
+          <p>A fixed-length list of 8-bit unsigned integers.</p>
+        </dd>
+        <dt id="Uint8List">
+          <span class="name "><a href="dart-typed_data/Uint8List-class.html">Uint8List</a></span>
+        </dt>
+        <dd>
+          <p>A fixed-length list of 8-bit unsigned integers.</p>
+        </dd>
+        <dt id="Uint16List">
+          <span class="name "><a href="dart-typed_data/Uint16List-class.html">Uint16List</a></span>
+        </dt>
+        <dd>
+          <p>A fixed-length list of 16-bit unsigned integers that is viewable as a
+<a href="dart-typed_data/TypedData-class.html">TypedData</a>.</p>
+        </dd>
+        <dt id="Uint32List">
+          <span class="name "><a href="dart-typed_data/Uint32List-class.html">Uint32List</a></span>
+        </dt>
+        <dd>
+          <p>A fixed-length list of 32-bit unsigned integers that is viewable as a
+<a href="dart-typed_data/TypedData-class.html">TypedData</a>.</p>
+        </dd>
+        <dt id="Uint64List">
+          <span class="name "><a href="dart-typed_data/Uint64List-class.html">Uint64List</a></span>
+        </dt>
+        <dd>
+          <p>A fixed-length list of 64-bit unsigned integers that is viewable as a
+<a href="dart-typed_data/TypedData-class.html">TypedData</a>.</p>
+        </dd>
+      </dl>
+    </section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
+    <h5>dart:typed_data</h5>
+    <ol>
+    
+    
+    
+    
+    
+      <li class="section-title"><a href="dart-typed_data/dart-typed_data-library.html#classes">Classes</a></li>
+      <li><a href="dart-typed_data/ByteBuffer-class.html">ByteBuffer</a></li>
+      <li><a href="dart-typed_data/ByteData-class.html">ByteData</a></li>
+      <li><a href="dart-typed_data/Endianness-class.html">Endianness</a></li>
+      <li><a href="dart-typed_data/Float32List-class.html">Float32List</a></li>
+      <li><a href="dart-typed_data/Float32x4-class.html">Float32x4</a></li>
+      <li><a href="dart-typed_data/Float32x4List-class.html">Float32x4List</a></li>
+      <li><a href="dart-typed_data/Float64List-class.html">Float64List</a></li>
+      <li><a href="dart-typed_data/Float64x2-class.html">Float64x2</a></li>
+      <li><a href="dart-typed_data/Float64x2List-class.html">Float64x2List</a></li>
+      <li><a href="dart-typed_data/Int8List-class.html">Int8List</a></li>
+      <li><a href="dart-typed_data/Int16List-class.html">Int16List</a></li>
+      <li><a href="dart-typed_data/Int32List-class.html">Int32List</a></li>
+      <li><a href="dart-typed_data/Int32x4-class.html">Int32x4</a></li>
+      <li><a href="dart-typed_data/Int32x4List-class.html">Int32x4List</a></li>
+      <li><a href="dart-typed_data/Int64List-class.html">Int64List</a></li>
+      <li><a href="dart-typed_data/TypedData-class.html">TypedData</a></li>
+      <li><a href="dart-typed_data/Uint8ClampedList-class.html">Uint8ClampedList</a></li>
+      <li><a href="dart-typed_data/Uint8List-class.html">Uint8List</a></li>
+      <li><a href="dart-typed_data/Uint16List-class.html">Uint16List</a></li>
+      <li><a href="dart-typed_data/Uint32List-class.html">Uint32List</a></li>
+      <li><a href="dart-typed_data/Uint64List-class.html">Uint64List</a></li>
+    
+    </ol>
+  </div><!--/sidebar-offcanvas-right-->
+
+</div> <!-- row -->
+</div> <!-- container -->
+
+<footer>
+  <div class="container-fluid">
+    <div class="container">
+      <p class="text-center">
+        <span class="no-break">
+          flutter_sprites 0.0.15
+        </span>
+        &bull;
+        <span class="no-break">
+          <a href="https://www.dartlang.org">
+            <img src="static-assets/favicon.png" alt="Dart" title="Dart" width="16" height="16">
+          </a>
+        </span>
+        &bull;
+        <span class="copyright no-break">
+          <a href="http://creativecommons.org/licenses/by-sa/4.0/">cc license</a>
+        </span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="static-assets/typeahead.bundle.min.js"></script>
+<script src="static-assets/prettify.js"></script>
+<script src="static-assets/URI.js"></script>
+<script src="static-assets/script.js"></script>
+<!-- Do not remove placeholder -->
+<!-- Footer Placeholder -->
+
+</body>
+
+</html>

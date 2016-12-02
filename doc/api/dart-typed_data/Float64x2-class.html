@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="API docs for the Float64x2 class from the dart:typed_data library, for the Dart programming language.">
+  <title>Float64x2 class - dart:typed_data library - Dart API</title>
+  <!-- required because all the links are pseudo-absolute -->
+  <base href="..">
+
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Code+Pro|Roboto:500,400italic,300,400' type='text/css'>
+  <link rel="stylesheet" href="static-assets/prettify.css">
+  <link rel="stylesheet" href="static-assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static-assets/styles.css">
+  <link rel="icon" href="static-assets/favicon.png">
+
+  <!-- Do not remove placeholder -->
+  <!-- Header Placeholder -->
+</head>
+
+<body>
+
+<div id="overlay-under-drawer"></div>
+
+<header class="container-fluid" id="title">
+  <nav class="navbar navbar-fixed-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 contents">
+          <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+          <ol class="breadcrumbs gt-separated hidden-xs">
+            <li><a href="index.html">flutter_sprites</a></li>
+            <li><a href="dart-typed_data/dart-typed_data-library.html">dart:typed_data</a></li>
+            <li class="self-crumb">Float64x2</li>
+          </ol>
+          <div class="self-name">Float64x2</div>
+          <form class="search navbar-right" role="search">
+            <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+          </form>
+        </div> <!-- /col -->
+      </div> <!-- /row -->
+    </div> <!-- /container -->
+  </nav>
+
+  <div class="container masthead">
+    <div class="row">
+      <div class="col-sm-12 contents">
+        <ol class="breadcrumbs gt-separated visible-xs">
+          <li><a href="index.html">flutter_sprites</a></li>
+          <li><a href="dart-typed_data/dart-typed_data-library.html">dart:typed_data</a></li>
+          <li class="self-crumb">Float64x2</li>
+        </ol>
+        <div class="title-description">
+          <h1 class="title">
+            <span class="kind">abstract class</span> Float64x2
+          </h1>
+        </div>
+        <ul class="subnav">
+          <li><a href="dart-typed_data/Float64x2-class.html#instance-properties">Properties</a></li>
+          <li><a href="dart-typed_data/Float64x2-class.html#constructors">Constructors</a></li>
+          <li><a href="dart-typed_data/Float64x2-class.html#operators">Operators</a></li>
+          <li><a href="dart-typed_data/Float64x2-class.html#instance-methods">Methods</a></li>
+        </ul>
+      </div> <!-- /col -->
+    </div> <!-- /row -->
+  </div> <!-- /container -->
+
+</header>
+
+<div class="container body">
+  <div class="row">
+
+  <div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
+    <h5><a href="index.html">flutter_sprites</a></h5>
+    <h5><a href="dart-typed_data/dart-typed_data-library.html">dart:typed_data</a></h5>
+
+    <ol>
+    
+    
+    
+    
+    
+      <li class="section-title"><a href="dart-typed_data/dart-typed_data-library.html#classes">Classes</a></li>
+      <li><a href="dart-typed_data/ByteBuffer-class.html">ByteBuffer</a></li>
+      <li><a href="dart-typed_data/ByteData-class.html">ByteData</a></li>
+      <li><a href="dart-typed_data/Endianness-class.html">Endianness</a></li>
+      <li><a href="dart-typed_data/Float32List-class.html">Float32List</a></li>
+      <li><a href="dart-typed_data/Float32x4-class.html">Float32x4</a></li>
+      <li><a href="dart-typed_data/Float32x4List-class.html">Float32x4List</a></li>
+      <li><a href="dart-typed_data/Float64List-class.html">Float64List</a></li>
+      <li><a href="dart-typed_data/Float64x2-class.html">Float64x2</a></li>
+      <li><a href="dart-typed_data/Float64x2List-class.html">Float64x2List</a></li>
+      <li><a href="dart-typed_data/Int8List-class.html">Int8List</a></li>
+      <li><a href="dart-typed_data/Int16List-class.html">Int16List</a></li>
+      <li><a href="dart-typed_data/Int32List-class.html">Int32List</a></li>
+      <li><a href="dart-typed_data/Int32x4-class.html">Int32x4</a></li>
+      <li><a href="dart-typed_data/Int32x4List-class.html">Int32x4List</a></li>
+      <li><a href="dart-typed_data/Int64List-class.html">Int64List</a></li>
+      <li><a href="dart-typed_data/TypedData-class.html">TypedData</a></li>
+      <li><a href="dart-typed_data/Uint8ClampedList-class.html">Uint8ClampedList</a></li>
+      <li><a href="dart-typed_data/Uint8List-class.html">Uint8List</a></li>
+      <li><a href="dart-typed_data/Uint16List-class.html">Uint16List</a></li>
+      <li><a href="dart-typed_data/Uint32List-class.html">Uint32List</a></li>
+      <li><a href="dart-typed_data/Uint64List-class.html">Uint64List</a></li>
+    
+    </ol>
+  </div>
+
+  <div class="col-xs-12 col-sm-9 col-md-8 main-content">
+
+    <section class="desc markdown">
+      <p>Float64x2 immutable value type and operations.</p>
+<p>Float64x2 stores 2 64-bit floating point values in "lanes".
+The lanes are "x" and "y" respectively.</p>
+    </section>
+    
+
+
+
+
+    <section class="summary offset-anchor" id="constructors">
+      <h2>Constructors</h2>
+
+      <dl class="constructor-summary-list">
+        <dt id="Float64x2" class="callable">
+          <span class="name"><a href="dart-typed_data/Float64x2/Float64x2.html">Float64x2</a></span><span class="signature">(<span class="parameter" id="-param-x"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">x</span>, </span> <span class="parameter" id="-param-y"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">y</span></span>)</span>
+        </dt>
+        <dd>
+          <p></p>
+          <div class="constructor-modifier features">factory</div>
+        </dd>
+        <dt id="Float64x2.fromFloat32x4" class="callable">
+          <span class="name"><a href="dart-typed_data/Float64x2/Float64x2.fromFloat32x4.html">Float64x2.fromFloat32x4</a></span><span class="signature">(<span class="parameter" id="fromFloat32x4-param-v"><span class="type-annotation"><a href="dart-typed_data/Float32x4-class.html">Float32x4</a></span> <span class="parameter-name">v</span></span>)</span>
+        </dt>
+        <dd>
+          <p>Uses the "x" and "y" lanes from <code>v</code>.</p>
+          <div class="constructor-modifier features">factory</div>
+        </dd>
+        <dt id="Float64x2.splat" class="callable">
+          <span class="name"><a href="dart-typed_data/Float64x2/Float64x2.splat.html">Float64x2.splat</a></span><span class="signature">(<span class="parameter" id="splat-param-v"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">v</span></span>)</span>
+        </dt>
+        <dd>
+          <p></p>
+          <div class="constructor-modifier features">factory</div>
+        </dd>
+        <dt id="Float64x2.zero" class="callable">
+          <span class="name"><a href="dart-typed_data/Float64x2/Float64x2.zero.html">Float64x2.zero</a></span><span class="signature">()</span>
+        </dt>
+        <dd>
+          <p></p>
+          <div class="constructor-modifier features">factory</div>
+        </dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="instance-properties">
+      <h2>Properties</h2>
+
+      <dl class="properties">
+        <dt id="hashCode" class="property inherited">
+          <span class="name"><a href="dart-core/Object/hashCode.html">hashCode</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>Get a hash code for this object.</p>
+          <div class="features">
+    read-only, inherited
+  </div>
+</dd>
+        <dt id="runtimeType" class="property inherited">
+          <span class="name"><a href="dart-core/Object/runtimeType.html">runtimeType</a></span>
+          <span class="signature">&#8594; <a href="dart-core/Type-class.html">Type</a></span>
+        </dt>
+        <dd class="inherited">
+          <p>A representation of the runtime type of the object.</p>
+          <div class="features">
+    read-only, inherited
+  </div>
+</dd>
+        <dt id="signMask" class="property">
+          <span class="name"><a href="dart-typed_data/Float64x2/signMask.html">signMask</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd>
+          <p>Extract the sign bits from each lane return them in the first 2 bits.
+"x" lane is bit 0.
+"y" lane is bit 1.</p>
+          <div class="features">
+    read-only
+  </div>
+</dd>
+        <dt id="x" class="property">
+          <span class="name"><a href="dart-typed_data/Float64x2/x.html">x</a></span>
+          <span class="signature">&#8594; <a href="dart-core/double-class.html">double</a></span>
+        </dt>
+        <dd>
+          <p>Extracted x value.</p>
+          <div class="features">
+    read-only
+  </div>
+</dd>
+        <dt id="y" class="property">
+          <span class="name"><a href="dart-typed_data/Float64x2/y.html">y</a></span>
+          <span class="signature">&#8594; <a href="dart-core/double-class.html">double</a></span>
+        </dt>
+        <dd>
+          <p>Extracted y value.</p>
+          <div class="features">
+    read-only
+  </div>
+</dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="operators">
+      <h2>Operators</h2>
+      <dl class="callables">
+        <dt id="operator *" class="callable">
+          <span class="name"><a href="dart-typed_data/Float64x2/operator_multiply.html">operator *</a></span><span class="signature">(<wbr><span class="parameter" id="*-param-other"><span class="type-annotation"><a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span> <span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Multiplication operator.</p>
+        </dd>
+        <dt id="operator +" class="callable">
+          <span class="name"><a href="dart-typed_data/Float64x2/operator_plus.html">operator +</a></span><span class="signature">(<wbr><span class="parameter" id="+-param-other"><span class="type-annotation"><a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span> <span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Addition operator.</p>
+        </dd>
+        <dt id="operator -" class="callable">
+          <span class="name"><a href="dart-typed_data/Float64x2/operator_minus.html">operator -</a></span><span class="signature">(<wbr><span class="parameter" id="--param-other"><span class="type-annotation"><a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span> <span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Subtraction operator.</p>
+        </dd>
+        <dt id="operator /" class="callable">
+          <span class="name"><a href="dart-typed_data/Float64x2/operator_divide.html">operator /</a></span><span class="signature">(<wbr><span class="parameter" id="/-param-other"><span class="type-annotation"><a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span> <span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Division operator.</p>
+        </dd>
+        <dt id="operator ==" class="callable inherited">
+          <span class="name"><a href="dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>The equality operator.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="operator unary-" class="callable">
+          <span class="name"><a href="dart-typed_data/Float64x2/operator_unary_minus.html">operator unary-</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Negate operator.</p>
+        </dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="instance-methods">
+      <h2>Methods</h2>
+      <dl class="callables">
+        <dt id="abs" class="callable">
+          <span class="name"><a href="dart-typed_data/Float64x2/abs.html">abs</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns the lane-wise absolute value of this <a href="dart-typed_data/Float64x2-class.html">Float64x2</a>.</p>
+        </dd>
+        <dt id="clamp" class="callable">
+          <span class="name"><a href="dart-typed_data/Float64x2/clamp.html">clamp</a></span><span class="signature">(<wbr><span class="parameter" id="clamp-param-lowerLimit"><span class="type-annotation"><a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span> <span class="parameter-name">lowerLimit</span>, </span> <span class="parameter" id="clamp-param-upperLimit"><span class="type-annotation"><a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span> <span class="parameter-name">upperLimit</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Lane-wise clamp <code>this</code> to be in the range <code>lowerLimit</code>-<code>upperLimit</code>.</p>
+        </dd>
+        <dt id="max" class="callable">
+          <span class="name"><a href="dart-typed_data/Float64x2/max.html">max</a></span><span class="signature">(<wbr><span class="parameter" id="max-param-other"><span class="type-annotation"><a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span> <span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns the lane-wise maximum value in <code>this</code> or <code>other</code>.</p>
+        </dd>
+        <dt id="min" class="callable">
+          <span class="name"><a href="dart-typed_data/Float64x2/min.html">min</a></span><span class="signature">(<wbr><span class="parameter" id="min-param-other"><span class="type-annotation"><a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span> <span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns the lane-wise minimum value in <code>this</code> or <code>other</code>.</p>
+        </dd>
+        <dt id="noSuchMethod" class="callable inherited">
+          <span class="name"><a href="dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+            <span class="returntype parameter">&#8594; dynamic</span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Invoked when a non-existent method or property is accessed.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="scale" class="callable">
+          <span class="name"><a href="dart-typed_data/Float64x2/scale.html">scale</a></span><span class="signature">(<wbr><span class="parameter" id="scale-param-s"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">s</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns a copy of <code>this</code> each lane being scaled by <code>s</code>.
+Equivalent to this * new Float64x2.splat(s)</p>
+        </dd>
+        <dt id="sqrt" class="callable">
+          <span class="name"><a href="dart-typed_data/Float64x2/sqrt.html">sqrt</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns the lane-wise square root of <code>this</code>.</p>
+        </dd>
+        <dt id="toString" class="callable inherited">
+          <span class="name"><a href="dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; <a href="dart-core/String-class.html">String</a></span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          <p>Returns a string representation of this object.</p>
+          <div class="features">inherited</div>
+        </dd>
+        <dt id="withX" class="callable">
+          <span class="name"><a href="dart-typed_data/Float64x2/withX.html">withX</a></span><span class="signature">(<wbr><span class="parameter" id="withX-param-x"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">x</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns a new <a href="dart-typed_data/Float64x2-class.html">Float64x2</a> copied from <code>this</code> with a new x value.</p>
+        </dd>
+        <dt id="withY" class="callable">
+          <span class="name"><a href="dart-typed_data/Float64x2/withY.html">withY</a></span><span class="signature">(<wbr><span class="parameter" id="withY-param-y"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">y</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-typed_data/Float64x2-class.html">Float64x2</a></span>
+          </span>
+        </dt>
+        <dd>
+          <p>Returns a new <a href="dart-typed_data/Float64x2-class.html">Float64x2</a> copied from <code>this</code> with a new y value.</p>
+        </dd>
+      </dl>
+    </section>
+
+  </div> <!-- /.main-content -->
+
+  <div class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
+    <h5>Float64x2</h5>
+    <ol>
+    
+    
+    
+      <li class="section-title"><a href="dart-typed_data/Float64x2-class.html#constructors">Constructors</a></li>
+      <li><a href="dart-typed_data/Float64x2/Float64x2.html">Float64x2</a></li>
+      <li><a href="dart-typed_data/Float64x2/Float64x2.fromFloat32x4.html">fromFloat32x4</a></li>
+      <li><a href="dart-typed_data/Float64x2/Float64x2.splat.html">splat</a></li>
+      <li><a href="dart-typed_data/Float64x2/Float64x2.zero.html">zero</a></li>
+    
+      <li class="section-title">
+        <a href="dart-typed_data/Float64x2-class.html#instance-properties">Properties</a>
+      </li>
+      <li class="inherited"><a href="dart-core/Object/hashCode.html">hashCode</a></li>
+      <li class="inherited"><a href="dart-core/Object/runtimeType.html">runtimeType</a></li>
+      <li><a href="dart-typed_data/Float64x2/signMask.html">signMask</a></li>
+      <li><a href="dart-typed_data/Float64x2/x.html">x</a></li>
+      <li><a href="dart-typed_data/Float64x2/y.html">y</a></li>
+    
+      <li class="section-title"><a href="dart-typed_data/Float64x2-class.html#operators">Operators</a></li>
+      <li><a href="dart-typed_data/Float64x2/operator_multiply.html">operator *</a></li>
+      <li><a href="dart-typed_data/Float64x2/operator_plus.html">operator +</a></li>
+      <li><a href="dart-typed_data/Float64x2/operator_minus.html">operator -</a></li>
+      <li><a href="dart-typed_data/Float64x2/operator_divide.html">operator /</a></li>
+      <li class="inherited"><a href="dart-core/Object/operator_equals.html">operator ==</a></li>
+      <li><a href="dart-typed_data/Float64x2/operator_unary_minus.html">operator unary-</a></li>
+    
+      <li class="section-title"><a href="dart-typed_data/Float64x2-class.html#instance-methods">Methods</a></li>
+      <li><a href="dart-typed_data/Float64x2/abs.html">abs</a></li>
+      <li><a href="dart-typed_data/Float64x2/clamp.html">clamp</a></li>
+      <li><a href="dart-typed_data/Float64x2/max.html">max</a></li>
+      <li><a href="dart-typed_data/Float64x2/min.html">min</a></li>
+      <li class="inherited"><a href="dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+      <li><a href="dart-typed_data/Float64x2/scale.html">scale</a></li>
+      <li><a href="dart-typed_data/Float64x2/sqrt.html">sqrt</a></li>
+      <li class="inherited"><a href="dart-core/Object/toString.html">toString</a></li>
+      <li><a href="dart-typed_data/Float64x2/withX.html">withX</a></li>
+      <li><a href="dart-typed_data/Float64x2/withY.html">withY</a></li>
+    </ol>
+  </div><!--/.sidebar-offcanvas-->
+
+</div> <!-- row -->
+</div> <!-- container -->
+
+<footer>
+  <div class="container-fluid">
+    <div class="container">
+      <p class="text-center">
+        <span class="no-break">
+          flutter_sprites 0.0.15
+        </span>
+        &bull;
+        <span class="no-break">
+          <a href="https://www.dartlang.org">
+            <img src="static-assets/favicon.png" alt="Dart" title="Dart" width="16" height="16">
+          </a>
+        </span>
+        &bull;
+        <span class="copyright no-break">
+          <a href="http://creativecommons.org/licenses/by-sa/4.0/">cc license</a>
+        </span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="static-assets/typeahead.bundle.min.js"></script>
+<script src="static-assets/prettify.js"></script>
+<script src="static-assets/URI.js"></script>
+<script src="static-assets/script.js"></script>
+<!-- Do not remove placeholder -->
+<!-- Footer Placeholder -->
+
+</body>
+
+</html>

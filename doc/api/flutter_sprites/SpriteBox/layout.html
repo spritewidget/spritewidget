@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="API docs for the layout method from the SpriteBox class, for the Dart programming language.">
+  <title>layout method - SpriteBox class - flutter_sprites library - Dart API</title>
+  <!-- required because all the links are pseudo-absolute -->
+  <base href="../..">
+
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Code+Pro|Roboto:500,400italic,300,400' type='text/css'>
+  <link rel="stylesheet" href="static-assets/prettify.css">
+  <link rel="stylesheet" href="static-assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static-assets/styles.css">
+  <link rel="icon" href="static-assets/favicon.png">
+
+  <!-- Do not remove placeholder -->
+  <!-- Header Placeholder -->
+</head>
+
+<body>
+
+<div id="overlay-under-drawer"></div>
+
+<header class="container-fluid" id="title">
+  <nav class="navbar navbar-fixed-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 contents">
+          <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+          <ol class="breadcrumbs gt-separated hidden-xs">
+            <li><a href="index.html">flutter_sprites</a></li>
+            <li><a href="flutter_sprites/flutter_sprites-library.html">flutter_sprites</a></li>
+            <li><a href="flutter_sprites/SpriteBox-class.html">SpriteBox</a></li>
+            <li class="self-crumb">layout</li>
+          </ol>
+          <div class="self-name">layout</div>
+          <form class="search navbar-right" role="search">
+            <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+          </form>
+        </div> <!-- /col -->
+      </div> <!-- /row -->
+    </div> <!-- /container -->
+  </nav>
+
+  <div class="container masthead">
+    <div class="row">
+      <div class="col-sm-12 contents">
+        <ol class="breadcrumbs gt-separated visible-xs">
+          <li><a href="index.html">flutter_sprites</a></li>
+          <li><a href="flutter_sprites/flutter_sprites-library.html">flutter_sprites</a></li>
+          <li><a href="flutter_sprites/SpriteBox-class.html">SpriteBox</a></li>
+          <li class="self-crumb">layout</li>
+        </ol>
+        <div class="title-description">
+          <h1 class="title">
+            <span class="kind">method</span> layout
+          </h1>
+        </div>
+        <ul class="subnav">
+          <li><a href="flutter_sprites/SpriteBox/layout.html#source">Source</a></li>
+        </ul>
+      </div> <!-- /col -->
+    </div> <!-- /row -->
+  </div> <!-- /container -->
+
+</header>
+
+<div class="container body">
+  <div class="row">
+
+  <div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
+    <h5><a href="index.html">flutter_sprites</a></h5>
+    <h5><a href="flutter_sprites/flutter_sprites-library.html">flutter_sprites</a></h5>
+    <h5><a href="flutter_sprites/SpriteBox-class.html">SpriteBox</a></h5>
+
+    <ol>
+    
+    
+    
+      <li class="section-title"><a href="flutter_sprites/SpriteBox-class.html#constructors">Constructors</a></li>
+      <li><a href="flutter_sprites/SpriteBox/SpriteBox.html">SpriteBox</a></li>
+    
+      <li class="section-title">
+        <a href="flutter_sprites/SpriteBox-class.html#instance-properties">Properties</a>
+      </li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/alwaysNeedsCompositing.html">alwaysNeedsCompositing</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/attached.html">attached</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/constraints.html">constraints</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/debugCanParentUseSize.html">debugCanParentUseSize</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/debugCreator.html">debugCreator</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/debugDoingThisLayout.html">debugDoingThisLayout</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/debugDoingThisPaint.html">debugDoingThisPaint</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/debugDoingThisResize.html">debugDoingThisResize</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/debugSemantics.html">debugSemantics</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/depth.html">depth</a></li>
+      <li><a href="flutter_sprites/SpriteBox/frameRate.html">frameRate</a></li>
+      <li class="inherited"><a href="dart-core/Object/hashCode.html">hashCode</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/hasSize.html">hasSize</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/isRepaintBoundary.html">isRepaintBoundary</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/isSemanticBoundary.html">isSemanticBoundary</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/layer.html">layer</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/needsCompositing.html">needsCompositing</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/needsLayout.html">needsLayout</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/owner.html">owner</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/paintBounds.html">paintBounds</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/parent.html">parent</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/parentData.html">parentData</a></li>
+      <li><a href="flutter_sprites/SpriteBox/rootNode.html">rootNode</a></li>
+      <li class="inherited"><a href="dart-core/Object/runtimeType.html">runtimeType</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/semanticBounds.html">semanticBounds</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/semanticsAnnotator.html">semanticsAnnotator</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/size.html">size</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/sizedByParent.html">sizedByParent</a></li>
+      <li><a href="flutter_sprites/SpriteBox/transformMatrix.html">transformMatrix</a></li>
+      <li><a href="flutter_sprites/SpriteBox/transformMode.html">transformMode</a></li>
+      <li><a href="flutter_sprites/SpriteBox/visibleArea.html">visibleArea</a></li>
+    
+      <li class="section-title inherited"><a href="flutter_sprites/SpriteBox-class.html#operators">Operators</a></li>
+      <li class="inherited"><a href="dart-core/Object/operator_equals.html">operator ==</a></li>
+    
+      <li class="section-title"><a href="flutter_sprites/SpriteBox-class.html#instance-methods">Methods</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/adoptChild.html">adoptChild</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/applyPaintTransform.html">applyPaintTransform</a></li>
+      <li><a href="flutter_sprites/SpriteBox/attach.html">attach</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/clearSemantics.html">clearSemantics</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/computeDistanceToActualBaseline.html">computeDistanceToActualBaseline</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/computeMaxIntrinsicHeight.html">computeMaxIntrinsicHeight</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/computeMaxIntrinsicWidth.html">computeMaxIntrinsicWidth</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/computeMinIntrinsicHeight.html">computeMinIntrinsicHeight</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/computeMinIntrinsicWidth.html">computeMinIntrinsicWidth</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/debugAssertDoesMeetConstraints.html">debugAssertDoesMeetConstraints</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/debugDescribeChildren.html">debugDescribeChildren</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/debugFillDescription.html">debugFillDescription</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/debugHandleEvent.html">debugHandleEvent</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/debugPaint.html">debugPaint</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/debugPaintBaselines.html">debugPaintBaselines</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/debugPaintPointers.html">debugPaintPointers</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/debugPaintSize.html">debugPaintSize</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/debugRegisterRepaintBoundaryPaint.html">debugRegisterRepaintBoundaryPaint</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/debugResetSize.html">debugResetSize</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/describeApproximatePaintClip.html">describeApproximatePaintClip</a></li>
+      <li><a href="flutter_sprites/SpriteBox/detach.html">detach</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/dropChild.html">dropChild</a></li>
+      <li><a href="flutter_sprites/SpriteBox/findNodesAtPosition.html">findNodesAtPosition</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/getDistanceToActualBaseline.html">getDistanceToActualBaseline</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/getDistanceToBaseline.html">getDistanceToBaseline</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/getMaxIntrinsicHeight.html">getMaxIntrinsicHeight</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/getMaxIntrinsicWidth.html">getMaxIntrinsicWidth</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/getMinIntrinsicHeight.html">getMinIntrinsicHeight</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/getMinIntrinsicWidth.html">getMinIntrinsicWidth</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/globalToLocal.html">globalToLocal</a></li>
+      <li><a href="flutter_sprites/SpriteBox/handleEvent.html">handleEvent</a></li>
+      <li><a href="flutter_sprites/SpriteBox/hitTest.html">hitTest</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/hitTestChildren.html">hitTestChildren</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/hitTestSelf.html">hitTestSelf</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/invokeLayoutCallback.html">invokeLayoutCallback</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/layout.html">layout</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/localToGlobal.html">localToGlobal</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/markNeedsCompositingBitsUpdate.html">markNeedsCompositingBitsUpdate</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/markNeedsLayout.html">markNeedsLayout</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/markNeedsPaint.html">markNeedsPaint</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/markNeedsSemanticsUpdate.html">markNeedsSemanticsUpdate</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/markParentNeedsLayout.html">markParentNeedsLayout</a></li>
+      <li class="inherited"><a href="dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+      <li><a href="flutter_sprites/SpriteBox/paint.html">paint</a></li>
+      <li><a href="flutter_sprites/SpriteBox/performLayout.html">performLayout</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/performResize.html">performResize</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/reassemble.html">reassemble</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/redepthChild.html">redepthChild</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/redepthChildren.html">redepthChildren</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/replaceRootLayer.html">replaceRootLayer</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/rotate.html">rotate</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/scheduleInitialLayout.html">scheduleInitialLayout</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/scheduleInitialPaint.html">scheduleInitialPaint</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/scheduleInitialSemantics.html">scheduleInitialSemantics</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/setupParentData.html">setupParentData</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/toString.html">toString</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/toStringDeep.html">toStringDeep</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/toStringShallow.html">toStringShallow</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/visitChildren.html">visitChildren</a></li>
+      <li class="inherited"><a href="flutter_sprites/SpriteBox/visitChildrenForSemantics.html">visitChildrenForSemantics</a></li>
+    </ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+  <div class="col-xs-12 col-sm-9 col-md-8 main-content">
+    <section class="multi-line-signature">
+      <span class="returntype">void</span>
+      <span class="name ">layout</span>(<wbr><span class="parameter" id="layout-param-constraints"><span class="type-annotation">Constraints</span> <span class="parameter-name">constraints</span>, {</span> <span class="parameter" id="layout-param-parentUsesSize"><span class="type-annotation"><a href="dart-core/bool-class.html">bool</a></span> <span class="parameter-name">parentUsesSize</span>: <span class="default-value">false</span></span> })
+    </section>
+    <section class="desc markdown">
+      <p>Compute the layout for this render object.</p>
+<p>This method is the main entry point for parents to ask their children to
+update their layout information. The parent passes a constraints object,
+which informs the child as which layouts are permissible. The child is
+required to obey the given constraints.</p>
+<p>If the parent reads information computed during the child's layout, the
+parent must pass true for parentUsesSize. In that case, the parent will be
+marked as needing layout whenever the child is marked as needing layout
+because the parent's layout information depends on the child's layout
+information. If the parent uses the default value (false) for
+parentUsesSize, the child can change its layout information (subject to
+the given constraints) without informing the parent.</p>
+<p>Subclasses should not override <code>layout</code> directly. Instead, they should
+override <code>performResize</code> and/or <code>performLayout</code>. The <code>layout</code> method
+delegates the actual work to <code>performResize</code> and <code>performLayout</code>.</p>
+<p>The parent's performLayout method should call the <code>layout</code> of all its
+children unconditionally. It is the <code>layout</code> method's responsibility (as
+implemented here) to return early if the child does not need to do any
+work to update its layout information.</p>
+    </section>
+    
+    <section class="summary source-code" id="source">
+      <h2><span>Source</span> </h2>
+      <pre class="prettyprint language-dart">void layout(Constraints constraints, { bool parentUsesSize: false }) {
+  assert(constraints != null);
+  assert(constraints.debugAssertIsValid(
+    isAppliedConstraint: true,
+    informationCollector: (StringBuffer information) {
+      List&lt;String&gt; stack = StackTrace.current.toString().split(&#39;\n&#39;);
+      int targetFrame;
+      Pattern layoutFramePattern = new RegExp(r&#39;^#[0-9]+ +RenderObject.layout \(&#39;);
+      for (int i = 0; i &lt; stack.length; i += 1) {
+        if (layoutFramePattern.matchAsPrefix(stack[i]) != null) {
+          targetFrame = i + 1;
+          break;
+        }
+      }
+      if (targetFrame != null &amp;&amp; targetFrame &lt; stack.length) {
+        information.writeln(
+          &#39;These invalid constraints were provided to $runtimeType\&#39;s layout() &#39;
+          &#39;function by the following function, which probably computed the &#39;
+          &#39;invalid constraints in question:&#39;
+        );
+        Pattern targetFramePattern = new RegExp(r&#39;^#[0-9]+ +(.+)$&#39;);
+        Match targetFrameMatch = targetFramePattern.matchAsPrefix(stack[targetFrame]);
+        if (targetFrameMatch != null &amp;&amp; targetFrameMatch.groupCount &gt; 0) {
+          information.writeln(&#39;  ${targetFrameMatch.group(1)}&#39;);
+        } else {
+          information.writeln(stack[targetFrame]);
+        }
+      }
+    }
+  ));
+  assert(!_debugDoingThisResize);
+  assert(!_debugDoingThisLayout);
+  RenderObject relayoutBoundary;
+  if (!parentUsesSize || sizedByParent || constraints.isTight || parent is! RenderObject) {
+    relayoutBoundary = this;
+  } else {
+    final RenderObject parent = this.parent;
+    relayoutBoundary = parent._relayoutBoundary;
+  }
+  assert(parent == this.parent);
+  assert(() {
+    _debugCanParentUseSize = parentUsesSize;
+    return true;
+  });
+  if (!needsLayout &amp;&amp; constraints == _constraints &amp;&amp; relayoutBoundary == _relayoutBoundary) {
+    assert(() {
+      &#47;&#47; in case parentUsesSize changed since the last invocation, set size
+      &#47;&#47; to itself, so it has the right internal debug values.
+      _debugDoingThisResize = sizedByParent;
+      _debugDoingThisLayout = !sizedByParent;
+      RenderObject debugPreviousActiveLayout = _debugActiveLayout;
+      _debugActiveLayout = this;
+      debugResetSize();
+      _debugActiveLayout = debugPreviousActiveLayout;
+      _debugDoingThisLayout = false;
+      _debugDoingThisResize = false;
+      return true;
+    });
+    return;
+  }
+  _constraints = constraints;
+  _relayoutBoundary = relayoutBoundary;
+  assert(!_debugMutationsLocked);
+  assert(!_doingThisLayoutWithCallback);
+  assert(() {
+    _debugMutationsLocked = true;
+    return true;
+  });
+  if (sizedByParent) {
+    assert(() { _debugDoingThisResize = true; return true; });
+    try {
+      performResize();
+      assert(() { debugAssertDoesMeetConstraints(); return true; });
+    } catch (e, stack) {
+      _debugReportException(&#39;performResize&#39;, e, stack);
+    }
+    assert(() { _debugDoingThisResize = false; return true; });
+  }
+  RenderObject debugPreviousActiveLayout;
+  assert(() {
+    _debugDoingThisLayout = true;
+    debugPreviousActiveLayout = _debugActiveLayout;
+    _debugActiveLayout = this;
+    return true;
+  });
+  try {
+    _performLayout();
+    markNeedsSemanticsUpdate();
+    assert(() { debugAssertDoesMeetConstraints(); return true; });
+  } catch (e, stack) {
+    _debugReportException(&#39;performLayout&#39;, e, stack);
+  }
+  assert(() {
+    _debugActiveLayout = debugPreviousActiveLayout;
+    _debugDoingThisLayout = false;
+    _debugMutationsLocked = false;
+    return true;
+  });
+  _needsLayout = false;
+  markNeedsPaint();
+  assert(parent == this.parent);
+}</pre>
+    </section>
+
+  </div> <!-- /.main-content -->
+
+</div> <!-- row -->
+</div> <!-- container -->
+
+<footer>
+  <div class="container-fluid">
+    <div class="container">
+      <p class="text-center">
+        <span class="no-break">
+          flutter_sprites 0.0.15
+        </span>
+        &bull;
+        <span class="no-break">
+          <a href="https://www.dartlang.org">
+            <img src="static-assets/favicon.png" alt="Dart" title="Dart" width="16" height="16">
+          </a>
+        </span>
+        &bull;
+        <span class="copyright no-break">
+          <a href="http://creativecommons.org/licenses/by-sa/4.0/">cc license</a>
+        </span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="static-assets/typeahead.bundle.min.js"></script>
+<script src="static-assets/prettify.js"></script>
+<script src="static-assets/URI.js"></script>
+<script src="static-assets/script.js"></script>
+<!-- Do not remove placeholder -->
+<!-- Footer Placeholder -->
+
+</body>
+
+</html>
