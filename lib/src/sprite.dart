@@ -114,17 +114,17 @@ abstract class SpritePaint {
   ///
   ///     // Add the colors of the sprite with the colors of the background
   ///     mySprite.transferMode = TransferMode.plusMode;
-  TransferMode transferMode;
+  BlendMode transferMode;
 
   void _updatePaint(Paint paint) {
     paint.color = new Color.fromARGB((255.0*_opacity).toInt(), 255, 255, 255);
 
     if (colorOverlay != null) {
-      paint.colorFilter = new ColorFilter.mode(colorOverlay, TransferMode.srcATop);
+      paint.colorFilter = new ColorFilter.mode(colorOverlay, BlendMode.srcATop);
     }
 
     if (transferMode != null) {
-      paint.transferMode = transferMode;
+      paint.blendMode = transferMode;
     }
   }
 }

@@ -75,7 +75,7 @@ class ParticleSystem extends Node {
                   this.redVar: 0,
                   this.greenVar: 0,
                   this.blueVar: 0,
-                  this.transferMode: TransferMode.plus,
+                  this.transferMode: BlendMode.plus,
                   this.numParticlesToEmit: 0,
                   this.autoRemoveOnFinish: true,
                   Offset gravity
@@ -206,8 +206,8 @@ class ParticleSystem extends Node {
   int blueVar;
 
   /// The transfer mode used to draw the particle system. Default is
-  /// [TransferMode.plus].
-  TransferMode transferMode;
+  /// [BlendMode.plus].
+  BlendMode transferMode;
 
   List<_Particle> _particles;
 
@@ -395,7 +395,7 @@ class ParticleSystem extends Node {
     List<Rect> rects = <Rect>[];
     List<Color> colors = <Color>[];
 
-    _paint.transferMode = transferMode;
+    _paint.blendMode = transferMode;
 
     for (_Particle particle in _particles) {
       // Rect
@@ -446,7 +446,7 @@ class ParticleSystem extends Node {
     }
 
     canvas.drawAtlas(texture.image, transforms, rects, colors,
-      TransferMode.modulate, null, _paint);
+        BlendMode.modulate, null, _paint);
   }
 }
 

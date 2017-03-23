@@ -187,7 +187,7 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
       _vertices,
       _textureCoordinates,
       _colors,
-      TransferMode.modulate,
+        BlendMode.modulate,
       _indices,
       _cachedPaint
     );

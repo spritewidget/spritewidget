@@ -106,7 +106,7 @@ class TexturedLinePainter {
   bool removeArtifacts = true;
 
   /// The [TransferMode] used to draw the line to the [Canvas].
-  TransferMode transferMode = TransferMode.srcOver;
+  BlendMode transferMode = BlendMode.srcOver;
 
   Paint _cachedPaint = new Paint();
 
@@ -119,7 +119,7 @@ class TexturedLinePainter {
     assert(_points.length == colors.length);
     assert(_points.length == widths.length);
 
-    _cachedPaint.transferMode = transferMode;
+    _cachedPaint.blendMode = transferMode;
 
     // Calculate normals
     List<Vector2> vectors = <Vector2>[];
@@ -199,7 +199,7 @@ class TexturedLinePainter {
       lastMiter = currentMiter;
     }
 
-    canvas.drawVertices(VertexMode.triangles, vertices, textureCoordinates, verticeColors, TransferMode.modulate, indices, _cachedPaint);
+    canvas.drawVertices(VertexMode.triangles, vertices, textureCoordinates, verticeColors, BlendMode.modulate, indices, _cachedPaint);
   }
 
   double _xPosForStop(double stop) {

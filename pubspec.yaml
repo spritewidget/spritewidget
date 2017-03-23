@@ -11,4 +11,4 @@ dependencies:
 
 dev_dependencies:
   flutter_test:
-    path: ../../../dev/flutter/packages/flutter_test
+    path: ../flutter/packages/flutter_test
