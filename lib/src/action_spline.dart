@@ -4,7 +4,7 @@
 
 part of flutter_sprites;
 
-Point _cardinalSplineAt(Point p0, Point p1, Point p2, Point p3, double tension, double t) {
+Offset _cardinalSplineAt(Offset p0, Offset p1, Offset p2, Offset p3, double tension, double t) {
   double t2 = t * t;
   double t3 = t2 * t;
 
@@ -15,14 +15,14 @@ Point _cardinalSplineAt(Point p0, Point p1, Point p2, Point p3, double tension, 
 	double b3 = s * (t3 - 2.0 * t2 + t) + (-2.0 * t3 + 3.0 * t2);
 	double b4 = s * (t3 - t2);
 
-  double x = p0.x * b1 + p1.x * b2 + p2.x * b3 + p3.x * b4;
-	double y = p0.y * b1 + p1.y * b2 + p2.y * b3 + p3.y * b4;
+  double x = p0.dx * b1 + p1.dx * b2 + p2.dx * b3 + p3.dx * b4;
+	double y = p0.dy * b1 + p1.dy * b2 + p2.dy * b3 + p3.dy * b4;
 
-  return new Point(x, y);
+  return new Offset(x, y);
 }
 
 /// Signature for callbacks used by the [ActionSpline] to set a [Point] value.
-typedef void PointSetterCallback(Point value);
+typedef void PointSetterCallback(Offset value);
 
 /// The spline action is used to animate a point along a spline definied by
 /// a set of points.
@@ -40,7 +40,7 @@ class ActionSpline extends ActionInterval {
   final PointSetterCallback setter;
 
   /// A list of points that define the spline.
-  final List<Point> points;
+  final List<Offset> points;
 
   /// The tension of the spline, defines the roundness of the curve.
   double tension = 0.5;
@@ -63,12 +63,12 @@ class ActionSpline extends ActionInterval {
       lt = (t - _dt * p) / _dt;
     }
 
-    Point p0 = points[(p - 1).clamp(0, points.length - 1)];
-    Point p1 = points[(p + 0).clamp(0, points.length - 1)];
-    Point p2 = points[(p + 1).clamp(0, points.length - 1)];
-    Point p3 = points[(p + 2).clamp(0, points.length - 1)];
+    Offset p0 = points[(p - 1).clamp(0, points.length - 1)];
+    Offset p1 = points[(p + 0).clamp(0, points.length - 1)];
+    Offset p2 = points[(p + 1).clamp(0, points.length - 1)];
+    Offset p3 = points[(p + 2).clamp(0, points.length - 1)];
 
-    Point newPos = _cardinalSplineAt(p0, p1, p2, p3, tension, lt);
+    Offset newPos = _cardinalSplineAt(p0, p1, p2, p3, tension, lt);
 
     setter(newPos);
   }

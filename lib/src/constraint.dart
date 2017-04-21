@@ -50,7 +50,7 @@ class ConstraintRotationToMovement extends Constraint {
   /// The base rotation will be added to a the movement vectors rotation.
   final double baseRotation;
 
-  Point _lastPosition;
+  Offset _lastPosition;
 
   @override
   void preUpdate(Node node, double dt) {
@@ -124,8 +124,8 @@ class ConstraintRotationToNode extends Constraint {
     if (targetNode.parent == node.parent) {
       offset = targetNode.position - node.position;
     } else {
-      offset = node.convertPointToBoxSpace(Point.origin)
-        - targetNode.convertPointToBoxSpace(Point.origin);
+      offset = node.convertPointToBoxSpace(Offset.zero)
+        - targetNode.convertPointToBoxSpace(Offset.zero);
     }
 
     double target = degrees(GameMath.atan2(offset.dy, offset.dx)) + baseRotation;
@@ -154,7 +154,7 @@ class ConstraintPositionToNode extends Constraint {
 
   @override
   void constrain(Node node, double dt) {
-    Point targetPosition;
+    Offset targetPosition;
 
     if (targetNode.spriteBox != node.spriteBox || node.parent == null) {
       // The target node is in another sprite box or has been removed
@@ -164,7 +164,7 @@ class ConstraintPositionToNode extends Constraint {
     if (targetNode.parent == node.parent) {
       targetPosition = targetNode.position;
     } else {
-      targetPosition = node.parent.convertPointFromNode(Point.origin, targetNode);
+      targetPosition = node.parent.convertPointFromNode(Offset.zero, targetNode);
     }
 
     if (offset != null)

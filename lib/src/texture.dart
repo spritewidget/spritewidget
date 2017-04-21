@@ -19,7 +19,7 @@ class Texture {
     rotated = false,
     frame = new Rect.fromLTRB(0.0, 0.0, image.width.toDouble(), image.height.toDouble()),
     spriteSourceSize = new Rect.fromLTRB(0.0, 0.0, image.width.toDouble(), image.height.toDouble()),
-    pivot = new Point(0.5, 0.5);
+    pivot = new Offset(0.5, 0.5);
 
 
   Texture._fromSpriteFrame(this.image, this.name, this.size, this.rotated, this.trimmed, this.frame,
@@ -67,7 +67,7 @@ class Texture {
   /// will be used.
   ///
   ///     myTexture.pivot = new Point(0.5, 0.5);
-  Point pivot;
+  Offset pivot;
 
   /// Creates a new Texture from a part of the current texture.
   Texture textureFromRect(Rect rect, [String name = null]) {
@@ -75,15 +75,15 @@ class Texture {
     assert(!rotated);
     Rect srcFrame = new Rect.fromLTWH(rect.left + frame.left, rect.top + frame.top, rect.size.width, rect.size.height);
     Rect dstFrame = new Rect.fromLTWH(0.0, 0.0, rect.size.width, rect.size.height);
-    return new Texture._fromSpriteFrame(image, name, rect.size, false, false, srcFrame, dstFrame, new Point(0.5, 0.5));
+    return new Texture._fromSpriteFrame(image, name, rect.size, false, false, srcFrame, dstFrame, new Offset(0.5, 0.5));
   }
 
   /// Draws the texture to a [Canvas] at a specified [position] and with the
   /// specified [paint].
-  void drawTexture(Canvas canvas, Point position, Paint paint) {
+  void drawTexture(Canvas canvas, Offset position, Paint paint) {
     // Get drawing position
-    double x = position.x;
-    double y = position.y;
+    double x = position.dx;
+    double y = position.dy;
 
     // Draw the texture
     if (rotated) {
@@ -96,7 +96,7 @@ class Texture {
       // Calculate the rotated frame and spriteSourceSize
       Size originalFrameSize = frame.size;
       Rect rotatedFrame = frame.topLeft & new Size(originalFrameSize.height, originalFrameSize.width);
-      Point rotatedSpriteSourcePoint = new Point(
+      Offset rotatedSpriteSourcePoint = new Offset(
           -spriteSourceSize.top - (spriteSourceSize.bottom - spriteSourceSize.top),
           spriteSourceSize.left);
       Rect rotatedSpriteSourceSize = rotatedSpriteSourcePoint & new Size(originalFrameSize.height, originalFrameSize.width);

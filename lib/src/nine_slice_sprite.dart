@@ -15,7 +15,7 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
     assert(texture != null && !texture.rotated);
     assert(size != null);
     assert(insets != null);
-    pivot = const Point(0.5, 0.5);
+    pivot = const Offset(0.5, 0.5);
     this.texture = texture;
     this.insets = insets;
   }
@@ -82,8 +82,8 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
 
   // Cached values.
   bool _isDirty = true;
-  List<Point> _vertices;
-  List<Point> _textureCoordinates;
+  List<Offset> _vertices;
+  List<Offset> _textureCoordinates;
   List<Color> _colors;
   List<int> _indices;
 
@@ -96,16 +96,16 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
 
     if (_isDirty) {
       // Calcuate vertices and indices.
-      _vertices = <Point>[
-        Point.origin,
+      _vertices = <Offset>[
+        Offset.zero,
 
       ];
 
       // Texture width and height.
       double tw = texture.frame.width;
       double th = texture.frame.height;
-      _textureCoordinates = <Point>[];
-      _vertices = <Point>[];
+      _textureCoordinates = <Offset>[];
+      _vertices = <Offset>[];
       _colors = <Color>[];
 
       for (int y = 0; y < 4; y += 1) {
@@ -154,8 +154,8 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
               break;
           }
 
-          _vertices.add(new Point(vx, vy));
-          _textureCoordinates.add(new Point(tx, ty));
+          _vertices.add(new Offset(vx, vy));
+          _textureCoordinates.add(new Offset(tx, ty));
           _colors.add(const Color(0xffffffff));
         }
       }
@@ -182,14 +182,15 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
       }
     }
 
-    canvas.drawVertices(
-      VertexMode.triangles,
-      _vertices,
-      _textureCoordinates,
-      _colors,
-        BlendMode.modulate,
-      _indices,
-      _cachedPaint
-    );
+    // TODO: Fix
+//    canvas.drawVertices(
+//      VertexMode.triangles,
+//      _vertices,
+//      _textureCoordinates,
+//      _colors,
+//        BlendMode.modulate,
+//      _indices,
+//      _cachedPaint
+//    );
   }
 }

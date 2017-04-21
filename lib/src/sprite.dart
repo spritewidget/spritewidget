@@ -32,7 +32,7 @@ class Sprite extends NodeWithSize with SpritePaint {
       size = texture.size;
       pivot = texture.pivot;
     } else {
-      pivot = new Point(0.5, 0.5);
+      pivot = new Offset(0.5, 0.5);
     }
   }
 
@@ -45,7 +45,7 @@ class Sprite extends NodeWithSize with SpritePaint {
     texture = new Texture(image);
     size = texture.size;
 
-    pivot = new Point(0.5, 0.5);
+    pivot = new Offset(0.5, 0.5);
   }
 
   @override
@@ -79,7 +79,7 @@ class Sprite extends NodeWithSize with SpritePaint {
       _updatePaint(_cachedPaint);
 
       // Do actual drawing of the sprite
-      texture.drawTexture(canvas, Point.origin, _cachedPaint);
+      texture.drawTexture(canvas, Offset.zero, _cachedPaint);
     } else {
       // Paint a red square for missing texture
       canvas.drawRect(new Rect.fromLTRB(0.0, 0.0, size.width, size.height),

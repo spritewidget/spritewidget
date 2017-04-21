@@ -35,7 +35,7 @@ class SpriteSheet {
       bool trimmed = frameInfo["trimmed"];
       Rect spriteSourceSize = _readJsonRect(frameInfo["spriteSourceSize"]);
       Size sourceSize = _readJsonSize(frameInfo["sourceSize"]);
-      Point pivot = _readJsonPoint(frameInfo["pivot"]);
+      Offset pivot = _readJsonPoint(frameInfo["pivot"]);
 
       Texture texture = new Texture._fromSpriteFrame(_image, fileName, sourceSize, rotated, trimmed, frame,
         spriteSourceSize, pivot);
@@ -59,11 +59,11 @@ class SpriteSheet {
     return new Size(w.toDouble(), h.toDouble());
   }
 
-  Point _readJsonPoint(Map<dynamic, dynamic> data) {
+  Offset _readJsonPoint(Map<dynamic, dynamic> data) {
     num x = data["x"];
     num y = data["y"];
 
-    return new Point(x.toDouble(), y.toDouble());
+    return new Offset(x.toDouble(), y.toDouble());
   }
 
   /// The image used by the sprite sheet.

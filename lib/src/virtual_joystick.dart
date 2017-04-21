@@ -11,9 +11,9 @@ class VirtualJoystick extends NodeWithSize {
   VirtualJoystick() : super(new Size(160.0, 160.0)) {
     userInteractionEnabled = true;
     handleMultiplePointers = false;
-    position = new Point(160.0, -20.0);
-    pivot = new Point(0.5, 1.0);
-    _center = new Point(size.width / 2.0, size.height / 2.0);
+    position = new Offset(160.0, -20.0);
+    pivot = new Offset(0.5, 1.0);
+    _center = new Offset(size.width / 2.0, size.height / 2.0);
     _handlePos = _center;
 
     _paintHandle = new Paint()
@@ -26,17 +26,17 @@ class VirtualJoystick extends NodeWithSize {
 
   /// Reads the current value of the joystick. A point with from (-1.0, -1.0)
   /// to (1.0, 1.0). If the joystick isn't moved it will return (0.0, 0.0).
-  Point get value => _value;
-  Point _value = Point.origin;
+  Offset get value => _value;
+  Offset _value = Offset.zero;
 
   /// True if the user is currently touching the joystick.
   bool get isDown => _isDown;
   bool _isDown = false;
 
 
-  Point _pointerDownAt;
-  Point _center;
-  Point _handlePos;
+  Offset _pointerDownAt;
+  Offset _center;
+  Offset _handlePos;
 
   Paint _paintHandle;
   Paint _paintControl;
@@ -50,18 +50,18 @@ class VirtualJoystick extends NodeWithSize {
     }
     else if (event.type == PointerUpEvent || event.type == PointerCancelEvent) {
       _pointerDownAt = null;
-      _value = Point.origin;
-      ActionTween moveToCenter = new ActionTween((Point a) => _handlePos = a, _handlePos, _center, 0.4, Curves.elasticOut);
+      _value = Offset.zero;
+      ActionTween moveToCenter = new ActionTween((Offset a) => _handlePos = a, _handlePos, _center, 0.4, Curves.elasticOut);
       actions.run(moveToCenter);
       _isDown = false;
     } else if (event.type == PointerMoveEvent) {
       Offset movedDist = event.boxPosition - _pointerDownAt;
 
-      _value = new Point(
+      _value = new Offset(
         (movedDist.dx / 80.0).clamp(-1.0, 1.0),
         (movedDist.dy / 80.0).clamp(-1.0, 1.0));
 
-        _handlePos = _center + new Offset(_value.x * 40.0, _value.y * 40.0);
+        _handlePos = _center + new Offset(_value.dx * 40.0, _value.dy * 40.0);
     }
     return true;
   }

@@ -34,7 +34,7 @@ class Node {
   SpriteBox _spriteBox;
   Node _parent;
 
-  Point _position = Point.origin;
+  Offset _position = Offset.zero;
   double _rotation = 0.0;
 
   Matrix4 _transformMatrix = new Matrix4.identity();
@@ -147,9 +147,9 @@ class Node {
   /// The position of this node relative to its parent.
   ///
   ///     myNode.position = new Point(42.0, 42.0);
-  Point get position => _position;
+  Offset get position => _position;
 
-  set position(Point position) {
+  set position(Offset position) {
     assert(position != null);
 
     _position = position;
@@ -369,7 +369,7 @@ class Node {
     Matrix4 matrix = new Matrix4(cy * _scaleX, sy * _scaleX, 0.0, 0.0,
                -sx * _scaleY, cx * _scaleY, 0.0, 0.0,
                0.0, 0.0, 1.0, 0.0,
-              _position.x, _position.y, 0.0, 1.0);
+              _position.dx, _position.dy, 0.0, 1.0);
 
     if (_skewX != 0.0 || _skewY != 0.0) {
       // Needs skew transform
@@ -448,36 +448,36 @@ class Node {
   /// coordinate space.
   ///
   ///     Point localPoint = myNode.convertPointToNodeSpace(pointInBoxCoordinates);
-  Point convertPointToNodeSpace(Point boxPoint) {
+  Offset convertPointToNodeSpace(Offset boxPoint) {
     assert(boxPoint != null);
     assert(_spriteBox != null);
 
-    Vector4 v =_boxToNodeMatrix().transform(new Vector4(boxPoint.x, boxPoint.y, 0.0, 1.0));
-    return new Point(v[0], v[1]);
+    Vector4 v =_boxToNodeMatrix().transform(new Vector4(boxPoint.dx, boxPoint.dy, 0.0, 1.0));
+    return new Offset(v[0], v[1]);
   }
 
   /// Converts a point from the local coordinate system of the node to the coordinate system of the [SpriteBox].
   ///
   ///     Point pointInBoxCoordinates = myNode.convertPointToBoxSpace(localPoint);
-  Point convertPointToBoxSpace(Point nodePoint) {
+  Offset convertPointToBoxSpace(Offset nodePoint) {
     assert(nodePoint != null);
     assert(_spriteBox != null);
 
-    Vector4 v =_nodeToBoxMatrix().transform(new Vector4(nodePoint.x, nodePoint.y, 0.0, 1.0));
-    return new Point(v[0], v[1]);
+    Vector4 v =_nodeToBoxMatrix().transform(new Vector4(nodePoint.dx, nodePoint.dy, 0.0, 1.0));
+    return new Offset(v[0], v[1]);
   }
 
   /// Converts a [point] from another [node]s coordinate system into the local coordinate system of this node.
   ///
   ///     Point pointInNodeASpace = nodeA.convertPointFromNode(pointInNodeBSpace, nodeB);
-  Point convertPointFromNode(Point point, Node node) {
+  Offset convertPointFromNode(Offset point, Node node) {
     assert(node != null);
     assert(point != null);
     assert(_spriteBox != null);
     assert(_spriteBox == node._spriteBox);
 
-    Point boxPoint = node.convertPointToBoxSpace(point);
-    Point localPoint = convertPointToNodeSpace(boxPoint);
+    Offset boxPoint = node.convertPointToBoxSpace(point);
+    Offset localPoint = convertPointToNodeSpace(boxPoint);
 
     return localPoint;
   }
@@ -499,7 +499,7 @@ class Node {
   ///       return (nodePoint.x >= minX && nodePoint.x < maxX &&
   ///       nodePoint.y >= minY && nodePoint.y < maxY);
   ///     }
-  bool isPointInside(Point point) {
+  bool isPointInside(Offset point) {
     assert(point != null);
 
     return false;

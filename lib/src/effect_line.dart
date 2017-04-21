@@ -40,7 +40,7 @@ class EffectLine extends Node {
   EffectLine({
     this.texture: null,
     this.transferMode: BlendMode.dstOver,
-    List<Point> points,
+    List<Offset> points,
     this.widthMode : EffectLineWidthMode.linear,
     this.minWidth: 10.0,
     this.maxWidth: 10.0,
@@ -55,7 +55,7 @@ class EffectLine extends Node {
     ColorSequence colorSequence
   }) {
     if (points == null)
-      this.points = <Point>[];
+      this.points = <Offset>[];
     else
       this.points = points;
 
@@ -108,9 +108,9 @@ class EffectLine extends Node {
   /// List of points that make up the line. Typically, you will only want to
   /// set this at the beginning. Then use [addPoint] to add additional points
   /// to the line.
-  List<Point> get points => _points;
+  List<Offset> get points => _points;
 
-  set points(List<Point> points) {
+  set points(List<Offset> points) {
     _points = points;
     _pointAges = <double>[];
     for (int i = 0; i < _points.length; i++) {
@@ -118,7 +118,7 @@ class EffectLine extends Node {
     }
   }
 
-  List<Point> _points;
+  List<Offset> _points;
 
   List<double> _pointAges;
   List<Color> _colors;
@@ -223,9 +223,9 @@ class EffectLine extends Node {
   }
 
   /// Adds a new point to the end of the line.
-  void addPoint(Point point) {
+  void addPoint(Offset point) {
     // Skip duplicate points
-    if (points.length > 0 && point.x == points[points.length - 1].x && point.y == points[points.length - 1].y)
+    if (points.length > 0 && point.dx == points[points.length - 1].dx && point.dy == points[points.length - 1].dy)
       return;
 
     if (simplify && points.length >= 2 && GameMath.distanceBetweenPoints(point, points[points.length - 2]) < 10.0) {
@@ -252,14 +252,14 @@ class EffectLine extends Node {
 
   double _sqr(double x) => x * x;
 
-  double _dist2(Point v, Point w) => _sqr(v.x - w.x) + _sqr(v.y - w.y);
+  double _dist2(Offset v, Offset w) => _sqr(v.dx - w.dx) + _sqr(v.dy - w.dy);
 
-  double _distToSeqment2(Point p, Point v, Point w) {
+  double _distToSeqment2(Offset p, Offset v, Offset w) {
     double l2 = _dist2(v, w);
     if (l2 == 0.0) return _dist2(p, v);
-    double t = ((p.x - v.x) * (w.x - v.x) + (p.y - v.y) * (w.y - v.y)) / l2;
+    double t = ((p.dx - v.dx) * (w.dx - v.dx) + (p.dy - v.dy) * (w.dy - v.dy)) / l2;
     if (t < 0) return _dist2(p, v);
     if (t > 1) return _dist2(p, w);
-    return _dist2(p, new Point(v.x + t * (w.x - v.x), v.y + t * (w.y - v.y)));
+    return _dist2(p, new Offset(v.dx + t * (w.dx - v.dx), v.dy + t * (w.dy - v.dy)));
   }
 }

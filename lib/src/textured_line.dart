@@ -10,7 +10,7 @@ part of flutter_sprites;
 class TexturedLine extends Node {
 
   /// Creates a new TexturedLine.
-  TexturedLine(List<Point> points, List<Color> colors, List<double> widths, [Texture texture, List<double> textureStops]) {
+  TexturedLine(List<Offset> points, List<Color> colors, List<double> widths, [Texture texture, List<double> textureStops]) {
     painter = new TexturedLinePainter(points, colors, widths, texture, textureStops);
   }
 
@@ -31,11 +31,11 @@ class TexturedLinePainter {
   }
 
   /// The points that makes up the polyline.
-  List<Point> get points => _points;
+  List<Offset> get points => _points;
 
-  List<Point> _points;
+  List<Offset> _points;
 
-  set points(List<Point> points) {
+  set points(List<Offset> points) {
     _points = points;
     _calculatedTextureStops = null;
   }
@@ -123,21 +123,21 @@ class TexturedLinePainter {
 
     // Calculate normals
     List<Vector2> vectors = <Vector2>[];
-    for (Point pt in _points) {
-      vectors.add(new Vector2(pt.x, pt.y));
+    for (Offset pt in _points) {
+      vectors.add(new Vector2(pt.dx, pt.dy));
     }
     List<Vector2> miters = _computeMiterList(vectors, false);
 
-    List<Point> vertices = <Point>[];
+    List<Offset> vertices = <Offset>[];
     List<int> indices = <int>[];
     List<Color> verticeColors = <Color>[];
-    List<Point> textureCoordinates;
+    List<Offset> textureCoordinates;
     double textureTop;
     double textureBottom;
     List<double> stops;
 
     // Add first point
-    Point lastPoint = _points[0];
+    Offset lastPoint = _points[0];
     Vector2 lastMiter = miters[0];
 
     // Add vertices and colors
@@ -151,7 +151,7 @@ class TexturedLinePainter {
       // Setup for calculating texture coordinates
       textureTop = texture.frame.top;
       textureBottom = texture.frame.bottom;
-      textureCoordinates = <Point>[];
+      textureCoordinates = <Offset>[];
 
       // Use correct stops
       if (textureStops != null) {
@@ -164,14 +164,14 @@ class TexturedLinePainter {
 
       // Texture coordinate points
       double xPos = _xPosForStop(stops[0]);
-      textureCoordinates.add(new Point(xPos, textureTop));
-      textureCoordinates.add(new Point(xPos, textureBottom));
+      textureCoordinates.add(new Offset(xPos, textureTop));
+      textureCoordinates.add(new Offset(xPos, textureBottom));
     }
 
     // Add the rest of the points
     for (int i = 1; i < _points.length; i++) {
       // Add vertices
-      Point currentPoint = _points[i];
+      Offset currentPoint = _points[i];
       Vector2 currentMiter = miters[i];
       _addVerticesForPoint(vertices, currentPoint, currentMiter, widths[i]);
 
@@ -190,8 +190,8 @@ class TexturedLinePainter {
       if (texture != null) {
         // Texture coordinate points
         double xPos = _xPosForStop(stops[i]);
-        textureCoordinates.add(new Point(xPos, textureTop));
-        textureCoordinates.add(new Point(xPos, textureBottom));
+        textureCoordinates.add(new Offset(xPos, textureTop));
+        textureCoordinates.add(new Offset(xPos, textureBottom));
       }
 
       // Update last values
@@ -199,7 +199,8 @@ class TexturedLinePainter {
       lastMiter = currentMiter;
     }
 
-    canvas.drawVertices(VertexMode.triangles, vertices, textureCoordinates, verticeColors, BlendMode.modulate, indices, _cachedPaint);
+    //TODO: Fix
+//    canvas.drawVertices(VertexMode.triangles, vertices, textureCoordinates, verticeColors, BlendMode.modulate, indices, _cachedPaint);
   }
 
   double _xPosForStop(double stop) {
@@ -210,21 +211,21 @@ class TexturedLinePainter {
     }
   }
 
-  void _addVerticesForPoint(List<Point> vertices, Point point, Vector2 miter, double width) {
+  void _addVerticesForPoint(List<Offset> vertices, Offset point, Vector2 miter, double width) {
     double halfWidth = width / 2.0;
 
     Offset offset0 = new Offset(miter[0] * halfWidth, miter[1] * halfWidth);
     Offset offset1 = new Offset(-miter[0] * halfWidth, -miter[1] * halfWidth);
 
-    Point vertex0 = point + offset0;
-    Point vertex1 = point + offset1;
+    Offset vertex0 = point + offset0;
+    Offset vertex1 = point + offset1;
 
     int vertexCount = vertices.length;
     if (removeArtifacts && vertexCount >= 2) {
-      Point oldVertex0 = vertices[vertexCount - 2];
-      Point oldVertex1 = vertices[vertexCount - 1];
+      Offset oldVertex0 = vertices[vertexCount - 2];
+      Offset oldVertex1 = vertices[vertexCount - 1];
 
-      Point intersection = GameMath.lineIntersection(oldVertex0, oldVertex1, vertex0, vertex1);
+      Offset intersection = GameMath.lineIntersection(oldVertex0, oldVertex1, vertex0, vertex1);
       if (intersection != null) {
         if (GameMath.distanceBetweenPoints(vertex0, intersection) < GameMath.distanceBetweenPoints(vertex1, intersection)) {
           vertex0 = oldVertex0;
@@ -247,8 +248,8 @@ class TexturedLinePainter {
 
     // Calculate distance to each point from the first point along the line
     for (int i = 1; i < _points.length; i++) {
-      Point lastPoint = _points[i - 1];
-      Point currentPoint = _points[i];
+      Offset lastPoint = _points[i - 1];
+      Offset currentPoint = _points[i];
 
       double dist = GameMath.distanceBetweenPoints(lastPoint, currentPoint);
       length += dist;
@@ -258,7 +259,7 @@ class TexturedLinePainter {
     // Normalize the values in the range [0.0, 1.0]
     for (int i = 1; i < points.length; i++) {
       stops[i] = stops[i] / length;
-      new Point(512.0, 512.0);
+      new Offset(512.0, 512.0);
     }
 
     _calculatedTextureStops = stops;

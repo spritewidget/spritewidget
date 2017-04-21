@@ -99,9 +99,9 @@ class GameMath {
 
   /// Approximates the distance between two points. The returned value can be
   /// up to 6% wrong in the worst case.
-  static double distanceBetweenPoints(Point a, Point b) {
-    double dx = a.x - b.x;
-    double dy = a.y - b.y;
+  static double distanceBetweenPoints(Offset a, Offset b) {
+    double dx = a.dx - b.dx;
+    double dy = a.dy - b.dy;
     if (dx < 0.0) dx = -dx;
     if (dy < 0.0) dy = -dy;
     if (dx > dy) {
@@ -120,18 +120,18 @@ class GameMath {
 
   /// Interpolates a [Point] between [a] and [b] according to the
   /// [filterFactor], which should be in the range of 0.0 to 1.0.
-  static Point filterPoint(Point a, Point b, double filterFactor) {
-    return new Point(filter(a.x, b.x, filterFactor), filter(a.y, b.y, filterFactor));
+  static Offset filterPoint(Offset a, Offset b, double filterFactor) {
+    return new Offset(filter(a.dx, b.dx, filterFactor), filter(a.dy, b.dy, filterFactor));
   }
 
   /// Returns the intersection between two line segmentss defined by p0, p1 and
   /// q0, q1. If the lines are not intersecting null is returned.
-  static Point lineIntersection(Point p0, Point p1, Point q0, Point q1) {
+  static Offset lineIntersection(Offset p0, Offset p1, Offset q0, Offset q1) {
     double epsilon = 1e-10;
 
-    Vector2 r = new Vector2(p1.x - p0.x, p1.y - p0.y);
-    Vector2 s = new Vector2(q1.x - q0.x, q1.y - q0.y);
-    Vector2 qp = new Vector2(q0.x - p0.x, q0.y - p0.y);
+    Vector2 r = new Vector2(p1.dx - p0.dx, p1.dy - p0.dy);
+    Vector2 s = new Vector2(q1.dx - q0.dx, q1.dy - q0.dy);
+    Vector2 qp = new Vector2(q0.dx - p0.dx, q0.dy - p0.dy);
 
     double rxs = cross2(r, s);
 
@@ -144,7 +144,7 @@ class GameMath {
     double u = cross2(qp, r) / rxs;
 
     if ((0.0 <= t && t <= 1.0) && (0.0 <= u && u <= 1.0)) {
-      return new Point(p0.x + t * r.x, p0.y + t * r.y);
+      return new Offset(p0.dx + t * r.x, p0.dy + t * r.y);
     }
 
     // No intersection between the lines

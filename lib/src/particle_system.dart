@@ -50,7 +50,7 @@ class ParticleSystem extends Node {
   ParticleSystem(this.texture,
                  {this.life: 1.5,
                   this.lifeVar: 1.0,
-                  this.posVar: Point.origin,
+                  this.posVar: Offset.zero,
                   this.startSize: 2.5,
                   this.startSizeVar: 0.5,
                   this.endSize: 0.0,
@@ -100,7 +100,7 @@ class ParticleSystem extends Node {
   double lifeVar;
 
   /// The variance of a particles initial position.
-  Point posVar;
+  Offset posVar;
 
   /// The start scale of each individual particle.
   double startSize;
@@ -316,9 +316,9 @@ class ParticleSystem extends Node {
     particle.timeToLive = math.max(life + lifeVar * randomSignedDouble(), 0.0);
 
     // Position
-    Point srcPos = Point.origin;
-    particle.pos = new Vector2(srcPos.x + posVar.x * randomSignedDouble(),
-                               srcPos.y + posVar.y * randomSignedDouble());
+    Offset srcPos = Offset.zero;
+    particle.pos = new Vector2(srcPos.dx + posVar.dx * randomSignedDouble(),
+                               srcPos.dy + posVar.dy * randomSignedDouble());
 
     // Size
     particle.size = math.max(startSize + startSizeVar * randomSignedDouble(), 0.0);

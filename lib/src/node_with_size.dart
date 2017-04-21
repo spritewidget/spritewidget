@@ -18,7 +18,7 @@ class NodeWithSize extends Node {
   ///
   ///     // Position myNode from is middle top
   ///     myNode.pivot = new Point(0.5, 0.0);
-  Point pivot;
+  Offset pivot;
 
   /// Creates a new NodeWithSize.
   ///
@@ -28,7 +28,7 @@ class NodeWithSize extends Node {
   NodeWithSize(this.size) {
     if (size == null)
       size = Size.zero;
-    pivot = Point.origin;
+    pivot = Offset.zero;
   }
 
   /// Call this method in your [paint] method if you want the origin of your drawing to be the top left corner of the
@@ -46,21 +46,21 @@ class NodeWithSize extends Node {
   ///       canvas.restore();
   ///     }
   void applyTransformForPivot(Canvas canvas) {
-    if (pivot.x != 0 || pivot.y != 0) {
-      double pivotInPointsX = size.width * pivot.x;
-      double pivotInPointsY = size.height * pivot.y;
+    if (pivot.dx != 0 || pivot.dy != 0) {
+      double pivotInPointsX = size.width * pivot.dx;
+      double pivotInPointsY = size.height * pivot.dy;
       canvas.translate(-pivotInPointsX, -pivotInPointsY);
     }
   }
 
   @override
-  bool isPointInside (Point nodePoint) {
+  bool isPointInside (Offset nodePoint) {
 
-    double minX = -size.width * pivot.x;
-    double minY = -size.height * pivot.y;
+    double minX = -size.width * pivot.dx;
+    double minY = -size.height * pivot.dy;
     double maxX = minX + size.width;
     double maxY = minY + size.height;
-    return (nodePoint.x >= minX && nodePoint.x < maxX &&
-            nodePoint.y >= minY && nodePoint.y < maxY);
+    return (nodePoint.dx >= minX && nodePoint.dx < maxX &&
+            nodePoint.dy >= minY && nodePoint.dy < maxY);
   }
 }

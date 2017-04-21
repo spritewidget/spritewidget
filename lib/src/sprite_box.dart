@@ -225,7 +225,7 @@ class SpriteBox extends RenderBox {
         // Check if the node is ready to handle a pointer
         if (node.handleMultiplePointers || node._handlingPointer == null) {
           // Do the hit test
-          Point posInNodeSpace = node.convertPointToNodeSpace(entry.localPosition);
+          Offset posInNodeSpace = node.convertPointToNodeSpace(entry.localPosition);
           if (node.isPointInside(posInNodeSpace)) {
             nodeTargets.add(node);
             node._handlingPointer = event.pointer;
@@ -256,7 +256,7 @@ class SpriteBox extends RenderBox {
   }
 
   @override
-  bool hitTest(HitTestResult result, { Point position }) {
+  bool hitTest(HitTestResult result, { Offset position }) {
     result.add(new _SpriteBoxHitTestEntry(this, position));
     return true;
   }
@@ -488,7 +488,7 @@ class SpriteBox extends RenderBox {
   /// node tree is large.
   ///
   ///     List nodes = mySpriteBox.findNodesAtPosition(new Point(50.0, 50.0));
-  List<Node> findNodesAtPosition(Point position) {
+  List<Node> findNodesAtPosition(Offset position) {
     assert(position != null);
 
     List<Node> nodes = <Node>[];
@@ -499,13 +499,13 @@ class SpriteBox extends RenderBox {
     return nodes;
   }
 
-  void _addNodesAtPosition(Node node, Point position, List<Node> list) {
+  void _addNodesAtPosition(Node node, Offset position, List<Node> list) {
     // Visit children first
     for (Node child in node.children) {
       _addNodesAtPosition(child, position, list);
     }
     // Do the hit test
-    Point posInNodeSpace = node.convertPointToNodeSpace(position);
+    Offset posInNodeSpace = node.convertPointToNodeSpace(position);
     if (node.isPointInside(posInNodeSpace)) {
       list.add(node);
     }
@@ -514,7 +514,7 @@ class SpriteBox extends RenderBox {
 
 class _SpriteBoxHitTestEntry extends BoxHitTestEntry {
   List<Node> nodeTargets;
-  _SpriteBoxHitTestEntry(RenderBox target, Point localPosition) : super(target, localPosition);
+  _SpriteBoxHitTestEntry(RenderBox target, Offset localPosition) : super(target, localPosition);
 }
 
 /// An event that is passed down the node tree when pointer events occur. The SpriteBoxEvent is typically handled in
@@ -531,7 +531,7 @@ class SpriteBoxEvent {
   ///         // Do something!
   ///       }
   ///     }
-  final Point boxPosition;
+  final Offset boxPosition;
 
   /// The type of event, there are currently four valid types, PointerDownEvent, PointerMoveEvent, PointerUpEvent, and
   /// PointerCancelEvent.
