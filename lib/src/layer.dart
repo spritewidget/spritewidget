@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-part of flutter_sprites;
+part of spritewidget;
 
 /// A [Node] that provides an intermediate rendering surface in the sprite
 /// rendering tree. A [Layer] can be used to change the opacity, color, or to

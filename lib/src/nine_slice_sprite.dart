@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-part of flutter_sprites;
+part of spritewidget;
 
 /// A NineSliceSprite is similar to a [Sprite], but it it can strech its
 /// inner area to fit the size of the [Node]. This is ideal for fast drawing

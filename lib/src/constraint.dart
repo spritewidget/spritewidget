@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-part of flutter_sprites;
+part of spritewidget;
 
 /// A constraint limits or otherwise controls a [Node]'s properties, such as
 /// position or rotation. Add a list of constraints by setting the [Node]'s

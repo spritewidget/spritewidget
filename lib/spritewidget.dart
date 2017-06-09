@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 /// A sprite toolkit built on top of Flutter.
-library flutter_sprites;
+library spritewidget;
 
 import 'dart:async';
 import 'dart:convert';

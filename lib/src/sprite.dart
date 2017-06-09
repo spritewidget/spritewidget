@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-part of flutter_sprites;
+part of spritewidget;
 
 /// A Sprite is a [Node] that renders a bitmap image to the screen.
 class Sprite extends NodeWithSize with SpritePaint {

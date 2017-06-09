@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-part of flutter_sprites;
+part of spritewidget;
 
 Offset _cardinalSplineAt(Offset p0, Offset p1, Offset p2, Offset p3, double tension, double t) {
   double t2 = t * t;

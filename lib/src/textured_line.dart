@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-part of flutter_sprites;
+part of spritewidget;
 
 /// A [Node] that draws a polyline from a list of points using the provided
 /// [Texture]. The textured line draws static lines. If you want to create an

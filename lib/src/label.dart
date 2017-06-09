@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-part of flutter_sprites;
+part of spritewidget;
 
 /// Labels are used to display a string of text in a the node tree. To align
 /// the label, the textAlign property of the [TextStyle] can be set.
