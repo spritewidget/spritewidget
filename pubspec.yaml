@@ -1,14 +1,9 @@
-name: flutter_sprites
+name: spritewidget
 description: A sprite toolkit built on top of Flutter
-version: 0.0.15
-author: Flutter Authors <flutter-dev@googlegroups.com>
-homepage: http://flutter.io
+version: 0.9.0
+author: Viktor Lidholt <viktorlidholt@gmail.com>
+homepage: http://spritewidget.com
 
 dependencies:
-  box2d: '>=0.3.0 <0.4.0'
   flutter:
     sdk: flutter
-
-dev_dependencies:
-  flutter_test:
-    path: ../flutter/packages/flutter_test
