@@ -1,12 +1,10 @@
-# Flutter Sprites
+# SpriteWidget
 
-Flutter Sprites is a toolkit for building complex, high performance animations and 2D games with Flutter. Your sprite render tree lives inside a SpriteWidget that mixes seamlessly with other Flutter and Material widgets. You can use Flutter Sprites to create anything from an animated icon to a full fledged game.
+SpriteWidget is a toolkit for building complex, high performance animations and 2D games with Flutter. Your sprite render tree lives inside a widget that mixes seamlessly with other Flutter and Material widgets. You can use SpriteWidget to create anything from an animated icon to a full fledged game.
 
-This library is currently not maintained or tested. If you are interested in using and maintaining this library, please contact flutter-dev@googlegroups.com for more information.
+This guide assumes a basic knowledge of Flutter and Dart. We are working on examples to get started easier and to show the capabilities of SpriteWidget.
 
-This guide assumes a basic knowledge of Flutter and Dart. You can find an example of Flutter Sprites in the Flutter Gallery in the Weather demo, or in the flutter/game repository on Github.
-
-## Setting up a SpriteWidget
+## Creating a SpriteWidget
 
 The first thing you need to do to use Flutter Sprites is to setup a SpriteWidget with a root node that is used to draw it's contents. Any sprite nodes that you add to the root node will be rendered by the SpriteWidget. Typically, your root node is part of your app's state. This is an example of how you can setup a custom stateful widget with Flutter Sprites:
 
