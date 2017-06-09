@@ -4,9 +4,17 @@ SpriteWidget is a toolkit for building complex, high performance animations and 
 
 This guide assumes a basic knowledge of Flutter and Dart. We are working on examples to get started easier and to show the capabilities of SpriteWidget.
 
+## Adding SpriteWidget to you project
+SpriteWidget is available as a standard package. Just add it as a dependency to your pubspec.yaml and you are good to go.
+
+    dependencies:
+      flutter:
+        sdk: flutter
+      spritewidget:
+
 ## Creating a SpriteWidget
 
-The first thing you need to do to use Flutter Sprites is to setup a SpriteWidget with a root node that is used to draw it's contents. Any sprite nodes that you add to the root node will be rendered by the SpriteWidget. Typically, your root node is part of your app's state. This is an example of how you can setup a custom stateful widget with Flutter Sprites:
+The first thing you need to do to use SpriteWidget is to setup a root node that is used to draw it's contents. Any sprite nodes that you add to the root node will be rendered by the SpriteWidget. Typically, your root node is part of your app's state. This is an example of how you can setup a custom stateful widget with a SpriteWidget:
 
     import 'package:flutter/material.dart';
     import 'package:flutter_sprites/flutter_sprites.dart';
