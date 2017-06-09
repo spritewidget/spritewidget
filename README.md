@@ -17,7 +17,7 @@ SpriteWidget is available as a standard package. Just add it as a dependency to 
 The first thing you need to do to use SpriteWidget is to setup a root node that is used to draw it's contents. Any sprite nodes that you add to the root node will be rendered by the SpriteWidget. Typically, your root node is part of your app's state. This is an example of how you can setup a custom stateful widget with a SpriteWidget:
 
     import 'package:flutter/material.dart';
-    import 'package:flutter_sprites/flutter_sprites.dart';
+    import 'package:spritewidget/spritewidget.dart';
 
     class MyWidget extends StatefulWidget {
       @override
