@@ -412,10 +412,10 @@ class ActionTween extends ActionInterval {
   void _computeDelta() {
     if (startVal is Offset) {
       // Point
-      double xStart = startVal.x;
-      double yStart = startVal.y;
-      double xEnd = endVal.x;
-      double yEnd = endVal.y;
+      double xStart = startVal.dx;
+      double yStart = startVal.dy;
+      double xEnd = endVal.dx;
+      double yEnd = endVal.dy;
       _delta = new Offset(xEnd - xStart, yEnd - yStart);
     } else if (startVal is Size) {
       // Size
@@ -456,10 +456,10 @@ class ActionTween extends ActionInterval {
 
     if (startVal is Offset) {
       // Point
-      double xStart = startVal.x;
-      double yStart = startVal.y;
-      double xDelta = _delta.x;
-      double yDelta = _delta.y;
+      double xStart = startVal.dx;
+      double yStart = startVal.dy;
+      double xDelta = _delta.dx;
+      double yDelta = _delta.dy;
       newVal = new Offset(xStart + xDelta * t, yStart + yDelta * t);
     } else if (startVal is Size) {
       // Size
