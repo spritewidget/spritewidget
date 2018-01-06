@@ -38,7 +38,7 @@ class EffectLine extends Node {
   /// Creates a new EffectLine with the specified parameters. Only the
   /// [texture] parameter is required, all other parameters are optional.
   EffectLine({
-    this.texture: null,
+    this.texture,
     this.transferMode: BlendMode.dstOver,
     List<Offset> points,
     this.widthMode : EffectLineWidthMode.linear,
@@ -48,9 +48,9 @@ class EffectLine extends Node {
     this.animationMode: EffectLineAnimationMode.none,
     this.scrollSpeed: 0.1,
     double scrollStart: 0.0,
-    this.fadeDuration: null,
-    this.fadeAfterDelay: null,
-    this.textureLoopLength: null,
+    this.fadeDuration,
+    this.fadeAfterDelay,
+    this.textureLoopLength,
     this.simplify: true,
     ColorSequence colorSequence
   }) {
@@ -74,7 +74,7 @@ class EffectLine extends Node {
   }
 
   /// The texture used to draw the line.
-  final Texture texture;
+  final SpriteTexture texture;
 
   /// The transfer mode used to draw the line, default is
   /// [TransferMode.dstOver].

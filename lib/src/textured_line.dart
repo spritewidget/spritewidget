@@ -5,12 +5,12 @@
 part of spritewidget;
 
 /// A [Node] that draws a polyline from a list of points using the provided
-/// [Texture]. The textured line draws static lines. If you want to create an
+/// [SpriteTexture]. The textured line draws static lines. If you want to create an
 /// animated line, consider using the [EffectLine] instead.
 class TexturedLine extends Node {
 
   /// Creates a new TexturedLine.
-  TexturedLine(List<Offset> points, List<Color> colors, List<double> widths, [Texture texture, List<double> textureStops]) {
+  TexturedLine(List<Offset> points, List<Color> colors, List<double> widths, [SpriteTexture texture, List<double> textureStops]) {
     painter = new TexturedLinePainter(points, colors, widths, texture, textureStops);
   }
 
@@ -23,10 +23,10 @@ class TexturedLine extends Node {
   }
 }
 
-/// Draws a polyline to a [Canvas] from a list of points using the provided [Texture].
+/// Draws a polyline to a [Canvas] from a list of points using the provided [SpriteTexture].
 class TexturedLinePainter {
   /// Creates a painter that draws a polyline with a texture.
-  TexturedLinePainter(this._points, this.colors, this.widths, [Texture texture, this.textureStops]) {
+  TexturedLinePainter(this._points, this.colors, this.widths, [SpriteTexture texture, this.textureStops]) {
     this.texture = texture;
   }
 
@@ -48,11 +48,11 @@ class TexturedLinePainter {
   List<double> widths;
 
   /// The texture this line will be drawn using.
-  Texture get texture => _texture;
+  SpriteTexture get texture => _texture;
 
-  Texture _texture;
+  SpriteTexture _texture;
 
-  set texture(Texture texture) {
+  set texture(SpriteTexture texture) {
     _texture = texture;
     if (texture == null) {
       _cachedPaint = new Paint();

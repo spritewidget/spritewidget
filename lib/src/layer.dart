@@ -23,7 +23,7 @@ class Layer extends Node with SpritePaint {
   /// if it is known.
   ///
   ///     var myLayer = new Layer();
-  Layer([this.layerRect = null]);
+  Layer([this.layerRect]);
 
   Paint _cachedPaint = new Paint()
     ..filterQuality = FilterQuality.low

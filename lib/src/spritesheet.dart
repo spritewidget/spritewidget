@@ -8,12 +8,12 @@ part of spritewidget;
 ///
 /// The placement of the smaller images are defined by a json file. The larger image and json file is typically created
 /// by a tool such as TexturePacker. The [SpriteSheet] class will take a reference to a larger image and a json string.
-/// From the image and the string the [SpriteSheet] creates a number of [Texture] objects. The names of the frames in
+/// From the image and the string the [SpriteSheet] creates a number of [SpriteTexture] objects. The names of the frames in
 /// the sprite sheet definition are used to reference the different textures.
 class SpriteSheet {
 
   ui.Image _image;
-  Map<String, Texture> _textures = new Map<String, Texture>();
+  Map<String, SpriteTexture> _textures = new Map<String, SpriteTexture>();
 
   /// Creates a new sprite sheet from an [_image] and a sprite sheet [jsonDefinition].
   ///
@@ -37,7 +37,7 @@ class SpriteSheet {
       Size sourceSize = _readJsonSize(frameInfo["sourceSize"]);
       Offset pivot = _readJsonPoint(frameInfo["pivot"]);
 
-      Texture texture = new Texture._fromSpriteFrame(_image, fileName, sourceSize, rotated, trimmed, frame,
+      SpriteTexture texture = new SpriteTexture._fromSpriteFrame(_image, fileName, sourceSize, rotated, trimmed, frame,
         spriteSourceSize, pivot);
       _textures[fileName] = texture;
     }
@@ -74,5 +74,5 @@ class SpriteSheet {
   /// Returns a texture by its name.
   ///
   ///     var myTexture = mySpriteSheet["example.png"];
-  Texture operator [](String fileName) => _textures[fileName];
+  SpriteTexture operator [](String fileName) => _textures[fileName];
 }

@@ -91,7 +91,7 @@ class ParticleSystem extends Node {
   }
 
   /// The texture used to draw each individual sprite.
-  Texture texture;
+  SpriteTexture texture;
 
   /// The time in seconds each particle will be alive.
   double life;

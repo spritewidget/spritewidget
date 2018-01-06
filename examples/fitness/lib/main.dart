@@ -453,7 +453,7 @@ class _JumpingJackSide extends Node {
 class _JumpingJackPart extends Sprite {
   String name;
 
-  _JumpingJackPart(Texture texture, this.pivotPosition, {String this.name: ''})
+  _JumpingJackPart(SpriteTexture texture, this.pivotPosition, {this.name: ''})
     : super(texture);
   final Offset pivotPosition;
 

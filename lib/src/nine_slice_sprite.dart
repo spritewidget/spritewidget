@@ -11,7 +11,7 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
 
   /// Creates a new NineSliceSprite from the privided [texture], [size], and
   /// texture [insets].
-  NineSliceSprite(Texture texture, Size size, EdgeInsets insets) : super(size) {
+  NineSliceSprite(SpriteTexture texture, Size size, EdgeInsets insets) : super(size) {
     assert(texture != null && !texture.rotated);
     assert(size != null);
     assert(insets != null);
@@ -23,16 +23,16 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
   /// Creates a new NineSliceSprite from the provided [image], [size], and
   /// texture [insets].
   NineSliceSprite.fromImage(ui.Image image, Size size, EdgeInsets insets)
-    : this(new Texture(image), size, insets);
+    : this(new SpriteTexture(image), size, insets);
 
   /// The texture that the sprite will render to screen. Cannot be null.
   ///
   ///     my9Sprite.texture = myTexture;
-  Texture get texture => _texture;
+  SpriteTexture get texture => _texture;
 
-  Texture _texture;
+  SpriteTexture _texture;
 
-  set texture(Texture texture) {
+  set texture(SpriteTexture texture) {
     _texture = texture;
     _isDirty = true;
     if (texture == null) {

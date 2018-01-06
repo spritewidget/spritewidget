@@ -36,7 +36,7 @@ part 'src/sprite.dart';
 part 'src/sprite_box.dart';
 part 'src/sprite_widget.dart';
 part 'src/spritesheet.dart';
-part 'src/texture.dart';
+part 'src/sprite_texture.dart';
 part 'src/textured_line.dart';
 part 'src/util.dart';
 part 'src/virtual_joystick.dart';

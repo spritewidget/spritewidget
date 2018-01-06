@@ -7,12 +7,12 @@ part of spritewidget;
 /// A texture represents a rectangular area of an image and is typically used to draw a sprite to the screen.
 ///
 /// Normally you get a reference to a texture from a [SpriteSheet], but you can also create one from an [Image].
-class Texture {
+class SpriteTexture {
 
   /// Creates a new texture from an [Image] object.
   ///
   ///     var myTexture = new Texture(myImage);
-  Texture(ui.Image image) :
+  SpriteTexture(ui.Image image) :
     size = new Size(image.width.toDouble(), image.height.toDouble()),
     image = image,
     trimmed = false,
@@ -22,7 +22,7 @@ class Texture {
     pivot = new Offset(0.5, 0.5);
 
 
-  Texture._fromSpriteFrame(this.image, this.name, this.size, this.rotated, this.trimmed, this.frame,
+  SpriteTexture._fromSpriteFrame(this.image, this.name, this.size, this.rotated, this.trimmed, this.frame,
                            this.spriteSourceSize, this.pivot);
 
   /// The image that this texture is a part of.
@@ -70,12 +70,12 @@ class Texture {
   Offset pivot;
 
   /// Creates a new Texture from a part of the current texture.
-  Texture textureFromRect(Rect rect, [String name = null]) {
+  SpriteTexture textureFromRect(Rect rect, [String name]) {
     assert(rect != null);
     assert(!rotated);
     Rect srcFrame = new Rect.fromLTWH(rect.left + frame.left, rect.top + frame.top, rect.size.width, rect.size.height);
     Rect dstFrame = new Rect.fromLTWH(0.0, 0.0, rect.size.width, rect.size.height);
-    return new Texture._fromSpriteFrame(image, name, rect.size, false, false, srcFrame, dstFrame, new Offset(0.5, 0.5));
+    return new SpriteTexture._fromSpriteFrame(image, name, rect.size, false, false, srcFrame, dstFrame, new Offset(0.5, 0.5));
   }
 
   /// Draws the texture to a [Canvas] at a specified [position] and with the

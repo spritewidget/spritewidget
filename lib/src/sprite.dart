@@ -13,7 +13,7 @@ class Sprite extends NodeWithSize with SpritePaint {
   /// marking the bounds of the sprite.
   ///
   ///     mySprite.texture = myTexture;
-  Texture texture;
+  SpriteTexture texture;
 
   /// If true, constrains the proportions of the image by scaling it down, if its proportions doesn't match the [size].
   ///
@@ -42,7 +42,7 @@ class Sprite extends NodeWithSize with SpritePaint {
   Sprite.fromImage(ui.Image image) : super(Size.zero) {
     assert(image != null);
 
-    texture = new Texture(image);
+    texture = new SpriteTexture(image);
     size = texture.size;
 
     pivot = new Offset(0.5, 0.5);
