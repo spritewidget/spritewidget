@@ -267,7 +267,7 @@ class Node {
         node = node.parent;
       assert(node != child); // indicates we are about to create a cycle
       return true;
-    });
+    }());
 
     _childrenNeedSorting = true;
     _children.add(child);
