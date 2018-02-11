@@ -10,7 +10,8 @@ class Label extends Node {
   /// Creates a new Label with the provided [text] and [textStyle].
   Label(this._text, {
     TextStyle textStyle,
-    TextAlign textAlign
+    TextAlign textAlign,
+    this.textDirection = TextDirection.rtl
   }) : _textStyle = textStyle ?? const TextStyle(),
        textAlign = textAlign ?? TextAlign.left;
 
@@ -36,10 +37,13 @@ class Label extends Node {
   TextPainter _painter;
   double _width;
 
+  final TextDirection textDirection;
+
   @override
   void paint(Canvas canvas) {
     if (_painter == null) {
-      _painter = new TextPainter(text: new TextSpan(style: _textStyle, text: _text))
+      _painter = new TextPainter(text: new TextSpan(style: _textStyle, text: _text),
+          textDirection: textDirection)
         ..layout();
       _width = _painter.size.width;
     }
