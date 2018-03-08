@@ -405,7 +405,7 @@ class _JumpingJackSide extends Node {
       _tweenRotation(upperLeg, d0[3], d1[3], duration),
       _tweenRotation(lowerLeg, d0[4], d1[4], duration),
       _tweenRotation(foot, d0[5], d1[5], duration),
-      new ActionTween((Offset a) => torso.position = a, new Offset(0.0, d0[6]),
+      new ActionTween<Offset>((a) => torso.position = a, new Offset(0.0, d0[6]),
         new Offset(0.0, d1[6]), duration)
     ];
 
@@ -414,7 +414,7 @@ class _JumpingJackSide extends Node {
 
   ActionTween _tweenRotation(
     _JumpingJackPart part, double r0, double r1, double duration) {
-    return new ActionTween((double a) => part.rotation = a, r0, r1, duration);
+    return new ActionTween((a) => part.rotation = a, r0, r1, duration);
   }
 
   List<double> _dataForPose(int pose) {

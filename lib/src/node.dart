@@ -250,6 +250,15 @@ class Node {
     return _children;
   }
 
+  bool _assertNonCircularAssignment(Node child) {
+    Node node = this;
+    while (node.parent != null) {
+      node = node.parent;
+      assert(node != child); // indicates we are about to create a cycle
+    }
+    return true;
+  }
+
   // Adding and removing children
 
   /// Adds a child to this node.
@@ -260,14 +269,7 @@ class Node {
   void addChild(Node child) {
     assert(child != null);
     assert(child._parent == null);
-
-    assert(() {
-      Node node = this;
-      while (node.parent != null)
-        node = node.parent;
-      assert(node != child); // indicates we are about to create a cycle
-      return true;
-    });
+    assert(_assertNonCircularAssignment(child));
 
     _childrenNeedSorting = true;
     _children.add(child);

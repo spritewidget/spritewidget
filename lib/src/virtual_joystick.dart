@@ -51,7 +51,7 @@ class VirtualJoystick extends NodeWithSize {
     else if (event.type == PointerUpEvent || event.type == PointerCancelEvent) {
       _pointerDownAt = null;
       _value = Offset.zero;
-      ActionTween moveToCenter = new ActionTween((Offset a) => _handlePos = a, _handlePos, _center, 0.4, Curves.elasticOut);
+      ActionTween moveToCenter = new ActionTween((a) { _handlePos = a; }, _handlePos, _center, 0.4, Curves.elasticOut);
       actions.run(moveToCenter);
       _isDown = false;
     } else if (event.type == PointerMoveEvent) {
