@@ -169,17 +169,17 @@ class _FitnessDemoContentsState extends State<_FitnessDemoContents> {
           context: context,
           child: new Stack(children: <Widget>[
             new _Fireworks(),
-            new Dialog(
-              /*title: new Text('Awesome workout'),*/
-              child: new Text(
+            new AlertDialog(
+              title: new Text('Awesome workout'),
+              content: new Text(
                 'You have completed $_count jumping jacks. Good going!'),
-              /*actions: <Widget>[
+              actions: <Widget>[
                 new FlatButton(
                   child: new Text('SWEET'),
                   onPressed: () { Navigator.pop(context); }
-                )
-              ]*/
-            )
+                ),
+              ],
+            ),
           ]));
       }
     });
