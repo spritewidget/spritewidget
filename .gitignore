@@ -6,3 +6,4 @@
 .pub
 packages
 pubspec.lock
+examples/fitness/ios/Flutter/flutter_assets

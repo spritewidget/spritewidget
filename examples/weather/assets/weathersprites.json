@@ -1,0 +1,102 @@
+{"frames": [
+
+{
+	"filename": "flake-0.png",
+	"frame": {"x":527,"y":2,"w":96,"h":82},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":16,"y":23,"w":96,"h":82},
+	"sourceSize": {"w":128,"h":128},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "flake-1.png",
+	"frame": {"x":625,"y":2,"w":50,"h":75},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":39,"y":26,"w":50,"h":75},
+	"sourceSize": {"w":128,"h":128},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "flake-2.png",
+	"frame": {"x":223,"y":2,"w":90,"h":107},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":10,"w":90,"h":107},
+	"sourceSize": {"w":128,"h":128},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "flake-3.png",
+	"frame": {"x":425,"y":2,"w":100,"h":87},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":20,"w":100,"h":87},
+	"sourceSize": {"w":128,"h":128},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "flake-4.png",
+	"frame": {"x":677,"y":2,"w":52,"h":72},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":28,"w":52,"h":72},
+	"sourceSize": {"w":128,"h":128},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "flake-5.png",
+	"frame": {"x":109,"y":2,"w":97,"h":108},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":10,"w":97,"h":108},
+	"sourceSize": {"w":128,"h":128},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "flake-6.png",
+	"frame": {"x":315,"y":2,"w":108,"h":96},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":16,"w":108,"h":96},
+	"sourceSize": {"w":128,"h":128},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "flake-7.png",
+	"frame": {"x":731,"y":2,"w":62,"h":71},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":28,"w":62,"h":71},
+	"sourceSize": {"w":128,"h":128},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "flake-8.png",
+	"frame": {"x":2,"y":2,"w":105,"h":112},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":8,"w":105,"h":112},
+	"sourceSize": {"w":128,"h":128},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "raindrop.png",
+	"frame": {"x":208,"y":2,"w":13,"h":108},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":10,"w":13,"h":108},
+	"sourceSize": {"w":16,"h":128},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "weathersprites.png",
+	"format": "RGBA8888",
+	"size": {"w":795,"h":116},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:711136d922eda0cdd3d11aaaf95d6fc2:1fe4592857278d700656e6f8716be9ac:2db98550bdf1ac32c037383913645b5a$"
+}
+}
