@@ -1,9 +1,10 @@
 name: spritewidget
 description: A sprite toolkit built on top of Flutter
-version: 0.9.6
+version: 0.9.7
 author: Viktor Lidholt <viktorlidholt@gmail.com>
 homepage: http://spritewidget.com
-
+environment:
+  sdk: ">=1.23.0 <3.0.0"
 dependencies:
   flutter:
     sdk: flutter
