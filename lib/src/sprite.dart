@@ -80,6 +80,9 @@ class Sprite extends NodeWithSize with SpritePaint {
 
       // Do actual drawing of the sprite
       texture.drawTexture(canvas, Offset.zero, _cachedPaint);
+
+      // Debug drawing
+//      canvas.drawRect(Offset.zero & texture.size, new Paint()..color=const Color(0x33ff0000));
     } else {
       // Paint a red square for missing texture
       canvas.drawRect(new Rect.fromLTRB(0.0, 0.0, size.width, size.height),
