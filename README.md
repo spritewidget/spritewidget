@@ -1,8 +1,12 @@
 # SpriteWidget
 
-SpriteWidget is a toolkit for building complex, high performance animations and 2D games with Flutter. Your sprite render tree lives inside a widget that mixes seamlessly with other Flutter and Material widgets. You can use SpriteWidget to create anything from an animated icon to a full fledged game.
+SpriteWidget is a toolkit for building complex, high performance animations and 2D games with [Flutter](https://flutter.io). Your sprite render tree lives inside a widget that mixes seamlessly with other Flutter and Material widgets. You can use SpriteWidget to create anything from an animated icon to a full fledged game.
 
-This guide assumes a basic knowledge of Flutter and Dart. We are working on examples to get started easier and to show the capabilities of SpriteWidget.
+This guide assumes a basic knowledge of Flutter and Dart.
+
+You can find examples in the [example](https://github.com/spritewidget/spritewidget/tree/master/example) directory and the complete [Space Blast](https://github.com/spritewidget/spaceblast) game.
+
+![SpriteWidget](https://static1.squarespace.com/static/593b245d1e5b6ca18c9ffd52/t/5aa2b91324a6948406f5dee5/1520613684486/SpriteWidget?format=2500w)
 
 ## Adding SpriteWidget to you project
 SpriteWidget is available as a standard package. Just add it as a dependency to your pubspec.yaml and you are good to go.
@@ -53,8 +57,8 @@ Each node in the node graph has a transform. The transform is inherited by its c
     Sprite frontWheel = new Sprite.fromImage(wheelImage);
     Sprite rearWheel = new Sprite.fromImage(wheelImage);
 
-    frontWheel.position = const Point(100, 50);
-    rearWheel.position = const Point(-100, 50);
+    frontWheel.position = const Offset(100, 50);
+    rearWheel.position = const Offset(-100, 50);
 
     car.addChild(frontWheel);
     car.addChild(rearWheel);
@@ -65,14 +69,14 @@ You can manipulate the transform by setting the position, rotation, scale, and s
 
 ## Sprites, textures, and sprite sheets
 
-The most common node type is the Sprite node. A sprite simply draws an image to the screen. Sprites can be drawn from Image objects or Texture objects. A texture is a part of an Image. Using a SpriteSheet you can pack several texture elements within a single image. This saves space in the device's gpu memory and also make drawing faster. Currently Flutter Sprites supports sprite sheets in json format and produced with a tool such as TexturePacker. It's uncommon to manually edit the sprite sheet files. You can create a SpriteSheet with a definition in json and an image:
+The most common node type is the Sprite node. A sprite simply draws an image to the screen. Sprites can be drawn from Image objects or SpriteTexture objects. A texture is a part of an Image. Using a SpriteSheet you can pack several texture elements within a single image. This saves space in the device's gpu memory and also make drawing faster. Currently SpriteWidget supports sprite sheets in json format and produced with a tool such as TexturePacker. It's uncommon to manually edit the sprite sheet files. You can create a SpriteSheet with a definition in json and an image:
 
     SpriteSheet sprites = new SpriteSheet(myImage, jsonCode);
-    Texture texture = sprites['texture.png'];
+    SpriteTexture texture = sprites['texture.png'];
 
 ## The frame cycle
 
-Each time a new frame is rendered to screen Flutter Sprites will perform a number of actions. Sometimes when creating more advanced interactive animations or games, the order in which these actions are performed may matter.
+Each time a new frame is rendered to screen SpriteWidget will perform a number of actions. Sometimes when creating more advanced interactive animations or games, the order in which these actions are performed may matter.
 
 This is the order things will happen:
 
@@ -107,7 +111,7 @@ If you want your node to receive multiple touches, set the handleMultiplePointer
 
 ## Animating using actions
 
-Flutter Sprites provides easy to use functions for animating nodes through actions. You can combine simple action blocks to create more complex animations.
+SpriteWidget provides easy to use functions for animating nodes through actions. You can combine simple action blocks to create more complex animations.
 
 To execute an action animation you first build the action itself, then pass it to the run method of a nodes action manager (see the Tweens section below for an example).
 
@@ -119,10 +123,10 @@ After creating a tween, execute it by running it through a node's action manager
 
 	Node myNode = new Node();
 
-    ActionTween myTween = new ActionTween(
-      (Point a) => myNode.position = a,
-      Point.origin,
-      const Point(100.0, 0.0),
+    ActionTween myTween = new ActionTween<Offset> (
+      (a) => myNode.position = a,
+      Offset.zero,
+      const Offset(100.0, 0.0),
       1.0
     );
 
@@ -199,7 +203,7 @@ Constraints are applied at the end of the frame cycle. If you need them to be ap
 
 ## Perform custom drawing
 
-Flutter Sprites provides a default set of drawing primitives, but there are cases where you may want to perform custom drawing. To do this you will need to subclass either the Node or NodeWithSize class and override the paint method:
+SpriteWidget provides a default set of drawing primitives, but there are cases where you may want to perform custom drawing. To do this you will need to subclass either the Node or NodeWithSize class and override the paint method:
 
     class RedCircle extends Node {
       RedCircle(this.radius);
@@ -209,7 +213,7 @@ Flutter Sprites provides a default set of drawing primitives, but there are case
       @override
       void paint(Canvas canvas) {
         canvas.drawCircle(
-          Point.origin,
+          Offset.zero,
           radius,
           new Paint()..color = const Color(0xffff0000)
         );
