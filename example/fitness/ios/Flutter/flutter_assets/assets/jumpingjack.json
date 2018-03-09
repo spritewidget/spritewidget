@@ -1,0 +1,102 @@
+{"frames": [
+
+	{
+		"filename": "foot.png",
+		"frame": {"x":93,"y":769,"w":63,"h":122},
+		"rotated": false,
+		"trimmed": true,
+		"spriteSourceSize": {"x":339,"y":820,"w":63,"h":122},
+		"sourceSize": {"w":1024,"h":1024},
+		"pivot": {"x":0.5,"y":0.5}
+	},
+	{
+		"filename": "hand.png",
+		"frame": {"x":2,"y":884,"w":61,"h":75},
+		"rotated": false,
+		"trimmed": true,
+		"spriteSourceSize": {"x":165,"y":63,"w":61,"h":75},
+		"sourceSize": {"w":1024,"h":1024},
+		"pivot": {"x":0.5,"y":0.5}
+	},
+	{
+		"filename": "head.png",
+		"frame": {"x":2,"y":755,"w":89,"h":127},
+		"rotated": false,
+		"trimmed": true,
+		"spriteSourceSize": {"x":468,"y":56,"w":89,"h":127},
+		"sourceSize": {"w":1024,"h":1024},
+		"pivot": {"x":0.5,"y":0.5}
+	},
+	{
+		"filename": "lower-arm.png",
+		"frame": {"x":2,"y":424,"w":124,"h":97},
+		"rotated": false,
+		"trimmed": true,
+		"spriteSourceSize": {"x":201,"y":121,"w":124,"h":97},
+		"sourceSize": {"w":1024,"h":1024},
+		"pivot": {"x":0.5,"y":0.5}
+	},
+	{
+		"filename": "lower-leg.png",
+		"frame": {"x":126,"y":543,"w":58,"h":224},
+		"rotated": false,
+		"trimmed": true,
+		"spriteSourceSize": {"x":369,"y":626,"w":58,"h":224},
+		"sourceSize": {"w":1024,"h":1024},
+		"pivot": {"x":0.5,"y":0.5}
+	},
+	{
+		"filename": "particle-0.png",
+		"frame": {"x":128,"y":481,"w":36,"h":60},
+		"rotated": false,
+		"trimmed": true,
+		"spriteSourceSize": {"x":14,"y":1,"w":36,"h":60},
+		"sourceSize": {"w":64,"h":64},
+		"pivot": {"x":0.5,"y":0.5}
+	},
+	{
+		"filename": "particle-1.png",
+		"frame": {"x":128,"y":424,"w":55,"h":55},
+		"rotated": false,
+		"trimmed": true,
+		"spriteSourceSize": {"x":4,"y":4,"w":55,"h":55},
+		"sourceSize": {"w":64,"h":64},
+		"pivot": {"x":0.5,"y":0.5}
+	},
+	{
+		"filename": "torso.png",
+		"frame": {"x":2,"y":2,"w":172,"h":360},
+		"rotated": false,
+		"trimmed": true,
+		"spriteSourceSize": {"x":426,"y":144,"w":172,"h":360},
+		"sourceSize": {"w":1024,"h":1024},
+		"pivot": {"x":0.5,"y":0.5}
+	},
+	{
+		"filename": "upper-arm.png",
+		"frame": {"x":2,"y":364,"w":145,"h":58},
+		"rotated": false,
+		"trimmed": true,
+		"spriteSourceSize": {"x":302,"y":186,"w":145,"h":58},
+		"sourceSize": {"w":1024,"h":1024},
+		"pivot": {"x":0.5,"y":0.5}
+	},
+	{
+		"filename": "upper-leg.png",
+		"frame": {"x":2,"y":523,"w":122,"h":230},
+		"rotated": false,
+		"trimmed": true,
+		"spriteSourceSize": {"x":391,"y":453,"w":122,"h":230},
+		"sourceSize": {"w":1024,"h":1024},
+		"pivot": {"x":0.5,"y":0.5}
+	}],
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "jumpingjack.png",
+		"format": "RGBA8888",
+		"size": {"w":186,"h":961},
+		"scale": "1",
+		"smartupdate": "$TexturePacker:SmartUpdate:e6cbe243edc82598a06bd98050b911b6:bbd7c701e8c68dac013dbb364a3a724f:67db409c3740c609a74b59bcc48a57be$"
+	}
+}
