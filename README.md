@@ -8,7 +8,7 @@ You can find examples in the [example](https://github.com/spritewidget/spritewid
 
 ![SpriteWidget](https://static1.squarespace.com/static/593b245d1e5b6ca18c9ffd52/t/5aa2b91324a6948406f5dee5/1520613684486/SpriteWidget?format=2500w)
 
-## Adding SpriteWidget to you project
+## Adding SpriteWidget to your project
 SpriteWidget is available as a standard package. Just add it as a dependency to your pubspec.yaml and you are good to go.
 
     dependencies:
