@@ -17,10 +17,11 @@ class ImageMap {
 
   /// Loads a list of images given their urls.
   Future<List<ui.Image>> load(List<String> urls) {
-    return Future.wait(urls.map(_loadImage));
+    return Future.wait(urls.map(loadImage));
   }
 
-  Future<ui.Image> _loadImage(String url) async {
+  /// Loads a single image given the image's [url] and adds it to the [ImageMap].
+  Future<ui.Image> loadImage(String url) async {
     ImageStream stream = new AssetImage(url, bundle: _bundle).resolve(ImageConfiguration.empty);
     Completer<ui.Image> completer = new Completer<ui.Image>();
     void listener(ImageInfo frame, bool synchronousCall) {
