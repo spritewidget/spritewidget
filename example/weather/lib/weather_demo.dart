@@ -8,7 +8,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:spritewidget/spritewidget.dart';
 
+import 'weather_button.dart';
+
+// The image map hold all of our image assets.
 ImageMap _images;
+
+// The sprite sheet contains an image and a set of rectangles defining the
+// individual sprites.
 SpriteSheet _sprites;
 
 enum WeatherType {
@@ -28,7 +34,9 @@ class WeatherDemo extends StatefulWidget {
 
 class _WeatherDemoState extends State<WeatherDemo> {
 
+  // This method loads all assets that are needed for the demo.
   Future<Null> _loadAssets(AssetBundle bundle) async {
+    // Load images using an ImageMap
     _images = new ImageMap(bundle);
     await _images.load(<String>[
       'assets/clouds-0.png',
@@ -41,15 +49,21 @@ class _WeatherDemoState extends State<WeatherDemo> {
       'assets/icon-snow.png'
     ]);
 
+    // Load the sprite sheet, which contains snowflakes and rain drops.
     String json = await DefaultAssetBundle.of(context).loadString('assets/weathersprites.json');
     _sprites = new SpriteSheet(_images['assets/weathersprites.png'], json);
   }
 
   @override
   void initState() {
+    // Always call super.initState
     super.initState();
 
-    AssetBundle bundle = rootBundle; //DefaultAssetBundle.of(context);
+    // Get our root asset bundle
+    AssetBundle bundle = rootBundle;
+
+    // Load all graphics, then set the state to assetsLoaded and create the
+    // WeatherWorld sprite tree
     _loadAssets(bundle).then((_) {
       setState(() {
         assetsLoaded = true;
@@ -60,10 +74,15 @@ class _WeatherDemoState extends State<WeatherDemo> {
 
   bool assetsLoaded = false;
 
+  // The weather world is our sprite tree that handles the weather
+  // animations.
   WeatherWorld weatherWorld;
 
   @override
   Widget build(BuildContext context) {
+    // Until assets are loaded we are just displaying a blue screen.
+    // If we were to load many more images, we might want to do some
+    // loading animation here.
     if (!assetsLoaded) {
       return new Scaffold(
         appBar: new AppBar(
@@ -77,6 +96,8 @@ class _WeatherDemoState extends State<WeatherDemo> {
       );
     }
 
+    // All assets are loaded, build the whole app with weather buttons
+    // and the WeatherWorld.
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('Weather')
@@ -97,7 +118,7 @@ class _WeatherDemoState extends State<WeatherDemo> {
                       });
                     },
                     selected: weatherWorld.weatherType == WeatherType.sun,
-                    icon: "assets/icon-sun.png"
+                    icon: "assets/icon-sun.png",
                   ),
                   new WeatherButton(
                     onPressed: () {
@@ -106,7 +127,7 @@ class _WeatherDemoState extends State<WeatherDemo> {
                       });
                     },
                     selected: weatherWorld.weatherType == WeatherType.rain,
-                    icon: "assets/icon-rain.png"
+                    icon: "assets/icon-rain.png",
                   ),
                   new WeatherButton(
                     onPressed: () {
@@ -115,61 +136,22 @@ class _WeatherDemoState extends State<WeatherDemo> {
                       });
                     },
                     selected: weatherWorld.weatherType == WeatherType.snow,
-                    icon: "assets/icon-snow.png"
-                  )
-                ]
-              )
-            )
-          ]
-        )
-      )
-    );
-  }
-}
-
-const double _kWeatherButtonSize = 56.0;
-const double _kWeatherIconSize = 36.0;
-
-class WeatherButton extends StatelessWidget {
-  WeatherButton({ this.icon, this.selected, this.onPressed, Key key }) : super(key: key);
-
-  final String icon;
-  final bool selected;
-  final VoidCallback onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    Color color;
-    if (selected)
-      color = Theme.of(context).primaryColor;
-    else
-      color = const Color(0x33000000);
-
-    return new Padding(
-      padding: const EdgeInsets.all(15.0),
-      child: new Material(
-        color: color,
-        type: MaterialType.circle,
-        elevation: 0.0,
-        child: new Container(
-          width: _kWeatherButtonSize,
-          height: _kWeatherButtonSize,
-          child: new InkWell(
-            onTap: onPressed,
-            child: new Center(
-              child: new Image.asset(
-                icon,
-                width: _kWeatherIconSize,
-                height: _kWeatherIconSize
+                    icon: "assets/icon-snow.png",
+                  ),
+                ],
               ),
             ),
-          ),
+          ],
         ),
       ),
     );
   }
 }
 
+
+
+// For the different weathers we are displaying different gradient backgrounds,
+// these are the colors for top and bottom.
 const List<Color> _kBackgroundColorsTop = const <Color>[
   const Color(0xff5ebbd5),
   const Color(0xff0b2734),
@@ -182,15 +164,20 @@ const List<Color> _kBackgroundColorsBottom = const <Color>[
   const Color(0xffe0e3ec)
 ];
 
+// The WeatherWorld is our root node for our sprite tree. The size of the tree
+// will be scaled to fit into our SpriteWidget container.
 class WeatherWorld extends NodeWithSize {
   WeatherWorld() : super(const Size(2048.0, 2048.0)) {
+
+    // Start by adding a background.
     _background = new GradientNode(
       this.size,
       _kBackgroundColorsTop[0],
-      _kBackgroundColorsBottom[0]
+      _kBackgroundColorsBottom[0],
     );
     addChild(_background);
 
+    // Then three layers of clouds, that will be scrolled in parallax.
     _cloudsSharp = new CloudLayer(
       image: _images['assets/clouds-0.png'],
       rotated: false,
@@ -215,6 +202,8 @@ class WeatherWorld extends NodeWithSize {
     );
     addChild(_cloudsSoft);
 
+    // Add the sun, rain, and snow (which we are going to fade in/out depending
+    // on which weather are selected.
     _sun = new Sun();
     _sun.position = const Offset(1024.0, 1024.0);
     _sun.scale = 1.5;
@@ -243,11 +232,13 @@ class WeatherWorld extends NodeWithSize {
     if (weatherType == _weatherType)
       return;
 
+    // Handle changes between weather types.
     _weatherType = weatherType;
 
     // Fade the background
     _background.actions.stopAll();
 
+    // Fade the background from one gradient to another.
     _background.actions.run(new ActionTween<Color>(
       (a) => _background.colorTop = a,
       _background.colorTop,
@@ -262,6 +253,7 @@ class WeatherWorld extends NodeWithSize {
       1.0
     ));
 
+    // Activate/deactivate sun, rain, snow, and dark clouds.
     _cloudsDark.active = weatherType != WeatherType.sun;
     _sun.active = weatherType == WeatherType.sun;
     _rain.active = weatherType == WeatherType.rain;
@@ -270,10 +262,13 @@ class WeatherWorld extends NodeWithSize {
 
   @override
   void spriteBoxPerformedLayout() {
+    // If the device is rotated or if the size of the SpriteWidget changes we
+    // are adjusting the position of the sun.
     _sun.position = spriteBox.visibleArea.topLeft + const Offset(350.0, 180.0);
   }
 }
 
+// The GradientNode performs custom drawing to draw a gradient background.
 class GradientNode extends NodeWithSize {
   GradientNode(Size size, this.colorTop, this.colorBottom) : super(size);
 
@@ -296,8 +291,10 @@ class GradientNode extends NodeWithSize {
   }
 }
 
+// Draws and animates a cloud layer using two sprites.
 class CloudLayer extends Node {
   CloudLayer({ ui.Image image, bool dark, bool rotated, double loopTime }) {
+    // Creates and positions the two cloud sprites.
     _sprites.add(_createSprite(image, dark, rotated));
     _sprites[0].position = const Offset(1024.0, 1024.0);
     addChild(_sprites[0]);
@@ -306,6 +303,7 @@ class CloudLayer extends Node {
     _sprites[1].position = const Offset(3072.0, 1024.0);
     addChild(_sprites[1]);
 
+    // Animates the clouds across the screen.
     actions.run(new ActionRepeatForever(
       new ActionTween<Offset>(
         (a) => position = a,
@@ -332,6 +330,7 @@ class CloudLayer extends Node {
   }
 
   set active(bool active) {
+    // Toggle visibility of the cloud layer
     double opacity;
     if (active) opacity = 1.0;
     else opacity = 0.0;
@@ -350,13 +349,16 @@ class CloudLayer extends Node {
 
 const double _kNumSunRays = 50.0;
 
+// Create an animated sun with rays
 class Sun extends Node {
   Sun() {
+    // Create the sun
     _sun = new Sprite.fromImage(_images['assets/sun.png']);
     _sun.scale = 4.0;
     _sun.transferMode = BlendMode.plus;
     addChild(_sun);
 
+    // Create rays
     _rays = <Ray>[];
     for (int i = 0; i < _kNumSunRays; i += 1) {
       Ray ray = new Ray();
@@ -369,6 +371,8 @@ class Sun extends Node {
   List<Ray> _rays;
 
   set active(bool active) {
+    // Toggle visibility of the sun
+
     actions.stopAll();
 
     double targetOpacity;
@@ -409,6 +413,7 @@ class Sun extends Node {
   }
 }
 
+// An animated sun ray
 class Ray extends Sprite {
   double _rotationSpeed;
   double maxOpacity;
@@ -440,6 +445,8 @@ class Ray extends Sprite {
   }
 }
 
+// Rain layer. Uses three layers of particle systems, to create a parallax
+// rain effect.
 class Rain extends Node {
   Rain() {
     _addParticles(1.0);
@@ -497,6 +504,8 @@ class Rain extends Node {
   }
 }
 
+// Snow. Uses 9 particle systems to create a parallax effect of snow at
+// different distances.
 class Snow extends Node {
   Snow() {
     _addParticles(_sprites['flake-0.png'], 1.0);
