@@ -2,6 +2,8 @@
 
 The Weather Demo shows how you easily can build complex animations for Flutter with SpriteWidget.
 
+[![Screenshot](https://raw.githubusercontent.com/spritewidget/spritewidget/master/example/weather/screenshot.jpg)](https://www.youtube.com/watch?v=qCwEcsawHmg)
+
 In this example you can learn how to:
 - Load image assets and sprite sheets using ImageMap.
 - How to interact with SpriteWidget through other Flutter components.
