@@ -69,6 +69,29 @@ You can manipulate the transform by setting the position, rotation, scale, and s
 
 ## Sprites, textures, and sprite sheets
 
+To load image resources, the easiest way is to use the `ImageMap` class. The `ImageMap` can load one or multiple images at once.
+
+The `Image` class isn't automatically imported through flutter/material, so you may need to add an import at the top of your file.
+
+    import 'dart:ui' as ui show Image;
+
+ Now you can load images using the `ImageMap`. Note that the loading methods are asynchronous, so this example code will need to go in an asynch method. For a full example of loading images see the [Weather Demo](https://github.com/spritewidget/spritewidget/tree/master/example/weather).
+
+    ImageMap images = new ImageMap(rootBundle);
+
+    // Load a single image
+    ui.Image image = await images.loadImage('assets/my_image.png');
+
+    // Load multiple images
+    await images.load(<String>[
+      'assets/image_0.png',
+      'assets/image_1.png',
+      'assets/image_2.png',
+    ]);
+
+    // Access a loaded image from the ImageMap
+    image = images['assets/image_0.png'];
+
 The most common node type is the Sprite node. A sprite simply draws an image to the screen. Sprites can be drawn from Image objects or SpriteTexture objects. A texture is a part of an Image. Using a SpriteSheet you can pack several texture elements within a single image. This saves space in the device's gpu memory and also make drawing faster. Currently SpriteWidget supports sprite sheets in json format and produced with a tool such as TexturePacker. It's uncommon to manually edit the sprite sheet files. You can create a SpriteSheet with a definition in json and an image:
 
     SpriteSheet sprites = new SpriteSheet(myImage, jsonCode);
