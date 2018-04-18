@@ -44,7 +44,6 @@ class SpriteBox extends RenderBox {
   ///     var spriteBox = new SpriteBox(myNode, SpriteBoxTransformMode.fixedHeight);
   SpriteBox(NodeWithSize rootNode, [SpriteBoxTransformMode mode = SpriteBoxTransformMode.letterbox]) {
     assert(rootNode != null);
-    assert(rootNode._spriteBox == null);
 
     // Setup transform mode
     this.transformMode = mode;
