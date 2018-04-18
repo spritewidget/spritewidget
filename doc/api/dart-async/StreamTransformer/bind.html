@@ -9,76 +9,36 @@
   <!-- required because all the links are pseudo-absolute -->
   <base href="../..">
 
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Code+Pro|Roboto:500,400italic,300,400' type='text/css'>
-  <link rel="stylesheet" href="static-assets/prettify.css">
-  <link rel="stylesheet" href="static-assets/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500,400i,400,300|Source+Sans+Pro:400,300,700" rel="stylesheet">
+  <link rel="stylesheet" href="static-assets/github.css">
   <link rel="stylesheet" href="static-assets/styles.css">
   <link rel="icon" href="static-assets/favicon.png">
 
-  <!-- Do not remove placeholder -->
-  <!-- Header Placeholder -->
 </head>
 
 <body>
 
 <div id="overlay-under-drawer"></div>
 
-<header class="container-fluid" id="title">
-  <nav class="navbar navbar-fixed-top">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12 contents">
-          <button id="sidenav-left-toggle" type="button">&nbsp;</button>
-          <ol class="breadcrumbs gt-separated hidden-xs">
-            <li><a href="index.html">flutter_sprites</a></li>
-            <li><a href="dart-async/dart-async-library.html">dart:async</a></li>
-            <li><a href="dart-async/StreamTransformer-class.html">StreamTransformer</a></li>
-            <li class="self-crumb">bind</li>
-          </ol>
-          <div class="self-name">bind</div>
-          <form class="search navbar-right" role="search">
-            <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
-          </form>
-        </div> <!-- /col -->
-      </div> <!-- /row -->
-    </div> <!-- /container -->
-  </nav>
-
-  <div class="container masthead">
-    <div class="row">
-      <div class="col-sm-12 contents">
-        <ol class="breadcrumbs gt-separated visible-xs">
-          <li><a href="index.html">flutter_sprites</a></li>
-          <li><a href="dart-async/dart-async-library.html">dart:async</a></li>
-          <li><a href="dart-async/StreamTransformer-class.html">StreamTransformer</a></li>
-          <li class="self-crumb">bind</li>
-        </ol>
-        <div class="title-description">
-          <h1 class="title">
-            <span class="kind">abstract method</span> bind
-          </h1>
-        </div>
-        <ul class="subnav">
-          <li><a href="dart-async/StreamTransformer/bind.html#source">Source</a></li>
-        </ul>
-      </div> <!-- /col -->
-    </div> <!-- /row -->
-  </div> <!-- /container -->
-
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="index.html">spritewidget</a></li>
+    <li><a href="dart-async/dart-async-library.html">dart:async</a></li>
+    <li><a href="dart-async/StreamTransformer-class.html">StreamTransformer<span class="signature">&lt;<wbr><span class="type-parameter">S</span>, <span class="type-parameter">T</span>&gt;</span></a></li>
+    <li class="self-crumb">bind abstract method</li>
+  </ol>
+  <div class="self-name">bind</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
 </header>
 
-<div class="container body">
-  <div class="row">
+<main>
 
   <div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
-    <h5><a href="index.html">flutter_sprites</a></h5>
-    <h5><a href="dart-async/dart-async-library.html">dart:async</a></h5>
-    <h5><a href="dart-async/StreamTransformer-class.html">StreamTransformer</a></h5>
-
+    <h5>StreamTransformer class</h5>
     <ol>
-    
-    
-    
       <li class="section-title"><a href="dart-async/StreamTransformer-class.html#constructors">Constructors</a></li>
       <li><a href="dart-async/StreamTransformer/StreamTransformer.html">StreamTransformer</a></li>
       <li><a href="dart-async/StreamTransformer/StreamTransformer.fromHandlers.html">fromHandlers</a></li>
@@ -89,70 +49,71 @@
       <li class="inherited"><a href="dart-core/Object/hashCode.html">hashCode</a></li>
       <li class="inherited"><a href="dart-core/Object/runtimeType.html">runtimeType</a></li>
     
+      <li class="section-title"><a href="dart-async/StreamTransformer-class.html#instance-methods">Methods</a></li>
+      <li><a href="dart-async/StreamTransformer/bind.html">bind</a></li>
+      <li><a href="dart-async/StreamTransformer/cast.html">cast</a></li>
+      <li><a href="dart-async/StreamTransformer/retype.html">retype</a></li>
+      <li class="inherited"><a href="dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+      <li class="inherited"><a href="dart-core/Object/toString.html">toString</a></li>
+    
       <li class="section-title inherited"><a href="dart-async/StreamTransformer-class.html#operators">Operators</a></li>
       <li class="inherited"><a href="dart-core/Object/operator_equals.html">operator ==</a></li>
     
-      <li class="section-title"><a href="dart-async/StreamTransformer-class.html#instance-methods">Methods</a></li>
-      <li><a href="dart-async/StreamTransformer/bind.html">bind</a></li>
-      <li class="inherited"><a href="dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
-      <li class="inherited"><a href="dart-core/Object/toString.html">toString</a></li>
+    
+      <li class="section-title"><a href="dart-async/StreamTransformer-class.html#static-methods">Static methods</a></li>
+      <li><a href="dart-async/StreamTransformer/castFrom.html">castFrom</a></li>
+    
     </ol>
-
   </div><!--/.sidebar-offcanvas-->
 
   <div class="col-xs-12 col-sm-9 col-md-8 main-content">
+    <h1>bind method</h1>
+
     <section class="multi-line-signature">
-      <span class="returntype"><a href="dart-async/Stream-class.html">Stream</a>&lt;T&gt;</span>
-      <span class="name ">bind</span>(<wbr><span class="parameter" id="bind-param-stream"><span class="type-annotation"><a href="dart-async/Stream-class.html">Stream</a>&lt;S&gt;</span> <span class="parameter-name">stream</span></span>)
+      <span class="returntype"><a href="dart-async/Stream-class.html">Stream</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+      <span class="name ">bind</span>
+(<wbr><span class="parameter" id="bind-param-stream"><span class="type-annotation"><a href="dart-async/Stream-class.html">Stream</a><span class="signature">&lt;<wbr><span class="type-parameter">S</span>&gt;</span></span> <span class="parameter-name">stream</span></span>)
     </section>
     <section class="desc markdown">
-      <p>Transform the incoming <code>stream</code>'s events.</p>
-<p>Creates a new stream.
-When this stream is listened to, it will start listening on <code>stream</code>,
-and generate events on the new stream based on the events from <code>stream</code>.</p>
-<p>Subscriptions on the returned stream should propagate pause state
-to the subscription on <code>stream</code>.</p>
+      <p>Transforms the provided <code>stream</code>.</p>
+<p>Returns a new stream with events that are computed from events of the
+provided <code>stream</code>.</p>
+<p>Implementors of the <a href="dart-async/StreamTransformer-class.html">StreamTransformer</a> interface should document
+differences from the following expected behavior:</p><ul><li>When the returned stream is listened to, it starts listening to the
+input <code>stream</code>.</li><li>Subscriptions of the returned stream forward (in a reasonable time)
+a <a href="dart-async/StreamSubscription/pause.html">StreamSubscription.pause</a> call to the subscription of the input
+<code>stream</code>.</li><li>Similarly, canceling a subscription of the returned stream eventually
+(in reasonable time) cancels the subscription of the input <code>stream</code>.</li></ul>
+<p>"Reasonable time" depends on the transformer and stream. Some transformers,
+like a "timeout" transformer, might make these operations depend on a
+duration. Others might not delay them at all, or just by a microtask.</p>
     </section>
     
     <section class="summary source-code" id="source">
-      <h2><span>Source</span> </h2>
-      <pre class="prettyprint language-dart">Stream&lt;T&gt; bind(Stream&lt;S&gt; stream);</pre>
+      <h2><span>Implementation</span> </h2>
+      <pre class="language-dart"><code class="language-dart">Stream&lt;T&gt; bind(Stream&lt;S&gt; stream);</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
 
-</div> <!-- row -->
-</div> <!-- container -->
+  <div class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
 
 <footer>
-  <div class="container-fluid">
-    <div class="container">
-      <p class="text-center">
-        <span class="no-break">
-          flutter_sprites 0.0.15
-        </span>
-        &bull;
-        <span class="no-break">
-          <a href="https://www.dartlang.org">
-            <img src="static-assets/favicon.png" alt="Dart" title="Dart" width="16" height="16">
-          </a>
-        </span>
-        &bull;
-        <span class="copyright no-break">
-          <a href="http://creativecommons.org/licenses/by-sa/4.0/">cc license</a>
-        </span>
-      </p>
-    </div>
-  </div>
+  <span class="no-break">
+    spritewidget 0.9.16
+  </span>
+
 </footer>
 
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="static-assets/typeahead.bundle.min.js"></script>
-<script src="static-assets/prettify.js"></script>
+<script src="static-assets/highlight.pack.js"></script>
 <script src="static-assets/URI.js"></script>
 <script src="static-assets/script.js"></script>
-<!-- Do not remove placeholder -->
-<!-- Footer Placeholder -->
+
 
 </body>
 

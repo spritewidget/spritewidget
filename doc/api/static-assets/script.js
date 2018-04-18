@@ -1,29 +1,3 @@
-// Adds a shadow for the top nav when the masthead is scrolled off the top.
-function initScroller() {
-  var header = document.querySelector("header");
-  var title = document.querySelector(".title-description");
-  var selfName = document.querySelector('nav .self-name');
-
-  window.addEventListener('scroll', function(e) {
-    var position = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (header) {
-      if (position >= 122) {
-        header.classList.add("header-fixed");
-      } else if (header.classList.contains("header-fixed")) {
-        header.classList.remove("header-fixed");
-      }
-    }
-
-    if (selfName) {
-      if (position >= 122) {
-        selfName.classList.add('visible-xs-inline');
-      } else {
-        selfName.classList.remove('visible-xs-inline');
-      }
-    }
-  });
-}
 
 function initSideNav() {
   var leftNavToggle = document.getElementById('sidenav-left-toggle');
@@ -53,11 +27,6 @@ function initSideNav() {
   }
 }
 
-// Make sure the anchors scroll past the fixed page header (#648).
-function shiftWindow() {
-  scrollBy(0, -68);
-}
-
 function initSearch() {
   var searchIndex;  // the JSON data
 
@@ -76,6 +45,7 @@ function initSearch() {
     var allMatches = []; // list of matches
 
     function score(element, num) {
+      num -= element.overriddenDepth * 10;
       var weightFactor = weights[element.type] || 4;
       return {e: element, score: (num / weightFactor) >> 0};
     }
@@ -172,7 +142,7 @@ function initSearch() {
       templates: {
         suggestion: function(match) {
           return [
-            '<div>',
+            '<div data-href="' + match.href + '">',
               match.name,
               ' ',
               match.type.toLowerCase(),
@@ -186,7 +156,26 @@ function initSearch() {
       }
     });
 
-    $('#search-box.typeahead').bind('typeahead:select', function(ev, suggestion) {
+    var typeaheadElement = $('#search-box.typeahead');
+    var typeaheadElementParent = typeaheadElement.parent();
+    var selectedSuggestion;
+
+    typeaheadElement.on("keydown", function (e) {
+      if (e.keyCode === 13) { // Enter
+        if (selectedSuggestion == null) {
+          var suggestion = typeaheadElementParent.find(".tt-suggestion.tt-selectable:eq(0)");
+          if (suggestion.length > 0) {
+            var href = suggestion.data("href");
+            if (href != null) {
+              window.location = href;
+            }
+          }
+        }
+      }
+    });
+
+    typeaheadElement.bind('typeahead:select', function(ev, suggestion) {
+        selectedSuggestion = suggestion;
         window.location = suggestion.href;
     });
   }
@@ -204,12 +193,7 @@ function initSearch() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  prettyPrint();
-  initScroller();
+  hljs.initHighlightingOnLoad();
   initSideNav();
   initSearch();
-
-  // Make sure the anchors scroll past the fixed page header (#648).
-  if (location.hash) shiftWindow();
-  window.addEventListener("hashchange", shiftWindow);
 });

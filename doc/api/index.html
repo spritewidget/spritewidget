@@ -4,94 +4,71 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="generator" content="made with love by dartdoc 0.9.7+6">
-  <meta name="description" content="flutter_sprites API docs, for the Dart programming language.">
-  <title>flutter_sprites - Dart API docs</title>
+  <meta name="generator" content="made with love by dartdoc 0.18.1">
+  <meta name="description" content="spritewidget API docs, for the Dart programming language.">
+  <title>spritewidget - Dart API docs</title>
 
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Code+Pro|Roboto:500,400italic,300,400' type='text/css'>
-  <link rel="stylesheet" href="static-assets/prettify.css">
-  <link rel="stylesheet" href="static-assets/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500,400i,400,300|Source+Sans+Pro:400,300,700" rel="stylesheet">
+  <link rel="stylesheet" href="static-assets/github.css">
   <link rel="stylesheet" href="static-assets/styles.css">
   <link rel="icon" href="static-assets/favicon.png">
 
-  <!-- Do not remove placeholder -->
-  <!-- Header Placeholder -->
 </head>
 
 <body>
 
 <div id="overlay-under-drawer"></div>
 
-<header class="container-fluid" id="title">
-  <nav class="navbar navbar-fixed-top">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12 contents">
-          <ol class="breadcrumbs gt-separated hidden-xs">
-            <li class="self-crumb">flutter_sprites</li>
-          </ol>
-          <div class="self-name">flutter_sprites</div>
-          <form class="search navbar-right" role="search">
-            <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
-          </form>
-        </div> <!-- /col -->
-      </div> <!-- /row -->
-    </div> <!-- /container -->
-  </nav>
-
-  <div class="container masthead">
-    <div class="row">
-      <div class="col-sm-12 contents">
-        <ol class="breadcrumbs gt-separated visible-xs">
-        </ol>
-        <div class="title-description">
-          <h1 class="title">
-            <span class="kind">package</span> flutter_sprites
-          </h1>
-        </div>
-        <ul class="subnav">
-          <li><a href="index.html#libraries">Libraries</a></li>
-        </ul>
-      </div> <!-- /col -->
-    </div> <!-- /row -->
-  </div> <!-- /container -->
-
+<header id="title">
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="http://spritewidget.com">spritewidget package</a></li>
+  </ol>
+  <div class="self-name">spritewidget</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
 </header>
 
-<div class="container body">
-  <div class="row">
+<main>
 
   <div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
-    <h5>flutter_sprites</h5>
-
-
+    <h5><span class="package-name">spritewidget</span> <span class="package-kind">package</span></h5>
     <ol>
-      <li class="section-title"><a href="index.html#libraries">Libraries</a></li>
-      <li><a href="dart-async/dart-async-library.html">dart:async</a></li>
-      <li><a href="dart-collection/dart-collection-library.html">dart:collection</a></li>
-      <li><a href="dart-convert/dart-convert-library.html">dart:convert</a></li>
-      <li><a href="dart-core/dart-core-library.html">dart:core</a></li>
-      <li><a href="dart-developer/dart-developer-library.html">dart:developer</a></li>
-      <li><a href="dart-io/dart-io-library.html">dart:io</a></li>
-      <li><a href="dart-isolate/dart-isolate-library.html">dart:isolate</a></li>
-      <li><a href="dart-jni/dart-jni-library.html">dart:jni</a></li>
-      <li><a href="dart-math/dart-math-library.html">dart:math</a></li>
-      <li><a href="dart-typed_data/dart-typed_data-library.html">dart:typed_data</a></li>
-      <li><a href="dart-ui/dart-ui-library.html">dart:ui</a></li>
-      <li><a href="flutter_sprites/flutter_sprites-library.html">flutter_sprites</a></li>
+          <li class="section-title">Libraries</li>
+          <li><a href="spritewidget/spritewidget-library.html">spritewidget</a></li>
+          <li class="section-title">Dart</li>
+          <li><a href="dart-async/dart-async-library.html">dart:async</a></li>
+          <li><a href="dart-collection/dart-collection-library.html">dart:collection</a></li>
+          <li><a href="dart-convert/dart-convert-library.html">dart:convert</a></li>
+          <li><a href="dart-core/dart-core-library.html">dart:core</a></li>
+          <li><a href="dart-developer/dart-developer-library.html">dart:developer</a></li>
+          <li><a href="dart-math/dart-math-library.html">dart:math</a></li>
+          <li><a href="dart-typed_data/dart-typed_data-library.html">dart:typed_data</a></li>
+          <li><a href="dart-ui/dart-ui-library.html">dart:ui</a></li>
+          <li class="section-subtitle">VM</li>
+            <li class="section-subitem"><a href="dart-io/dart-io-library.html">dart:io</a></li>
+            <li class="section-subitem"><a href="dart-isolate/dart-isolate-library.html">dart:isolate</a></li>
     </ol>
   </div>
 
   <div class="col-xs-12 col-sm-9 col-md-8 main-content">
       <section class="desc markdown">
-        <h1>Flutter Sprites</h1>
-<p>Flutter Sprites is a toolkit for building complex, high performance animations and 2D games with Flutter. Your sprite render tree lives inside a SpriteWidget that mixes seamlessly with other Flutter and Material widgets. You can use Flutter Sprites to create anything from an animated icon to a full fledged game.</p>
-<p>This library is currently not maintained or tested. If you are interested in using and maintaining this library, please contact flutter-dev@googlegroups.com for more information.</p>
-<p>This guide assumes a basic knowledge of Flutter and Dart. You can find an example of Flutter Sprites in the Flutter Gallery in the Weather demo, or in the flutter/game repository on Github.</p>
-<h2>Setting up a SpriteWidget</h2>
-<p>The first thing you need to do to use Flutter Sprites is to setup a SpriteWidget with a root node that is used to draw it's contents. Any sprite nodes that you add to the root node will be rendered by the SpriteWidget. Typically, your root node is part of your app's state. This is an example of how you can setup a custom stateful widget with Flutter Sprites:</p>
-<pre class="prettyprint language-dart"><code>import 'package:flutter/material.dart';
-import 'package:flutter_sprites/flutter_sprites.dart';
+        <h1>SpriteWidget</h1>
+<p>SpriteWidget is a toolkit for building complex, high performance animations and 2D games with <a href="https://flutter.io">Flutter</a>. Your sprite render tree lives inside a widget that mixes seamlessly with other Flutter and Material widgets. You can use SpriteWidget to create anything from an animated icon to a full fledged game.</p>
+<p>This guide assumes a basic knowledge of Flutter and Dart. Get support by posting a question tagged <code>spritewidget</code> on <a href="https://stackoverflow.com/">StackOverflow</a>.</p>
+<p>You can find examples in the <a href="https://github.com/spritewidget/spritewidget/tree/master/example">example</a> directory, or check out the complete <a href="https://github.com/spritewidget/spaceblast">Space Blast</a> game.</p>
+<p><img alt="SpriteWidget" src="https://static1.squarespace.com/static/593b245d1e5b6ca18c9ffd52/t/5aa2b91324a6948406f5dee5/1520613684486/SpriteWidget?format=2500w"></p>
+<h2>Adding SpriteWidget to your project</h2>
+<p>SpriteWidget is available as a standard package. Just add it as a dependency to your pubspec.yaml and you are good to go.</p>
+<pre class="language-dart"><code>dependencies:
+  flutter:
+    sdk: flutter
+  spritewidget:
+</code></pre>
+<h2>Creating a SpriteWidget</h2>
+<p>The first thing you need to do to use SpriteWidget is to setup a root node that is used to draw it's contents. Any sprite nodes that you add to the root node will be rendered by the SpriteWidget. Typically, your root node is part of your app's state. This is an example of how you can setup a custom stateful widget with a SpriteWidget:</p>
+<pre class="language-dart"><code>import 'package:flutter/material.dart';
+import 'package:spritewidget/spritewidget.dart';
 
 class MyWidget extends StatefulWidget {
   @override
@@ -118,12 +95,12 @@ class MyWidgetState extends State&lt;MyWidget&gt; {
 <h2>Adding objects to your node graph</h2>
 <p>Your SpriteWidget manages a node graph, the root node is the NodeWithSize that is passed in to the SpriteWidget when it's created. To render sprites, particles systems, or any other objects simply add them to the node graph.</p>
 <p>Each node in the node graph has a transform. The transform is inherited by its children, this makes it possible to build more complex structures by grouping objects together as children to a node and then manipulating the parent node. For example the following code creates a car sprite with two wheels attached to it. The car is added to the root node.</p>
-<pre class="prettyprint language-dart"><code>Sprite car = new Sprite.fromImage(carImage);
+<pre class="language-dart"><code>Sprite car = new Sprite.fromImage(carImage);
 Sprite frontWheel = new Sprite.fromImage(wheelImage);
 Sprite rearWheel = new Sprite.fromImage(wheelImage);
 
-frontWheel.position = const Point(100, 50);
-rearWheel.position = const Point(-100, 50);
+frontWheel.position = const Offset(100, 50);
+rearWheel.position = const Offset(-100, 50);
 
 car.addChild(frontWheel);
 car.addChild(rearWheel);
@@ -132,17 +109,37 @@ rootNode.addChild(car);
 </code></pre>
 <p>You can manipulate the transform by setting the position, rotation, scale, and skew properties.</p>
 <h2>Sprites, textures, and sprite sheets</h2>
-<p>The most common node type is the Sprite node. A sprite simply draws an image to the screen. Sprites can be drawn from Image objects or Texture objects. A texture is a part of an Image. Using a SpriteSheet you can pack several texture elements within a single image. This saves space in the device's gpu memory and also make drawing faster. Currently Flutter Sprites supports sprite sheets in json format and produced with a tool such as TexturePacker. It's uncommon to manually edit the sprite sheet files. You can create a SpriteSheet with a definition in json and an image:</p>
-<pre class="prettyprint language-dart"><code>SpriteSheet sprites = new SpriteSheet(myImage, jsonCode);
-Texture texture = sprites['texture.png'];
+<p>To load image resources, the easiest way is to use the <code>ImageMap</code> class. The <code>ImageMap</code> can load one or multiple images at once.</p>
+<p>The <code>Image</code> class isn't automatically imported through flutter/material, so you may need to add an import at the top of your file.</p>
+<pre class="language-dart"><code>import 'dart:ui' as ui show Image;
+</code></pre>
+<p> Now you can load images using the <code>ImageMap</code>. Note that the loading methods are asynchronous, so this example code will need to go in an asynch method. For a full example of loading images see the <a href="https://github.com/spritewidget/spritewidget/tree/master/example/weather">Weather Demo</a>.</p>
+<pre class="language-dart"><code>ImageMap images = new ImageMap(rootBundle);
+
+// Load a single image
+ui.Image image = await images.loadImage('assets/my_image.png');
+
+// Load multiple images
+await images.load(&lt;String&gt;[
+  'assets/image_0.png',
+  'assets/image_1.png',
+  'assets/image_2.png',
+]);
+
+// Access a loaded image from the ImageMap
+image = images['assets/image_0.png'];
+</code></pre>
+<p>The most common node type is the Sprite node. A sprite simply draws an image to the screen. Sprites can be drawn from Image objects or SpriteTexture objects. A texture is a part of an Image. Using a SpriteSheet you can pack several texture elements within a single image. This saves space in the device's gpu memory and also make drawing faster. Currently SpriteWidget supports sprite sheets in json format and produced with a tool such as TexturePacker. It's uncommon to manually edit the sprite sheet files. You can create a SpriteSheet with a definition in json and an image:</p>
+<pre class="language-dart"><code>SpriteSheet sprites = new SpriteSheet(myImage, jsonCode);
+SpriteTexture texture = sprites['texture.png'];
 </code></pre>
 <h2>The frame cycle</h2>
-<p>Each time a new frame is rendered to screen Flutter Sprites will perform a number of actions. Sometimes when creating more advanced interactive animations or games, the order in which these actions are performed may matter.</p>
+<p>Each time a new frame is rendered to screen SpriteWidget will perform a number of actions. Sometimes when creating more advanced interactive animations or games, the order in which these actions are performed may matter.</p>
 <p>This is the order things will happen:</p><ol><li>Handle input events</li><li>Run animation actions</li><li>Call update functions on nodes</li><li>Apply constraints</li><li>Render the frame to screen</li></ol>
 <p>Read more about each of the different phases below.</p>
 <h2>Handling user input</h2>
 <p>You can subclass any node type to handle touches. To receive touches, you need to set the userInteractionEnabled property to true and override the handleEvent method. If the node you are subclassing doesn't have a size, you will also need to override the isPointInside method.</p>
-<pre class="prettyprint language-dart"><code>class EventHandlingNode extends NodeWithSize {
+<pre class="language-dart"><code>class EventHandlingNode extends NodeWithSize {
   EventHandlingNode(Size size) : super(size) {
     userInteractionEnabled = true;
   }
@@ -159,17 +156,17 @@ Texture texture = sprites['texture.png'];
 </code></pre>
 <p>If you want your node to receive multiple touches, set the handleMultiplePointers property to true. Each touch down or dragged touch will generate a separate call to the handleEvent method, you can distinguish each touch by its pointer property.</p>
 <h2>Animating using actions</h2>
-<p>Flutter Sprites provides easy to use functions for animating nodes through actions. You can combine simple action blocks to create more complex animations.</p>
+<p>SpriteWidget provides easy to use functions for animating nodes through actions. You can combine simple action blocks to create more complex animations.</p>
 <p>To execute an action animation you first build the action itself, then pass it to the run method of a nodes action manager (see the Tweens section below for an example).</p>
 <h3>Tweens</h3>
 <p>Tweens are the simplest building block for creating an animation. It will interpolate a value or property over a specified time period. You provide the ActionTween class with a setter function, its start and end value, and the duration for the tween.</p>
 <p>After creating a tween, execute it by running it through a node's action manager.</p>
-<pre class="prettyprint language-dart"><code>Node myNode = new Node();
+<pre class="language-dart"><code>Node myNode = new Node();
 
-ActionTween myTween = new ActionTween(
-  (Point a) =&gt; myNode.position = a,
-  Point.origin,
-  const Point(100.0, 0.0),
+ActionTween myTween = new ActionTween&lt;Offset&gt; (
+  (a) =&gt; myNode.position = a,
+  Offset.zero,
+  const Offset(100.0, 0.0),
   1.0
 );
 
@@ -178,7 +175,7 @@ myNode.actions.run(myTween);
 <p>You can animate values of different types, such as floats, points, rectangles, and even colors. You can also optionally provide the ActionTween class with an easing function.</p>
 <h3>Sequences</h3>
 <p>When you need to play two or more actions in a sequence, use the ActionSequence class:</p>
-<pre class="prettyprint language-dart"><code>ActionSequence sequence = new ActionSequence([
+<pre class="language-dart"><code>ActionSequence sequence = new ActionSequence([
   firstAction,
   middleAction,
   lastAction
@@ -186,20 +183,20 @@ myNode.actions.run(myTween);
 </code></pre>
 <h3>Groups</h3>
 <p>Use ActionGroup to play actions in parallel:</p>
-<pre class="prettyprint language-dart"><code>ActionGroup group = new ActionGroup([
+<pre class="language-dart"><code>ActionGroup group = new ActionGroup([
   action0,
   action1
 ]);
 </code></pre>
 <h3>Repeat</h3>
 <p>You can loop any action, either a fixed number of times, or until the end of times:</p>
-<pre class="prettyprint language-dart"><code>ActionRepeat repeat = new ActionRepeat(loopedAction, 5);
+<pre class="language-dart"><code>ActionRepeat repeat = new ActionRepeat(loopedAction, 5);
 
 ActionRepeatForever longLoop = new ActionRepeatForever(loopedAction);
 </code></pre>
 <h3>Composition</h3>
 <p>It's possible to create more complex actions by composing them in any way:</p>
-<pre class="prettyprint language-dart"><code>ActionSequence complexAction = new ActionSequence([
+<pre class="language-dart"><code>ActionSequence complexAction = new ActionSequence([
   new ActionRepeat(myLoop, 2),
   new ActionGroup([
   	action0,
@@ -209,7 +206,7 @@ ActionRepeatForever longLoop = new ActionRepeatForever(loopedAction);
 </code></pre>
 <h2>Handle update events</h2>
 <p>Each frame, update events are sent to each node in the current node tree. Override the update method to manually do animations or to perform game logic.</p>
-<pre class="prettyprint language-dart"><code>MyNode extends Node {
+<pre class="language-dart"><code>MyNode extends Node {
   @override
   update(double dt) {
     // Move the node at a constant speed
@@ -220,7 +217,7 @@ ActionRepeatForever longLoop = new ActionRepeatForever(loopedAction);
 <h2>Defining constraints</h2>
 <p>Constraints are used to constrain properties of nodes. They can be used to position nodes relative other nodes, or adjust the rotation or scale. You can apply more than one constraint to a single node.</p>
 <p>For example, you can use a constraint to make a node follow another node at a specific distance with a specified dampening. The dampening will smoothen out the following node's movement.</p>
-<pre class="prettyprint language-dart"><code>followingNode.constraints = [
+<pre class="language-dart"><code>followingNode.constraints = [
   new ConstraintPositionToNode(
     targetNode,
     offset: const Offset(0.0, 100.0),
@@ -230,8 +227,8 @@ ActionRepeatForever longLoop = new ActionRepeatForever(loopedAction);
 </code></pre>
 <p>Constraints are applied at the end of the frame cycle. If you need them to be applied at any other time, you can directly call the applyConstraints method of a Node object.</p>
 <h2>Perform custom drawing</h2>
-<p>Flutter Sprites provides a default set of drawing primitives, but there are cases where you may want to perform custom drawing. To do this you will need to subclass either the Node or NodeWithSize class and override the paint method:</p>
-<pre class="prettyprint language-dart"><code>class RedCircle extends Node {
+<p>SpriteWidget provides a default set of drawing primitives, but there are cases where you may want to perform custom drawing. To do this you will need to subclass either the Node or NodeWithSize class and override the paint method:</p>
+<pre class="language-dart"><code>class RedCircle extends Node {
   RedCircle(this.radius);
 
   double radius;
@@ -239,7 +236,7 @@ ActionRepeatForever longLoop = new ActionRepeatForever(loopedAction);
   @override
   void paint(Canvas canvas) {
     canvas.drawCircle(
-      Point.origin,
+      Offset.zero,
       radius,
       new Paint()..color = const Color(0xffff0000)
     );
@@ -247,7 +244,7 @@ ActionRepeatForever longLoop = new ActionRepeatForever(loopedAction);
 }
 </code></pre>
 <p>If you are overriding a NodeWithSize you may want to call applyTransformForPivot before starting drawing to account for the node's pivot point. After the call the coordinate system is setup so you can perform drawing starting at origo to the size of the node.</p>
-<pre class="prettyprint language-dart"><code>@override
+<pre class="language-dart"><code>@override
 void paint(Canvas canvas) {
   applyTransformForPivot(canvas);
 
@@ -260,7 +257,7 @@ void paint(Canvas canvas) {
 <h2>Add effects using particle systems</h2>
 <p>Particle systems are great for creating effects such as rain, smoke, or fire. It's easy to setup a particle system, but there are very many properties that can be tweaked. The best way of to get a feel for how they work is to simply play around with the them.</p>
 <p>This is an example of how a particle system can be created, configured, and added to the scene:</p>
-<pre class="prettyprint language-dart"><code>ParticleSystem particles = new ParticleSystem(
+<pre class="language-dart"><code>ParticleSystem particles = new ParticleSystem(
   particleTexture,
   posVar: const Point(100, 100.0),
   startSize: 1.0,
@@ -275,130 +272,97 @@ rootNode.addChild(particles);
 </code></pre>
       </section>
       
-
-      <section class="summary" id="libraries">
-        <h2>Libraries</h2>
-        <dl>
+        <section class="summary">
+            <h2>Libraries</h2>
+          <dl>
+            <dt id="spritewidget">
+              <span class="name"><a href="spritewidget/spritewidget-library.html">spritewidget</a></span>
+            </dt>
+            <dd>
+              A sprite toolkit built on top of Flutter.
+            </dd>          </dl>
+        </section>
+        <section class="summary">
+            <h2>Dart</h2>
+          <dl>
             <dt id="dart:async">
               <span class="name"><a href="dart-async/dart-async-library.html">dart:async</a></span>
             </dt>
             <dd>
-              <p>Support for asynchronous programming,
-with classes such as Future and Stream.</p>
-            </dd>
-            <dt id="dart:collection">
+              Support for asynchronous programming,
+with classes such as Future and Stream. <a href="dart-async/dart-async-library.html">[...]</a>
+            </dd>            <dt id="dart:collection">
               <span class="name"><a href="dart-collection/dart-collection-library.html">dart:collection</a></span>
             </dt>
             <dd>
-              <p>Classes and utilities that supplement the collection support in dart:core.</p>
-            </dd>
-            <dt id="dart:convert">
+              Classes and utilities that supplement the collection support in dart:core. <a href="dart-collection/dart-collection-library.html">[...]</a>
+            </dd>            <dt id="dart:convert">
               <span class="name"><a href="dart-convert/dart-convert-library.html">dart:convert</a></span>
             </dt>
             <dd>
-              <p>Encoders and decoders for converting between different data representations,
-including JSON and UTF-8.</p>
-            </dd>
-            <dt id="dart:core">
+              Encoders and decoders for converting between different data representations,
+including JSON and UTF-8. <a href="dart-convert/dart-convert-library.html">[...]</a>
+            </dd>            <dt id="dart:core">
               <span class="name"><a href="dart-core/dart-core-library.html">dart:core</a></span>
             </dt>
             <dd>
-              <p>Built-in types, collections,
-and other core functionality for every Dart program.</p>
-            </dd>
-            <dt id="dart:developer">
+              Built-in types, collections,
+and other core functionality for every Dart program. <a href="dart-core/dart-core-library.html">[...]</a>
+            </dd>            <dt id="dart:developer">
               <span class="name"><a href="dart-developer/dart-developer-library.html">dart:developer</a></span>
             </dt>
             <dd>
-              <p>Interact with developer tools such as the debugger and inspector.</p>
-            </dd>
-            <dt id="dart:io">
-              <span class="name"><a href="dart-io/dart-io-library.html">dart:io</a></span>
-            </dt>
-            <dd>
-              <p>File, socket, HTTP, and other I/O support for server applications.</p>
-            </dd>
-            <dt id="dart:isolate">
-              <span class="name"><a href="dart-isolate/dart-isolate-library.html">dart:isolate</a></span>
-            </dt>
-            <dd>
-              <p>Concurrent programming using <em>isolates</em>:
-independent workers that are similar to threads
-but don't share memory,
-communicating only via messages.</p>
-            </dd>
-            <dt id="dart:jni">
-              <span class="name"><a href="dart-jni/dart-jni-library.html">dart:jni</a></span>
-            </dt>
-            <dd>
-              <p>Invoke Java Native Interface APIs from Dart.</p>
-            </dd>
-            <dt id="dart:math">
+              Interact with developer tools such as the debugger and inspector. <a href="dart-developer/dart-developer-library.html">[...]</a>
+            </dd>            <dt id="dart:math">
               <span class="name"><a href="dart-math/dart-math-library.html">dart:math</a></span>
             </dt>
             <dd>
-              <p>Mathematical constants and functions, plus a random number generator.</p>
-            </dd>
-            <dt id="dart:typed_data">
+              Mathematical constants and functions, plus a random number generator. <a href="dart-math/dart-math-library.html">[...]</a>
+            </dd>            <dt id="dart:typed_data">
               <span class="name"><a href="dart-typed_data/dart-typed_data-library.html">dart:typed_data</a></span>
             </dt>
             <dd>
-              <p>Lists that efficiently handle fixed sized data
-(for example, unsigned 8 byte integers) and SIMD numeric types.</p>
-            </dd>
-            <dt id="dart:ui">
+              Lists that efficiently handle fixed sized data
+(for example, unsigned 8 byte integers) and SIMD numeric types. <a href="dart-typed_data/dart-typed_data-library.html">[...]</a>
+            </dd>            <dt id="dart:ui">
               <span class="name"><a href="dart-ui/dart-ui-library.html">dart:ui</a></span>
             </dt>
             <dd>
-              <p>Built-in types and core primitives for a Flutter application.</p>
-            </dd>
-            <dt id="flutter_sprites">
-              <span class="name"><a href="flutter_sprites/flutter_sprites-library.html">flutter_sprites</a></span>
-            </dt>
-            <dd>
-              <p>A sprite toolkit built on top of Flutter.</p>
-            </dd>
-        </dl>
-      </section>
+              Built-in types and core primitives for a Flutter application. <a href="dart-ui/dart-ui-library.html">[...]</a>
+            </dd>            <h3>VM</h3>
+              <dt id="dart:io">
+                <span class="name"><a href="dart-io/dart-io-library.html">dart:io</a></span>
+              </dt>
+              <dd>
+                File, socket, HTTP, and other I/O support for non-web applications. <a href="dart-io/dart-io-library.html">[...]</a>
+              </dd>              <dt id="dart:isolate">
+                <span class="name"><a href="dart-isolate/dart-isolate-library.html">dart:isolate</a></span>
+              </dt>
+              <dd>
+                Concurrent programming using <em>isolates</em>:
+independent workers that are similar to threads
+but don't share memory,
+communicating only via messages. <a href="dart-isolate/dart-isolate-library.html">[...]</a>
+              </dd>          </dl>
+        </section>
 
   </div> <!-- /.main-content -->
 
-  <div class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
-
-  </div><!--/.sidebar-offcanvas-right-->
-
-</div> <!-- row -->
-</div> <!-- container -->
+</main>
 
 <footer>
-  <div class="container-fluid">
-    <div class="container">
-      <p class="text-center">
-        <span class="no-break">
-          flutter_sprites 0.0.15
-        </span>
-        &bull;
-        <span class="no-break">
-          <a href="https://www.dartlang.org">
-            <img src="static-assets/favicon.png" alt="Dart" title="Dart" width="16" height="16">
-          </a>
-        </span>
-        &bull;
-        <span class="copyright no-break">
-          <a href="http://creativecommons.org/licenses/by-sa/4.0/">cc license</a>
-        </span>
-      </p>
-    </div>
-  </div>
+  <span class="no-break">
+    spritewidget 0.9.16
+  </span>
+
 </footer>
 
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="static-assets/typeahead.bundle.min.js"></script>
-<script src="static-assets/prettify.js"></script>
+<script src="static-assets/highlight.pack.js"></script>
 <script src="static-assets/URI.js"></script>
 <script src="static-assets/script.js"></script>
-<!-- Do not remove placeholder -->
-<!-- Footer Placeholder -->
+
 
 </body>
 

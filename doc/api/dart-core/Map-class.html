@@ -9,90 +9,38 @@
   <!-- required because all the links are pseudo-absolute -->
   <base href="..">
 
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Code+Pro|Roboto:500,400italic,300,400' type='text/css'>
-  <link rel="stylesheet" href="static-assets/prettify.css">
-  <link rel="stylesheet" href="static-assets/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500,400i,400,300|Source+Sans+Pro:400,300,700" rel="stylesheet">
+  <link rel="stylesheet" href="static-assets/github.css">
   <link rel="stylesheet" href="static-assets/styles.css">
   <link rel="icon" href="static-assets/favicon.png">
 
-  <!-- Do not remove placeholder -->
-  <!-- Header Placeholder -->
 </head>
 
 <body>
 
 <div id="overlay-under-drawer"></div>
 
-<header class="container-fluid" id="title">
-  <nav class="navbar navbar-fixed-top">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12 contents">
-          <button id="sidenav-left-toggle" type="button">&nbsp;</button>
-          <ol class="breadcrumbs gt-separated hidden-xs">
-            <li><a href="index.html">flutter_sprites</a></li>
-            <li><a href="dart-core/dart-core-library.html">dart:core</a></li>
-            <li class="self-crumb">Map</li>
-          </ol>
-          <div class="self-name">Map</div>
-          <form class="search navbar-right" role="search">
-            <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
-          </form>
-        </div> <!-- /col -->
-      </div> <!-- /row -->
-    </div> <!-- /container -->
-  </nav>
-
-  <div class="container masthead">
-    <div class="row">
-      <div class="col-sm-12 contents">
-        <ol class="breadcrumbs gt-separated visible-xs">
-          <li><a href="index.html">flutter_sprites</a></li>
-          <li><a href="dart-core/dart-core-library.html">dart:core</a></li>
-          <li class="self-crumb">Map</li>
-        </ol>
-        <div class="title-description">
-          <h1 class="title">
-            <span class="kind">abstract class</span> Map&lt;K, V&gt;
-          </h1>
-        </div>
-        <ul class="subnav">
-          <li><a href="dart-core/Map-class.html#instance-properties">Properties</a></li>
-          <li><a href="dart-core/Map-class.html#constructors">Constructors</a></li>
-          <li><a href="dart-core/Map-class.html#operators">Operators</a></li>
-          <li><a href="dart-core/Map-class.html#instance-methods">Methods</a></li>
-        </ul>
-      </div> <!-- /col -->
-    </div> <!-- /row -->
-  </div> <!-- /container -->
-
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="index.html">spritewidget</a></li>
+    <li><a href="dart-core/dart-core-library.html">dart:core</a></li>
+    <li class="self-crumb">Map<span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span> abstract class</li>
+  </ol>
+  <div class="self-name">Map</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
 </header>
 
-<div class="container body">
-  <div class="row">
+<main>
 
   <div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
-    <h5><a href="index.html">flutter_sprites</a></h5>
-    <h5><a href="dart-core/dart-core-library.html">dart:core</a></h5>
-
+    <h5>dart:core library</h5>
     <ol>
-      <li class="section-title"><a href="dart-core/dart-core-library.html#constants">Constants</a></li>
-      <li><a href="dart-core/deprecated-constant.html">deprecated</a></li>
-      <li><a href="dart-core/override-constant.html">override</a></li>
-      <li><a href="dart-core/proxy-constant.html">proxy</a></li>
-    
-      <li class="section-title"><a href="dart-core/dart-core-library.html#typedefs">Typedefs</a></li>
-      <li><a href="dart-core/Comparator.html">Comparator</a></li>
-    
-    
-      <li class="section-title"><a href="dart-core/dart-core-library.html#functions">Functions</a></li>
-      <li><a href="dart-core/identical.html">identical</a></li>
-      <li><a href="dart-core/identityHashCode.html">identityHashCode</a></li>
-      <li><a href="dart-core/print.html">print</a></li>
-    
-    
       <li class="section-title"><a href="dart-core/dart-core-library.html#classes">Classes</a></li>
       <li><a href="dart-core/BidirectionalIterator-class.html">BidirectionalIterator</a></li>
+      <li><a href="dart-core/BigInt-class.html">BigInt</a></li>
       <li><a href="dart-core/bool-class.html">bool</a></li>
       <li><a href="dart-core/Comparable-class.html">Comparable</a></li>
       <li><a href="dart-core/DateTime-class.html">DateTime</a></li>
@@ -107,11 +55,14 @@
       <li><a href="dart-core/Iterator-class.html">Iterator</a></li>
       <li><a href="dart-core/List-class.html">List</a></li>
       <li><a href="dart-core/Map-class.html">Map</a></li>
+      <li><a href="dart-core/MapEntry-class.html">MapEntry</a></li>
       <li><a href="dart-core/Match-class.html">Match</a></li>
       <li><a href="dart-core/Null-class.html">Null</a></li>
       <li><a href="dart-core/num-class.html">num</a></li>
       <li><a href="dart-core/Object-class.html">Object</a></li>
       <li><a href="dart-core/Pattern-class.html">Pattern</a></li>
+      <li><a href="dart-core/pragma-class.html">pragma</a></li>
+      <li><a href="dart-core/Provisional-class.html">Provisional</a></li>
       <li><a href="dart-core/RegExp-class.html">RegExp</a></li>
       <li><a href="dart-core/RuneIterator-class.html">RuneIterator</a></li>
       <li><a href="dart-core/Runes-class.html">Runes</a></li>
@@ -126,6 +77,22 @@
       <li><a href="dart-core/Type-class.html">Type</a></li>
       <li><a href="dart-core/Uri-class.html">Uri</a></li>
       <li><a href="dart-core/UriData-class.html">UriData</a></li>
+    
+      <li class="section-title"><a href="dart-core/dart-core-library.html#constants">Constants</a></li>
+      <li><a href="dart-core/deprecated-constant.html">deprecated</a></li>
+      <li><a href="dart-core/override-constant.html">override</a></li>
+      <li><a href="dart-core/provisional-constant.html">provisional</a></li>
+      <li><a class="deprecated" href="dart-core/proxy-constant.html">proxy</a></li>
+    
+    
+      <li class="section-title"><a href="dart-core/dart-core-library.html#functions">Functions</a></li>
+      <li><a href="dart-core/identical.html">identical</a></li>
+      <li><a href="dart-core/identityHashCode.html">identityHashCode</a></li>
+      <li><a href="dart-core/print.html">print</a></li>
+    
+    
+      <li class="section-title"><a href="dart-core/dart-core-library.html#typedefs">Typedefs</a></li>
+      <li><a href="dart-core/Comparator.html">Comparator</a></li>
     
       <li class="section-title"><a href="dart-core/dart-core-library.html#exceptions">Exceptions</a></li>
       <li><a href="dart-core/AbstractClassInstantiationError-class.html">AbstractClassInstantiationError</a></li>
@@ -153,9 +120,10 @@
   </div>
 
   <div class="col-xs-12 col-sm-9 col-md-8 main-content">
+    <h1>Map&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt; class</h1>
 
     <section class="desc markdown">
-      <p>An collection of key-value pairs, from which you retrieve a value
+      <p>A collection of key/value pairs, from which you retrieve a value
 using its associated key.</p>
 <p>There is a finite number of keys in the map,
 and each key has exactly one value associated with it.</p>
@@ -167,6 +135,9 @@ an operation is being performed on the map, for example in functions called
 during a <a href="dart-core/Map/forEach.html">forEach</a> or <a href="dart-core/Map/putIfAbsent.html">putIfAbsent</a> call.
 Modifying the map while iterating the keys or values
 may also break the iteration.</p>
+<p>It is generally not allowed to modify the equality of keys (and thus not
+their hashcode) while they are in the map. Some specialized subtypes may be
+more permissive, in which case they should document this behavior.</p>
     </section>
     
     <section>
@@ -178,16 +149,13 @@ may also break the iteration.</p>
         <dd><ul class="comma-separated clazz-relationships">
           <li><a href="dart-collection/HashMap-class.html">HashMap</a></li>
           <li><a href="dart-io/HttpSession-class.html">HttpSession</a></li>
+          <li><a href="dart-collection/LinkedHashMap-class.html">LinkedHashMap</a></li>
           <li><a href="dart-collection/MapMixin-class.html">MapMixin</a></li>
           <li><a href="dart-collection/MapView-class.html">MapView</a></li>
-          <li><a href="dart-collection/SplayTreeMap-class.html">SplayTreeMap</a></li>
         </ul></dd>
 
       </dl>
     </section>
-
-
-
 
     <section class="summary offset-anchor" id="constructors">
       <h2>Constructors</h2>
@@ -197,44 +165,58 @@ may also break the iteration.</p>
           <span class="name"><a href="dart-core/Map/Map.html">Map</a></span><span class="signature">()</span>
         </dt>
         <dd>
-          <p>Creates a Map instance with the default implementation, <a href="dart-collection/LinkedHashMap-class.html">LinkedHashMap</a>.</p>
+          Creates a Map instance with the default implementation, <a href="dart-collection/LinkedHashMap-class.html">LinkedHashMap</a>. <a href="dart-core/Map/Map.html">[...]</a>
           <div class="constructor-modifier features">factory</div>
         </dd>
         <dt id="Map.from" class="callable">
           <span class="name"><a href="dart-core/Map/Map.from.html">Map.from</a></span><span class="signature">(<span class="parameter" id="from-param-other"><span class="type-annotation"><a href="dart-core/Map-class.html">Map</a></span> <span class="parameter-name">other</span></span>)</span>
         </dt>
         <dd>
-          <p>Creates a <a href="dart-collection/LinkedHashMap-class.html">LinkedHashMap</a> instance that contains all key-value pairs of
-<code>other</code>.</p>
+          Creates a <a href="dart-collection/LinkedHashMap-class.html">LinkedHashMap</a> instance that contains all key/value pairs of
+<code>other</code>. <a href="dart-core/Map/Map.from.html">[...]</a>
+          <div class="constructor-modifier features">factory</div>
+        </dd>
+        <dt id="Map.fromEntries" class="callable">
+          <span class="name"><a href="dart-core/Map/Map.fromEntries.html">Map.fromEntries</a></span><span class="signature">(<span class="parameter" id="fromEntries-param-entries"><span class="type-annotation"><a href="dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-core/MapEntry-class.html">MapEntry</a><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span></span>&gt;</span></span> <span class="parameter-name">entries</span></span>)</span>
+        </dt>
+        <dd>
+          Creates a new map and adds all entries. <a href="dart-core/Map/Map.fromEntries.html">[...]</a>
           <div class="constructor-modifier features">factory</div>
         </dd>
         <dt id="Map.fromIterable" class="callable">
-          <span class="name"><a href="dart-core/Map/Map.fromIterable.html">Map.fromIterable</a></span><span class="signature">(<span class="parameter" id="fromIterable-param-iterable"><span class="type-annotation"><a href="dart-core/Iterable-class.html">Iterable</a></span> <span class="parameter-name">iterable</span>, {</span> <span class="parameter" id="fromIterable-param-key"><span class="type-annotation">K</span> <span class="parameter-name">key</span>(<span class="parameter" id="key-param-element"><span class="parameter-name">element</span></span>), </span> <span class="parameter" id="fromIterable-param-value"><span class="type-annotation">V</span> <span class="parameter-name">value</span>(<span class="parameter" id="value-param-element"><span class="parameter-name">element</span></span>)</span> })</span>
+          <span class="name"><a href="dart-core/Map/Map.fromIterable.html">Map.fromIterable</a></span><span class="signature">(<span class="parameter" id="fromIterable-param-iterable"><span class="type-annotation"><a href="dart-core/Iterable-class.html">Iterable</a></span> <span class="parameter-name">iterable</span>, {</span> <span class="parameter" id="fromIterable-param-key"><span class="type-annotation">K</span> <span class="parameter-name">key</span>(<span class="parameter" id="key-param-element"><span class="type-annotation">dynamic</span> <span class="parameter-name">element</span></span>), </span> <span class="parameter" id="fromIterable-param-value"><span class="type-annotation">V</span> <span class="parameter-name">value</span>(<span class="parameter" id="value-param-element"><span class="type-annotation">dynamic</span> <span class="parameter-name">element</span></span>)</span> })</span>
         </dt>
         <dd>
-          <p>Creates a Map instance in which the keys and values are computed from the
-<code>iterable</code>.</p>
+          Creates a Map instance in which the keys and values are computed from the
+<code>iterable</code>. <a href="dart-core/Map/Map.fromIterable.html">[...]</a>
           <div class="constructor-modifier features">factory</div>
         </dd>
         <dt id="Map.fromIterables" class="callable">
-          <span class="name"><a href="dart-core/Map/Map.fromIterables.html">Map.fromIterables</a></span><span class="signature">(<span class="parameter" id="fromIterables-param-keys"><span class="type-annotation"><a href="dart-core/Iterable-class.html">Iterable</a>&lt;K&gt;</span> <span class="parameter-name">keys</span>, </span> <span class="parameter" id="fromIterables-param-values"><span class="type-annotation"><a href="dart-core/Iterable-class.html">Iterable</a>&lt;V&gt;</span> <span class="parameter-name">values</span></span>)</span>
+          <span class="name"><a href="dart-core/Map/Map.fromIterables.html">Map.fromIterables</a></span><span class="signature">(<span class="parameter" id="fromIterables-param-keys"><span class="type-annotation"><a href="dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">K</span>&gt;</span></span> <span class="parameter-name">keys</span>, </span> <span class="parameter" id="fromIterables-param-values"><span class="type-annotation"><a href="dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">V</span>&gt;</span></span> <span class="parameter-name">values</span></span>)</span>
         </dt>
         <dd>
-          <p>Creates a Map instance associating the given <code>keys</code> to <code>values</code>.</p>
+          Creates a Map instance associating the given <code>keys</code> to <code>values</code>. <a href="dart-core/Map/Map.fromIterables.html">[...]</a>
           <div class="constructor-modifier features">factory</div>
         </dd>
         <dt id="Map.identity" class="callable">
           <span class="name"><a href="dart-core/Map/Map.identity.html">Map.identity</a></span><span class="signature">()</span>
         </dt>
         <dd>
-          <p>Creates an identity map with the default implementation, <a href="dart-collection/LinkedHashMap-class.html">LinkedHashMap</a>.</p>
+          Creates an identity map with the default implementation, <a href="dart-collection/LinkedHashMap-class.html">LinkedHashMap</a>. <a href="dart-core/Map/Map.identity.html">[...]</a>
+          <div class="constructor-modifier features">factory</div>
+        </dd>
+        <dt id="Map.of" class="callable">
+          <span class="name"><a href="dart-core/Map/Map.of.html">Map.of</a></span><span class="signature">(<span class="parameter" id="of-param-other"><span class="type-annotation"><a href="dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span></span> <span class="parameter-name">other</span></span>)</span>
+        </dt>
+        <dd>
+          Creates a <a href="dart-collection/LinkedHashMap-class.html">LinkedHashMap</a> with the same keys and values as <code>other</code>. <a href="dart-core/Map/Map.of.html">[...]</a>
           <div class="constructor-modifier features">factory</div>
         </dd>
         <dt id="Map.unmodifiable" class="callable">
           <span class="name"><a href="dart-core/Map/Map.unmodifiable.html">Map.unmodifiable</a></span><span class="signature">(<span class="parameter" id="unmodifiable-param-other"><span class="type-annotation"><a href="dart-core/Map-class.html">Map</a></span> <span class="parameter-name">other</span></span>)</span>
         </dt>
         <dd>
-          <p>Creates an unmodifiable hash based map containing the entries of <code>other</code>.</p>
+          Creates an unmodifiable hash based map containing the entries of <code>other</code>. <a href="dart-core/Map/Map.unmodifiable.html">[...]</a>
           <div class="constructor-modifier features">factory</div>
         </dd>
       </dl>
@@ -244,107 +226,70 @@ may also break the iteration.</p>
       <h2>Properties</h2>
 
       <dl class="properties">
-        <dt id="hashCode" class="property inherited">
-          <span class="name"><a href="dart-core/Object/hashCode.html">hashCode</a></span>
-          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        <dt id="entries" class="property">
+          <span class="name"><a href="dart-core/Map/entries.html">entries</a></span>
+          <span class="signature">&#8594; <a href="dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-core/MapEntry-class.html">MapEntry</a><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span></span>&gt;</span></span>
         </dt>
-        <dd class="inherited">
-          <p>Get a hash code for this object.</p>
-          <div class="features">
-    read-only, inherited
-  </div>
+        <dd>
+          The map entries of <a href="dart-core/Map-class.html">this</a>.
+          <div class="features">read-only</div>
 </dd>
         <dt id="isEmpty" class="property">
           <span class="name"><a href="dart-core/Map/isEmpty.html">isEmpty</a></span>
           <span class="signature">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
         </dt>
         <dd>
-          <p>Returns true if there is no key-value pair in the map.</p>
-          <div class="features">
-    read-only
-  </div>
+          Returns true if there is no key/value pair in the map.
+          <div class="features">read-only</div>
 </dd>
         <dt id="isNotEmpty" class="property">
           <span class="name"><a href="dart-core/Map/isNotEmpty.html">isNotEmpty</a></span>
           <span class="signature">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
         </dt>
         <dd>
-          <p>Returns true if there is at least one key-value pair in the map.</p>
-          <div class="features">
-    read-only
-  </div>
+          Returns true if there is at least one key/value pair in the map.
+          <div class="features">read-only</div>
 </dd>
         <dt id="keys" class="property">
           <span class="name"><a href="dart-core/Map/keys.html">keys</a></span>
-          <span class="signature">&#8594; <a href="dart-core/Iterable-class.html">Iterable</a>&lt;K&gt;</span>
+          <span class="signature">&#8594; <a href="dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">K</span>&gt;</span></span>
         </dt>
         <dd>
-          <p>The keys of <code>this</code>.</p>
-          <div class="features">
-    read-only
-  </div>
+          The keys of <a href="dart-core/Map-class.html">this</a>. <a href="dart-core/Map/keys.html">[...]</a>
+          <div class="features">read-only</div>
 </dd>
         <dt id="length" class="property">
           <span class="name"><a href="dart-core/Map/length.html">length</a></span>
           <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
         </dt>
         <dd>
-          <p>The number of key-value pairs in the map.</p>
-          <div class="features">
-    read-only
-  </div>
+          The number of key/value pairs in the map.
+          <div class="features">read-only</div>
+</dd>
+        <dt id="values" class="property">
+          <span class="name"><a href="dart-core/Map/values.html">values</a></span>
+          <span class="signature">&#8594; <a href="dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">V</span>&gt;</span></span>
+        </dt>
+        <dd>
+          The values of <a href="dart-core/Map-class.html">this</a>. <a href="dart-core/Map/values.html">[...]</a>
+          <div class="features">read-only</div>
+</dd>
+        <dt id="hashCode" class="property inherited">
+          <span class="name"><a href="dart-core/Object/hashCode.html">hashCode</a></span>
+          <span class="signature">&#8594; <a href="dart-core/int-class.html">int</a></span>
+        </dt>
+        <dd class="inherited">
+          The hash code for this object. <a href="dart-core/Object/hashCode.html">[...]</a>
+          <div class="features">read-only, inherited</div>
 </dd>
         <dt id="runtimeType" class="property inherited">
           <span class="name"><a href="dart-core/Object/runtimeType.html">runtimeType</a></span>
           <span class="signature">&#8594; <a href="dart-core/Type-class.html">Type</a></span>
         </dt>
         <dd class="inherited">
-          <p>A representation of the runtime type of the object.</p>
-          <div class="features">
-    read-only, inherited
-  </div>
+          A representation of the runtime type of the object.
+          <div class="features">read-only, inherited</div>
 </dd>
-        <dt id="values" class="property">
-          <span class="name"><a href="dart-core/Map/values.html">values</a></span>
-          <span class="signature">&#8594; <a href="dart-core/Iterable-class.html">Iterable</a>&lt;V&gt;</span>
-        </dt>
-        <dd>
-          <p>The values of <code>this</code>.</p>
-          <div class="features">
-    read-only
-  </div>
-</dd>
-      </dl>
-    </section>
-
-    <section class="summary offset-anchor" id="operators">
-      <h2>Operators</h2>
-      <dl class="callables">
-        <dt id="operator ==" class="callable inherited">
-          <span class="name"><a href="dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="parameter-name">other</span></span>)
-            <span class="returntype parameter">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
-          </span>
-        </dt>
-        <dd class="inherited">
-          <p>The equality operator.</p>
-          <div class="features">inherited</div>
-        </dd>
-        <dt id="operator []" class="callable">
-          <span class="name"><a href="dart-core/Map/operator_get.html">operator []</a></span><span class="signature">(<wbr><span class="parameter" id="[]-param-key"><span class="type-annotation"><a href="dart-core/Object-class.html">Object</a></span> <span class="parameter-name">key</span></span>)
-            <span class="returntype parameter">&#8594; V</span>
-          </span>
-        </dt>
-        <dd>
-          <p>Returns the value for the given <code>key</code> or null if <code>key</code> is not in the map.</p>
-        </dd>
-        <dt id="operator []=" class="callable">
-          <span class="name"><a href="dart-core/Map/operator_put.html">operator []=</a></span><span class="signature">(<wbr><span class="parameter" id="[]=-param-key"><span class="type-annotation">K</span> <span class="parameter-name">key</span>, </span> <span class="parameter" id="[]=-param-value"><span class="type-annotation">V</span> <span class="parameter-name">value</span></span>)
-            <span class="returntype parameter">&#8594; void</span>
-          </span>
-        </dt>
-        <dd>
-          <p>Associates the <code>key</code> with the given <code>value</code>.</p>
-        </dd>
       </dl>
     </section>
 
@@ -352,159 +297,276 @@ may also break the iteration.</p>
       <h2>Methods</h2>
       <dl class="callables">
         <dt id="addAll" class="callable">
-          <span class="name"><a href="dart-core/Map/addAll.html">addAll</a></span><span class="signature">(<wbr><span class="parameter" id="addAll-param-other"><span class="type-annotation"><a href="dart-core/Map-class.html">Map</a>&lt;K, V&gt;</span> <span class="parameter-name">other</span></span>)
+          <span class="name"><a href="dart-core/Map/addAll.html">addAll</a></span><span class="signature">(<wbr><span class="parameter" id="addAll-param-other"><span class="type-annotation"><a href="dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span></span> <span class="parameter-name">other</span></span>)
             <span class="returntype parameter">&#8594; void</span>
           </span>
         </dt>
         <dd>
-          <p>Adds all key-value pairs of <code>other</code> to this map.</p>
-        </dd>
+          Adds all key/value pairs of <code>other</code> to this map. <a href="dart-core/Map/addAll.html">[...]</a>
+          
+</dd>
+        <dt id="addEntries" class="callable">
+          <span class="name"><a href="dart-core/Map/addEntries.html">addEntries</a></span><span class="signature">(<wbr><span class="parameter" id="addEntries-param-newEntries"><span class="type-annotation"><a href="dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-core/MapEntry-class.html">MapEntry</a><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span></span>&gt;</span></span> <span class="parameter-name">newEntries</span></span>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+        </dt>
+        <dd>
+          Adds all key/value pairs of <code>newEntries</code> to this map. <a href="dart-core/Map/addEntries.html">[...]</a>
+          
+</dd>
+        <dt id="cast" class="callable">
+          <span class="name"><a href="dart-core/Map/cast.html">cast</a></span><span class="signature">&lt;<wbr><span class="type-parameter">RK</span>, <span class="type-parameter">RV</span>&gt;</span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; <a href="dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter">RK</span>, <span class="type-parameter">RV</span>&gt;</span></span>
+          </span>
+        </dt>
+        <dd>
+          Provides a view of this map as having <code>RK</code> keys and <code>RV</code> instances,
+if necessary. <a href="dart-core/Map/cast.html">[...]</a>
+          
+</dd>
         <dt id="clear" class="callable">
           <span class="name"><a href="dart-core/Map/clear.html">clear</a></span><span class="signature">(<wbr>)
             <span class="returntype parameter">&#8594; void</span>
           </span>
         </dt>
         <dd>
-          <p>Removes all pairs from the map.</p>
-        </dd>
+          Removes all pairs from the map. <a href="dart-core/Map/clear.html">[...]</a>
+          
+</dd>
         <dt id="containsKey" class="callable">
           <span class="name"><a href="dart-core/Map/containsKey.html">containsKey</a></span><span class="signature">(<wbr><span class="parameter" id="containsKey-param-key"><span class="type-annotation"><a href="dart-core/Object-class.html">Object</a></span> <span class="parameter-name">key</span></span>)
             <span class="returntype parameter">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
           </span>
         </dt>
         <dd>
-          <p>Returns true if this map contains the given <code>key</code>.</p>
-        </dd>
+          Returns true if this map contains the given <code>key</code>. <a href="dart-core/Map/containsKey.html">[...]</a>
+          
+</dd>
         <dt id="containsValue" class="callable">
           <span class="name"><a href="dart-core/Map/containsValue.html">containsValue</a></span><span class="signature">(<wbr><span class="parameter" id="containsValue-param-value"><span class="type-annotation"><a href="dart-core/Object-class.html">Object</a></span> <span class="parameter-name">value</span></span>)
             <span class="returntype parameter">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
           </span>
         </dt>
         <dd>
-          <p>Returns true if this map contains the given <code>value</code>.</p>
-        </dd>
+          Returns true if this map contains the given <code>value</code>. <a href="dart-core/Map/containsValue.html">[...]</a>
+          
+</dd>
         <dt id="forEach" class="callable">
           <span class="name"><a href="dart-core/Map/forEach.html">forEach</a></span><span class="signature">(<wbr><span class="parameter" id="forEach-param-f"><span class="type-annotation">void</span> <span class="parameter-name">f</span>(<span class="parameter" id="f-param-key"><span class="type-annotation">K</span> <span class="parameter-name">key</span>, </span> <span class="parameter" id="f-param-value"><span class="type-annotation">V</span> <span class="parameter-name">value</span></span>)</span>)
             <span class="returntype parameter">&#8594; void</span>
           </span>
         </dt>
         <dd>
-          <p>Applies <code>f</code> to each key-value pair of the map.</p>
-        </dd>
-        <dt id="noSuchMethod" class="callable inherited">
-          <span class="name"><a href="dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
-            <span class="returntype parameter">&#8594; dynamic</span>
+          Applies <code>f</code> to each key/value pair of the map. <a href="dart-core/Map/forEach.html">[...]</a>
+          
+</dd>
+        <dt id="map" class="callable">
+          <span class="name"><a href="dart-core/Map/map.html">map</a></span><span class="signature">&lt;<wbr><span class="type-parameter">K2</span>, <span class="type-parameter">V2</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="map-param-f"><span class="type-annotation"><a href="dart-core/MapEntry-class.html">MapEntry</a><span class="signature">&lt;<wbr><span class="type-parameter">K2</span>, <span class="type-parameter">V2</span>&gt;</span></span> <span class="parameter-name">f</span>(<span class="parameter" id="f-param-key"><span class="type-annotation">K</span> <span class="parameter-name">key</span>, </span> <span class="parameter" id="f-param-value"><span class="type-annotation">V</span> <span class="parameter-name">value</span></span>)</span>)
+            <span class="returntype parameter">&#8594; <a href="dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter">K2</span>, <span class="type-parameter">V2</span>&gt;</span></span>
           </span>
         </dt>
-        <dd class="inherited">
-          <p>Invoked when a non-existent method or property is accessed.</p>
-          <div class="features">inherited</div>
-        </dd>
+        <dd>
+          Returns a new map where all entries of this map are transformed by
+the given <code>f</code> function.
+          
+</dd>
         <dt id="putIfAbsent" class="callable">
           <span class="name"><a href="dart-core/Map/putIfAbsent.html">putIfAbsent</a></span><span class="signature">(<wbr><span class="parameter" id="putIfAbsent-param-key"><span class="type-annotation">K</span> <span class="parameter-name">key</span>, </span> <span class="parameter" id="putIfAbsent-param-ifAbsent"><span class="type-annotation">V</span> <span class="parameter-name">ifAbsent</span>()</span>)
             <span class="returntype parameter">&#8594; V</span>
           </span>
         </dt>
         <dd>
-          <p>Look up the value of <code>key</code>, or add a new value if it isn't there.</p>
-        </dd>
+          Look up the value of <code>key</code>, or add a new value if it isn't there. <a href="dart-core/Map/putIfAbsent.html">[...]</a>
+          
+</dd>
         <dt id="remove" class="callable">
           <span class="name"><a href="dart-core/Map/remove.html">remove</a></span><span class="signature">(<wbr><span class="parameter" id="remove-param-key"><span class="type-annotation"><a href="dart-core/Object-class.html">Object</a></span> <span class="parameter-name">key</span></span>)
             <span class="returntype parameter">&#8594; V</span>
           </span>
         </dt>
         <dd>
-          <p>Removes <code>key</code> and its associated value, if present, from the map.</p>
-        </dd>
+          Removes <code>key</code> and its associated value, if present, from the map. <a href="dart-core/Map/remove.html">[...]</a>
+          
+</dd>
+        <dt id="removeWhere" class="callable">
+          <span class="name"><a href="dart-core/Map/removeWhere.html">removeWhere</a></span><span class="signature">(<wbr><span class="parameter" id="removeWhere-param-predicate"><span class="type-annotation"><a href="dart-core/bool-class.html">bool</a></span> <span class="parameter-name">predicate</span>(<span class="parameter" id="predicate-param-key"><span class="type-annotation">K</span> <span class="parameter-name">key</span>, </span> <span class="parameter" id="predicate-param-value"><span class="type-annotation">V</span> <span class="parameter-name">value</span></span>)</span>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+        </dt>
+        <dd>
+          Removes all entries of this map that satisfy the given <code>predicate</code>.
+          
+</dd>
+        <dt id="retype" class="callable">
+          <span class="name"><a href="dart-core/Map/retype.html">retype</a></span><span class="signature">&lt;<wbr><span class="type-parameter">RK</span>, <span class="type-parameter">RV</span>&gt;</span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; <a href="dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter">RK</span>, <span class="type-parameter">RV</span>&gt;</span></span>
+          </span>
+        </dt>
+        <dd>
+          Provides a view of this map as having <code>RK</code> keys and <code>RV</code> instances,
+if necessary. <a href="dart-core/Map/retype.html">[...]</a>
+          
+</dd>
+        <dt id="update" class="callable">
+          <span class="name"><a href="dart-core/Map/update.html">update</a></span><span class="signature">(<wbr><span class="parameter" id="update-param-key"><span class="type-annotation">K</span> <span class="parameter-name">key</span>, </span> <span class="parameter" id="update-param-update"><span class="type-annotation">V</span> <span class="parameter-name">update</span>(<span class="parameter" id="update-param-value"><span class="type-annotation">V</span> <span class="parameter-name">value</span></span>), {</span> <span class="parameter" id="update-param-ifAbsent"><span class="type-annotation">V</span> <span class="parameter-name">ifAbsent</span>()</span> })
+            <span class="returntype parameter">&#8594; V</span>
+          </span>
+        </dt>
+        <dd>
+          Updates the value for the provided <code>key</code>. <a href="dart-core/Map/update.html">[...]</a>
+          
+</dd>
+        <dt id="updateAll" class="callable">
+          <span class="name"><a href="dart-core/Map/updateAll.html">updateAll</a></span><span class="signature">(<wbr><span class="parameter" id="updateAll-param-update"><span class="type-annotation">V</span> <span class="parameter-name">update</span>(<span class="parameter" id="update-param-key"><span class="type-annotation">K</span> <span class="parameter-name">key</span>, </span> <span class="parameter" id="update-param-value"><span class="type-annotation">V</span> <span class="parameter-name">value</span></span>)</span>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+        </dt>
+        <dd>
+          Updates all values. <a href="dart-core/Map/updateAll.html">[...]</a>
+          
+</dd>
+        <dt id="noSuchMethod" class="callable inherited">
+          <span class="name"><a href="dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+            <span class="returntype parameter">&#8594; dynamic</span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          Invoked when a non-existent method or property is accessed. <a href="dart-core/Object/noSuchMethod.html">[...]</a>
+          <div class="features">inherited</div>
+</dd>
         <dt id="toString" class="callable inherited">
           <span class="name"><a href="dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
             <span class="returntype parameter">&#8594; <a href="dart-core/String-class.html">String</a></span>
           </span>
         </dt>
         <dd class="inherited">
-          <p>Returns a string representation of this object.</p>
+          Returns a string representation of this object.
           <div class="features">inherited</div>
-        </dd>
+</dd>
       </dl>
     </section>
+
+    <section class="summary offset-anchor" id="operators">
+      <h2>Operators</h2>
+      <dl class="callables">
+        <dt id="operator []" class="callable">
+          <span class="name"><a href="dart-core/Map/operator_get.html">operator []</a></span><span class="signature">(<wbr><span class="parameter" id="[]-param-key"><span class="type-annotation"><a href="dart-core/Object-class.html">Object</a></span> <span class="parameter-name">key</span></span>)
+            <span class="returntype parameter">&#8594; V</span>
+          </span>
+        </dt>
+        <dd>
+          Returns the value for the given <code>key</code> or null if <code>key</code> is not in the map. <a href="dart-core/Map/operator_get.html">[...]</a>
+          
+</dd>
+        <dt id="operator []=" class="callable">
+          <span class="name"><a href="dart-core/Map/operator_put.html">operator []=</a></span><span class="signature">(<wbr><span class="parameter" id="[]=-param-key"><span class="type-annotation">K</span> <span class="parameter-name">key</span>, </span> <span class="parameter" id="[]=-param-value"><span class="type-annotation">V</span> <span class="parameter-name">value</span></span>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+        </dt>
+        <dd>
+          Associates the <code>key</code> with the given <code>value</code>. <a href="dart-core/Map/operator_put.html">[...]</a>
+          
+</dd>
+        <dt id="operator ==" class="callable inherited">
+          <span class="name"><a href="dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation">dynamic</span> <span class="parameter-name">other</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-core/bool-class.html">bool</a></span>
+          </span>
+        </dt>
+        <dd class="inherited">
+          The equality operator. <a href="dart-core/Object/operator_equals.html">[...]</a>
+          <div class="features">inherited</div>
+</dd>
+      </dl>
+    </section>
+
+
+    <section class="summary offset-anchor" id="static-methods">
+      <h2>Static Methods</h2>
+      <dl class="callables">
+        <dt id="castFrom" class="callable">
+          <span class="name"><a href="dart-core/Map/castFrom.html">castFrom</a></span><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>, <span class="type-parameter">K2</span>, <span class="type-parameter">V2</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="castFrom-param-source"><span class="type-annotation"><a href="dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span></span> <span class="parameter-name">source</span></span>)
+            <span class="returntype parameter">&#8594; <a href="dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter">K2</span>, <span class="type-parameter">V2</span>&gt;</span></span>
+          </span>
+        </dt>
+        <dd>
+          Adapts <code>source</code> to be a <code>Map&lt;K2, V2&gt;</code>. <a href="dart-core/Map/castFrom.html">[...]</a>
+          
+</dd>
+      </dl>
+    </section>
+
 
   </div> <!-- /.main-content -->
 
   <div class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
-    <h5>Map</h5>
     <ol>
-    
-    
-    
       <li class="section-title"><a href="dart-core/Map-class.html#constructors">Constructors</a></li>
       <li><a href="dart-core/Map/Map.html">Map</a></li>
       <li><a href="dart-core/Map/Map.from.html">from</a></li>
+      <li><a href="dart-core/Map/Map.fromEntries.html">fromEntries</a></li>
       <li><a href="dart-core/Map/Map.fromIterable.html">fromIterable</a></li>
       <li><a href="dart-core/Map/Map.fromIterables.html">fromIterables</a></li>
       <li><a href="dart-core/Map/Map.identity.html">identity</a></li>
+      <li><a href="dart-core/Map/Map.of.html">of</a></li>
       <li><a href="dart-core/Map/Map.unmodifiable.html">unmodifiable</a></li>
     
       <li class="section-title">
         <a href="dart-core/Map-class.html#instance-properties">Properties</a>
       </li>
-      <li class="inherited"><a href="dart-core/Object/hashCode.html">hashCode</a></li>
+      <li><a href="dart-core/Map/entries.html">entries</a></li>
       <li><a href="dart-core/Map/isEmpty.html">isEmpty</a></li>
       <li><a href="dart-core/Map/isNotEmpty.html">isNotEmpty</a></li>
       <li><a href="dart-core/Map/keys.html">keys</a></li>
       <li><a href="dart-core/Map/length.html">length</a></li>
-      <li class="inherited"><a href="dart-core/Object/runtimeType.html">runtimeType</a></li>
       <li><a href="dart-core/Map/values.html">values</a></li>
-    
-      <li class="section-title"><a href="dart-core/Map-class.html#operators">Operators</a></li>
-      <li class="inherited"><a href="dart-core/Object/operator_equals.html">operator ==</a></li>
-      <li><a href="dart-core/Map/operator_get.html">operator []</a></li>
-      <li><a href="dart-core/Map/operator_put.html">operator []=</a></li>
+      <li class="inherited"><a href="dart-core/Object/hashCode.html">hashCode</a></li>
+      <li class="inherited"><a href="dart-core/Object/runtimeType.html">runtimeType</a></li>
     
       <li class="section-title"><a href="dart-core/Map-class.html#instance-methods">Methods</a></li>
       <li><a href="dart-core/Map/addAll.html">addAll</a></li>
+      <li><a href="dart-core/Map/addEntries.html">addEntries</a></li>
+      <li><a href="dart-core/Map/cast.html">cast</a></li>
       <li><a href="dart-core/Map/clear.html">clear</a></li>
       <li><a href="dart-core/Map/containsKey.html">containsKey</a></li>
       <li><a href="dart-core/Map/containsValue.html">containsValue</a></li>
       <li><a href="dart-core/Map/forEach.html">forEach</a></li>
-      <li class="inherited"><a href="dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+      <li><a href="dart-core/Map/map.html">map</a></li>
       <li><a href="dart-core/Map/putIfAbsent.html">putIfAbsent</a></li>
       <li><a href="dart-core/Map/remove.html">remove</a></li>
+      <li><a href="dart-core/Map/removeWhere.html">removeWhere</a></li>
+      <li><a href="dart-core/Map/retype.html">retype</a></li>
+      <li><a href="dart-core/Map/update.html">update</a></li>
+      <li><a href="dart-core/Map/updateAll.html">updateAll</a></li>
+      <li class="inherited"><a href="dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
       <li class="inherited"><a href="dart-core/Object/toString.html">toString</a></li>
+    
+      <li class="section-title"><a href="dart-core/Map-class.html#operators">Operators</a></li>
+      <li><a href="dart-core/Map/operator_get.html">operator []</a></li>
+      <li><a href="dart-core/Map/operator_put.html">operator []=</a></li>
+      <li class="inherited"><a href="dart-core/Object/operator_equals.html">operator ==</a></li>
+    
+    
+      <li class="section-title"><a href="dart-core/Map-class.html#static-methods">Static methods</a></li>
+      <li><a href="dart-core/Map/castFrom.html">castFrom</a></li>
+    
     </ol>
   </div><!--/.sidebar-offcanvas-->
 
-</div> <!-- row -->
-</div> <!-- container -->
+</main>
 
 <footer>
-  <div class="container-fluid">
-    <div class="container">
-      <p class="text-center">
-        <span class="no-break">
-          flutter_sprites 0.0.15
-        </span>
-        &bull;
-        <span class="no-break">
-          <a href="https://www.dartlang.org">
-            <img src="static-assets/favicon.png" alt="Dart" title="Dart" width="16" height="16">
-          </a>
-        </span>
-        &bull;
-        <span class="copyright no-break">
-          <a href="http://creativecommons.org/licenses/by-sa/4.0/">cc license</a>
-        </span>
-      </p>
-    </div>
-  </div>
+  <span class="no-break">
+    spritewidget 0.9.16
+  </span>
+
 </footer>
 
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="static-assets/typeahead.bundle.min.js"></script>
-<script src="static-assets/prettify.js"></script>
+<script src="static-assets/highlight.pack.js"></script>
 <script src="static-assets/URI.js"></script>
 <script src="static-assets/script.js"></script>
-<!-- Do not remove placeholder -->
-<!-- Footer Placeholder -->
+
 
 </body>
 

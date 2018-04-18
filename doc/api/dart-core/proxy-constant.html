@@ -9,83 +9,38 @@
   <!-- required because all the links are pseudo-absolute -->
   <base href="..">
 
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Code+Pro|Roboto:500,400italic,300,400' type='text/css'>
-  <link rel="stylesheet" href="static-assets/prettify.css">
-  <link rel="stylesheet" href="static-assets/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500,400i,400,300|Source+Sans+Pro:400,300,700" rel="stylesheet">
+  <link rel="stylesheet" href="static-assets/github.css">
   <link rel="stylesheet" href="static-assets/styles.css">
   <link rel="icon" href="static-assets/favicon.png">
 
-  <!-- Do not remove placeholder -->
-  <!-- Header Placeholder -->
 </head>
 
 <body>
 
 <div id="overlay-under-drawer"></div>
 
-<header class="container-fluid" id="title">
-  <nav class="navbar navbar-fixed-top">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12 contents">
-          <button id="sidenav-left-toggle" type="button">&nbsp;</button>
-          <ol class="breadcrumbs gt-separated hidden-xs">
-            <li><a href="index.html">flutter_sprites</a></li>
-            <li><a href="dart-core/dart-core-library.html">dart:core</a></li>
-            <li class="self-crumb">proxy</li>
-          </ol>
-          <div class="self-name">proxy</div>
-          <form class="search navbar-right" role="search">
-            <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
-          </form>
-        </div> <!-- /col -->
-      </div> <!-- /row -->
-    </div> <!-- /container -->
-  </nav>
-
-  <div class="container masthead">
-    <div class="row">
-      <div class="col-sm-12 contents">
-        <ol class="breadcrumbs gt-separated visible-xs">
-          <li><a href="index.html">flutter_sprites</a></li>
-          <li><a href="dart-core/dart-core-library.html">dart:core</a></li>
-          <li class="self-crumb">proxy</li>
-        </ol>
-        <div class="title-description">
-          <h1 class="title">
-            <span class="kind">constant</span> proxy
-          </h1>
-        </div>
-      </div> <!-- /col -->
-    </div> <!-- /row -->
-  </div> <!-- /container -->
-
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="index.html">spritewidget</a></li>
+    <li><a href="dart-core/dart-core-library.html">dart:core</a></li>
+    <li class="self-crumb"><span class="deprecated">proxy</span> constant</li>
+  </ol>
+  <div class="self-name">proxy</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
 </header>
 
-<div class="container body">
-  <div class="row">
+<main>
 
   <div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
-    <h5><a href="index.html">flutter_sprites</a></h5>
-    <h5><a href="dart-core/dart-core-library.html">dart:core</a></h5>
+    <h5>dart:core library</h5>
     <ol>
-      <li class="section-title"><a href="dart-core/dart-core-library.html#constants">Constants</a></li>
-      <li><a href="dart-core/deprecated-constant.html">deprecated</a></li>
-      <li><a href="dart-core/override-constant.html">override</a></li>
-      <li><a href="dart-core/proxy-constant.html">proxy</a></li>
-    
-      <li class="section-title"><a href="dart-core/dart-core-library.html#typedefs">Typedefs</a></li>
-      <li><a href="dart-core/Comparator.html">Comparator</a></li>
-    
-    
-      <li class="section-title"><a href="dart-core/dart-core-library.html#functions">Functions</a></li>
-      <li><a href="dart-core/identical.html">identical</a></li>
-      <li><a href="dart-core/identityHashCode.html">identityHashCode</a></li>
-      <li><a href="dart-core/print.html">print</a></li>
-    
-    
       <li class="section-title"><a href="dart-core/dart-core-library.html#classes">Classes</a></li>
       <li><a href="dart-core/BidirectionalIterator-class.html">BidirectionalIterator</a></li>
+      <li><a href="dart-core/BigInt-class.html">BigInt</a></li>
       <li><a href="dart-core/bool-class.html">bool</a></li>
       <li><a href="dart-core/Comparable-class.html">Comparable</a></li>
       <li><a href="dart-core/DateTime-class.html">DateTime</a></li>
@@ -100,11 +55,14 @@
       <li><a href="dart-core/Iterator-class.html">Iterator</a></li>
       <li><a href="dart-core/List-class.html">List</a></li>
       <li><a href="dart-core/Map-class.html">Map</a></li>
+      <li><a href="dart-core/MapEntry-class.html">MapEntry</a></li>
       <li><a href="dart-core/Match-class.html">Match</a></li>
       <li><a href="dart-core/Null-class.html">Null</a></li>
       <li><a href="dart-core/num-class.html">num</a></li>
       <li><a href="dart-core/Object-class.html">Object</a></li>
       <li><a href="dart-core/Pattern-class.html">Pattern</a></li>
+      <li><a href="dart-core/pragma-class.html">pragma</a></li>
+      <li><a href="dart-core/Provisional-class.html">Provisional</a></li>
       <li><a href="dart-core/RegExp-class.html">RegExp</a></li>
       <li><a href="dart-core/RuneIterator-class.html">RuneIterator</a></li>
       <li><a href="dart-core/Runes-class.html">Runes</a></li>
@@ -119,6 +77,22 @@
       <li><a href="dart-core/Type-class.html">Type</a></li>
       <li><a href="dart-core/Uri-class.html">Uri</a></li>
       <li><a href="dart-core/UriData-class.html">UriData</a></li>
+    
+      <li class="section-title"><a href="dart-core/dart-core-library.html#constants">Constants</a></li>
+      <li><a href="dart-core/deprecated-constant.html">deprecated</a></li>
+      <li><a href="dart-core/override-constant.html">override</a></li>
+      <li><a href="dart-core/provisional-constant.html">provisional</a></li>
+      <li><a class="deprecated" href="dart-core/proxy-constant.html">proxy</a></li>
+    
+    
+      <li class="section-title"><a href="dart-core/dart-core-library.html#functions">Functions</a></li>
+      <li><a href="dart-core/identical.html">identical</a></li>
+      <li><a href="dart-core/identityHashCode.html">identityHashCode</a></li>
+      <li><a href="dart-core/print.html">print</a></li>
+    
+    
+      <li class="section-title"><a href="dart-core/dart-core-library.html#typedefs">Typedefs</a></li>
+      <li><a href="dart-core/Comparator.html">Comparator</a></li>
     
       <li class="section-title"><a href="dart-core/dart-core-library.html#exceptions">Exceptions</a></li>
       <li><a href="dart-core/AbstractClassInstantiationError-class.html">AbstractClassInstantiationError</a></li>
@@ -146,20 +120,30 @@
   </div><!--/.sidebar-offcanvas-left-->
 
   <div class="col-xs-12 col-sm-9 col-md-8 main-content">
+    <h1>proxy top-level constant</h1>
 
     <section class="multi-line-signature">
-        <span class="name ">proxy</span>        =
-        <span class="constant-value">const _Proxy()</span>
+      const <span class="name deprecated">proxy</span>
+      =
+      <span class="constant-value">const _Proxy()</span>
+      
     </section>
 
-      <section class="desc markdown">
-        <p>The annotation <code>@proxy</code> marks a class as implementing members dynamically
+    <section class="desc markdown">
+      <p>This annotation is deprecated and will be removed in Dart 2.</p>
+<p>Dart 2 has a more restrictive type system than Dart 1, and it requires
+method access to be either through a known interface or by using
+dynamic invocations. The original intent of <code>@proxy</code> (to implement a class
+that isn't known statically, as documented at the end of this text),
+is not supported by Dart 2.
+To continue to perform dynamic invocations on an object,
+it should be accessed through a reference of type <code>dynamic</code>.</p>
+<p>The annotation <code>@proxy</code> marks a class as implementing members dynamically
 through <code>noSuchMethod</code>.</p>
 <p>The annotation applies to any class. It is inherited by subclasses from both
 superclass and interfaces.</p>
 <p>If a class is annotated with <code>@proxy</code>, or it implements any class that is
-annotated, then the class is considered to implement any member with regard
-to static type analysis.
+annotated, then all member accesses are allowed on an object of that type.
 As such, it is not a static type warning to access any member of the object
 which is not implemented by the class, or to call a method with a different
 number of parameters than it is declared with.</p>
@@ -173,7 +157,7 @@ It is not considered to implement any special interfaces,
 so assigning it to a typed variable may fail in checked mode,
 and testing it with the <code>is</code> operator
 will only return true for types it actually implements or extends.
-Accessing a member which isn't implemented by the classs
+Accessing a member which isn't implemented by the class
 will cause the <code>noSuchMethod</code> method to be called normally,
 the <code>@proxy</code> annotation merely states the intent to handle (some of) those
 <code>noSuchMethod</code> calls gracefully.</p>
@@ -183,43 +167,32 @@ declared on <a href="dart-core/Object-class.html">Object</a>.</p>
 type (or multiple types) that are not known at compile time. If the types
 are known at compile time, a class can be written that implements these
 types.</p>
-      </section>
-            
+    </section>
+        <section class="summary source-code" id="source">
+      <h2><span>Implementation</span> </h2>
+      <pre class="language-dart"><code class="language-dart">const Object proxy = const _Proxy()</code></pre>
+    </section>
 
   </div> <!-- /.main-content -->
 
-</div> <!-- row -->
-</div> <!-- container -->
+  <div class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
 
 <footer>
-  <div class="container-fluid">
-    <div class="container">
-      <p class="text-center">
-        <span class="no-break">
-          flutter_sprites 0.0.15
-        </span>
-        &bull;
-        <span class="no-break">
-          <a href="https://www.dartlang.org">
-            <img src="static-assets/favicon.png" alt="Dart" title="Dart" width="16" height="16">
-          </a>
-        </span>
-        &bull;
-        <span class="copyright no-break">
-          <a href="http://creativecommons.org/licenses/by-sa/4.0/">cc license</a>
-        </span>
-      </p>
-    </div>
-  </div>
+  <span class="no-break">
+    spritewidget 0.9.16
+  </span>
+
 </footer>
 
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="static-assets/typeahead.bundle.min.js"></script>
-<script src="static-assets/prettify.js"></script>
+<script src="static-assets/highlight.pack.js"></script>
 <script src="static-assets/URI.js"></script>
 <script src="static-assets/script.js"></script>
-<!-- Do not remove placeholder -->
-<!-- Footer Placeholder -->
+
 
 </body>
 
