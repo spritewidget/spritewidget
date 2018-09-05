@@ -521,8 +521,8 @@ Map serializeColorSequence(ColorSequence colorSequence) {
 }
 
 ColorSequence deserializeColorSequence(Map data) {
-  List<int> colorsData = data['colors'].retype<int>();
-  List<double> stops = data['colorStops'].retype<double>();
+  List<int> colorsData = data['colors'].cast<int>();
+  List<double> stops = data['colorStops'].cast<double>();
   List<Color> colors = <Color>[];
 
   for (int i = 0; i < colorsData.length; i++) {
@@ -590,7 +590,7 @@ ParticleSystem deserializeParticleSystem(Map data, {ParticleSystem particleSyste
 
   particleSystem.life = data['life'];
   particleSystem.lifeVar = data['lifeVar'];
-  particleSystem.posVar = deserializeOffset(data['posVar'].retype<double>());
+  particleSystem.posVar = deserializeOffset(data['posVar'].cast<double>());
   particleSystem.startSize = data['startSize'];
   particleSystem.startSizeVar = data['startSizeVar'];
   particleSystem.endSize = data['endSize'];
@@ -617,7 +617,7 @@ ParticleSystem deserializeParticleSystem(Map data, {ParticleSystem particleSyste
   particleSystem.blueVar = data['blueVar'];
   particleSystem.numParticlesToEmit = data['numParticlesToEmit'];
   particleSystem.autoRemoveOnFinish = data['autoRemoveOnFinish'];
-  particleSystem.gravity = deserializeOffset(data['gravity'].retype<double>());
+  particleSystem.gravity = deserializeOffset(data['gravity'].cast<double>());
   if (data['blendMode'] != null)
     particleSystem.transferMode = deserializeBlendMode(data['blendMode']);
   else
