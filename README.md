@@ -20,28 +20,30 @@ SpriteWidget is available as a standard package. Just add it as a dependency to 
 
 The first thing you need to do to use SpriteWidget is to setup a root node that is used to draw it's contents. Any sprite nodes that you add to the root node will be rendered by the SpriteWidget. Typically, your root node is part of your app's state. This is an example of how you can setup a custom stateful widget with a SpriteWidget:
 
-    import 'package:flutter/material.dart';
-    import 'package:spritewidget/spritewidget.dart';
+```dart
+import 'package:flutter/material.dart';
+import 'package:spritewidget/spritewidget.dart';
 
-    class MyWidget extends StatefulWidget {
-      @override
-      MyWidgetState createState() => new MyWidgetState();
-    }
+class MyWidget extends StatefulWidget {
+  @override
+  MyWidgetState createState() => new MyWidgetState();
+}
 
-    class MyWidgetState extends State<MyWidget> {
-      NodeWithSize rootNode;
+class MyWidgetState extends State<MyWidget> {
+  NodeWithSize rootNode;
 
-      @override
-      void initState() {
-        super.initState();
-        rootNode = new NodeWithSize(const Size(1024.0, 1024.0));
-      }
+  @override
+  void initState() {
+    super.initState();
+    rootNode = new NodeWithSize(const Size(1024.0, 1024.0));
+  }
 
-      @override
-      Widget build(BuildContext context) {
-      	return new SpriteWidget(rootNode);
-      }
-    }
+  @override
+  Widget build(BuildContext context) {
+  	return new SpriteWidget(rootNode);
+  }
+}
+```
 
 The root node that you provide the SpriteWidget is a NodeWithSize, the size of the root node defines the coordinate system used by the SpriteWidget. By default the SpriteWidget uses letterboxing to display its contents. This means that the size that you give the root node will determine how the SpriteWidget's contents will be scaled to fit. If it doesn't fit perfectly in the area of the widget, either its top and bottom or the left and right side will be trimmed. You can optionally pass in a parameter to the SpriteWidget for other scaling options depending on your needs.
 
