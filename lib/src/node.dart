@@ -77,18 +77,21 @@ class Node {
 
   List<Node> _children = <Node>[];
 
-  ActionController _actions;
+  MotionController _motions;
 
-  /// The [ActionController] associated with this node.
+  /// The [MotionController] associated with this node.
   ///
-  ///     myNode.actions.run(myAction);
-  ActionController get actions {
-    if (_actions == null) {
-      _actions = new ActionController();
-      if (_spriteBox != null) _spriteBox._actionControllers = null;
+  ///     myNode.motions.run(myMotion);
+  MotionController get motions {
+    if (_motions == null) {
+      _motions = new MotionController();
+      if (_spriteBox != null) _spriteBox._motionControllers = null;
     }
-    return _actions;
+    return _motions;
   }
+
+  @Deprecated('actions has been renamed to motions')
+  MotionController get actions => motions;
 
   List<Constraint> _constraints;
 

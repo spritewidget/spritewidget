@@ -236,17 +236,17 @@ class WeatherWorld extends NodeWithSize {
     _weatherType = weatherType;
 
     // Fade the background
-    _background.actions.stopAll();
+    _background.motions.stopAll();
 
     // Fade the background from one gradient to another.
-    _background.actions.run(new ActionTween<Color>(
+    _background.motions.run(new MotionTween<Color>(
       (a) => _background.colorTop = a,
       _background.colorTop,
       _kBackgroundColorsTop[weatherType.index],
       1.0
     ));
 
-    _background.actions.run(new ActionTween<Color>(
+    _background.motions.run(new MotionTween<Color>(
       (a) => _background.colorBottom = a,
       _background.colorBottom,
       _kBackgroundColorsBottom[weatherType.index],
@@ -304,8 +304,8 @@ class CloudLayer extends Node {
     addChild(_sprites[1]);
 
     // Animates the clouds across the screen.
-    actions.run(new ActionRepeatForever(
-      new ActionTween<Offset>(
+    motions.run(new MotionRepeatForever(
+      new MotionTween<Offset>(
         (a) => position = a,
         Offset.zero,
         const Offset(-2048.0, 0.0),
@@ -336,8 +336,8 @@ class CloudLayer extends Node {
     else opacity = 0.0;
 
     for (Sprite sprite in _sprites) {
-      sprite.actions.stopAll();
-      sprite.actions.run(new ActionTween<double>(
+      sprite.motions.stopAll();
+      sprite.motions.run(new MotionTween<double>(
         (a) => sprite.opacity = a,
         sprite.opacity,
         opacity,
@@ -373,14 +373,14 @@ class Sun extends Node {
   set active(bool active) {
     // Toggle visibility of the sun
 
-    actions.stopAll();
+    motions.stopAll();
 
     double targetOpacity;
     if (!active) targetOpacity = 0.0;
     else targetOpacity = 1.0;
 
-    actions.run(
-      new ActionTween<double>(
+    motions.run(
+      new MotionTween<double>(
         (a) => _sun.opacity = a,
         _sun.opacity,
         targetOpacity,
@@ -390,9 +390,9 @@ class Sun extends Node {
 
     if (active) {
       for (Ray ray in _rays) {
-        actions.run(new ActionSequence(<Action>[
-          new ActionDelay(1.5),
-          new ActionTween<double>(
+        motions.run(new MotionSequence(<Motion>[
+          new MotionDelay(1.5),
+          new MotionTween<double>(
             (a) => ray.opacity = a,
             ray.opacity,
             ray.maxOpacity,
@@ -402,7 +402,7 @@ class Sun extends Node {
       }
     } else {
       for (Ray ray in _rays) {
-        actions.run(new ActionTween<double>(
+        motions.run(new MotionTween<double>(
           (a) => ray.opacity = a,
           ray.opacity,
           0.0,
@@ -431,10 +431,10 @@ class Ray extends Sprite {
     // Scale animation
     double scaleTime = randomSignedDouble() * 2.0 + 4.0;
 
-    actions.run(new ActionRepeatForever(
-      new ActionSequence(<Action>[
-        new ActionTween<double>((a) => scaleX = a, scaleX, scaleX * 0.5, scaleTime),
-        new ActionTween<double>((a) => scaleX = a, scaleX * 0.5, scaleX, scaleTime)
+    motions.run(new MotionRepeatForever(
+      new MotionSequence(<Motion>[
+        new MotionTween<double>((a) => scaleX = a, scaleX, scaleX * 0.5, scaleTime),
+        new MotionTween<double>((a) => scaleX = a, scaleX * 0.5, scaleX, scaleTime)
       ])
     ));
   }
@@ -481,19 +481,19 @@ class Rain extends Node {
   }
 
   set active(bool active) {
-    actions.stopAll();
+    motions.stopAll();
     for (ParticleSystem system in _particles) {
       if (active) {
-        actions.run(
-          new ActionTween<double>(
+        motions.run(
+          new MotionTween<double>(
             (a) => system.opacity = a,
             system.opacity,
             1.0,
             2.0
         ));
       } else {
-        actions.run(
-          new ActionTween<double>(
+        motions.run(
+          new MotionTween<double>(
             (a) => system.opacity = a,
             system.opacity,
             0.0,
@@ -552,15 +552,15 @@ class Snow extends Node {
   }
 
   set active(bool active) {
-    actions.stopAll();
+    motions.stopAll();
     for (ParticleSystem system in _particles) {
       if (active) {
-        actions.run(
-          new ActionTween<double>((a) => system.opacity = a, system.opacity, 1.0, 2.0
+        motions.run(
+          new MotionTween<double>((a) => system.opacity = a, system.opacity, 1.0, 2.0
         ));
       } else {
-        actions.run(
-          new ActionTween<double>((a) => system.opacity = a, system.opacity, 0.0, 0.5
+        motions.run(
+          new MotionTween<double>((a) => system.opacity = a, system.opacity, 0.0, 0.5
         ));
       }
     }

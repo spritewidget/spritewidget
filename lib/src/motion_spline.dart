@@ -21,22 +21,22 @@ Offset _cardinalSplineAt(Offset p0, Offset p1, Offset p2, Offset p3, double tens
   return new Offset(x, y);
 }
 
-/// Signature for callbacks used by the [ActionSpline] to set a [Point] value.
+/// Signature for callbacks used by the [MotionSpline] to set a [Point] value.
 typedef void PointSetterCallback(Offset value);
 
-/// The spline action is used to animate a point along a spline definied by
+/// The spline motion is used to animate a point along a spline definied by
 /// a set of points.
-class ActionSpline extends ActionInterval {
+class MotionSpline extends MotionInterval {
 
-  /// Creates a new spline action with a set of points. The [setter] is a
+  /// Creates a new spline motion with a set of points. The [setter] is a
   /// callback for setting the positions, [points] define the spline, and
-  /// [duration] is the time for the action to complete. Optionally a [curve]
+  /// [duration] is the time for the motion to complete. Optionally a [curve]
   /// can be used for easing.
-  ActionSpline(this.setter, this.points, double duration, [Curve curve]) : super(duration, curve) {
+  MotionSpline(this.setter, this.points, double duration, [Curve curve]) : super(duration, curve) {
     _dt = 1.0 / (points.length - 1.0);
   }
 
-  /// The callback used to update a point when the action is run.
+  /// The callback used to update a point when the motion is run.
   final PointSetterCallback setter;
 
   /// A list of points that define the spline.

@@ -19,8 +19,8 @@ import 'package:flutter/widgets.dart';
 import 'package:meta/meta.dart';
 import 'package:vector_math/vector_math_64.dart';
 
-part 'src/action.dart';
-part 'src/action_spline.dart';
+part 'src/motion.dart';
+part 'src/motion_spline.dart';
 part 'src/color_sequence.dart';
 part 'src/constraint.dart';
 part 'src/effect_line.dart';

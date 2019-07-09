@@ -361,29 +361,29 @@ class _JumpingJackSide extends Node {
   }
 
   void animateJumping() {
-    actions.stopAll();
-    actions.run(new ActionSequence(<Action>[
+    motions.stopAll();
+    motions.run(new MotionSequence(<Motion>[
       _createPoseAction(null, 0, 0.5),
-      new ActionCallFunction(_animateJumpingLoop)
+      new MotionCallFunction(_animateJumpingLoop)
     ]));
   }
 
   void _animateJumpingLoop() {
-    actions.run(new ActionRepeatForever(new ActionSequence(<Action>[
+    motions.run(new MotionRepeatForever(new MotionSequence(<Motion>[
       _createPoseAction(0, 1, 0.30),
       _createPoseAction(1, 2, 0.30),
       _createPoseAction(2, 1, 0.30),
       _createPoseAction(1, 0, 0.30),
-      new ActionCallFunction(() {
+      new MotionCallFunction(() {
         if (onPerformedJumpingJack != null) onPerformedJumpingJack();
       })
     ])));
   }
 
   void neutralPosition(bool animate) {
-    actions.stopAll();
+    motions.stopAll();
     if (animate) {
-      actions.run(_createPoseAction(null, 1, 0.5));
+      motions.run(_createPoseAction(null, 1, 0.5));
     } else {
       List<double> d = _dataForPose(1);
       upperArm.rotation = d[0];
@@ -396,28 +396,28 @@ class _JumpingJackSide extends Node {
     }
   }
 
-  ActionInterval _createPoseAction(
+  MotionInterval _createPoseAction(
     int startPose, int endPose, double duration) {
     List<double> d0 = _dataForPose(startPose);
     List<double> d1 = _dataForPose(endPose);
 
-    List<ActionTween> tweens = <ActionTween>[
+    List<MotionTween> tweens = <MotionTween>[
       _tweenRotation(upperArm, d0[0], d1[0], duration),
       _tweenRotation(lowerArm, d0[1], d1[1], duration),
       _tweenRotation(hand, d0[2], d1[2], duration),
       _tweenRotation(upperLeg, d0[3], d1[3], duration),
       _tweenRotation(lowerLeg, d0[4], d1[4], duration),
       _tweenRotation(foot, d0[5], d1[5], duration),
-      new ActionTween<Offset>((a) => torso.position = a, new Offset(0.0, d0[6]),
+      new MotionTween<Offset>((a) => torso.position = a, new Offset(0.0, d0[6]),
         new Offset(0.0, d1[6]), duration)
     ];
 
-    return new ActionGroup(tweens);
+    return new MotionGroup(tweens);
   }
 
-  ActionTween _tweenRotation(
+  MotionTween _tweenRotation(
     _JumpingJackPart part, double r0, double r1, double duration) {
-    return new ActionTween((a) => part.rotation = a, r0, r1, duration);
+    return new MotionTween((a) => part.rotation = a, r0, r1, duration);
   }
 
   List<double> _dataForPose(int pose) {

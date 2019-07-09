@@ -107,7 +107,7 @@ class SpriteBox extends RenderBox {
 
   List<Node> _eventTargets;
 
-  List<ActionController> _actionControllers;
+  List<MotionController> _motionControllers;
 
   List<Node> _constrainedNodes;
 
@@ -147,7 +147,7 @@ class SpriteBox extends RenderBox {
 
     // Update the value
     _rootNode = value;
-    _actionControllers = null;
+    _motionControllers = null;
 
     // Add new references
     _addSpriteBoxReference(_rootNode);
@@ -165,13 +165,13 @@ class SpriteBox extends RenderBox {
   // Adding and removing nodes
 
   void _registerNode(Node node) {
-    _actionControllers = null;
+    _motionControllers = null;
     _eventTargets = null;
     if (node == null || node.constraints != null) _constrainedNodes = null;
   }
 
   void _deregisterNode(Node node) {
-    _actionControllers = null;
+    _motionControllers = null;
     _eventTargets = null;
     if (node == null || node.constraints != null) _constrainedNodes = null;
   }
@@ -404,21 +404,21 @@ class SpriteBox extends RenderBox {
   }
 
   void _runActions(double dt) {
-    if (_actionControllers == null) {
+    if (_motionControllers == null) {
       _rebuildActionControllersAndPhysicsNodes();
     }
-    for (ActionController actions in _actionControllers) {
+    for (MotionController actions in _motionControllers) {
       actions.step(dt);
     }
   }
 
   void _rebuildActionControllersAndPhysicsNodes() {
-    _actionControllers = <ActionController>[];
+    _motionControllers = <MotionController>[];
     _addActionControllersAndPhysicsNodes(_rootNode);
   }
 
   void _addActionControllersAndPhysicsNodes(Node node) {
-    if (node._actions != null) _actionControllers.add(node._actions);
+    if (node._motions != null) _motionControllers.add(node._motions);
 
     for (int i = node.children.length - 1; i >= 0; i--) {
       Node child = node.children[i];
