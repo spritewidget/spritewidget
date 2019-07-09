@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.23
+
+* Lowers required Flutter version
+
 ## 0.9.22
 
 * Lowers the Dart requirement to support generation of docs at pub.dev
