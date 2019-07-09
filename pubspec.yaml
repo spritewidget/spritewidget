@@ -1,6 +1,6 @@
 name: spritewidget
 description: SpriteWidget is an open source toolkit for building complex, high performance animations and 2D games with Flutter.
-version: 0.9.20
+version: 0.9.21
 author: Viktor Lidholt <viktorlidholt@gmail.com>
 homepage: http://spritewidget.com
 environment:

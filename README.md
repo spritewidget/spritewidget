@@ -104,7 +104,7 @@ Each time a new frame is rendered to screen SpriteWidget will perform a number o
 This is the order things will happen:
 
 1. Handle input events
-2. Run animation actions
+2. Run animation motions
 3. Call update functions on nodes
 4. Apply constraints
 5. Render the frame to screen
@@ -132,67 +132,67 @@ You can subclass any node type to handle touches. To receive touches, you need t
 
 If you want your node to receive multiple touches, set the handleMultiplePointers property to true. Each touch down or dragged touch will generate a separate call to the handleEvent method, you can distinguish each touch by its pointer property.
 
-## Animating using actions
+## Animating using motions
 
-SpriteWidget provides easy to use functions for animating nodes through actions. You can combine simple action blocks to create more complex animations.
+SpriteWidget provides easy to use functions for animating nodes through motions. You can combine simple motion blocks to create more complex animations.
 
-To execute an action animation you first build the action itself, then pass it to the run method of a nodes action manager (see the Tweens section below for an example).
+To execute a motion animation you first build the motion itself, then pass it to the run method of a nodes motion manager (see the Tweens section below for an example).
 
 ### Tweens
 
-Tweens are the simplest building block for creating an animation. It will interpolate a value or property over a specified time period. You provide the ActionTween class with a setter function, its start and end value, and the duration for the tween.
+Tweens are the simplest building block for creating an animation. It will interpolate a value or property over a specified time period. You provide the MotionTween class with a setter function, its start and end value, and the duration for the tween.
 
-After creating a tween, execute it by running it through a node's action manager.
+After creating a tween, execute it by running it through a node's motion manager.
 
 	Node myNode = new Node();
 
-    ActionTween myTween = new ActionTween<Offset> (
+    MotionTween myTween = new MotionTween<Offset> (
       (a) => myNode.position = a,
       Offset.zero,
       const Offset(100.0, 0.0),
       1.0
     );
 
-    myNode.actions.run(myTween);
+    myNode.motions.run(myTween);
 
-You can animate values of different types, such as floats, points, rectangles, and even colors. You can also optionally provide the ActionTween class with an easing function.
+You can animate values of different types, such as floats, points, rectangles, and even colors. You can also optionally provide the MotionTween class with an easing function.
 
 ### Sequences
 
-When you need to play two or more actions in a sequence, use the ActionSequence class:
+When you need to play two or more motions in a sequence, use the MotionSequence class:
 
-    ActionSequence sequence = new ActionSequence([
-      firstAction,
-      middleAction,
-      lastAction
+    MotionSequence sequence = new MotionSequence([
+      firstMotion,
+      middleMotion,
+      lastMotion
     ]);
 
 ### Groups
 
-Use ActionGroup to play actions in parallel:
+Use MotionGroup to play motions in parallel:
 
-    ActionGroup group = new ActionGroup([
-      action0,
-      action1
+    MotionGroup group = new MotionGroup([
+      motion0,
+      motion1
     ]);
 
 ### Repeat
 
-You can loop any action, either a fixed number of times, or until the end of times:
+You can loop any motion, either a fixed number of times, or until the end of times:
 
-    ActionRepeat repeat = new ActionRepeat(loopedAction, 5);
+    MotionRepeat repeat = new MotionRepeat(loopedMotion, 5);
 
-    ActionRepeatForever longLoop = new ActionRepeatForever(loopedAction);
+    MotionRepeatForever longLoop = new MotionRepeatForever(loopedMotion);
 
 ### Composition
 
-It's possible to create more complex actions by composing them in any way:
+It's possible to create more complex motions by composing them in any way:
 
-    ActionSequence complexAction = new ActionSequence([
-      new ActionRepeat(myLoop, 2),
-      new ActionGroup([
-      	action0,
-      	action1
+    MotionSequence complexMotion = new MotionSequence([
+      new MotionRepeat(myLoop, 2),
+      new MotionGroup([
+      	motion0,
+      	motion1
       ])
     ]);
 
