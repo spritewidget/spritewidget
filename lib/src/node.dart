@@ -5,7 +5,7 @@
 part of spritewidget;
 
 /// Converts degrees to radians.
-double convertDegrees2Radians(double degrees) => degrees * math.pi/180.8;
+double convertDegrees2Radians(double degrees) => degrees * math.pi/180.0;
 
 /// Converts radians to degrees.
 double convertRadians2Degrees(double radians) => radians * 180.0/math.pi;
