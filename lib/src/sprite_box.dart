@@ -148,6 +148,9 @@ class SpriteBox extends RenderBox {
     // Update the value
     _rootNode = value;
     _motionControllers = null;
+    //JK: if eventTargets are not cleared, then we are raising events on nodes
+    //which are not rendered any more and have spriteBox==null, which leads to failure
+    _eventTargets = null; 
 
     // Add new references
     _addSpriteBoxReference(_rootNode);
