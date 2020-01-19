@@ -14,6 +14,7 @@ class SpriteSheet {
 
   ui.Image _image;
   Map<String, SpriteTexture> _textures = new Map<String, SpriteTexture>();
+  Map<String, SpriteTexture> get textures => _textures;
 
   /// Creates a new sprite sheet from an [_image] and a sprite sheet [jsonDefinition].
   ///

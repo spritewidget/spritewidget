@@ -199,8 +199,13 @@ class TexturedLinePainter {
       lastMiter = currentMiter;
     }
 
-    //TODO: Fix
-//    canvas.drawVertices(VertexMode.triangles, vertices, textureCoordinates, verticeColors, BlendMode.modulate, indices, _cachedPaint);
+    var vertexObject = ui.Vertices(
+      VertexMode.triangleStrip,
+      vertices,
+      textureCoordinates: textureCoordinates,
+      colors: verticeColors,
+    );
+    canvas.drawVertices(vertexObject, BlendMode.modulate, _cachedPaint);
   }
 
   double _xPosForStop(double stop) {
