@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.9.24
+
+* Cleans up directory structure
+* Fixes EffectLine
+
 ## 0.9.23
 
 * Lowers required Flutter version
