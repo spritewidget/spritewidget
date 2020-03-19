@@ -27,6 +27,7 @@ abstract class Motion {
   bool _finished = false;
   bool _added = false;
 
+  /// Allows to check if a motion is finished
   bool get finished => _finished;	
 
   /// Moves to the next time step in an motion, [dt] is the delta time since
