@@ -27,6 +27,8 @@ abstract class Motion {
   bool _finished = false;
   bool _added = false;
 
+  bool get finished => _finished;	
+
   /// Moves to the next time step in an motion, [dt] is the delta time since
   /// the last time step in seconds. Typically this method is called from the
   /// [MotionController].
