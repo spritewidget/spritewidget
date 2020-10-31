@@ -240,11 +240,12 @@ class SpriteBox extends RenderBox {
 
     // Pass the event down to nodes that were hit by the pointerdown
     List<Node> targets = entry.nodeTargets;
+    if(targets==null) return; //JK
     for (Node node in targets) {
       // Check if this event should be dispatched
       if (node.handleMultiplePointers || event.pointer == node._handlingPointer) {
         // Dispatch event
-        bool consumedEvent = node.handleEvent(new SpriteBoxEvent(globalToLocal(event.position), event.runtimeType, event.pointer));
+        bool consumedEvent = node.handleEvent(new SpriteBoxEvent(globalToLocal(event.position), event, event.pointer));
         if (consumedEvent == null || consumedEvent)
           break;
       }
@@ -559,7 +560,18 @@ class SpriteBoxEvent {
   ///     if (event.type == PointerDownEvent) {
   ///       // Do something!
   ///     }
-  final Type type;
+  @Deprecated("use pointerEvent in tue future")
+  Type get type{
+    final t=pointerEvent.runtimeType;
+    if(pointerEvent is PointerDownEvent)
+      return PointerDownEvent;
+    if(pointerEvent is PointerUpEvent)
+      return PointerUpEvent;
+    if(pointerEvent is PointerMoveEvent)
+      return PointerMoveEvent;
+    if(pointerEvent is PointerCancelEvent)
+      return PointerCancelEvent;
+  }
 
   /// The id of the pointer. Each pointer on the screen will have a unique pointer id.
   ///
@@ -567,9 +579,15 @@ class SpriteBoxEvent {
   ///       // Do something
   ///     }
   final int pointer;
+  
+  ///Original pointer event. Use is operator to include subtypes
+  ///     if (event.pointerEvent is PointerDownEvent) {
+  ///       // Do something!
+  ///     }
+  final PointerEvent pointerEvent;
 
   /// Creates a new SpriteBoxEvent, typically this is done internally inside the SpriteBox.
   ///
   ///     var event = new SpriteBoxEvent(new Point(50.0, 50.0), 'pointerdown', 0);
-  SpriteBoxEvent(this.boxPosition, this.type, this.pointer);
+  SpriteBoxEvent(this.boxPosition, this.pointerEvent, this.pointer);
 }
