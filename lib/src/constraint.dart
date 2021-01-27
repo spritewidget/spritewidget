@@ -25,7 +25,7 @@ abstract class Constraint {
   void constrain(Node node, double dt);
 }
 
-double _dampenRotation(double src, double dst, double dampening) {
+double _dampenRotation(double src, double dst, double? dampening) {
   if (dampening == null)
     return dst;
 
@@ -45,12 +45,12 @@ class ConstraintRotationToMovement extends Constraint {
 
   /// The filter factor used when constraining the rotation of the node. Valid
   /// values are in the range 0.0 to 1.0
-  final double dampening;
+  final double? dampening;
 
   /// The base rotation will be added to a the movement vectors rotation.
   final double baseRotation;
 
-  Offset _lastPosition;
+  late Offset _lastPosition;
 
   @override
   void preUpdate(Node node, double dt) {
@@ -59,7 +59,6 @@ class ConstraintRotationToMovement extends Constraint {
 
   @override
   void constrain(Node node, double dt) {
-    if (_lastPosition == null) return;
     if (_lastPosition == node.position) return;
 
     // Get the target angle
@@ -84,7 +83,7 @@ class ConstraintRotationToNodeRotation extends Constraint {
 
   /// The filter factor used when constraining the rotation of the node. Valid
   /// values are in the range 0.0 to 1.0
-  final double dampening;
+  final double? dampening;
 
   @override
   void constrain(Node node, double dt) {
@@ -110,7 +109,7 @@ class ConstraintRotationToNode extends Constraint {
 
   /// The filter factor used when constraining the rotation of the node. Valid
   /// values are in the range 0.0 to 1.0
-  final double dampening;
+  final double? dampening;
 
   @override
   void constrain(Node node, double dt) {
@@ -150,7 +149,7 @@ class ConstraintPositionToNode extends Constraint {
   final Offset offset;
 
   /// Dampening used when following the [targetNode], value between 0.0 and 1.0.
-  final double dampening;
+  final double? dampening;
 
   @override
   void constrain(Node node, double dt) {
@@ -164,7 +163,7 @@ class ConstraintPositionToNode extends Constraint {
     if (targetNode.parent == node.parent) {
       targetPosition = targetNode.position;
     } else {
-      targetPosition = node.parent.convertPointFromNode(Offset.zero, targetNode);
+      targetPosition = node.parent?.convertPointFromNode(Offset.zero, targetNode)??Offset.zero;
     }
 
     if (offset != null)
@@ -173,6 +172,6 @@ class ConstraintPositionToNode extends Constraint {
     if (dampening == null)
       node.position = targetPosition;
     else
-      node.position = GameMath.filterPoint(node.position, targetPosition, dampening);
+      node.position = GameMath.filterPoint(node.position, targetPosition, dampening!);
   }
 }

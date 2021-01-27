@@ -13,7 +13,7 @@ class Sprite extends NodeWithSize with SpritePaint {
   /// marking the bounds of the sprite.
   ///
   ///     mySprite.texture = myTexture;
-  SpriteTexture texture;
+  SpriteTexture? texture;
 
   /// If true, constrains the proportions of the image by scaling it down, if its proportions doesn't match the [size].
   ///
@@ -29,8 +29,8 @@ class Sprite extends NodeWithSize with SpritePaint {
   ///     var mySprite = new Sprite(myTexture)
   Sprite([this.texture]) : super(Size.zero) {
     if (texture != null) {
-      size = texture.size;
-      pivot = texture.pivot;
+      size = texture!.size;
+      pivot = texture!.pivot;
     } else {
       pivot = new Offset(0.5, 0.5);
     }
@@ -40,10 +40,9 @@ class Sprite extends NodeWithSize with SpritePaint {
   ///
   /// var mySprite = new Sprite.fromImage(myImage);
   Sprite.fromImage(ui.Image image) : super(Size.zero) {
-    assert(image != null);
-
+    
     texture = new SpriteTexture(image);
-    size = texture.size;
+    size = texture!.size;
 
     pivot = new Offset(0.5, 0.5);
   }
@@ -54,8 +53,8 @@ class Sprite extends NodeWithSize with SpritePaint {
     applyTransformForPivot(canvas);
 
     if (texture != null) {
-      double w = texture.size.width;
-      double h = texture.size.height;
+      double w = texture!.size.width;
+      double h = texture!.size.height;
 
       if (w <= 0 || h <= 0) return;
 
@@ -79,7 +78,7 @@ class Sprite extends NodeWithSize with SpritePaint {
       _updatePaint(_cachedPaint);
 
       // Do actual drawing of the sprite
-      texture.drawTexture(canvas, Offset.zero, _cachedPaint);
+      texture!.drawTexture(canvas, Offset.zero, _cachedPaint);
 
       // Debug drawing
 //      canvas.drawRect(Offset.zero & texture.size, new Paint()..color=const Color(0x33ff0000));
@@ -102,7 +101,6 @@ abstract class SpritePaint {
   double get opacity => _opacity;
 
   set opacity(double opacity) {
-    assert(opacity != null);
     assert(opacity >= 0.0 && opacity <= 1.0);
     _opacity = opacity;
   }
@@ -111,23 +109,23 @@ abstract class SpritePaint {
   ///
   ///     // Color the sprite red
   ///     mySprite.colorOverlay = new Color(0x77ff0000);
-  Color colorOverlay;
+  Color? colorOverlay;
 
   /// The transfer mode used when drawing the sprite to screen.
   ///
   ///     // Add the colors of the sprite with the colors of the background
   ///     mySprite.transferMode = TransferMode.plusMode;
-  BlendMode transferMode;
+  BlendMode? transferMode;
 
   void _updatePaint(Paint paint) {
     paint.color = new Color.fromARGB((255.0*_opacity).toInt(), 255, 255, 255);
 
     if (colorOverlay != null) {
-      paint.colorFilter = new ColorFilter.mode(colorOverlay, BlendMode.srcATop);
+      paint.colorFilter = new ColorFilter.mode(colorOverlay!, BlendMode.srcATop);
     }
 
     if (transferMode != null) {
-      paint.blendMode = transferMode;
+      paint.blendMode = transferMode!;
     }
   }
 }

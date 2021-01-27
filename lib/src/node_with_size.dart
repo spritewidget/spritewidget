@@ -12,22 +12,24 @@ class NodeWithSize extends Node {
   /// Changing the size will affect the size of the rendering of the node.
   ///
   ///     myNode.size = new Size(1024.0, 1024.0);
-  Size size;
+  late Size size;
 
   /// The normalized point which the node is transformed around.
   ///
   ///     // Position myNode from is middle top
   ///     myNode.pivot = new Point(0.5, 0.0);
-  Offset pivot;
+  late Offset pivot;
 
   /// Creates a new NodeWithSize.
   ///
   /// The default [size] is zero and the default [pivot] point is the origin. Subclasses may change the default values.
   ///
   ///     var myNodeWithSize = new NodeWithSize(new Size(1024.0, 1024.0));
-  NodeWithSize(this.size) {
+  NodeWithSize(Size? size) {
     if (size == null)
-      size = Size.zero;
+      this.size = Size.zero;
+    else
+      this.size=size;
     pivot = Offset.zero;
   }
 

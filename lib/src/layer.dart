@@ -17,7 +17,7 @@ class Layer extends Node with SpritePaint {
   /// ignored. If the area isn't known, the layerRect can be set to [null].
   ///
   ///     myLayer.layerRect = new Rect.fromLTRB(0.0, 0.0, 200.0, 100.0);
-  Rect layerRect;
+  Rect? layerRect;
 
   /// Creates a new layer. The layerRect can optionally be passed as an argument
   /// if it is known.

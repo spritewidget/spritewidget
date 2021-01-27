@@ -7,12 +7,12 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 class ColorSequenceWell extends StatelessWidget {
   final ColorSequence colorSequence;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   static final String _baseEncodedImage = 'iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==';
   final Uint8List _chessTexture = base64.decode(_baseEncodedImage);
 
-  ColorSequenceWell({this.colorSequence, this.onTap});
+  ColorSequenceWell({required this.colorSequence, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +59,7 @@ class ColorSequenceDesigner extends StatefulWidget {
   final ColorSequence colorSequence;
   final ColorSequenceDesignerCallback onChanged;
 
-  ColorSequenceDesigner({this.colorSequence, this.onChanged});
+  ColorSequenceDesigner({required this.colorSequence, required this.onChanged});
 
   @override
   _ColorSequenceDesignerState createState() => new _ColorSequenceDesignerState();
@@ -68,10 +68,10 @@ class ColorSequenceDesigner extends StatefulWidget {
 class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
   static final int _numMaxStops = 4;
 
-  ColorSequence _colorSequence;
+  ColorSequence? _colorSequence;
 
-  List<Color> _colors = new List<Color>(4);
-  List<double> _stops = new List<double>(4);
+  List<Color?> _colors = new List<Color?>.filled(4,null);
+  List<double?> _stops = new List<double?>.filled(4,null);
 
   @override
   void initState() {
@@ -94,7 +94,7 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
       new Padding(
         padding: const EdgeInsets.only(bottom: 16.0),
         child: new ColorSequenceWell(
-          colorSequence: _colorSequence,
+          colorSequence: _colorSequence!,
         ),
       ),
     );
@@ -108,9 +108,9 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
           children: <Widget>[
             new Checkbox(
               value: _colors[stopNum] != null,
-              onChanged: (bool value) {
+              onChanged: (bool? value) {
                 setState(() {
-                  if (value) {
+                  if (value??false) {
                     _addColorStop(stopNum);
                   } else {
                     _removeColorStop(stopNum);
@@ -120,7 +120,7 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
             ),
             new Expanded(
               child: new Slider(
-                value: _stops[stopNum] != null ? _stops[stopNum] : 0.0,
+                value: _stops[stopNum]??0.0,
                 onChanged: (double value) {
                   setState(() {
                     _updateStop(stopNum, value);
@@ -152,14 +152,14 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
 
   void _updateStop(int stop, double value) {
     for (int i = 0; i < stop; i ++) {
-      if (_stops[i] != null && _stops[i] > value)
+      if (_stops[i] != null && _stops[i]! > value)
         _stops[i] = value;
     }
 
     _stops[stop] = value;
 
     for (int i = stop + 1; i < _numMaxStops; i++) {
-      if (_stops[i] != null && _stops[i] < value)
+      if (_stops[i] != null && _stops[i]! < value)
         _stops[i] = value;
     }
 
@@ -196,7 +196,7 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
           break;
         }
       }
-      _stops[stopNum] = (_stops[prevStop] + _stops[nextStop]) / 2.0;
+      _stops[stopNum] = ((_stops[prevStop]??0) + (_stops[nextStop]??0)) / 2.0;
     }
 
     _colors[stopNum] = Colors.black;
@@ -228,14 +228,14 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
           title: const Text('Color stop'),
           content: new SingleChildScrollView(
             child: new ColorPicker(
-              pickerColor: _colors[stopNum],
+              pickerColor: _colors[stopNum]!,
               onColorChanged: (Color c) {
                 setState(() {
                   _colors[stopNum] = c;
                   _updateColorSequence();
                 });
               },
-              enableLabel: false,
+              //enableLabel: false,
               pickerAreaHeightPercent: 0.8,
             ),
           ),
@@ -260,14 +260,14 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
 
     for (int i = 0; i < _numMaxStops; i++) {
       if (_colors[i] != null) {
-        colors.add(_colors[i]);
-        stops.add(_stops[i]);
+        colors.add(_colors[i]!);
+        stops.add(_stops[i]!);
       }
     }
 
     _colorSequence = new ColorSequence(colors, stops);
 
-    if (widget.onChanged != null)
-      return widget.onChanged(_colorSequence);
+    if (_colorSequence != null)
+      return widget.onChanged(_colorSequence!);
   }
 }
