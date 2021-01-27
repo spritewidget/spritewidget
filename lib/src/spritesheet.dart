@@ -20,12 +20,8 @@ class SpriteSheet {
   ///
   ///     var mySpriteSheet = new SpriteSheet(myImage, jsonString);
   SpriteSheet(this._image, String jsonDefinition) {
-    assert(_image != null);
-    assert(jsonDefinition != null);
-
     JsonDecoder decoder = new JsonDecoder();
     Map<dynamic, dynamic> file = decoder.convert(jsonDefinition);
-    assert(file != null);
 
     List<dynamic> frames = file["frames"];
 
@@ -75,5 +71,5 @@ class SpriteSheet {
   /// Returns a texture by its name.
   ///
   ///     var myTexture = mySpriteSheet["example.png"];
-  SpriteTexture operator [](String fileName) => _textures[fileName];
+  SpriteTexture operator [](String fileName) => _textures[fileName]??(throw ArgumentError('Texture $fileName not found'));
 }

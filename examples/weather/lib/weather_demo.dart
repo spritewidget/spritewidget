@@ -11,11 +11,11 @@ import 'package:spritewidget/spritewidget.dart';
 import 'weather_button.dart';
 
 // The image map hold all of our image assets.
-ImageMap _images;
+late ImageMap _images;
 
 // The sprite sheet contains an image and a set of rectangles defining the
 // individual sprites.
-SpriteSheet _sprites;
+late SpriteSheet _sprites;
 
 enum WeatherType {
   sun,
@@ -24,7 +24,7 @@ enum WeatherType {
 }
 
 class WeatherDemo extends StatefulWidget {
-  WeatherDemo({ Key key }) : super(key: key);
+  WeatherDemo({ Key? key }) : super(key: key);
 
   static const String routeName = '/weather';
 
@@ -76,7 +76,7 @@ class _WeatherDemoState extends State<WeatherDemo> {
 
   // The weather world is our sprite tree that handles the weather
   // animations.
-  WeatherWorld weatherWorld;
+  late WeatherWorld weatherWorld;
 
   @override
   Widget build(BuildContext context) {
@@ -216,13 +216,13 @@ class WeatherWorld extends NodeWithSize {
     addChild(_snow);
   }
 
-  GradientNode _background;
-  CloudLayer _cloudsSharp;
-  CloudLayer _cloudsSoft;
-  CloudLayer _cloudsDark;
-  Sun _sun;
-  Rain _rain;
-  Snow _snow;
+  late GradientNode _background;
+  late CloudLayer _cloudsSharp;
+  late CloudLayer _cloudsSoft;
+  late CloudLayer _cloudsDark;
+  late Sun _sun;
+  late Rain _rain;
+  late Snow _snow;
 
   WeatherType get weatherType => _weatherType;
 
@@ -264,7 +264,7 @@ class WeatherWorld extends NodeWithSize {
   void spriteBoxPerformedLayout() {
     // If the device is rotated or if the size of the SpriteWidget changes we
     // are adjusting the position of the sun.
-    _sun.position = spriteBox.visibleArea.topLeft + const Offset(350.0, 180.0);
+    _sun.position = spriteBox!.visibleArea.topLeft + const Offset(350.0, 180.0);
   }
 }
 
@@ -293,7 +293,7 @@ class GradientNode extends NodeWithSize {
 
 // Draws and animates a cloud layer using two sprites.
 class CloudLayer extends Node {
-  CloudLayer({ ui.Image image, bool dark, bool rotated, double loopTime }) {
+  CloudLayer({ required ui.Image image, required bool dark, required  bool rotated, required double loopTime }) {
     // Creates and positions the two cloud sprites.
     _sprites.add(_createSprite(image, dark, rotated));
     _sprites[0].position = const Offset(1024.0, 1024.0);
@@ -367,8 +367,8 @@ class Sun extends Node {
     }
   }
 
-  Sprite _sun;
-  List<Ray> _rays;
+  late Sprite _sun;
+  late List<Ray> _rays;
 
   set active(bool active) {
     // Toggle visibility of the sun
@@ -415,8 +415,8 @@ class Sun extends Node {
 
 // An animated sun ray
 class Ray extends Sprite {
-  double _rotationSpeed;
-  double maxOpacity;
+  double _rotationSpeed=0;
+  double maxOpacity=0;
 
   Ray() : super.fromImage(_images['assets/ray.png']) {
     pivot = const Offset(0.0, 0.5);

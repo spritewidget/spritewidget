@@ -32,9 +32,9 @@ class MotionSpline extends MotionInterval {
   /// callback for setting the positions, [points] define the spline, and
   /// [duration] is the time for the motion to complete. Optionally a [curve]
   /// can be used for easing.
-  MotionSpline(this.setter, this.points, double duration, [Curve curve]) : super(duration, curve) {
-    _dt = 1.0 / (points.length - 1.0);
-  }
+  MotionSpline(this.setter, this.points, double duration, [Curve? curve]) 
+    : _dt = 1.0 / (points.length - 1.0),
+      super(duration, curve);
 
   /// The callback used to update a point when the motion is run.
   final PointSetterCallback setter;

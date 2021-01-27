@@ -31,16 +31,16 @@ class Node {
 
   // Member variables
 
-  SpriteBox _spriteBox;
-  Node _parent;
+  SpriteBox? _spriteBox;
+  Node? _parent;
 
   Offset _position = Offset.zero;
   double _rotation = 0.0;
 
-  Matrix4 _transformMatrix = new Matrix4.identity();
-  Matrix4 _transformMatrixInverse;
-  Matrix4 _transformMatrixNodeToBox;
-  Matrix4 _transformMatrixBoxToNode;
+  Matrix4? _transformMatrix = new Matrix4.identity();
+  Matrix4? _transformMatrixInverse;
+  Matrix4? _transformMatrixNodeToBox;
+  Matrix4? _transformMatrixBoxToNode;
 
   double _scaleX = 1.0;
   double _scaleY = 1.0;
@@ -52,7 +52,7 @@ class Node {
   bool visible = true;
 
   double _zPosition = 0.0;
-  int _addedOrder;
+  int? _addedOrder;
   int _childrenLastAddedOrder = 0;
   bool _childrenNeedSorting = false;
 
@@ -73,11 +73,11 @@ class Node {
   ///       handleMultiplePointers = true;
   ///     }
   bool handleMultiplePointers = false;
-  int _handlingPointer;
+  int? _handlingPointer;
 
   List<Node> _children = <Node>[];
 
-  MotionController _motions;
+  MotionController? _motions;
 
   /// The [MotionController] associated with this node.
   ///
@@ -85,25 +85,25 @@ class Node {
   MotionController get motions {
     if (_motions == null) {
       _motions = new MotionController();
-      if (_spriteBox != null) _spriteBox._motionControllers = null;
+      _spriteBox?._motionControllers = null;
     }
-    return _motions;
+    return _motions!;
   }
 
   @Deprecated('actions has been renamed to motions')
   MotionController get actions => motions;
 
-  List<Constraint> _constraints;
+  List<Constraint>? _constraints;
 
   /// A [List] of [Constraint]s that will be applied to the node.
   /// The constraints are applied after the [update] method has been called.
-  List<Constraint> get constraints {
+  List<Constraint>? get constraints {
     return _constraints;
   }
 
-  set constraints(List<Constraint> constraints) {
+  set constraints(List<Constraint>? constraints) {
     _constraints = constraints;
-    if (_spriteBox != null) _spriteBox._constrainedNodes = null;
+    _spriteBox?._constrainedNodes = null;
   }
 
   /// Called to apply the [constraints] to the node. Normally, this method is
@@ -112,7 +112,7 @@ class Node {
   void applyConstraints(double dt) {
     if (_constraints == null) return;
 
-    for (Constraint constraint in _constraints) {
+    for (Constraint constraint in _constraints??[]) {
       constraint.constrain(this, dt);
     }
   }
@@ -126,13 +126,13 @@ class Node {
   ///
   ///     // Get the transformMode of the sprite box
   ///     SpriteBoxTransformMode transformMode = myNode.spriteBox.transformMode;
-  SpriteBox get spriteBox => _spriteBox;
+  SpriteBox? get spriteBox => _spriteBox;
 
   /// The parent of this node, or null if it doesn't have a parent.
   ///
   ///     // Hide the parent
   ///     myNode.parent.visible = false;
-  Node get parent => _parent;
+  Node? get parent => _parent;
 
   /// The rotation of this node in degrees.
   ///
@@ -140,7 +140,6 @@ class Node {
   double get rotation => _rotation;
 
   set rotation(double rotation) {
-    assert(rotation != null);
 
     _rotation = rotation;
     invalidateTransformMatrix();
@@ -153,7 +152,6 @@ class Node {
   Offset get position => _position;
 
   set position(Offset position) {
-    assert(position != null);
 
     _position = position;
     invalidateTransformMatrix();
@@ -165,7 +163,6 @@ class Node {
   double get skewX => _skewX;
 
   set skewX (double skewX) {
-    assert(skewX != null);
     _skewX = skewX;
     invalidateTransformMatrix();
   }
@@ -176,7 +173,6 @@ class Node {
   double get skewY => _skewY;
 
   set skewY (double skewY) {
-    assert(skewY != null);
     _skewY = skewY;
     invalidateTransformMatrix();
   }
@@ -192,10 +188,9 @@ class Node {
   double get zPosition => _zPosition;
 
   set zPosition(double zPosition) {
-    assert(zPosition != null);
     _zPosition = zPosition;
     if (_parent != null) {
-      _parent._childrenNeedSorting = true;
+      _parent?._childrenNeedSorting = true;
     }
   }
 
@@ -210,7 +205,6 @@ class Node {
   }
 
   set scale(double scale) {
-    assert(scale != null);
 
     _scaleX = _scaleY = scale;
     invalidateTransformMatrix();
@@ -222,7 +216,6 @@ class Node {
   double get scaleX => _scaleX;
 
   set scaleX(double scaleX) {
-    assert(scaleX != null);
 
     _scaleX = scaleX;
     invalidateTransformMatrix();
@@ -234,7 +227,6 @@ class Node {
   double get scaleY => _scaleY;
 
   set scaleY(double scaleY) {
-    assert(scaleY != null);
 
     _scaleY = scaleY;
     invalidateTransformMatrix();
@@ -256,7 +248,7 @@ class Node {
   bool _assertNonCircularAssignment(Node child) {
     Node node = this;
     while (node.parent != null) {
-      node = node.parent;
+      node = node.parent!;
       assert(node != child); // indicates we are about to create a cycle
     }
     return true;
@@ -270,7 +262,6 @@ class Node {
   ///
   ///     addChild(new Sprite(myImage));
   void addChild(Node child) {
-    assert(child != null);
     assert(child._parent == null);
     assert(_assertNonCircularAssignment(child));
 
@@ -280,18 +271,17 @@ class Node {
     child._spriteBox = this._spriteBox;
     _childrenLastAddedOrder += 1;
     child._addedOrder = _childrenLastAddedOrder;
-    if (_spriteBox != null) _spriteBox._registerNode(child);
+    _spriteBox?._registerNode(child);
   }
 
   /// Removes a child from this node.
   ///
   ///     removeChild(myChildNode);
   void removeChild(Node child) {
-    assert(child != null);
     if (_children.remove(child)) {
       child._parent = null;
       child._spriteBox = null;
-      if (_spriteBox != null) _spriteBox._deregisterNode(child);
+      _spriteBox?._deregisterNode(child);
     }
   }
 
@@ -300,7 +290,7 @@ class Node {
   ///     removeFromParent();
   void removeFromParent() {
     assert(_parent != null);
-    _parent.removeChild(this);
+    _parent?.removeChild(this);
   }
 
   /// Removes all children of this node.
@@ -313,7 +303,7 @@ class Node {
     }
     _children = <Node>[];
     _childrenNeedSorting = false;
-    if (_spriteBox != null) _spriteBox._deregisterNode(null);
+    _spriteBox?._deregisterNode(null);
   }
 
   void _sortChildren() {
@@ -321,7 +311,7 @@ class Node {
     if (_childrenNeedSorting) {
       _children.sort((Node a, Node b) {
         if (a._zPosition == b._zPosition) {
-          return a._addedOrder - b._addedOrder;
+          return (a._addedOrder??0) - (b._addedOrder??0);
         }
         else if (a._zPosition > b._zPosition) {
           return 1;
@@ -345,7 +335,7 @@ class Node {
     if (_transformMatrix == null) {
       _transformMatrix = computeTransformMatrix();
     }
-    return _transformMatrix;
+    return _transformMatrix!;
   }
 
   /// Computes the transformation matrix of this node. This method can be
@@ -411,40 +401,40 @@ class Node {
   Matrix4 _nodeToBoxMatrix() {
     assert(_spriteBox != null);
     if (_transformMatrixNodeToBox != null) {
-      return _transformMatrixNodeToBox;
+      return _transformMatrixNodeToBox!;
     }
 
     if (_parent == null) {
       // Base case, we are at the top
-      assert(this == _spriteBox.rootNode);
-      _transformMatrixNodeToBox = _spriteBox.transformMatrix.clone()..multiply(transformMatrix);
+      assert(this == _spriteBox?.rootNode);
+      _transformMatrixNodeToBox = _spriteBox!.transformMatrix.clone()..multiply(transformMatrix);
     }
     else {
-      _transformMatrixNodeToBox = _parent._nodeToBoxMatrix().clone()..multiply(transformMatrix);
+      _transformMatrixNodeToBox = _parent!._nodeToBoxMatrix().clone()..multiply(transformMatrix);
     }
-    return _transformMatrixNodeToBox;
+    return _transformMatrixNodeToBox!;
   }
 
   Matrix4 _boxToNodeMatrix() {
     assert(_spriteBox != null);
 
     if (_transformMatrixBoxToNode != null) {
-      return _transformMatrixBoxToNode;
+      return _transformMatrixBoxToNode!;
     }
 
     _transformMatrixBoxToNode = new Matrix4.copy(_nodeToBoxMatrix());
-    _transformMatrixBoxToNode.invert();
+    _transformMatrixBoxToNode!.invert();
 
-    return _transformMatrixBoxToNode;
+    return _transformMatrixBoxToNode!;
   }
 
   /// The inverse transform matrix used by this node.
   Matrix4 get inverseTransformMatrix {
     if (_transformMatrixInverse == null) {
       _transformMatrixInverse = new Matrix4.copy(transformMatrix);
-      _transformMatrixInverse.invert();
+      _transformMatrixInverse!.invert();
     }
-    return _transformMatrixInverse;
+    return _transformMatrixInverse!;
   }
 
   /// Converts a point from the coordinate system of the [SpriteBox] to the local coordinate system of the node.
@@ -454,8 +444,6 @@ class Node {
   ///
   ///     Point localPoint = myNode.convertPointToNodeSpace(pointInBoxCoordinates);
   Offset convertPointToNodeSpace(Offset boxPoint) {
-    assert(boxPoint != null);
-    assert(_spriteBox != null);
 
     Vector4 v =_boxToNodeMatrix().transform(new Vector4(boxPoint.dx, boxPoint.dy, 0.0, 1.0));
     return new Offset(v[0], v[1]);
@@ -465,7 +453,6 @@ class Node {
   ///
   ///     Point pointInBoxCoordinates = myNode.convertPointToBoxSpace(localPoint);
   Offset convertPointToBoxSpace(Offset nodePoint) {
-    assert(nodePoint != null);
     assert(_spriteBox != null);
 
     Vector4 v =_nodeToBoxMatrix().transform(new Vector4(nodePoint.dx, nodePoint.dy, 0.0, 1.0));
@@ -476,8 +463,6 @@ class Node {
   ///
   ///     Point pointInNodeASpace = nodeA.convertPointFromNode(pointInNodeBSpace, nodeB);
   Offset convertPointFromNode(Offset point, Node node) {
-    assert(node != null);
-    assert(point != null);
     assert(_spriteBox != null);
     assert(_spriteBox == node._spriteBox);
 
@@ -513,7 +498,6 @@ class Node {
   // Rendering
 
   void _visit(Canvas canvas) {
-    assert(canvas != null);
     if (!visible) return;
 
     _prePaint(canvas);
@@ -612,7 +596,7 @@ class Node {
 
   set userInteractionEnabled(bool userInteractionEnabled) {
     _userInteractionEnabled = userInteractionEnabled;
-    if (_spriteBox != null) _spriteBox._eventTargets = null;
+    _spriteBox?._eventTargets = null;
   }
 
   /// Handles an event, such as a pointer (touch or mouse) event.

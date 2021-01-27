@@ -10,23 +10,23 @@ part of spritewidget;
 class TexturedLine extends Node {
 
   /// Creates a new TexturedLine.
-  TexturedLine(List<Offset> points, List<Color> colors, List<double> widths, [SpriteTexture texture, List<double> textureStops]) {
+  TexturedLine(List<Offset> points, List<Color> colors, List<double> widths, [SpriteTexture? texture, List<double>? textureStops]) {
     painter = new TexturedLinePainter(points, colors, widths, texture, textureStops);
   }
 
   /// The painter used to draw the line.
-  TexturedLinePainter painter;
+  TexturedLinePainter? painter;
 
   @override
   void paint(Canvas canvas) {
-    painter.paint(canvas);
+    painter?.paint(canvas);
   }
 }
 
 /// Draws a polyline to a [Canvas] from a list of points using the provided [SpriteTexture].
 class TexturedLinePainter {
   /// Creates a painter that draws a polyline with a texture.
-  TexturedLinePainter(this._points, this.colors, this.widths, [SpriteTexture texture, this.textureStops]) {
+  TexturedLinePainter(this._points, this.colors, this.widths, [SpriteTexture? texture, this.textureStops]) {
     this.texture = texture;
   }
 
@@ -48,11 +48,11 @@ class TexturedLinePainter {
   List<double> widths;
 
   /// The texture this line will be drawn using.
-  SpriteTexture get texture => _texture;
+  SpriteTexture? get texture => _texture;
 
-  SpriteTexture _texture;
+  SpriteTexture? _texture;
 
-  set texture(SpriteTexture texture) {
+  set texture(SpriteTexture? texture) {
     _texture = texture;
     if (texture == null) {
       _cachedPaint = new Paint();
@@ -67,24 +67,24 @@ class TexturedLinePainter {
   }
 
   /// Defines the position in the texture for each point on the polyline.
-  List<double> textureStops;
+  List<double>? textureStops;
 
   /// The [textureStops] used if no explicit texture stops has been provided.
   List<double> get calculatedTextureStops {
     if (_calculatedTextureStops == null)
       _calculateTextureStops();
-    return _calculatedTextureStops;
+    return _calculatedTextureStops!;
   }
 
-  List<double> _calculatedTextureStops;
+  List<double>? _calculatedTextureStops;
 
-  double _length;
+  double? _length;
 
   /// The length of the line.
   double get length {
     if (_calculatedTextureStops == null)
       _calculateTextureStops();
-    return _length;
+    return _length??0;
   }
 
   /// The offset of the texture on the line.
@@ -94,7 +94,7 @@ class TexturedLinePainter {
   /// textureLoopLength is shorter than the line, the texture will be looped.
   double get textureLoopLength => textureLoopLength;
 
-  double _textureLoopLength;
+  double? _textureLoopLength;
 
   set textureLoopLength(double textureLoopLength) {
     _textureLoopLength = textureLoopLength;
@@ -112,8 +112,6 @@ class TexturedLinePainter {
 
   /// Paints the line to the [canvas].
   void paint(Canvas canvas) {
-    // Check input values
-    assert(_points != null);
     if (_points.length < 2) return;
 
     assert(_points.length == colors.length);
@@ -131,10 +129,10 @@ class TexturedLinePainter {
     List<Offset> vertices = <Offset>[];
     List<int> indices = <int>[];
     List<Color> verticeColors = <Color>[];
-    List<Offset> textureCoordinates;
-    double textureTop;
-    double textureBottom;
-    List<double> stops;
+    List<Offset> textureCoordinates = List<Offset>.empty(growable:true);
+    late double textureTop;
+    late double textureBottom;
+    List<double>? stops;
 
     // Add first point
     Offset lastPoint = _points[0];
@@ -146,16 +144,16 @@ class TexturedLinePainter {
     verticeColors.add(colors[0]);
 
     if (texture != null) {
-      assert(texture.rotated == false);
+      assert(texture!.rotated == false);
 
       // Setup for calculating texture coordinates
-      textureTop = texture.frame.top;
-      textureBottom = texture.frame.bottom;
+      textureTop = texture!.frame.top;
+      textureBottom = texture!.frame.bottom;
       textureCoordinates = <Offset>[];
 
       // Use correct stops
       if (textureStops != null) {
-        assert(_points.length == textureStops.length);
+        assert(_points.length == textureStops!.length);
         stops = textureStops;
       } else {
         if (_calculatedTextureStops == null) _calculateTextureStops();
@@ -163,7 +161,7 @@ class TexturedLinePainter {
       }
 
       // Texture coordinate points
-      double xPos = _xPosForStop(stops[0]);
+      double xPos = _xPosForStop(stops?[0]??(throw ArgumentError('Index 0 not found in stops or stops is null')));
       textureCoordinates.add(new Offset(xPos, textureTop));
       textureCoordinates.add(new Offset(xPos, textureBottom));
     }
@@ -189,7 +187,7 @@ class TexturedLinePainter {
 
       if (texture != null) {
         // Texture coordinate points
-        double xPos = _xPosForStop(stops[i]);
+        double xPos = _xPosForStop(stops?[i]??(throw ArgumentError('$i not found in stops or stops is null')));
         textureCoordinates.add(new Offset(xPos, textureTop));
         textureCoordinates.add(new Offset(xPos, textureBottom));
       }
@@ -209,10 +207,12 @@ class TexturedLinePainter {
   }
 
   double _xPosForStop(double stop) {
+    if (texture==null) 
+        return 0; //JK: really don't know how to properly handle it
     if (_textureLoopLength == null) {
-      return texture.frame.left + texture.frame.width * (stop - textureStopOffset);
+      return texture!.frame.left + texture!.frame.width * (stop - textureStopOffset);
     } else {
-      return texture.frame.left + texture.frame.width * (stop - textureStopOffset * (_textureLoopLength / length)) * (length / _textureLoopLength);
+      return texture!.frame.left + texture!.frame.width * (stop - textureStopOffset * (_textureLoopLength! / length)) * (length / _textureLoopLength!);
     }
   }
 
@@ -230,7 +230,7 @@ class TexturedLinePainter {
       Offset oldVertex0 = vertices[vertexCount - 2];
       Offset oldVertex1 = vertices[vertexCount - 1];
 
-      Offset intersection = GameMath.lineIntersection(oldVertex0, oldVertex1, vertex0, vertex1);
+      Offset intersection = GameMath.lineIntersection(oldVertex0, oldVertex1, vertex0, vertex1)??Offset.zero;
       if (intersection != null) {
         if (GameMath.distanceBetweenPoints(vertex0, intersection) < GameMath.distanceBetweenPoints(vertex1, intersection)) {
           vertex0 = oldVertex0;
@@ -297,7 +297,7 @@ Vector2 _vectorDirection(Vector2 a, Vector2 b) {
 
 List<Vector2> _computeMiterList(List<Vector2> points, bool closed) {
   List<Vector2> out = <Vector2>[];
-  Vector2 curNormal;
+  Vector2? curNormal;
 
   if (closed) {
     points = new List<Vector2>.from(points);
@@ -308,7 +308,7 @@ List<Vector2> _computeMiterList(List<Vector2> points, bool closed) {
   for (int i = 1; i < total; i++) {
     Vector2 last = points[i - 1];
     Vector2 cur = points[i];
-    Vector2 next = (i < total - 1) ? points[i + 1] : null;
+    Vector2? next = (i < total - 1) ? points[i + 1] : null;
 
     Vector2 lineA = _vectorDirection(cur, last);
     if (curNormal == null) {

@@ -10,24 +10,24 @@ import 'particle_world.dart';
 import 'colorsequence_designer.dart';
 
 typedef void PropertyDoubleCallback(double value);
-typedef void PropertyIntCallback(int value);
-typedef void PropertyBoolCallback(bool value);
-typedef void PropertyBlendModeCallback(BlendMode value);
+typedef void PropertyIntCallback(int? value);
+typedef void PropertyBoolCallback(bool? value);
+typedef void PropertyBlendModeCallback(BlendMode? value);
 typedef void PropertyColorCallback(Color value);
 typedef void PropertyColorSequenceCallback(ColorSequence value);
 
 class ParticleDesigner extends StatefulWidget {
   final ImageMap images;
 
-  ParticleDesigner({this.images});
+  ParticleDesigner({required this.images});
 
   ParticleDesignerState createState() => new ParticleDesignerState();
 }
 
 class ParticleDesignerState extends State<ParticleDesigner> with SingleTickerProviderStateMixin {
-  ParticleWorld _particleWorld;
-  TabController _tabController;
-  Color _backgroundColor;
+  late ParticleWorld _particleWorld;
+  late TabController _tabController;
+  late Color _backgroundColor;
 
   @override
   void initState() {
@@ -35,7 +35,7 @@ class ParticleDesignerState extends State<ParticleDesigner> with SingleTickerPro
     _particleWorld = new ParticleWorld(images: widget.images);
     _tabController = new TabController(length: 5, vsync: this);
     _tabController.index = 0;
-    _backgroundColor = Colors.blueGrey[700];
+    _backgroundColor = Colors.blueGrey[700]!;
   }
 
   Widget build(BuildContext context) {
@@ -173,24 +173,24 @@ class ParticleDesignerState extends State<ParticleDesigner> with SingleTickerPro
                   ),
                   new PropertyDouble(
                     name: 'Gravity x',
-                    value: _particleWorld.particleSystem.gravity.dx,
+                    value: _particleWorld.particleSystem.gravity?.dx??0,
                     minValue: -512.0,
                     maxValue: 512.0,
                     onUpdated: (double value) {
                       setState(() {
-                        Offset oldVar = _particleWorld.particleSystem.gravity;
+                        Offset oldVar = _particleWorld.particleSystem.gravity??Offset.zero;
                         _particleWorld.particleSystem.gravity = new Offset(value, oldVar.dy);
                       });
                     },
                   ),
                   new PropertyDouble(
                     name: 'Gravity y',
-                    value: _particleWorld.particleSystem.gravity.dy,
+                    value: _particleWorld.particleSystem.gravity?.dy??0,
                     minValue: -512.0,
                     maxValue: 512.0,
                     onUpdated: (double value) {
                       setState(() {
-                        Offset oldVar = _particleWorld.particleSystem.gravity;
+                        Offset oldVar = _particleWorld.particleSystem.gravity??Offset.zero;
                         _particleWorld.particleSystem.gravity = new Offset(oldVar.dx, value);
                       });
                     },
@@ -291,9 +291,9 @@ class ParticleDesignerState extends State<ParticleDesigner> with SingleTickerPro
                   new PropertyBool(
                     name: 'Rotate to movement',
                     value: _particleWorld.particleSystem.rotateToMovement,
-                    onUpdated: (bool value) {
+                    onUpdated: (bool? value) {
                       setState(() {
-                        _particleWorld.particleSystem.rotateToMovement = value;
+                        _particleWorld.particleSystem.rotateToMovement = value??false;
                       });
                     },
                   ),
@@ -411,18 +411,20 @@ class ParticleDesignerState extends State<ParticleDesigner> with SingleTickerPro
                   new PropertyTexture(
                     name: 'Texture',
                     value: _particleWorld.selectedTexture,
-                    onUpdated: (int value) {
+                    onUpdated: (int? value) {
                       setState(() {
-                        _particleWorld.selectedTexture = value;
+                        if(value!=null)
+                            _particleWorld.selectedTexture = value;
                       });
                     },
                   ),
                   new PropertyBlendMode(
                     name: 'Transfer Mode',
                     value: _particleWorld.particleSystem.transferMode,
-                    onUpdated: (BlendMode value) {
+                    onUpdated: (BlendMode? value) {
                       setState(() {
-                        _particleWorld.particleSystem.transferMode = value;
+                        if(value!=null)
+                            _particleWorld.particleSystem.transferMode = value;
                       });
                     },
                   ),
@@ -526,7 +528,7 @@ class PropertyDouble extends StatelessWidget {
   final PropertyDoubleCallback onUpdated;
   final bool digits;
 
-  PropertyDouble({this.name, this.value, this.minValue, this.maxValue, this.onUpdated, this.digits=true});
+  PropertyDouble({required this.name, required  this.value, required  this.minValue, required  this.maxValue, required  this.onUpdated, this.digits=true});
 
   @override
   Widget build(BuildContext context) {
@@ -557,7 +559,7 @@ class PropertyBool extends StatelessWidget {
   final bool value;
   final PropertyBoolCallback onUpdated;
 
-  PropertyBool({this.name, this.value, this.onUpdated});
+  PropertyBool({required this.name, required  this.value, required  this.onUpdated});
 
   @override
   Widget build(BuildContext context) {
@@ -581,7 +583,7 @@ class PropertyBlendMode extends StatelessWidget {
   final BlendMode value;
   final PropertyBlendModeCallback onUpdated;
 
-  PropertyBlendMode({this.name, this.value, this.onUpdated});
+  PropertyBlendMode({required this.name, required  this.value, required this.onUpdated});
 
   @override
   Widget build(BuildContext context) {
@@ -620,7 +622,7 @@ class PropertyColor extends StatelessWidget {
   final Color value;
   final PropertyColorCallback onUpdated;
 
-  PropertyColor({this.name, this.value, this.onUpdated});
+  PropertyColor({required  this.name, required this.value, required this.onUpdated});
 
   @override
   Widget build(BuildContext context) {
@@ -657,7 +659,7 @@ class PropertyColor extends StatelessWidget {
             child: new ColorPicker(
               pickerColor: value,
               onColorChanged: onUpdated,
-              enableLabel: false,
+              //enableLabel: false,
               pickerAreaHeightPercent: 0.8,
             ),
           ),
@@ -680,14 +682,14 @@ class PropertyColorSequence extends StatefulWidget {
   final ColorSequence value;
   final PropertyColorSequenceCallback onUpdated;
 
-  PropertyColorSequence({this.name, this.value, this.onUpdated});
+  PropertyColorSequence({required this.name,required  this.value,required  this.onUpdated});
 
   @override
   PropertyColorSequenceState createState() => new PropertyColorSequenceState();
 }
 
 class PropertyColorSequenceState extends State<PropertyColorSequence> {
-  ColorSequence _newColorSequence;
+  ColorSequence? _newColorSequence;
 
   @override
   Widget build(BuildContext context) {
@@ -731,7 +733,8 @@ class PropertyColorSequenceState extends State<PropertyColorSequence> {
               child: new Text('DONE'),
               onPressed: () {
                 Navigator.of(context).pop();
-                widget.onUpdated(_newColorSequence);
+                if(_newColorSequence!=null)
+                    widget.onUpdated(_newColorSequence!);
               },
             ),
           ],
@@ -755,7 +758,7 @@ class PropertyTexture extends StatelessWidget {
   final int value;
   final PropertyIntCallback onUpdated;
 
-  PropertyTexture({this.name, this.value, this.onUpdated});
+  PropertyTexture({required this.name, required this.value,required  this.onUpdated});
 
   @override
   Widget build(BuildContext context) {
@@ -793,7 +796,7 @@ class PropertyDescription extends StatelessWidget {
   final String name;
   final String value;
 
-  PropertyDescription({this.name, this.value});
+  PropertyDescription({required this.name, required this.value});
 
   @override
   Widget build(BuildContext context) {
@@ -814,7 +817,7 @@ class PropertyDescription extends StatelessWidget {
 }
 
 class MainEditorLayout extends StatelessWidget {
-  MainEditorLayout({this.spriteDisplay, this.propertyEditor});
+  MainEditorLayout({required this.spriteDisplay, required this.propertyEditor});
 
   final Widget spriteDisplay;
   final Widget propertyEditor;

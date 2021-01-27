@@ -38,9 +38,9 @@ class EffectLine extends Node {
   /// Creates a new EffectLine with the specified parameters. Only the
   /// [texture] parameter is required, all other parameters are optional.
   EffectLine({
-    this.texture,
+    required this.texture,
     this.transferMode: BlendMode.dstOver,
-    List<Offset> points,
+    List<Offset>? points,
     this.widthMode : EffectLineWidthMode.linear,
     this.minWidth: 10.0,
     this.maxWidth: 10.0,
@@ -48,29 +48,29 @@ class EffectLine extends Node {
     this.animationMode: EffectLineAnimationMode.none,
     this.scrollSpeed: 0.1,
     double scrollStart: 0.0,
-    this.fadeDuration,
-    this.fadeAfterDelay,
-    this.textureLoopLength,
+    this.fadeDuration:0.0,
+    this.fadeAfterDelay:0.0,
+    this.textureLoopLength:0.0,
     this.simplify: true,
-    ColorSequence colorSequence
+    ColorSequence? colorSequence
   }) {
     if (points == null)
       this.points = <Offset>[];
     else
       this.points = points;
 
-    _colorSequence = colorSequence;
-    if (_colorSequence == null) {
+    if (colorSequence == null) {
       _colorSequence = new ColorSequence.fromStartAndEndColor(
         const Color(0xffffffff),
         const Color(0xffffffff)
       );
     }
+    else _colorSequence = colorSequence;
 
     _offset = scrollStart;
 
-    _painter = new TexturedLinePainter(points, _colors, _widths, texture);
-    _painter.textureLoopLength = textureLoopLength;
+    _painter = new TexturedLinePainter(points!, _colors, _widths, texture);
+    _painter?.textureLoopLength = textureLoopLength;
   }
 
   /// The texture used to draw the line.
@@ -103,7 +103,7 @@ class EffectLine extends Node {
   /// Color gradient used to draw the line, from start to finish.
   ColorSequence get colorSequence => _colorSequence;
 
-  ColorSequence _colorSequence;
+  late ColorSequence _colorSequence;
 
   /// List of points that make up the line. Typically, you will only want to
   /// set this at the beginning. Then use [addPoint] to add additional points
@@ -118,11 +118,11 @@ class EffectLine extends Node {
     }
   }
 
-  List<Offset> _points;
+  late List<Offset> _points;
 
-  List<double> _pointAges;
-  List<Color> _colors;
-  List<double> _widths;
+  List<double> _pointAges = List<double>.empty(growable:true);
+  List<Color> _colors     = List<Color>.empty(growable:true);
+  List<double> _widths    = List<double>.empty(growable:true);
 
   /// The time it takes for an added point to fade out. It's total life time is
   /// [fadeDuration] + [fadeAfterDelay].
@@ -140,7 +140,7 @@ class EffectLine extends Node {
   /// jittering effect when points are added.
   final bool simplify;
 
-  TexturedLinePainter _painter;
+  TexturedLinePainter? _painter;
   double _offset = 0.0;
 
   @override
@@ -180,10 +180,10 @@ class EffectLine extends Node {
   void paint(Canvas canvas) {
     if (points.length < 2) return;
 
-    _painter.points = points;
+    _painter?.points = points;
 
     // Calculate colors
-    List<double> stops = _painter.calculatedTextureStops;
+    List<double> stops = _painter?.calculatedTextureStops??[];
 
     List<Color> colors = <Color>[];
     for (int i = 0; i < stops.length; i++) {
@@ -200,7 +200,7 @@ class EffectLine extends Node {
       }
       colors.add(color);
     }
-    _painter.colors = colors;
+    _painter?.colors = colors;
 
     // Calculate widths
     List<double> widths = <double>[];
@@ -215,11 +215,11 @@ class EffectLine extends Node {
         widths.add(width);
       }
     }
-    _painter.widths = widths;
+    _painter?.widths = widths;
 
-    _painter.textureStopOffset = _offset;
+    _painter?.textureStopOffset = _offset;
 
-    _painter.paint(canvas);
+    _painter?.paint(canvas);
   }
 
   /// Adds a new point to the end of the line.

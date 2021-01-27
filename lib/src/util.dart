@@ -126,7 +126,7 @@ class GameMath {
 
   /// Returns the intersection between two line segmentss defined by p0, p1 and
   /// q0, q1. If the lines are not intersecting null is returned.
-  static Offset lineIntersection(Offset p0, Offset p1, Offset q0, Offset q1) {
+  static Offset? lineIntersection(Offset p0, Offset p1, Offset q0, Offset q1) {
     double epsilon = 1e-10;
 
     Vector2 r = new Vector2(p1.dx - p0.dx, p1.dy - p0.dy);
