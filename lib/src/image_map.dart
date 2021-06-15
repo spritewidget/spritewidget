@@ -42,3 +42,31 @@ class ImageMap {
   /// Returns a preloaded image, given its [url].
   ui.Image operator [](String url) => _images[url]??(throw ArgumentError('image $url not found'));
 }
+
+class BetterImageMap extends ImageMap {
+  BetterImageMap(AssetBundle bundle) : super(bundle);
+
+  Future<List<ui.Image>> loadWithFileName(List<String> urls) {
+    return Future.wait(urls.map((url) {
+      var fileName = url.split(Platform.pathSeparator).last;
+      var name = fileName.split('.').first;
+      return loadImageWithName(name, url);
+    }));
+  }
+
+  Future<List<ui.Image>> loadWithSplitter(String splitter, List<String> urls) {
+    return Future.wait(urls.map((url) {
+      var name = url.split(splitter).first;
+      var url0 = url.substring(name.length + splitter.length);
+      if (url0.length == 0) url0 = url;
+      return loadImageWithName(name, url0);
+    }));
+  }
+
+  Future<ui.Image> loadImageWithName(String name, String url) async {
+    var image = await loadImage(url);
+    _images.remove(url);
+    _images[name] = image;
+    return image;
+  }
+}

@@ -129,3 +129,12 @@ abstract class SpritePaint {
     }
   }
 }
+
+class PixSprite extends Sprite{
+  PixSprite(SpriteTexture texture):super(texture){
+    this._cachedPaint = new Paint()
+      ..filterQuality = FilterQuality.none
+      ..isAntiAlias = false;
+  }
+  PixSprite.fromImage(ui.Image image) : super.fromImage(image) ;
+}
