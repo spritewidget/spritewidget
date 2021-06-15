@@ -13,7 +13,7 @@ part of spritewidget;
 class SpriteSheet {
 
   ui.Image _image;
-  Map<String, SpriteTexture> _textures = new Map<String, SpriteTexture>();
+  Map<String, SpriteTexture> textures = new Map<String, SpriteTexture>();
 
   /// Creates a new sprite sheet from an [_image] and a sprite sheet [jsonDefinition].
   ///
@@ -35,7 +35,7 @@ class SpriteSheet {
 
       SpriteTexture texture = new SpriteTexture._fromSpriteFrame(_image, fileName, sourceSize, rotated, trimmed, frame,
         spriteSourceSize, pivot);
-      _textures[fileName] = texture;
+      textures[fileName] = texture;
     }
   }
 
@@ -70,5 +70,5 @@ class SpriteSheet {
   /// Returns a texture by its name.
   ///
   ///     var myTexture = mySpriteSheet["example.png"];
-  SpriteTexture operator [](String fileName) => _textures[fileName]??(throw ArgumentError('Texture $fileName not found'));
+  SpriteTexture operator [](String fileName) => textures[fileName]??(throw ArgumentError('Texture $fileName not found'));
 }
