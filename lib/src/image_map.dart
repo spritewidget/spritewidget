@@ -49,6 +49,8 @@ class BetterImageMap extends ImageMap {
   Future<List<ui.Image>> loadWithFileName(List<String> urls) {
     return Future.wait(urls.map((url) {
       var fileName = url.split(Platform.pathSeparator).last;
+      if(fileName == url) fileName = url.split("/").last;
+      if(fileName == url) fileName = url.split("\\").last;
       var name = fileName.split('.').first;
       return loadImageWithName(name, url);
     }));
