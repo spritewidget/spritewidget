@@ -8,10 +8,11 @@ part of spritewidget;
 /// [SpriteTexture]. The textured line draws static lines. If you want to create an
 /// animated line, consider using the [EffectLine] instead.
 class TexturedLine extends Node {
-
   /// Creates a new TexturedLine.
-  TexturedLine(List<Offset> points, List<Color> colors, List<double> widths, [SpriteTexture? texture, List<double>? textureStops]) {
-    painter = new TexturedLinePainter(points, colors, widths, texture, textureStops);
+  TexturedLine(List<Offset> points, List<Color> colors, List<double> widths,
+      [SpriteTexture? texture, List<double>? textureStops]) {
+    painter =
+        new TexturedLinePainter(points, colors, widths, texture, textureStops);
   }
 
   /// The painter used to draw the line.
@@ -26,7 +27,8 @@ class TexturedLine extends Node {
 /// Draws a polyline to a [Canvas] from a list of points using the provided [SpriteTexture].
 class TexturedLinePainter {
   /// Creates a painter that draws a polyline with a texture.
-  TexturedLinePainter(this._points, this.colors, this.widths, [SpriteTexture? texture, this.textureStops]) {
+  TexturedLinePainter(this._points, this.colors, this.widths,
+      [SpriteTexture? texture, this.textureStops]) {
     this.texture = texture;
   }
 
@@ -58,11 +60,10 @@ class TexturedLinePainter {
       _cachedPaint = new Paint();
     } else {
       Matrix4 matrix = new Matrix4.identity();
-      ImageShader shader = new ImageShader(texture.image,
-        TileMode.repeated, TileMode.repeated, matrix.storage);
+      ImageShader shader = new ImageShader(
+          texture.image, TileMode.repeated, TileMode.repeated, matrix.storage);
 
-      _cachedPaint = new Paint()
-        ..shader = shader;
+      _cachedPaint = new Paint()..shader = shader;
     }
   }
 
@@ -71,8 +72,7 @@ class TexturedLinePainter {
 
   /// The [textureStops] used if no explicit texture stops has been provided.
   List<double> get calculatedTextureStops {
-    if (_calculatedTextureStops == null)
-      _calculateTextureStops();
+    if (_calculatedTextureStops == null) _calculateTextureStops();
     return _calculatedTextureStops!;
   }
 
@@ -82,9 +82,8 @@ class TexturedLinePainter {
 
   /// The length of the line.
   double get length {
-    if (_calculatedTextureStops == null)
-      _calculateTextureStops();
-    return _length??0;
+    if (_calculatedTextureStops == null) _calculateTextureStops();
+    return _length ?? 0;
   }
 
   /// The offset of the texture on the line.
@@ -129,7 +128,7 @@ class TexturedLinePainter {
     List<Offset> vertices = <Offset>[];
     List<int> indices = <int>[];
     List<Color> verticeColors = <Color>[];
-    List<Offset> textureCoordinates = List<Offset>.empty(growable:true);
+    List<Offset> textureCoordinates = List<Offset>.empty(growable: true);
     late double textureTop;
     late double textureBottom;
     List<double>? stops;
@@ -161,7 +160,8 @@ class TexturedLinePainter {
       }
 
       // Texture coordinate points
-      double xPos = _xPosForStop(stops?[0]??(throw ArgumentError('Index 0 not found in stops or stops is null')));
+      double xPos = _xPosForStop(stops?[0] ??
+          (throw ArgumentError('Index 0 not found in stops or stops is null')));
       textureCoordinates.add(new Offset(xPos, textureTop));
       textureCoordinates.add(new Offset(xPos, textureBottom));
     }
@@ -187,7 +187,8 @@ class TexturedLinePainter {
 
       if (texture != null) {
         // Texture coordinate points
-        double xPos = _xPosForStop(stops?[i]??(throw ArgumentError('$i not found in stops or stops is null')));
+        double xPos = _xPosForStop(stops?[i] ??
+            (throw ArgumentError('$i not found in stops or stops is null')));
         textureCoordinates.add(new Offset(xPos, textureTop));
         textureCoordinates.add(new Offset(xPos, textureBottom));
       }
@@ -202,16 +203,21 @@ class TexturedLinePainter {
   }
 
   double _xPosForStop(double stop) {
-    if (texture==null) 
-        return 0; //JK: really don't know how to properly handle it
+    if (texture == null)
+      return 0; //JK: really don't know how to properly handle it
     if (_textureLoopLength == null) {
-      return texture!.frame.left + texture!.frame.width * (stop - textureStopOffset);
+      return texture!.frame.left +
+          texture!.frame.width * (stop - textureStopOffset);
     } else {
-      return texture!.frame.left + texture!.frame.width * (stop - textureStopOffset * (_textureLoopLength! / length)) * (length / _textureLoopLength!);
+      return texture!.frame.left +
+          texture!.frame.width *
+              (stop - textureStopOffset * (_textureLoopLength! / length)) *
+              (length / _textureLoopLength!);
     }
   }
 
-  void _addVerticesForPoint(List<Offset> vertices, Offset point, Vector2 miter, double width) {
+  void _addVerticesForPoint(
+      List<Offset> vertices, Offset point, Vector2 miter, double width) {
     double halfWidth = width / 2.0;
 
     Offset offset0 = new Offset(miter[0] * halfWidth, miter[1] * halfWidth);
@@ -225,13 +231,14 @@ class TexturedLinePainter {
       Offset oldVertex0 = vertices[vertexCount - 2];
       Offset oldVertex1 = vertices[vertexCount - 1];
 
-      Offset intersection = GameMath.lineIntersection(oldVertex0, oldVertex1, vertex0, vertex1)??Offset.zero;
-      if (intersection != null) {
-        if (GameMath.distanceBetweenPoints(vertex0, intersection) < GameMath.distanceBetweenPoints(vertex1, intersection)) {
-          vertex0 = oldVertex0;
-        } else {
-          vertex1 = oldVertex1;
-        }
+      Offset intersection =
+          GameMath.lineIntersection(oldVertex0, oldVertex1, vertex0, vertex1) ??
+              Offset.zero;
+      if (GameMath.distanceBetweenPoints(vertex0, intersection) <
+          GameMath.distanceBetweenPoints(vertex1, intersection)) {
+        vertex0 = oldVertex0;
+      } else {
+        vertex1 = oldVertex1;
       }
     }
 
@@ -268,7 +275,7 @@ class TexturedLinePainter {
 }
 
 Vector2 _computeMiter(Vector2 lineA, Vector2 lineB) {
-  Vector2 miter = new Vector2(- (lineA[1] + lineB[1]), lineA[0] + lineB[0]);
+  Vector2 miter = new Vector2(-(lineA[1] + lineB[1]), lineA[0] + lineB[0]);
   miter.normalize();
 
   double dot = dot2(miter, new Vector2(-lineA[1], lineA[0]));

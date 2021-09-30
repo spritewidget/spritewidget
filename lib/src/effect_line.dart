@@ -6,7 +6,6 @@ part of spritewidget;
 
 /// Used by [EffectLine] to determine how the width of the line is calculated.
 enum EffectLineWidthMode {
-
   /// Linear interpolation between minWidth at the start and maxWidth at the
   /// end of the line.
   linear,
@@ -18,7 +17,6 @@ enum EffectLineWidthMode {
 
 /// Used by [EffectLine] to determine how the texture of the line is animated.
 enum EffectLineAnimationMode {
-
   /// The texture of the line isn't animated.
   none,
 
@@ -34,26 +32,24 @@ enum EffectLineAnimationMode {
 /// lines. These can be used to draw things such as smoke trails, electricity
 /// effects, or other animated types of lines.
 class EffectLine extends Node {
-
   /// Creates a new EffectLine with the specified parameters. Only the
   /// [texture] parameter is required, all other parameters are optional.
-  EffectLine({
-    required this.texture,
-    this.transferMode: BlendMode.dstOver,
-    List<Offset>? points,
-    this.widthMode : EffectLineWidthMode.linear,
-    this.minWidth: 10.0,
-    this.maxWidth: 10.0,
-    this.widthGrowthSpeed: 0.0,
-    this.animationMode: EffectLineAnimationMode.none,
-    this.scrollSpeed: 0.1,
-    double scrollStart: 0.0,
-    this.fadeDuration:0.0,
-    this.fadeAfterDelay:0.0,
-    this.textureLoopLength:0.0,
-    this.simplify: true,
-    ColorSequence? colorSequence
-  }) {
+  EffectLine(
+      {required this.texture,
+      this.transferMode: BlendMode.dstOver,
+      List<Offset>? points,
+      this.widthMode: EffectLineWidthMode.linear,
+      this.minWidth: 10.0,
+      this.maxWidth: 10.0,
+      this.widthGrowthSpeed: 0.0,
+      this.animationMode: EffectLineAnimationMode.none,
+      this.scrollSpeed: 0.1,
+      double scrollStart: 0.0,
+      this.fadeDuration: 0.0,
+      this.fadeAfterDelay: 0.0,
+      this.textureLoopLength: 0.0,
+      this.simplify: true,
+      ColorSequence? colorSequence}) {
     if (points == null)
       this.points = <Offset>[];
     else
@@ -61,11 +57,9 @@ class EffectLine extends Node {
 
     if (colorSequence == null) {
       _colorSequence = new ColorSequence.fromStartAndEndColor(
-        const Color(0xffffffff),
-        const Color(0xffffffff)
-      );
-    }
-    else _colorSequence = colorSequence;
+          const Color(0xffffffff), const Color(0xffffffff));
+    } else
+      _colorSequence = colorSequence;
 
     _offset = scrollStart;
 
@@ -120,9 +114,9 @@ class EffectLine extends Node {
 
   late List<Offset> _points;
 
-  List<double> _pointAges = List<double>.empty(growable:true);
-  List<Color> _colors     = List<Color>.empty(growable:true);
-  List<double> _widths    = List<double>.empty(growable:true);
+  List<double> _pointAges = List<double>.empty(growable: true);
+  List<Color> _colors = List<Color>.empty(growable: true);
+  List<double> _widths = List<double>.empty(growable: true);
 
   /// The time it takes for an added point to fade out. It's total life time is
   /// [fadeDuration] + [fadeAfterDelay].
@@ -154,25 +148,23 @@ class EffectLine extends Node {
     }
 
     // Update age of line points and remove if neccesasry
-    if (fadeDuration != null && fadeAfterDelay != null) {
-      // Increase age of points
-      for (int i = _points.length - 1; i >= 0; i--) {
-        _pointAges[i] += dt;
+    for (int i = _points.length - 1; i >= 0; i--) {
+      _pointAges[i] += dt;
+    }
+
+    // Check if the first/oldest point should be removed
+    while (
+        _points.length > 0 && _pointAges[0] > (fadeDuration + fadeAfterDelay)) {
+      // Update scroll if it isn't the last and only point that is about to removed
+      if (_points.length > 1) {
+        double dist = GameMath.distanceBetweenPoints(_points[0], _points[1]);
+        _offset = (_offset - (dist / textureLoopLength)) % 1.0;
+        if (_offset < 0.0) _offset += 1;
       }
 
-      // Check if the first/oldest point should be removed
-      while(_points.length > 0 && _pointAges[0] > (fadeDuration + fadeAfterDelay)) {
-        // Update scroll if it isn't the last and only point that is about to removed
-        if (_points.length > 1 && textureLoopLength != null) {
-          double dist = GameMath.distanceBetweenPoints(_points[0], _points[1]);
-          _offset = (_offset - (dist / textureLoopLength)) % 1.0;
-          if (_offset < 0.0) _offset += 1;
-        }
-
-        // Remove the point
-        _pointAges.removeAt(0);
-        _points.removeAt(0);
-      }
+      // Remove the point
+      _pointAges.removeAt(0);
+      _points.removeAt(0);
     }
   }
 
@@ -183,20 +175,18 @@ class EffectLine extends Node {
     _painter?.points = points;
 
     // Calculate colors
-    List<double> stops = _painter?.calculatedTextureStops??[];
+    List<double> stops = _painter?.calculatedTextureStops ?? [];
 
     List<Color> colors = <Color>[];
     for (int i = 0; i < stops.length; i++) {
       double stop = stops[i];
       Color color = _colorSequence.colorAtPosition(stop);
 
-      if (fadeDuration != null && fadeAfterDelay != null) {
-        double age = _pointAges[i];
-        if (age > fadeAfterDelay) {
-          double fade = 1.0 - (age - fadeAfterDelay) / fadeDuration;
-          int alpha = (color.alpha * fade).toInt().clamp(0, 255);
-          color = new Color.fromARGB(alpha, color.red, color.green, color.blue);
-        }
+      double age = _pointAges[i];
+      if (age > fadeAfterDelay) {
+        double fade = 1.0 - (age - fadeAfterDelay) / fadeDuration;
+        int alpha = (color.alpha * fade).toInt().clamp(0, 255);
+        color = new Color.fromARGB(alpha, color.red, color.green, color.blue);
       }
       colors.add(color);
     }
@@ -211,7 +201,9 @@ class EffectLine extends Node {
         double width = minWidth + (maxWidth - minWidth) * stop + growth;
         widths.add(width);
       } else if (widthMode == EffectLineWidthMode.barrel) {
-        double width = minWidth + math.sin(stop * math.pi) * (maxWidth - minWidth) + growth;
+        double width = minWidth +
+            math.sin(stop * math.pi) * (maxWidth - minWidth) +
+            growth;
         widths.add(width);
       }
     }
@@ -225,19 +217,20 @@ class EffectLine extends Node {
   /// Adds a new point to the end of the line.
   void addPoint(Offset point) {
     // Skip duplicate points
-    if (points.length > 0 && point.dx == points[points.length - 1].dx && point.dy == points[points.length - 1].dy)
-      return;
+    if (points.length > 0 &&
+        point.dx == points[points.length - 1].dx &&
+        point.dy == points[points.length - 1].dy) return;
 
-    if (simplify && points.length >= 2 && GameMath.distanceBetweenPoints(point, points[points.length - 2]) < 10.0) {
+    if (simplify &&
+        points.length >= 2 &&
+        GameMath.distanceBetweenPoints(point, points[points.length - 2]) <
+            10.0) {
       // Check if we should remove last point before adding the new one
 
       // Calculate the square distance from the middle point to the line of the
       // new point and the second to last point
       double dist2 = _distToSeqment2(
-        points[points.length - 1],
-        point,
-        points[points.length - 2]
-      );
+          points[points.length - 1], point, points[points.length - 2]);
 
       // If the point is on the line, remove it
       if (dist2 < 1.0) {
@@ -257,9 +250,11 @@ class EffectLine extends Node {
   double _distToSeqment2(Offset p, Offset v, Offset w) {
     double l2 = _dist2(v, w);
     if (l2 == 0.0) return _dist2(p, v);
-    double t = ((p.dx - v.dx) * (w.dx - v.dx) + (p.dy - v.dy) * (w.dy - v.dy)) / l2;
+    double t =
+        ((p.dx - v.dx) * (w.dx - v.dx) + (p.dy - v.dy) * (w.dy - v.dy)) / l2;
     if (t < 0) return _dist2(p, v);
     if (t > 1) return _dist2(p, w);
-    return _dist2(p, new Offset(v.dx + t * (w.dx - v.dx), v.dy + t * (w.dy - v.dy)));
+    return _dist2(
+        p, new Offset(v.dx + t * (w.dx - v.dx), v.dy + t * (w.dy - v.dy)));
   }
 }
