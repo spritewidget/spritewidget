@@ -35,7 +35,7 @@ class Node {
   Offset _position = Offset.zero;
   double _rotation = 0.0;
 
-  Matrix4? _transformMatrix = new Matrix4.identity();
+  Matrix4? _transformMatrix = Matrix4.identity();
   Matrix4? _transformMatrixInverse;
   Matrix4? _transformMatrixNodeToBox;
   Matrix4? _transformMatrixBoxToNode;
@@ -82,7 +82,7 @@ class Node {
   ///     myNode.motions.run(myMotion);
   MotionController get motions {
     if (_motions == null) {
-      _motions = new MotionController();
+      _motions = MotionController();
       _spriteBox?._motionControllers = null;
     }
     return _motions!;
@@ -349,7 +349,7 @@ class Node {
     }
 
     // Create transformation matrix for scale, position and rotation
-    Matrix4 matrix = new Matrix4(
+    Matrix4 matrix = Matrix4(
         cy * _scaleX,
         sy * _scaleX,
         0.0,
@@ -369,7 +369,7 @@ class Node {
 
     if (_skewX != 0.0 || _skewY != 0.0) {
       // Needs skew transform
-      Matrix4 skew = new Matrix4(
+      Matrix4 skew = Matrix4(
           1.0,
           math.tan(radians(_skewX)),
           0.0,
@@ -437,7 +437,7 @@ class Node {
       return _transformMatrixBoxToNode!;
     }
 
-    _transformMatrixBoxToNode = new Matrix4.copy(_nodeToBoxMatrix());
+    _transformMatrixBoxToNode = Matrix4.copy(_nodeToBoxMatrix());
     _transformMatrixBoxToNode!.invert();
 
     return _transformMatrixBoxToNode!;
@@ -446,7 +446,7 @@ class Node {
   /// The inverse transform matrix used by this node.
   Matrix4 get inverseTransformMatrix {
     if (_transformMatrixInverse == null) {
-      _transformMatrixInverse = new Matrix4.copy(transformMatrix);
+      _transformMatrixInverse = Matrix4.copy(transformMatrix);
       _transformMatrixInverse!.invert();
     }
     return _transformMatrixInverse!;
@@ -460,8 +460,8 @@ class Node {
   ///     Point localPoint = myNode.convertPointToNodeSpace(pointInBoxCoordinates);
   Offset convertPointToNodeSpace(Offset boxPoint) {
     Vector4 v = _boxToNodeMatrix()
-        .transform(new Vector4(boxPoint.dx, boxPoint.dy, 0.0, 1.0));
-    return new Offset(v[0], v[1]);
+        .transform(Vector4(boxPoint.dx, boxPoint.dy, 0.0, 1.0));
+    return Offset(v[0], v[1]);
   }
 
   /// Converts a point from the local coordinate system of the node to the coordinate system of the [SpriteBox].
@@ -471,8 +471,8 @@ class Node {
     assert(_spriteBox != null);
 
     Vector4 v = _nodeToBoxMatrix()
-        .transform(new Vector4(nodePoint.dx, nodePoint.dy, 0.0, 1.0));
-    return new Offset(v[0], v[1]);
+        .transform(Vector4(nodePoint.dx, nodePoint.dy, 0.0, 1.0));
+    return Offset(v[0], v[1]);
   }
 
   /// Converts a [point] from another [node]s coordinate system into the local coordinate system of this node.

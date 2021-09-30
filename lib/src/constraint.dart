@@ -39,7 +39,7 @@ double _dampenRotation(double src, double dst, double? dampening) {
 class ConstraintRotationToMovement extends Constraint {
   /// Creates a new constraint the aligns a nodes rotation to its movement
   /// vector. A [baseRotation] and [dampening] can optionally be set.
-  ConstraintRotationToMovement({this.baseRotation: 0.0, this.dampening});
+  ConstraintRotationToMovement({this.baseRotation = 0.0, this.dampening});
 
   /// The filter factor used when constraining the rotation of the node. Valid
   /// values are in the range 0.0 to 1.0
@@ -73,7 +73,7 @@ class ConstraintRotationToNodeRotation extends Constraint {
   /// Creates a new constraint that copies a node's rotation, optionally
   /// with a [baseRotation] added and using [dampening].
   ConstraintRotationToNodeRotation(this.targetNode,
-      {this.baseRotation: 0.0, this.dampening});
+      {this.baseRotation = 0.0, this.dampening});
 
   /// The node to copy the rotation from
   final Node targetNode;
@@ -100,7 +100,7 @@ class ConstraintRotationToNode extends Constraint {
   /// The [baseRotation] will be added to the nodes rotation, and [dampening]
   /// can be used to ease the rotation.
   ConstraintRotationToNode(this.targetNode,
-      {this.baseRotation: 0.0, this.dampening});
+      {this.baseRotation = 0.0, this.dampening});
 
   /// The node to rotate towards.
   final Node targetNode;
@@ -143,7 +143,7 @@ class ConstraintPositionToNode extends Constraint {
   /// be used and also [dampening]. The targetNode doesn't need to have the
   /// same parent, but they need to be added to the same [SpriteBox].
   ConstraintPositionToNode(this.targetNode,
-      {this.dampening, this.offset: Offset.zero});
+      {this.dampening, this.offset = Offset.zero});
 
   /// Target node to follow.
   final Node targetNode;

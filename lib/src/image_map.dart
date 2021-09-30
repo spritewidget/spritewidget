@@ -7,13 +7,12 @@ part of spritewidget;
 /// The ImageMap is a helper class for loading and keeping references to
 /// multiple images.
 class ImageMap {
-
   /// Creates a new ImageMap where images will be loaded from the specified
   /// [bundle].
   ImageMap(AssetBundle bundle) : _bundle = bundle;
 
   final AssetBundle _bundle;
-  final Map<String, ui.Image> _images = new Map<String, ui.Image>();
+  final Map<String, ui.Image> _images = Map<String, ui.Image>();
 
   /// Loads a list of images given their urls.
   Future<List<ui.Image>> load(List<String> urls) {
@@ -22,11 +21,11 @@ class ImageMap {
 
   /// Loads a single image given the image's [url] and adds it to the [ImageMap].
   Future<ui.Image> loadImage(String url) async {
-    ImageStream stream = new AssetImage(url, bundle: _bundle).resolve(ImageConfiguration.empty);
-    Completer<ui.Image> completer = new Completer<ui.Image>();
+    ImageStream stream =
+        AssetImage(url, bundle: _bundle).resolve(ImageConfiguration.empty);
+    Completer<ui.Image> completer = Completer<ui.Image>();
     late ImageStreamListener listener;
-    listener = new ImageStreamListener(
-    (ImageInfo frame, bool synchronousCall) {
+    listener = ImageStreamListener((ImageInfo frame, bool synchronousCall) {
       final ui.Image image = frame.image;
       _images[url] = image;
       completer.complete(image);
@@ -37,10 +36,12 @@ class ImageMap {
   }
 
   /// Returns a preloaded image, given its [url].
-  ui.Image getImage(String url) => _images[url]??(throw ArgumentError('image $url not found'));
+  ui.Image getImage(String url) =>
+      _images[url] ?? (throw ArgumentError('image $url not found'));
 
   /// Returns a preloaded image, given its [url].
-  ui.Image operator [](String url) => _images[url]??(throw ArgumentError('image $url not found'));
+  ui.Image operator [](String url) =>
+      _images[url] ?? (throw ArgumentError('image $url not found'));
 }
 
 class BetterImageMap extends ImageMap {
@@ -49,8 +50,8 @@ class BetterImageMap extends ImageMap {
   Future<List<ui.Image>> loadWithFileName(List<String> urls) {
     return Future.wait(urls.map((url) {
       var fileName = url.split(Platform.pathSeparator).last;
-      if(fileName == url) fileName = url.split("/").last;
-      if(fileName == url) fileName = url.split("\\").last;
+      if (fileName == url) fileName = url.split("/").last;
+      if (fileName == url) fileName = url.split("\\").last;
       var name = fileName.split('.').first;
       return loadImageWithName(name, url);
     }));

@@ -5,11 +5,10 @@
 part of spritewidget;
 
 /// Signature for callbacks used by the [MotionCallFunction].
-typedef void MotionCallback();
+typedef MotionCallback = void Function();
 
 @Deprecated('Action has been renamed to Motion to avoid conflict with Flutter')
-abstract class Action {
-}
+abstract class Action {}
 
 /// Motions are used to animate properties of nodes or any other type of
 /// objects. The motions are powered by an [MotionController], typically
@@ -36,8 +35,7 @@ abstract class Motion {
   /// in is a normalized value 0.0 to 1.0 of the duration of the motion. Every
   /// motion will always recieve a callback with the end time point (1.0),
   /// unless it is cancelled.
-  void update(double t) {
-  }
+  void update(double t) {}
 
   void _reset() {
     _finished = false;
@@ -48,12 +46,11 @@ abstract class Motion {
 }
 
 /// Signature for callbacks for setting properties, used by [MotionTween].
-typedef void SetterCallback(dynamic value);
+typedef SetterCallback = void Function(dynamic value);
 
 /// The abstract class for an motion that changes properties over a time
 /// interval, optionally using an easing curve.
 abstract class MotionInterval extends Motion {
-
   /// Creates a new [MotionInterval], typically you will want to pass in a
   /// [duration] to specify how long time the motion will take to complete.
   MotionInterval([this._duration = 0.0, this.curve]);
@@ -97,7 +94,6 @@ abstract class MotionInterval extends Motion {
 
 /// An motion that repeats another motion a fixed number of times.
 class MotionRepeat extends MotionInterval {
-
   /// The number of times the [motion] is repeated.
   final int numRepeats;
 
@@ -115,7 +111,8 @@ class MotionRepeat extends MotionInterval {
 
   @override
   void update(double t) {
-    int currentRepeat = math.min((t * numRepeats.toDouble()).toInt(), numRepeats - 1);
+    int currentRepeat =
+        math.min((t * numRepeats.toDouble()).toInt(), numRepeats - 1);
     for (int i = math.max(_lastFinishedRepeat, 0); i < currentRepeat; i++) {
       if (!motion._finished) motion.update(1.0);
       motion._reset();
@@ -134,7 +131,6 @@ class MotionRepeat extends MotionInterval {
 
 /// A motion that repeats a motion an indefinite number of times.
 class MotionRepeatForever extends Motion {
-
   /// The motion that is repeated indefinitely.
   final MotionInterval motion;
   double _elapsedInMotion = 0.0;
@@ -185,7 +181,7 @@ class MotionSequence extends MotionInterval {
       _b = motions[1];
     } else {
       _a = motions[0];
-      _b = new MotionSequence(motions.sublist(1));
+      _b = MotionSequence(motions.sublist(1));
     }
 
     // Calculate split and duration
@@ -304,7 +300,7 @@ class MotionGroup extends MotionInterval {
             } else {
               motion.update(ta);
             }
-          } else if (!motion._finished){
+          } else if (!motion._finished) {
             motion.update(1.0);
             motion._finished = true;
           }
@@ -331,10 +327,8 @@ class MotionDelay extends MotionInterval {
 /// A motion that doesn't have a duration. If this class is overridden to
 /// create custom instant motions, only the [fire] method should be overriden.
 abstract class MotionInstant extends Motion {
-
   @override
-  void step(double dt) {
-  }
+  void step(double dt) {}
 
   @override
   void update(double t) {
@@ -382,7 +376,6 @@ class MotionRemoveNode extends MotionInstant {
 /// creating motions. The tween class can be used to animate properties of the
 /// type [Point], [Size], [Rect], [double], or [Color].
 class MotionTween<T> extends MotionInterval {
-
   /// Creates a new tween motion. The [setter] will be called to update the
   /// animated property from [startVal] to [endVal] over the [duration] time in
   /// seconds. Optionally an animation [curve] can be passed in for easing the
@@ -398,7 +391,9 @@ class MotionTween<T> extends MotionInterval {
   ///       bounceOut
   ///     );
   ///     myNode.motions.run(myTween);
-  MotionTween(this.setter, this.startVal, this.endVal, double duration, [Curve? curve]) : super(duration, curve) {
+  MotionTween(this.setter, this.startVal, this.endVal, double duration,
+      [Curve? curve])
+      : super(duration, curve) {
     _computeDelta();
   }
 
@@ -420,14 +415,14 @@ class MotionTween<T> extends MotionInterval {
       double yStart = (startVal as Offset).dy;
       double xEnd = (endVal as Offset).dx;
       double yEnd = (endVal as Offset).dy;
-      _delta = new Offset(xEnd - xStart, yEnd - yStart);
+      _delta = Offset(xEnd - xStart, yEnd - yStart);
     } else if (startVal is Size) {
       // Size
       double wStart = (startVal as Size).width;
       double hStart = (startVal as Size).height;
       double wEnd = (endVal as Size).width;
       double hEnd = (endVal as Size).height;
-      _delta = new Size(wEnd - wStart, hEnd - hStart);
+      _delta = Size(wEnd - wStart, hEnd - hStart);
     } else if (startVal is Rect) {
       // Rect
       double lStart = (startVal as Rect).left;
@@ -438,7 +433,8 @@ class MotionTween<T> extends MotionInterval {
       double tEnd = (endVal as Rect).top;
       double rEnd = (endVal as Rect).right;
       double bEnd = (endVal as Rect).bottom;
-      _delta = new Rect.fromLTRB(lEnd - lStart, tEnd - tStart, rEnd - rStart, bEnd - bStart);
+      _delta = Rect.fromLTRB(
+          lEnd - lStart, tEnd - tStart, rEnd - rStart, bEnd - bStart);
     } else if (startVal is double) {
       // Double
       _delta = (endVal as double) - (startVal as double);
@@ -448,7 +444,7 @@ class MotionTween<T> extends MotionInterval {
       int rDelta = (endVal as Color).red - (startVal as Color).red;
       int gDelta = (endVal as Color).green - (startVal as Color).green;
       int bDelta = (endVal as Color).blue - (startVal as Color).blue;
-      _delta = new _ColorDiff(aDelta, rDelta, gDelta, bDelta);
+      _delta = _ColorDiff(aDelta, rDelta, gDelta, bDelta);
     } else {
       assert(false);
     }
@@ -464,14 +460,14 @@ class MotionTween<T> extends MotionInterval {
       double yStart = (startVal as Offset).dy;
       double xDelta = _delta.dx;
       double yDelta = _delta.dy;
-      newVal = new Offset(xStart + xDelta * t, yStart + yDelta * t);
+      newVal = Offset(xStart + xDelta * t, yStart + yDelta * t);
     } else if (startVal is Size) {
       // Size
       double wStart = (startVal as Size).width;
       double hStart = (startVal as Size).height;
       double wDelta = _delta.width;
       double hDelta = _delta.height;
-      newVal = new Size(wStart + wDelta * t, hStart + hDelta * t);
+      newVal = Size(wStart + wDelta * t, hStart + hDelta * t);
     } else if (startVal is Rect) {
       // Rect
       double lStart = (startVal as Rect).left;
@@ -482,17 +478,26 @@ class MotionTween<T> extends MotionInterval {
       double tDelta = _delta.top;
       double rDelta = _delta.right;
       double bDelta = _delta.bottom;
-      newVal = new Rect.fromLTRB(lStart + lDelta * t, tStart + tDelta * t, rStart + rDelta * t, bStart + bDelta * t);
+      newVal = Rect.fromLTRB(lStart + lDelta * t, tStart + tDelta * t,
+          rStart + rDelta * t, bStart + bDelta * t);
     } else if (startVal is double) {
       // Doubles
       newVal = (startVal as double) + _delta * t;
     } else if (startVal is Color) {
       // Colors
-      int aNew = (((startVal as Color).alpha + (_delta.alpha * t).toInt()).clamp(0, 255)).toInt();
-      int rNew = (((startVal as Color).red + (_delta.red * t).toInt()).clamp(0, 255)).toInt();
-      int gNew = (((startVal as Color).green + (_delta.green * t).toInt()).clamp(0, 255)).toInt();
-      int bNew = (((startVal as Color).blue + (_delta.blue * t).toInt()).clamp(0, 255)).toInt();
-      newVal = new Color.fromARGB(aNew, rNew, gNew, bNew);
+      int aNew = (((startVal as Color).alpha + (_delta.alpha * t).toInt())
+              .clamp(0, 255))
+          .toInt();
+      int rNew =
+          (((startVal as Color).red + (_delta.red * t).toInt()).clamp(0, 255))
+              .toInt();
+      int gNew = (((startVal as Color).green + (_delta.green * t).toInt())
+              .clamp(0, 255))
+          .toInt();
+      int bNew =
+          (((startVal as Color).blue + (_delta.blue * t).toInt()).clamp(0, 255))
+              .toInt();
+      newVal = Color.fromARGB(aNew, rNew, gNew, bNew);
     } else {
       // Oopses
       assert(false);
@@ -506,7 +511,6 @@ class MotionTween<T> extends MotionInterval {
 /// passed to the [MotionController]'s [run] method. The [MotionController]
 /// itself is typically a property of a [Node] and powered by the [SpriteBox].
 class MotionController {
-
   List<Motion> _motions = <Motion>[];
 
   /// Creates a new [MotionController]. However, for most uses a reference to

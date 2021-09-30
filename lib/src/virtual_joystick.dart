@@ -7,17 +7,17 @@ part of spritewidget;
 /// Provides a virtual joystick that can easily be added to your sprite scene.
 class VirtualJoystick extends NodeWithSize {
   /// Creates a new virtual joystick.
-  VirtualJoystick() : super(new Size(160.0, 160.0)) {
+  VirtualJoystick() : super(Size(160.0, 160.0)) {
     userInteractionEnabled = true;
     handleMultiplePointers = false;
-    position = new Offset(160.0, -20.0);
-    pivot = new Offset(0.5, 1.0);
-    _center = new Offset(size.width / 2.0, size.height / 2.0);
+    position = Offset(160.0, -20.0);
+    pivot = Offset(0.5, 1.0);
+    _center = Offset(size.width / 2.0, size.height / 2.0);
     _handlePos = _center;
 
-    _paintHandle = new Paint()..color = new Color(0xffffffff);
-    _paintControl = new Paint()
-      ..color = new Color(0xffffffff)
+    _paintHandle = Paint()..color = Color(0xffffffff);
+    _paintControl = Paint()
+      ..color = Color(0xffffffff)
       ..strokeWidth = 1.0
       ..style = PaintingStyle.stroke;
   }
@@ -48,7 +48,7 @@ class VirtualJoystick extends NodeWithSize {
         event.pointerEvent is PointerCancelEvent) {
       _pointerDownAt = null;
       _value = Offset.zero;
-      MotionTween moveToCenter = new MotionTween((a) {
+      MotionTween moveToCenter = MotionTween((a) {
         _handlePos = a;
       }, _handlePos, _center, 0.4, Curves.elasticOut);
       motions.run(moveToCenter);
@@ -56,11 +56,11 @@ class VirtualJoystick extends NodeWithSize {
     } else if (event.pointerEvent is PointerMoveEvent) {
       Offset movedDist = event.boxPosition - (_pointerDownAt ?? Offset.zero);
 
-      _value = new Offset((movedDist.dx / 80.0).clamp(-1.0, 1.0),
+      _value = Offset((movedDist.dx / 80.0).clamp(-1.0, 1.0),
           (movedDist.dy / 80.0).clamp(-1.0, 1.0));
 
-      _handlePos = (_center ?? Offset.zero) +
-          new Offset(_value.dx * 40.0, _value.dy * 40.0);
+      _handlePos =
+          (_center ?? Offset.zero) + Offset(_value.dx * 40.0, _value.dy * 40.0);
     }
     return true;
   }

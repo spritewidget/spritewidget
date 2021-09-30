@@ -36,19 +36,19 @@ class EffectLine extends Node {
   /// [texture] parameter is required, all other parameters are optional.
   EffectLine(
       {required this.texture,
-      this.transferMode: BlendMode.dstOver,
+      this.transferMode = BlendMode.dstOver,
       List<Offset>? points,
-      this.widthMode: EffectLineWidthMode.linear,
-      this.minWidth: 10.0,
-      this.maxWidth: 10.0,
-      this.widthGrowthSpeed: 0.0,
-      this.animationMode: EffectLineAnimationMode.none,
-      this.scrollSpeed: 0.1,
-      double scrollStart: 0.0,
-      this.fadeDuration: 0.0,
-      this.fadeAfterDelay: 0.0,
-      this.textureLoopLength: 0.0,
-      this.simplify: true,
+      this.widthMode = EffectLineWidthMode.linear,
+      this.minWidth = 10.0,
+      this.maxWidth = 10.0,
+      this.widthGrowthSpeed = 0.0,
+      this.animationMode = EffectLineAnimationMode.none,
+      this.scrollSpeed = 0.1,
+      double scrollStart = 0.0,
+      this.fadeDuration = 0.0,
+      this.fadeAfterDelay = 0.0,
+      this.textureLoopLength = 0.0,
+      this.simplify = true,
       ColorSequence? colorSequence}) {
     if (points == null)
       this.points = <Offset>[];
@@ -56,14 +56,14 @@ class EffectLine extends Node {
       this.points = points;
 
     if (colorSequence == null) {
-      _colorSequence = new ColorSequence.fromStartAndEndColor(
+      _colorSequence = ColorSequence.fromStartAndEndColor(
           const Color(0xffffffff), const Color(0xffffffff));
     } else
       _colorSequence = colorSequence;
 
     _offset = scrollStart;
 
-    _painter = new TexturedLinePainter(points!, _colors, _widths, texture);
+    _painter = TexturedLinePainter(points!, _colors, _widths, texture);
     _painter?.textureLoopLength = textureLoopLength;
   }
 
@@ -186,7 +186,7 @@ class EffectLine extends Node {
       if (age > fadeAfterDelay) {
         double fade = 1.0 - (age - fadeAfterDelay) / fadeDuration;
         int alpha = (color.alpha * fade).toInt().clamp(0, 255);
-        color = new Color.fromARGB(alpha, color.red, color.green, color.blue);
+        color = Color.fromARGB(alpha, color.red, color.green, color.blue);
       }
       colors.add(color);
     }
@@ -255,6 +255,6 @@ class EffectLine extends Node {
     if (t < 0) return _dist2(p, v);
     if (t > 1) return _dist2(p, w);
     return _dist2(
-        p, new Offset(v.dx + t * (w.dx - v.dx), v.dy + t * (w.dy - v.dy)));
+        p, Offset(v.dx + t * (w.dx - v.dx), v.dy + t * (w.dy - v.dy)));
   }
 }

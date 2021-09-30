@@ -6,7 +6,6 @@ part of spritewidget;
 
 /// A widget that uses a [SpriteBox] to render a sprite node tree to the screen.
 class SpriteWidget extends SingleChildRenderObjectWidget {
-
   /// The rootNode of the sprite node tree.
   ///
   ///     var node = mySpriteWidget.rootNode;
@@ -26,10 +25,12 @@ class SpriteWidget extends SingleChildRenderObjectWidget {
   ///
   ///     var mySpriteTree = new MyCustomNodeWithSize();
   ///     var mySpriteWidget = new SpriteWidget(mySpriteTree, SpriteBoxTransformMode.fixedHeight);
-  SpriteWidget(this.rootNode, [this.transformMode = SpriteBoxTransformMode.letterbox]);
+  SpriteWidget(this.rootNode,
+      [this.transformMode = SpriteBoxTransformMode.letterbox]);
 
   @override
-  SpriteBox createRenderObject(BuildContext context) => new SpriteBox(rootNode, transformMode);
+  SpriteBox createRenderObject(BuildContext context) =>
+      SpriteBox(rootNode, transformMode);
 
   @override
   void updateRenderObject(BuildContext context, SpriteBox renderObject) {

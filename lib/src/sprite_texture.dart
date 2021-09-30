@@ -8,22 +8,22 @@ part of spritewidget;
 ///
 /// Normally you get a reference to a texture from a [SpriteSheet], but you can also create one from an [Image].
 class SpriteTexture {
-
   /// Creates a new texture from an [Image] object.
   ///
   ///     var myTexture = new Texture(myImage);
-  SpriteTexture(ui.Image image) :
-    size = new Size(image.width.toDouble(), image.height.toDouble()),
-    image = image,
-    trimmed = false,
-    rotated = false,
-    frame = new Rect.fromLTRB(0.0, 0.0, image.width.toDouble(), image.height.toDouble()),
-    spriteSourceSize = new Rect.fromLTRB(0.0, 0.0, image.width.toDouble(), image.height.toDouble()),
-    pivot = new Offset(0.5, 0.5);
+  SpriteTexture(ui.Image image)
+      : size = Size(image.width.toDouble(), image.height.toDouble()),
+        image = image,
+        trimmed = false,
+        rotated = false,
+        frame = Rect.fromLTRB(
+            0.0, 0.0, image.width.toDouble(), image.height.toDouble()),
+        spriteSourceSize = Rect.fromLTRB(
+            0.0, 0.0, image.width.toDouble(), image.height.toDouble()),
+        pivot = Offset(0.5, 0.5);
 
-
-  SpriteTexture._fromSpriteFrame(this.image, this.name, this.size, this.rotated, this.trimmed, this.frame,
-                           this.spriteSourceSize, this.pivot);
+  SpriteTexture._fromSpriteFrame(this.image, this.name, this.size, this.rotated,
+      this.trimmed, this.frame, this.spriteSourceSize, this.pivot);
 
   /// The image that this texture is a part of.
   ///
@@ -72,9 +72,11 @@ class SpriteTexture {
   /// Creates a new Texture from a part of the current texture.
   SpriteTexture textureFromRect(Rect rect, [String? name]) {
     assert(!rotated);
-    Rect srcFrame = new Rect.fromLTWH(rect.left + frame.left, rect.top + frame.top, rect.size.width, rect.size.height);
-    Rect dstFrame = new Rect.fromLTWH(0.0, 0.0, rect.size.width, rect.size.height);
-    return new SpriteTexture._fromSpriteFrame(image, name, rect.size, false, false, srcFrame, dstFrame, new Offset(0.5, 0.5));
+    Rect srcFrame = Rect.fromLTWH(rect.left + frame.left, rect.top + frame.top,
+        rect.size.width, rect.size.height);
+    Rect dstFrame = Rect.fromLTWH(0.0, 0.0, rect.size.width, rect.size.height);
+    return SpriteTexture._fromSpriteFrame(image, name, rect.size, false, false,
+        srcFrame, dstFrame, Offset(0.5, 0.5));
   }
 
   /// Draws the texture to a [Canvas] at a specified [position] and with the
@@ -94,16 +96,19 @@ class SpriteTexture {
 
       // Calculate the rotated frame and spriteSourceSize
       Size originalFrameSize = frame.size;
-      Rect rotatedFrame = frame.topLeft & new Size(originalFrameSize.height, originalFrameSize.width);
-      Offset rotatedSpriteSourcePoint = new Offset(
-          -spriteSourceSize.top - (spriteSourceSize.bottom - spriteSourceSize.top),
+      Rect rotatedFrame = frame.topLeft &
+          Size(originalFrameSize.height, originalFrameSize.width);
+      Offset rotatedSpriteSourcePoint = Offset(
+          -spriteSourceSize.top -
+              (spriteSourceSize.bottom - spriteSourceSize.top),
           spriteSourceSize.left);
-      Rect rotatedSpriteSourceSize = rotatedSpriteSourcePoint & new Size(originalFrameSize.height, originalFrameSize.width);
+      Rect rotatedSpriteSourceSize = rotatedSpriteSourcePoint &
+          Size(originalFrameSize.height, originalFrameSize.width);
 
       // Draw the rotated sprite
-      canvas.rotate(-math.pi/2.0);
+      canvas.rotate(-math.pi / 2.0);
       canvas.drawImageRect(image, rotatedFrame, rotatedSpriteSourceSize, paint);
-      canvas.rotate(math.pi/2.0);
+      canvas.rotate(math.pi / 2.0);
 
       // Translate back
       if (translate) {
@@ -111,7 +116,11 @@ class SpriteTexture {
       }
     } else {
       // Draw the sprite
-      Rect dstRect = new Rect.fromLTWH(x + spriteSourceSize.left, y + spriteSourceSize.top, spriteSourceSize.width, spriteSourceSize.height);
+      Rect dstRect = Rect.fromLTWH(
+          x + spriteSourceSize.left,
+          y + spriteSourceSize.top,
+          spriteSourceSize.width,
+          spriteSourceSize.height);
       canvas.drawImageRect(image, frame, dstRect, paint);
     }
   }

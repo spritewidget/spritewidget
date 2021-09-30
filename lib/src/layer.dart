@@ -11,7 +11,6 @@ part of spritewidget;
 /// the children to be drawn is know, the [layerRect] property should be set as
 /// this can enhance performance.
 class Layer extends Node with SpritePaint {
-
   /// The area that the children of the [Layer] will occupy. This value is
   /// treated as a hint to the rendering system and may in some cases be
   /// ignored. If the area isn't known, the layerRect can be set to [null].
@@ -25,7 +24,7 @@ class Layer extends Node with SpritePaint {
   ///     var myLayer = new Layer();
   Layer([this.layerRect]);
 
-  Paint _cachedPaint = new Paint()
+  Paint _cachedPaint = Paint()
     ..filterQuality = FilterQuality.low
     ..isAntiAlias = false;
 

@@ -11,15 +11,14 @@ part of spritewidget;
 /// From the image and the string the [SpriteSheet] creates a number of [SpriteTexture] objects. The names of the frames in
 /// the sprite sheet definition are used to reference the different textures.
 class SpriteSheet {
-
   ui.Image _image;
-  Map<String, SpriteTexture> textures = new Map<String, SpriteTexture>();
+  Map<String, SpriteTexture> textures = Map<String, SpriteTexture>();
 
   /// Creates a new sprite sheet from an [_image] and a sprite sheet [jsonDefinition].
   ///
   ///     var mySpriteSheet = new SpriteSheet(myImage, jsonString);
   SpriteSheet(this._image, String jsonDefinition) {
-    JsonDecoder decoder = new JsonDecoder();
+    JsonDecoder decoder = JsonDecoder();
     Map<dynamic, dynamic> file = decoder.convert(jsonDefinition);
 
     List<dynamic> frames = file["frames"];
@@ -33,8 +32,8 @@ class SpriteSheet {
       Size sourceSize = _readJsonSize(frameInfo["sourceSize"]);
       Offset pivot = _readJsonPoint(frameInfo["pivot"]);
 
-      SpriteTexture texture = new SpriteTexture._fromSpriteFrame(_image, fileName, sourceSize, rotated, trimmed, frame,
-        spriteSourceSize, pivot);
+      SpriteTexture texture = SpriteTexture._fromSpriteFrame(_image, fileName,
+          sourceSize, rotated, trimmed, frame, spriteSourceSize, pivot);
       textures[fileName] = texture;
     }
   }
@@ -45,21 +44,22 @@ class SpriteSheet {
     num w = data["w"];
     num h = data["h"];
 
-    return new Rect.fromLTRB(x.toDouble(), y.toDouble(), (x + w).toDouble(), (y + h).toDouble());
+    return Rect.fromLTRB(
+        x.toDouble(), y.toDouble(), (x + w).toDouble(), (y + h).toDouble());
   }
 
   Size _readJsonSize(Map<dynamic, dynamic> data) {
     num w = data["w"];
     num h = data["h"];
 
-    return new Size(w.toDouble(), h.toDouble());
+    return Size(w.toDouble(), h.toDouble());
   }
 
   Offset _readJsonPoint(Map<dynamic, dynamic> data) {
     num x = data["x"];
     num y = data["y"];
 
-    return new Offset(x.toDouble(), y.toDouble());
+    return Offset(x.toDouble(), y.toDouble());
   }
 
   /// The image used by the sprite sheet.
@@ -70,5 +70,7 @@ class SpriteSheet {
   /// Returns a texture by its name.
   ///
   ///     var myTexture = mySpriteSheet["example.png"];
-  SpriteTexture operator [](String fileName) => textures[fileName]??(throw ArgumentError('Texture $fileName not found'));
+  SpriteTexture operator [](String fileName) =>
+      textures[fileName] ??
+      (throw ArgumentError('Texture $fileName not found'));
 }

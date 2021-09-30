@@ -21,7 +21,7 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
   /// Creates a new NineSliceSprite from the provided [image], [size], and
   /// texture [insets].
   NineSliceSprite.fromImage(ui.Image image, Size size, EdgeInsets insets)
-      : this(new SpriteTexture(image), size, insets);
+      : this(SpriteTexture(image), size, insets);
 
   /// The texture that the sprite will render to screen. Cannot be null.
   ///
@@ -34,11 +34,11 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
     _texture = texture;
     _isDirty = true;
 
-    Matrix4 matrix = new Matrix4.identity();
-    ImageShader shader = new ImageShader(
+    Matrix4 matrix = Matrix4.identity();
+    ImageShader shader = ImageShader(
         texture.image, TileMode.repeated, TileMode.repeated, matrix.storage);
 
-    _cachedPaint = new Paint()..shader = shader;
+    _cachedPaint = Paint()..shader = shader;
   }
 
   /// The insets of the texture as normalized values. The insets define the
@@ -69,7 +69,7 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
     _isDirty = true;
   }
 
-  Paint _cachedPaint = new Paint()
+  Paint _cachedPaint = Paint()
     ..filterQuality = FilterQuality.low
     ..isAntiAlias = false;
 
@@ -146,8 +146,8 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
               break;
           }
 
-          _vertices?.add(new Offset(vx, vy));
-          _textureCoordinates?.add(new Offset(tx, ty));
+          _vertices?.add(Offset(vx, vy));
+          _textureCoordinates?.add(Offset(tx, ty));
           _colors?.add(const Color(0xffffffff));
         }
       }

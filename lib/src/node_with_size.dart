@@ -8,7 +8,6 @@ part of spritewidget;
 ///
 /// NodeWithSize adds the ability for a node to have a size and a pivot point.
 class NodeWithSize extends Node {
-
   /// Changing the size will affect the size of the rendering of the node.
   ///
   ///     myNode.size = new Size(1024.0, 1024.0);
@@ -29,7 +28,7 @@ class NodeWithSize extends Node {
     if (size == null)
       this.size = Size.zero;
     else
-      this.size=size;
+      this.size = size;
     pivot = Offset.zero;
   }
 
@@ -56,13 +55,14 @@ class NodeWithSize extends Node {
   }
 
   @override
-  bool isPointInside (Offset nodePoint) {
-
+  bool isPointInside(Offset nodePoint) {
     double minX = -size.width * pivot.dx;
     double minY = -size.height * pivot.dy;
     double maxX = minX + size.width;
     double maxY = minY + size.height;
-    return (nodePoint.dx >= minX && nodePoint.dx < maxX &&
-            nodePoint.dy >= minY && nodePoint.dy < maxY);
+    return (nodePoint.dx >= minX &&
+        nodePoint.dx < maxX &&
+        nodePoint.dy >= minY &&
+        nodePoint.dy < maxY);
   }
 }

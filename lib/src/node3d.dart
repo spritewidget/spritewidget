@@ -11,7 +11,6 @@ part of spritewidget;
 ///     myNode3D.rotationY = 45.0;
 ///     myNode3D.addChild(new Sprite(myTexture));
 class Node3D extends Node {
-
   double _rotationX = 0.0;
 
   /// The node's rotation around the x axis in degrees.
@@ -48,10 +47,8 @@ class Node3D extends Node {
     Matrix4 matrix = super.computeTransformMatrix();
 
     // Apply perspective projection
-    Matrix4 projection = new Matrix4(1.0, 0.0, 0.0, 0.0,
-                                     0.0, 1.0, 0.0, 0.0,
-                                     0.0, 0.0, 1.0, -1.0/_projectionDepth,
-                                     0.0, 0.0, 0.0, 1.0);
+    Matrix4 projection = Matrix4(1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+        0.0, 1.0, -1.0 / _projectionDepth, 0.0, 0.0, 0.0, 1.0);
     matrix.multiply(projection);
 
     // Rotate around x and y axis

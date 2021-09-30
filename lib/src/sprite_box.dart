@@ -240,7 +240,7 @@ class SpriteBox extends RenderBox {
       if (node.handleMultiplePointers ||
           event.pointer == node._handlingPointer) {
         // Dispatch event
-        bool consumedEvent = node.handleEvent(new SpriteBoxEvent(
+        bool consumedEvent = node.handleEvent(SpriteBoxEvent(
             globalToLocal(event.position), event, event.pointer));
         if (consumedEvent) break;
       }
@@ -255,7 +255,7 @@ class SpriteBox extends RenderBox {
 
   @override
   bool hitTest(HitTestResult result, {required Offset position}) {
-    result.add(new _SpriteBoxHitTestEntry(this, position));
+    result.add(_SpriteBoxHitTestEntry(this, position));
     return true;
   }
 
@@ -275,7 +275,7 @@ class SpriteBox extends RenderBox {
   }
 
   void _calcTransformMatrix() {
-    _transformMatrix = new Matrix4.identity();
+    _transformMatrix = Matrix4.identity();
 
     // Calculate matrix
     double scaleX = 1.0;
@@ -317,13 +317,13 @@ class SpriteBox extends RenderBox {
         scaleX = size.width / systemWidth;
         scaleY = scaleX;
         systemHeight = size.height / scaleX;
-        rootNode.size = new Size(systemWidth, systemHeight);
+        rootNode.size = Size(systemWidth, systemHeight);
         break;
       case SpriteBoxTransformMode.fixedHeight:
         scaleY = size.height / systemHeight;
         scaleX = scaleY;
         systemWidth = size.width / scaleY;
-        rootNode.size = new Size(systemWidth, systemHeight);
+        rootNode.size = Size(systemWidth, systemHeight);
         break;
       case SpriteBoxTransformMode.nativePoints:
         systemWidth = size.width;
@@ -334,7 +334,7 @@ class SpriteBox extends RenderBox {
         break;
     }
 
-    _visibleArea = new Rect.fromLTRB(-offsetX / scaleX, -offsetY / scaleY,
+    _visibleArea = Rect.fromLTRB(-offsetX / scaleX, -offsetY / scaleY,
         systemWidth + offsetX / scaleX, systemHeight + offsetY / scaleY);
 
     _transformMatrix?.translate(offsetX, offsetY);

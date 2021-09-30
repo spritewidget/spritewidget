@@ -6,7 +6,6 @@ part of spritewidget;
 
 /// A Sprite is a [Node] that renders a bitmap image to the screen.
 class Sprite extends NodeWithSize with SpritePaint {
-
   /// The texture that the sprite will render to screen.
   ///
   /// If the texture is null, the sprite will be rendered as a red square
@@ -20,7 +19,7 @@ class Sprite extends NodeWithSize with SpritePaint {
   ///     mySprite.constrainProportions = true;
   bool constrainProportions = false;
 
-  Paint _cachedPaint = new Paint()
+  Paint _cachedPaint = Paint()
     ..filterQuality = FilterQuality.low
     ..isAntiAlias = false;
 
@@ -32,7 +31,7 @@ class Sprite extends NodeWithSize with SpritePaint {
       size = texture!.size;
       pivot = texture!.pivot;
     } else {
-      pivot = new Offset(0.5, 0.5);
+      pivot = Offset(0.5, 0.5);
     }
   }
 
@@ -40,11 +39,10 @@ class Sprite extends NodeWithSize with SpritePaint {
   ///
   /// var mySprite = new Sprite.fromImage(myImage);
   Sprite.fromImage(ui.Image image) : super(Size.zero) {
-    
-    texture = new SpriteTexture(image);
+    texture = SpriteTexture(image);
     size = texture!.size;
 
-    pivot = new Offset(0.5, 0.5);
+    pivot = Offset(0.5, 0.5);
   }
 
   @override
@@ -84,8 +82,8 @@ class Sprite extends NodeWithSize with SpritePaint {
 //      canvas.drawRect(Offset.zero & texture.size, new Paint()..color=const Color(0x33ff0000));
     } else {
       // Paint a red square for missing texture
-      canvas.drawRect(new Rect.fromLTRB(0.0, 0.0, size.width, size.height),
-      new Paint()..color = new Color.fromARGB(255, 255, 0, 0));
+      canvas.drawRect(Rect.fromLTRB(0.0, 0.0, size.width, size.height),
+          Paint()..color = Color.fromARGB(255, 255, 0, 0));
     }
   }
 }
@@ -118,10 +116,10 @@ abstract class SpritePaint {
   BlendMode? transferMode;
 
   void _updatePaint(Paint paint) {
-    paint.color = new Color.fromARGB((255.0*_opacity).toInt(), 255, 255, 255);
+    paint.color = Color.fromARGB((255.0 * _opacity).toInt(), 255, 255, 255);
 
     if (colorOverlay != null) {
-      paint.colorFilter = new ColorFilter.mode(colorOverlay!, BlendMode.srcATop);
+      paint.colorFilter = ColorFilter.mode(colorOverlay!, BlendMode.srcATop);
     }
 
     if (transferMode != null) {
@@ -130,11 +128,11 @@ abstract class SpritePaint {
   }
 }
 
-class PixSprite extends Sprite{
-  PixSprite(SpriteTexture texture):super(texture){
-    this._cachedPaint = new Paint()
+class PixSprite extends Sprite {
+  PixSprite(SpriteTexture texture) : super(texture) {
+    this._cachedPaint = Paint()
       ..filterQuality = FilterQuality.none
       ..isAntiAlias = false;
   }
-  PixSprite.fromImage(ui.Image image) : super.fromImage(image) ;
+  PixSprite.fromImage(ui.Image image) : super.fromImage(image);
 }
