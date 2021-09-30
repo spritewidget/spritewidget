@@ -32,7 +32,6 @@ enum SpriteBoxTransformMode {
 
 /// A [RenderBox] that draws a sprite world represented by a [Node] tree.
 class SpriteBox extends RenderBox {
-
   // Setup
 
   /// Creates a new SpriteBox with a node as its content, by default uses letterboxing.
@@ -42,7 +41,8 @@ class SpriteBox extends RenderBox {
   /// use a [SpriteWidget] that automatically wraps the SpriteBox.
   ///
   ///     var spriteBox = new SpriteBox(myNode, SpriteBoxTransformMode.fixedHeight);
-  SpriteBox(NodeWithSize rootNode, [SpriteBoxTransformMode mode = SpriteBoxTransformMode.letterbox]) {
+  SpriteBox(NodeWithSize rootNode,
+      [SpriteBoxTransformMode mode = SpriteBoxTransformMode.letterbox]) {
     // Setup transform mode
     this.transformMode = mode;
 
@@ -52,14 +52,14 @@ class SpriteBox extends RenderBox {
 
   void _removeSpriteBoxReference(Node? node) {
     node?._spriteBox = null;
-    for (Node child in node?._children??[]) {
+    for (Node child in node?._children ?? []) {
       _removeSpriteBoxReference(child);
     }
   }
 
   void _addSpriteBoxReference(Node? node) {
     node?._spriteBox = this;
-    for (Node child in node?._children??[]) {
+    for (Node child in node?._children ?? []) {
       _addSpriteBoxReference(child);
     }
   }
@@ -88,7 +88,7 @@ class SpriteBox extends RenderBox {
   // Transformation mode
   late SpriteBoxTransformMode _transformMode;
 
-  set transformMode (SpriteBoxTransformMode value) {
+  set transformMode(SpriteBoxTransformMode value) {
     //if (value == _transformMode)
     //  return;
     _transformMode = value;
@@ -112,8 +112,7 @@ class SpriteBox extends RenderBox {
   /// A rectangle that represents the visible area of the sprite world's
   /// coordinate system.
   Rect get visibleArea {
-    if (_visibleArea == null)
-      _calcTransformMatrix();
+    if (_visibleArea == null) _calcTransformMatrix();
     return _visibleArea!; //set in _calcTransformMatrix
   }
 
@@ -128,27 +127,26 @@ class SpriteBox extends RenderBox {
   ///     var rootNode = mySpriteBox.rootNode;
   NodeWithSize get rootNode => _rootNode!;
 
-  NodeWithSize? _rootNode=null;
+  NodeWithSize? _rootNode = null;
 
-  set rootNode (NodeWithSize value) {
+  set rootNode(NodeWithSize value) {
     if (value == _rootNode) return;
 
     // Ensure that the root node has a size
-    assert(_transformMode == SpriteBoxTransformMode.nativePoints
-      || value.size.width > 0);
-    assert(_transformMode == SpriteBoxTransformMode.nativePoints
-      || value.size.height > 0);
+    assert(_transformMode == SpriteBoxTransformMode.nativePoints ||
+        value.size.width > 0);
+    assert(_transformMode == SpriteBoxTransformMode.nativePoints ||
+        value.size.height > 0);
 
     // Remove sprite box references
-    if (_rootNode != null)
-      _removeSpriteBoxReference(_rootNode);
+    if (_rootNode != null) _removeSpriteBoxReference(_rootNode);
 
     // Update the value
     _rootNode = value;
     _motionControllers = null;
     //JK: if eventTargets are not cleared, then we are raising events on nodes
     //which are not rendered any more and have spriteBox==null, which leads to failure
-    _eventTargets = null; 
+    _eventTargets = null;
 
     // Add new references
     _addSpriteBoxReference(_rootNode);
@@ -180,20 +178,19 @@ class SpriteBox extends RenderBox {
   // Event handling
 
   void _addEventTargets(Node? node, List<Node>? eventTargets) {
-    List<Node> children = node?.children??[];
+    List<Node> children = node?.children ?? [];
     int i = 0;
 
     // Add childrens that are behind this node
     while (i < children.length) {
       Node child = children[i];
-      if (child.zPosition >= 0.0)
-        break;
+      if (child.zPosition >= 0.0) break;
       _addEventTargets(child, eventTargets);
       i++;
     }
 
     // Add this node
-    if (node?.userInteractionEnabled??false) {
+    if (node?.userInteractionEnabled ?? false) {
       eventTargets?.add(node!); //node can't be null and true
     }
 
@@ -207,8 +204,7 @@ class SpriteBox extends RenderBox {
 
   @override
   void handleEvent(PointerEvent event, _SpriteBoxHitTestEntry entry) {
-    if (!attached)
-      return;
+    if (!attached) return;
 
     if (event is PointerDownEvent) {
       // Build list of event targets
@@ -219,14 +215,14 @@ class SpriteBox extends RenderBox {
 
       // Find the once that are hit by the pointer
       List<Node> nodeTargets = <Node>[];
-      for (int i = (_eventTargets?.length??0) - 1; i >= 0; i--) {
+      for (int i = (_eventTargets?.length ?? 0) - 1; i >= 0; i--) {
         Node? node = _eventTargets?[i];
-        if (node ==null) 
-            continue;
+        if (node == null) continue;
         // Check if the node is ready to handle a pointer
         if (node.handleMultiplePointers || node._handlingPointer == null) {
           // Do the hit test
-          Offset posInNodeSpace = node.convertPointToNodeSpace(entry.localPosition);
+          Offset posInNodeSpace =
+              node.convertPointToNodeSpace(entry.localPosition);
           if (node.isPointInside(posInNodeSpace)) {
             nodeTargets.add(node);
             node._handlingPointer = event.pointer;
@@ -241,11 +237,12 @@ class SpriteBox extends RenderBox {
     List<Node> targets = entry.nodeTargets;
     for (Node node in targets) {
       // Check if this event should be dispatched
-      if (node.handleMultiplePointers || event.pointer == node._handlingPointer) {
+      if (node.handleMultiplePointers ||
+          event.pointer == node._handlingPointer) {
         // Dispatch event
-        bool consumedEvent = node.handleEvent(new SpriteBoxEvent(globalToLocal(event.position), event, event.pointer));
-        if (consumedEvent)
-          break;
+        bool consumedEvent = node.handleEvent(new SpriteBoxEvent(
+            globalToLocal(event.position), event, event.pointer));
+        if (consumedEvent) break;
       }
     }
 
@@ -257,7 +254,7 @@ class SpriteBox extends RenderBox {
   }
 
   @override
-  bool hitTest(HitTestResult result, { required Offset position }) {
+  bool hitTest(HitTestResult result, {required Offset position}) {
     result.add(new _SpriteBoxHitTestEntry(this, position));
     return true;
   }
@@ -289,43 +286,43 @@ class SpriteBox extends RenderBox {
     double systemWidth = rootNode.size.width;
     double systemHeight = rootNode.size.height;
 
-    switch(_transformMode) {
+    switch (_transformMode) {
       case SpriteBoxTransformMode.stretch:
-        scaleX = size.width/systemWidth;
-        scaleY = size.height/systemHeight;
+        scaleX = size.width / systemWidth;
+        scaleY = size.height / systemHeight;
         break;
       case SpriteBoxTransformMode.letterbox:
-        scaleX = size.width/systemWidth;
-        scaleY = size.height/systemHeight;
+        scaleX = size.width / systemWidth;
+        scaleY = size.height / systemHeight;
         if (scaleX > scaleY) {
           scaleY = scaleX;
-          offsetY = (size.height - scaleY * systemHeight)/2.0;
+          offsetY = (size.height - scaleY * systemHeight) / 2.0;
         } else {
           scaleX = scaleY;
-          offsetX = (size.width - scaleX * systemWidth)/2.0;
+          offsetX = (size.width - scaleX * systemWidth) / 2.0;
         }
         break;
       case SpriteBoxTransformMode.scaleToFit:
-        scaleX = size.width/systemWidth;
-        scaleY = size.height/systemHeight;
+        scaleX = size.width / systemWidth;
+        scaleY = size.height / systemHeight;
         if (scaleX < scaleY) {
           scaleY = scaleX;
-          offsetY = (size.height - scaleY * systemHeight)/2.0;
+          offsetY = (size.height - scaleY * systemHeight) / 2.0;
         } else {
           scaleX = scaleY;
-          offsetX = (size.width - scaleX * systemWidth)/2.0;
+          offsetX = (size.width - scaleX * systemWidth) / 2.0;
         }
         break;
       case SpriteBoxTransformMode.fixedWidth:
-        scaleX = size.width/systemWidth;
+        scaleX = size.width / systemWidth;
         scaleY = scaleX;
-        systemHeight = size.height/scaleX;
+        systemHeight = size.height / scaleX;
         rootNode.size = new Size(systemWidth, systemHeight);
         break;
       case SpriteBoxTransformMode.fixedHeight:
-        scaleY = size.height/systemHeight;
+        scaleY = size.height / systemHeight;
         scaleX = scaleY;
-        systemWidth = size.width/scaleY;
+        systemWidth = size.width / scaleY;
         rootNode.size = new Size(systemWidth, systemHeight);
         break;
       case SpriteBoxTransformMode.nativePoints:
@@ -337,10 +334,8 @@ class SpriteBox extends RenderBox {
         break;
     }
 
-    _visibleArea = new Rect.fromLTRB(-offsetX / scaleX,
-                                     -offsetY / scaleY,
-                                     systemWidth + offsetX / scaleX,
-                                     systemHeight + offsetY / scaleY);
+    _visibleArea = new Rect.fromLTRB(-offsetX / scaleX, -offsetY / scaleY,
+        systemWidth + offsetX / scaleX, systemHeight + offsetY / scaleY);
 
     _transformMatrix?.translate(offsetX, offsetY);
     _transformMatrix?.scale(scaleX, scaleY);
@@ -373,14 +368,14 @@ class SpriteBox extends RenderBox {
 
   bool _paused = false;
 
-  get paused => _paused;
+  bool get paused => _paused;
 
   set paused(bool value) {
     if (!value && _paused) {
       _scheduleTick();
       markNeedsPaint();
       print("Resume");
-    } else if(!value) {
+    } else if (!value) {
       print("Resume already resumed $value $_paused");
     }
     _paused = value;
@@ -391,20 +386,20 @@ class SpriteBox extends RenderBox {
   }
 
   void _unscheduleTick() {
-    SchedulerBinding.instance?.cancelFrameCallbackWithId(_frameCallbackId??0);
+    SchedulerBinding.instance?.cancelFrameCallbackWithId(_frameCallbackId ?? 0);
   }
 
   void _tick(Duration timeStamp) {
-    if (!attached)
-      return;
+    if (!attached) return;
 
-    if (_paused)
-      return;
+    if (_paused) return;
 
     // Calculate delta and frame rate
-    if (_lastTimeStamp == null)
-      _lastTimeStamp = timeStamp;
-    double delta = (timeStamp - (_lastTimeStamp??Duration.zero)).inMicroseconds.toDouble() / Duration.microsecondsPerSecond;
+    if (_lastTimeStamp == null) _lastTimeStamp = timeStamp;
+    double delta = (timeStamp - (_lastTimeStamp ?? Duration.zero))
+            .inMicroseconds
+            .toDouble() /
+        Duration.microsecondsPerSecond;
     _lastTimeStamp = timeStamp;
 
     _frameRate = 1.0 / delta;
@@ -427,7 +422,7 @@ class SpriteBox extends RenderBox {
     if (_motionControllers == null) {
       _rebuildActionControllersAndPhysicsNodes();
     }
-    for (MotionController actions in _motionControllers??[]) {
+    for (MotionController actions in _motionControllers ?? []) {
       actions.step(dt);
     }
   }
@@ -462,8 +457,8 @@ class SpriteBox extends RenderBox {
       _addConstrainedNodes(rootNode, _constrainedNodes!);
     }
 
-    for (Node node in _constrainedNodes??[]) {
-      for (Constraint constraint in node.constraints??[]) {
+    for (Node node in _constrainedNodes ?? []) {
+      for (Constraint constraint in node.constraints ?? []) {
         constraint.preUpdate(node, dt);
       }
     }
@@ -475,8 +470,8 @@ class SpriteBox extends RenderBox {
       _addConstrainedNodes(rootNode, _constrainedNodes!);
     }
 
-    for (Node node in _constrainedNodes??[]) {
-      for (Constraint constraint in node.constraints??[]) {
+    for (Node node in _constrainedNodes ?? []) {
+      for (Constraint constraint in node.constraints ?? []) {
         constraint.constrain(node, dt);
       }
     }
@@ -494,7 +489,7 @@ class SpriteBox extends RenderBox {
 
   void _callSpriteBoxPerformedLayout(Node? node) {
     node?.spriteBoxPerformedLayout();
-    for (Node child in node?.children??[]) {
+    for (Node child in node?.children ?? []) {
       _callSpriteBoxPerformedLayout(child);
     }
   }
@@ -508,7 +503,6 @@ class SpriteBox extends RenderBox {
   ///
   ///     List nodes = mySpriteBox.findNodesAtPosition(new Point(50.0, 50.0));
   List<Node> findNodesAtPosition(Offset position) {
-
     List<Node> nodes = <Node>[];
 
     // Traverse the render tree and find objects at the position
@@ -531,14 +525,14 @@ class SpriteBox extends RenderBox {
 }
 
 class _SpriteBoxHitTestEntry extends BoxHitTestEntry {
-  List<Node> nodeTargets=List<Node>.empty(growable:true);
-  _SpriteBoxHitTestEntry(RenderBox target, Offset localPosition) : super(target, localPosition);
+  List<Node> nodeTargets = List<Node>.empty(growable: true);
+  _SpriteBoxHitTestEntry(RenderBox target, Offset localPosition)
+      : super(target, localPosition);
 }
 
 /// An event that is passed down the node tree when pointer events occur. The SpriteBoxEvent is typically handled in
 /// the handleEvent method of [Node].
 class SpriteBoxEvent {
-
   /// The position of the event in box coordinates.
   ///
   /// You can use the convertPointToNodeSpace of [Node] to convert the position to local coordinates.
@@ -558,16 +552,11 @@ class SpriteBoxEvent {
   ///       // Do something!
   ///     }
   @Deprecated("use pointerEvent in tue future")
-  Type get type{
-    final t=pointerEvent.runtimeType;
-    if(pointerEvent is PointerDownEvent)
-      return PointerDownEvent;
-    if(pointerEvent is PointerUpEvent)
-      return PointerUpEvent;
-    if(pointerEvent is PointerMoveEvent)
-      return PointerMoveEvent;
-    if(pointerEvent is PointerCancelEvent)
-      return PointerCancelEvent;
+  Type get type {
+    if (pointerEvent is PointerDownEvent) return PointerDownEvent;
+    if (pointerEvent is PointerUpEvent) return PointerUpEvent;
+    if (pointerEvent is PointerMoveEvent) return PointerMoveEvent;
+    if (pointerEvent is PointerCancelEvent) return PointerCancelEvent;
     return pointerEvent.runtimeType;
   }
 
@@ -577,7 +566,7 @@ class SpriteBoxEvent {
   ///       // Do something
   ///     }
   final int pointer;
-  
+
   ///Original pointer event. Use is operator to include subtypes
   ///     if (event.pointerEvent is PointerDownEvent) {
   ///       // Do something!
