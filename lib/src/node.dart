@@ -5,10 +5,10 @@
 part of spritewidget;
 
 /// Converts degrees to radians.
-double convertDegrees2Radians(double degrees) => degrees * math.pi/180.0;
+double convertDegrees2Radians(double degrees) => degrees * math.pi / 180.0;
 
 /// Converts radians to degrees.
-double convertRadians2Degrees(double radians) => radians * 180.0/math.pi;
+double convertRadians2Degrees(double radians) => radians * 180.0 / math.pi;
 
 /// A base class for all objects that can be added to the sprite node tree and rendered to screen using [SpriteBox] and
 /// [SpriteWidget].
@@ -20,14 +20,12 @@ double convertRadians2Degrees(double radians) => radians * 180.0/math.pi;
 /// Nodes form a hierarchical tree. Each node can have a number of children, and the transformation (positioning,
 /// rotation, and scaling) of a node also affects its children.
 class Node {
-
   // Constructors
 
   /// Creates a new [Node] without any transformation.
   ///
   ///     Node myNode = new Node();
   Node();
-
 
   // Member variables
 
@@ -112,11 +110,10 @@ class Node {
   void applyConstraints(double dt) {
     if (_constraints == null) return;
 
-    for (Constraint constraint in _constraints??[]) {
+    for (Constraint constraint in _constraints ?? []) {
       constraint.constrain(this, dt);
     }
   }
-
 
   // Property setters and getters
 
@@ -140,11 +137,9 @@ class Node {
   double get rotation => _rotation;
 
   set rotation(double rotation) {
-
     _rotation = rotation;
     invalidateTransformMatrix();
   }
-
 
   /// The position of this node relative to its parent.
   ///
@@ -152,7 +147,6 @@ class Node {
   Offset get position => _position;
 
   set position(Offset position) {
-
     _position = position;
     invalidateTransformMatrix();
   }
@@ -162,7 +156,7 @@ class Node {
   ///     myNode.skewX = 45.0;
   double get skewX => _skewX;
 
-  set skewX (double skewX) {
+  set skewX(double skewX) {
     _skewX = skewX;
     invalidateTransformMatrix();
   }
@@ -172,7 +166,7 @@ class Node {
   ///     myNode.skewY = 45.0;
   double get skewY => _skewY;
 
-  set skewY (double skewY) {
+  set skewY(double skewY) {
     _skewY = skewY;
     invalidateTransformMatrix();
   }
@@ -205,7 +199,6 @@ class Node {
   }
 
   set scale(double scale) {
-
     _scaleX = _scaleY = scale;
     invalidateTransformMatrix();
   }
@@ -216,7 +209,6 @@ class Node {
   double get scaleX => _scaleX;
 
   set scaleX(double scaleX) {
-
     _scaleX = scaleX;
     invalidateTransformMatrix();
   }
@@ -227,7 +219,6 @@ class Node {
   double get scaleY => _scaleY;
 
   set scaleY(double scaleY) {
-
     _scaleY = scaleY;
     invalidateTransformMatrix();
   }
@@ -311,12 +302,10 @@ class Node {
     if (_childrenNeedSorting) {
       _children.sort((Node a, Node b) {
         if (a._zPosition == b._zPosition) {
-          return (a._addedOrder??0) - (b._addedOrder??0);
-        }
-        else if (a._zPosition > b._zPosition) {
+          return (a._addedOrder ?? 0) - (b._addedOrder ?? 0);
+        } else if (a._zPosition > b._zPosition) {
           return 1;
-        }
-        else {
+        } else {
           return -1;
         }
       });
@@ -349,8 +338,7 @@ class Node {
       sx = 0.0;
       cy = 1.0;
       sy = 0.0;
-    }
-    else {
+    } else {
       double radiansX = convertDegrees2Radians(_rotation);
       double radiansY = convertDegrees2Radians(_rotation);
 
@@ -361,17 +349,43 @@ class Node {
     }
 
     // Create transformation matrix for scale, position and rotation
-    Matrix4 matrix = new Matrix4(cy * _scaleX, sy * _scaleX, 0.0, 0.0,
-               -sx * _scaleY, cx * _scaleY, 0.0, 0.0,
-               0.0, 0.0, 1.0, 0.0,
-              _position.dx, _position.dy, 0.0, 1.0);
+    Matrix4 matrix = new Matrix4(
+        cy * _scaleX,
+        sy * _scaleX,
+        0.0,
+        0.0,
+        -sx * _scaleY,
+        cx * _scaleY,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        _position.dx,
+        _position.dy,
+        0.0,
+        1.0);
 
     if (_skewX != 0.0 || _skewY != 0.0) {
       // Needs skew transform
-      Matrix4 skew = new Matrix4(1.0, math.tan(radians(_skewX)), 0.0, 0.0,
-                                 math.tan(radians(_skewY)), 1.0, 0.0, 0.0,
-                                 0.0, 0.0, 1.0, 0.0,
-                                 0.0, 0.0, 0.0, 1.0);
+      Matrix4 skew = new Matrix4(
+          1.0,
+          math.tan(radians(_skewX)),
+          0.0,
+          0.0,
+          math.tan(radians(_skewY)),
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0);
       matrix.multiply(skew);
     }
 
@@ -387,7 +401,7 @@ class Node {
     _invalidateToBoxTransformMatrix();
   }
 
-  void _invalidateToBoxTransformMatrix () {
+  void _invalidateToBoxTransformMatrix() {
     _transformMatrixNodeToBox = null;
     _transformMatrixBoxToNode = null;
 
@@ -407,10 +421,11 @@ class Node {
     if (_parent == null) {
       // Base case, we are at the top
       assert(this == _spriteBox?.rootNode);
-      _transformMatrixNodeToBox = _spriteBox!.transformMatrix.clone()..multiply(transformMatrix);
-    }
-    else {
-      _transformMatrixNodeToBox = _parent!._nodeToBoxMatrix().clone()..multiply(transformMatrix);
+      _transformMatrixNodeToBox = _spriteBox!.transformMatrix.clone()
+        ..multiply(transformMatrix);
+    } else {
+      _transformMatrixNodeToBox = _parent!._nodeToBoxMatrix().clone()
+        ..multiply(transformMatrix);
     }
     return _transformMatrixNodeToBox!;
   }
@@ -444,8 +459,8 @@ class Node {
   ///
   ///     Point localPoint = myNode.convertPointToNodeSpace(pointInBoxCoordinates);
   Offset convertPointToNodeSpace(Offset boxPoint) {
-
-    Vector4 v =_boxToNodeMatrix().transform(new Vector4(boxPoint.dx, boxPoint.dy, 0.0, 1.0));
+    Vector4 v = _boxToNodeMatrix()
+        .transform(new Vector4(boxPoint.dx, boxPoint.dy, 0.0, 1.0));
     return new Offset(v[0], v[1]);
   }
 
@@ -455,7 +470,8 @@ class Node {
   Offset convertPointToBoxSpace(Offset nodePoint) {
     assert(_spriteBox != null);
 
-    Vector4 v =_nodeToBoxMatrix().transform(new Vector4(nodePoint.dx, nodePoint.dy, 0.0, 1.0));
+    Vector4 v = _nodeToBoxMatrix()
+        .transform(new Vector4(nodePoint.dx, nodePoint.dy, 0.0, 1.0));
     return new Offset(v[0], v[1]);
   }
 
@@ -490,8 +506,6 @@ class Node {
   ///       nodePoint.y >= minY && nodePoint.y < maxY);
   ///     }
   bool isPointInside(Offset point) {
-    assert(point != null);
-
     return false;
   }
 
@@ -528,8 +542,7 @@ class Node {
   ///
   ///       canvas.restore();
   ///     }
-  void paint(Canvas canvas) {
-  }
+  void paint(Canvas canvas) {}
 
   void _visitChildren(Canvas canvas) {
     // Sort children if needed
@@ -571,8 +584,7 @@ class Node {
   ///     void update(double dt) {
   ///       rotation = rotation * 10.0 * dt;
   ///     }
-  void update(double dt) {
-  }
+  void update(double dt) {}
 
   /// Called whenever the [SpriteBox] is modified or resized, or if the device is rotated.
   ///
@@ -582,8 +594,7 @@ class Node {
   ///     void spriteBoxPerformedLayout() {
   ///       // Move some stuff around here
   ///     }
-  void spriteBoxPerformedLayout() {
-  }
+  void spriteBoxPerformedLayout() {}
 
   // Handling user interaction
 

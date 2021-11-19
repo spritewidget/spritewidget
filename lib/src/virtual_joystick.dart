@@ -6,7 +6,6 @@ part of spritewidget;
 
 /// Provides a virtual joystick that can easily be added to your sprite scene.
 class VirtualJoystick extends NodeWithSize {
-
   /// Creates a new virtual joystick.
   VirtualJoystick() : super(new Size(160.0, 160.0)) {
     userInteractionEnabled = true;
@@ -16,10 +15,9 @@ class VirtualJoystick extends NodeWithSize {
     _center = new Offset(size.width / 2.0, size.height / 2.0);
     _handlePos = _center;
 
-    _paintHandle = new Paint()
-      ..color=new Color(0xffffffff);
+    _paintHandle = new Paint()..color = new Color(0xffffffff);
     _paintControl = new Paint()
-      ..color=new Color(0xffffffff)
+      ..color = new Color(0xffffffff)
       ..strokeWidth = 1.0
       ..style = PaintingStyle.stroke;
   }
@@ -33,7 +31,6 @@ class VirtualJoystick extends NodeWithSize {
   bool get isDown => _isDown;
   bool _isDown = false;
 
-
   Offset? _pointerDownAt;
   Offset? _center;
   Offset? _handlePos;
@@ -43,25 +40,27 @@ class VirtualJoystick extends NodeWithSize {
 
   @override
   bool handleEvent(SpriteBoxEvent event) {
-    if (event.type == PointerDownEvent) {
+    if (event.pointerEvent is PointerDownEvent) {
       _pointerDownAt = event.boxPosition;
       motions.stopAll();
       _isDown = true;
-    }
-    else if (event.type == PointerUpEvent || event.type == PointerCancelEvent) {
+    } else if (event.pointerEvent is PointerUpEvent ||
+        event.pointerEvent is PointerCancelEvent) {
       _pointerDownAt = null;
       _value = Offset.zero;
-      MotionTween moveToCenter = new MotionTween((a) { _handlePos = a; }, _handlePos, _center, 0.4, Curves.elasticOut);
+      MotionTween moveToCenter = new MotionTween((a) {
+        _handlePos = a;
+      }, _handlePos, _center, 0.4, Curves.elasticOut);
       motions.run(moveToCenter);
       _isDown = false;
-    } else if (event.type == PointerMoveEvent) {
-      Offset movedDist = event.boxPosition - (_pointerDownAt??Offset.zero);
+    } else if (event.pointerEvent is PointerMoveEvent) {
+      Offset movedDist = event.boxPosition - (_pointerDownAt ?? Offset.zero);
 
-      _value = new Offset(
-        (movedDist.dx / 80.0).clamp(-1.0, 1.0),
-        (movedDist.dy / 80.0).clamp(-1.0, 1.0));
+      _value = new Offset((movedDist.dx / 80.0).clamp(-1.0, 1.0),
+          (movedDist.dy / 80.0).clamp(-1.0, 1.0));
 
-        _handlePos = (_center??Offset.zero) + new Offset(_value.dx * 40.0, _value.dy * 40.0);
+      _handlePos = (_center ?? Offset.zero) +
+          new Offset(_value.dx * 40.0, _value.dy * 40.0);
     }
     return true;
   }
@@ -69,9 +68,8 @@ class VirtualJoystick extends NodeWithSize {
   @override
   void paint(Canvas canvas) {
     applyTransformForPivot(canvas);
-    if(_paintHandle==null || _paintControl==null)
-        return;
-    canvas.drawCircle(_handlePos??Offset.zero, 25.0, _paintHandle!);
-    canvas.drawCircle(_center??Offset.zero, 40.0, _paintControl!);
+    if (_paintHandle == null || _paintControl == null) return;
+    canvas.drawCircle(_handlePos ?? Offset.zero, 25.0, _paintHandle!);
+    canvas.drawCircle(_center ?? Offset.zero, 40.0, _paintControl!);
   }
 }
