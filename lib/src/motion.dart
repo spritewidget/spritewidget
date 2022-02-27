@@ -398,7 +398,7 @@ class MotionTween<T> extends MotionInterval {
   }
 
   /// The setter method used to set the property being animated.
-  final SetterCallback setter;
+  final void Function(T value) setter;
 
   /// The start value of the animation.
   final T startVal;

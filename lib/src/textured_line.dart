@@ -197,9 +197,6 @@ class TexturedLinePainter {
       lastPoint = currentPoint;
       lastMiter = currentMiter;
     }
-
-    //TODO: Fix
-//    canvas.drawVertices(VertexMode.triangles, vertices, textureCoordinates, verticeColors, BlendMode.modulate, indices, _cachedPaint);
   }
 
   double _xPosForStop(double stop) {

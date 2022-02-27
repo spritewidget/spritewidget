@@ -241,7 +241,7 @@ class ParticleSystem extends Node {
 
   @override
   void update(double dt) {
-    // TODO: Fix this (it's a temp fix for low framerates)
+    // Fix this (it's a temp fix for low framerates)
     if (dt > 0.1) dt = 0.1;
 
     // Create new particles

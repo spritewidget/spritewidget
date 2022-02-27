@@ -172,16 +172,5 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
         }
       }
     }
-
-    // TODO: Fix
-//    canvas.drawVertices(
-//      VertexMode.triangles,
-//      _vertices,
-//      _textureCoordinates,
-//      _colors,
-//        BlendMode.modulate,
-//      _indices,
-//      _cachedPaint
-//    );
   }
 }
