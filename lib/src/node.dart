@@ -4,12 +4,6 @@
 
 part of spritewidget;
 
-/// Converts degrees to radians.
-double convertDegrees2Radians(double degrees) => degrees * math.pi / 180.0;
-
-/// Converts radians to degrees.
-double convertRadians2Degrees(double radians) => radians * 180.0 / math.pi;
-
 /// A base class for all objects that can be added to the sprite node tree and rendered to screen using [SpriteBox] and
 /// [SpriteWidget].
 ///
@@ -131,9 +125,9 @@ class Node {
   ///     myNode.parent.visible = false;
   Node? get parent => _parent;
 
-  /// The rotation of this node in degrees.
+  /// The rotation of this node in radians.
   ///
-  ///     myNode.rotation = 45.0;
+  ///     myNode.rotation = pi/2;
   double get rotation => _rotation;
 
   set rotation(double rotation) {
@@ -151,9 +145,9 @@ class Node {
     invalidateTransformMatrix();
   }
 
-  /// The skew along the x-axis of this node in degrees.
+  /// The skew along the x-axis of this node in radians.
   ///
-  ///     myNode.skewX = 45.0;
+  ///     myNode.skewX = pi/2;
   double get skewX => _skewX;
 
   set skewX(double skewX) {
@@ -161,9 +155,9 @@ class Node {
     invalidateTransformMatrix();
   }
 
-  /// The skew along the y-axis of this node in degrees.
+  /// The skew along the y-axis of this node in radians.
   ///
-  ///     myNode.skewY = 45.0;
+  ///     myNode.skewY = pi/2;
   double get skewY => _skewY;
 
   set skewY(double skewY) {
@@ -326,7 +320,7 @@ class Node {
   }
 
   /// Computes the transformation matrix of this node. This method can be
-  /// overriden if a custom matrix is required. There is usually no reason to
+  /// overridden if a custom matrix is required. There is usually no reason to
   /// call this method directly.
   Matrix4 computeTransformMatrix() {
     double cx, sx, cy, sy;
@@ -337,8 +331,8 @@ class Node {
       cy = 1.0;
       sy = 0.0;
     } else {
-      double radiansX = convertDegrees2Radians(_rotation);
-      double radiansY = convertDegrees2Radians(_rotation);
+      double radiansX = _rotation;
+      double radiansY = _rotation;
 
       cx = math.cos(radiansX);
       sx = math.sin(radiansX);
@@ -391,7 +385,7 @@ class Node {
   }
 
   /// Invalidates the current transform matrix. If the [computeTransformMatrix]
-  /// method is overidden, this method should be called whenever a property
+  /// method is overridden, this method should be called whenever a property
   /// changes that affects the matrix.
   void invalidateTransformMatrix() {
     _transformMatrix = null;

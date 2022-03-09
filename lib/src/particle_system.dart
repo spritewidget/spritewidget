@@ -61,7 +61,7 @@ class ParticleSystem extends Node {
     this.endRotationVar = 0.0,
     this.rotateToMovement = false,
     this.direction = 0.0,
-    this.directionVar = 360.0,
+    this.directionVar = math.pi * 2,
     this.speed = 100.0,
     this.speedVar = 50.0,
     this.radialAcceleration = 0.0,
@@ -141,7 +141,7 @@ class ParticleSystem extends Node {
   /// properties.
   bool rotateToMovement;
 
-  /// The direction in which each particle will be emitted in degrees.
+  /// The direction in which each particle will be emitted in radians.
   double direction;
 
   /// Variance of the [direction] property.
@@ -153,7 +153,7 @@ class ParticleSystem extends Node {
   /// Variance of the [direction] property.
   double speedVar;
 
-  /// The radial acceleration of each induvidual particle.
+  /// The radial acceleration of each individual particle.
   double radialAcceleration;
 
   /// Variance of the [radialAcceleration] property.
@@ -186,7 +186,7 @@ class ParticleSystem extends Node {
   int maxParticles;
 
   /// Total number of particles to emit, if the value is set to 0 the system
-  /// will continue to emit particles for an indifinte period of time.
+  /// will continue to emit particles for an indefinite period of time.
   int numParticlesToEmit;
 
   /// The rate at which particles are emitted, defined in particles per second.
@@ -202,16 +202,16 @@ class ParticleSystem extends Node {
   /// [greenVar], and [blueVar] properties.
   late ColorSequence colorSequence;
 
-  /// Alpha varience of the [colorSequence] property.
+  /// Alpha variance of the [colorSequence] property.
   int alphaVar;
 
-  /// Red varience of the [colorSequence] property.
+  /// Red variance of the [colorSequence] property.
   int redVar;
 
-  /// Green varience of the [colorSequence] property.
+  /// Green variance of the [colorSequence] property.
   int greenVar;
 
-  /// Blue varience of the [colorSequence] property.
+  /// Blue variance of the [colorSequence] property.
   int blueVar;
 
   /// The transfer mode used to draw the particle system. Default is
@@ -243,7 +243,7 @@ class ParticleSystem extends Node {
 
   @override
   void update(double dt) {
-    // Fix this (it's a temp fix for low framerates)
+    // Fix this (it's a temp fix for low framerate)
     if (dt > 0.1) dt = 0.1;
 
     // Create new particles
@@ -327,9 +327,7 @@ class ParticleSystem extends Node {
       }
     }
 
-    if (autoRemoveOnFinish &&
-        _particles.isEmpty &&
-        _numEmittedParticles > 0) {
+    if (autoRemoveOnFinish && _particles.isEmpty && _numEmittedParticles > 0) {
       if (parent != null) removeFromParent();
     }
   }
@@ -360,8 +358,7 @@ class ParticleSystem extends Node {
         (endRotationFinal - particle.rotation) / particle.timeToLive;
 
     // Direction
-    double dirRadians =
-        convertDegrees2Radians(direction + directionVar * randomSignedDouble());
+    double dirRadians = direction + directionVar * randomSignedDouble();
     Vector2 dirVector = Vector2(math.cos(dirRadians), math.sin(dirRadians));
     double speedFinal = speed + speedVar * randomSignedDouble();
     particle.dir = dirVector..scale(speedFinal);
@@ -449,17 +446,11 @@ class ParticleSystem extends Node {
       double ssin;
       if (rotateToMovement) {
         double extraRotation = GameMath.atan2(particle.dir[1], particle.dir[0]);
-        scos = math.cos(
-                convertDegrees2Radians(particle.rotation) + extraRotation) *
-            particle.size;
-        ssin = math.sin(
-                convertDegrees2Radians(particle.rotation) + extraRotation) *
-            particle.size;
+        scos = math.cos(particle.rotation) + extraRotation * particle.size;
+        ssin = math.sin(particle.rotation) + extraRotation * particle.size;
       } else if (particle.rotation != 0.0) {
-        scos =
-            math.cos(convertDegrees2Radians(particle.rotation)) * particle.size;
-        ssin =
-            math.sin(convertDegrees2Radians(particle.rotation)) * particle.size;
+        scos = math.cos(particle.rotation) * particle.size;
+        ssin = math.sin(particle.rotation) * particle.size;
       } else {
         scos = particle.size;
         ssin = 0.0;
@@ -615,8 +606,8 @@ Map serializeParticleSystem(ParticleSystem system) {
 ParticleSystem deserializeParticleSystem(Map data,
     {ParticleSystem? particleSystem, SpriteTexture? texture}) {
   particleSystem ??= ParticleSystem(texture ??
-        (throw ArgumentError(
-            'If particle system is not provided, texture is required')));
+      (throw ArgumentError(
+          'If particle system is not provided, texture is required')));
 
   particleSystem.life = data['life'];
   particleSystem.lifeVar = data['lifeVar'];

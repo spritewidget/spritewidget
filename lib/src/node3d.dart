@@ -8,12 +8,12 @@ part of spritewidget;
 /// node type can be used to create 3D flips and other similar effects.
 ///
 ///     var myNode3D = new Node3D();
-///     myNode3D.rotationY = 45.0;
+///     myNode3D.rotationY = pi/2;
 ///     myNode3D.addChild(new Sprite(myTexture));
 class Node3D extends Node {
   double _rotationX = 0.0;
 
-  /// The node's rotation around the x axis in degrees.
+  /// The node's rotation around the x axis in radians.
   double get rotationX => _rotationX;
 
   set rotationX(double rotationX) {
@@ -23,7 +23,7 @@ class Node3D extends Node {
 
   double _rotationY = 0.0;
 
-  /// The node's rotation around the y axis in degrees.
+  /// The node's rotation around the y axis in radians.
   double get rotationY => _rotationY;
 
   set rotationY(double rotationY) {
