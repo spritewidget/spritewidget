@@ -259,7 +259,7 @@ class Node {
     _childrenNeedSorting = true;
     _children.add(child);
     child._parent = this;
-    child._spriteBox = this._spriteBox;
+    child._spriteBox = _spriteBox;
     _childrenLastAddedOrder += 1;
     child._addedOrder = _childrenLastAddedOrder;
     _spriteBox?._registerNode(child);
@@ -321,9 +321,7 @@ class Node {
   ///
   ///     Matrix4 matrix = myNode.transformMatrix;
   Matrix4 get transformMatrix {
-    if (_transformMatrix == null) {
-      _transformMatrix = computeTransformMatrix();
-    }
+    _transformMatrix ??= computeTransformMatrix();
     return _transformMatrix!;
   }
 

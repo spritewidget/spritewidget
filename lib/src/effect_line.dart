@@ -50,16 +50,18 @@ class EffectLine extends Node {
       this.textureLoopLength = 0.0,
       this.simplify = true,
       ColorSequence? colorSequence}) {
-    if (points == null)
+    if (points == null) {
       this.points = <Offset>[];
-    else
+    } else {
       this.points = points;
+    }
 
     if (colorSequence == null) {
       _colorSequence = ColorSequence.fromStartAndEndColor(
           const Color(0xffffffff), const Color(0xffffffff));
-    } else
+    } else {
       _colorSequence = colorSequence;
+    }
 
     _offset = scrollStart;
 
@@ -115,8 +117,8 @@ class EffectLine extends Node {
   late List<Offset> _points;
 
   List<double> _pointAges = List<double>.empty(growable: true);
-  List<Color> _colors = List<Color>.empty(growable: true);
-  List<double> _widths = List<double>.empty(growable: true);
+  final List<Color> _colors = List<Color>.empty(growable: true);
+  final List<double> _widths = List<double>.empty(growable: true);
 
   /// The time it takes for an added point to fade out. It's total life time is
   /// [fadeDuration] + [fadeAfterDelay].
@@ -154,7 +156,7 @@ class EffectLine extends Node {
 
     // Check if the first/oldest point should be removed
     while (
-        _points.length > 0 && _pointAges[0] > (fadeDuration + fadeAfterDelay)) {
+        _points.isNotEmpty && _pointAges[0] > (fadeDuration + fadeAfterDelay)) {
       // Update scroll if it isn't the last and only point that is about to removed
       if (_points.length > 1) {
         double dist = GameMath.distanceBetweenPoints(_points[0], _points[1]);
@@ -217,7 +219,7 @@ class EffectLine extends Node {
   /// Adds a new point to the end of the line.
   void addPoint(Offset point) {
     // Skip duplicate points
-    if (points.length > 0 &&
+    if (points.isNotEmpty &&
         point.dx == points[points.length - 1].dx &&
         point.dy == points[points.length - 1].dy) return;
 

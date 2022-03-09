@@ -11,14 +11,14 @@ part of spritewidget;
 /// From the image and the string the [SpriteSheet] creates a number of [SpriteTexture] objects. The names of the frames in
 /// the sprite sheet definition are used to reference the different textures.
 class SpriteSheet {
-  ui.Image _image;
-  Map<String, SpriteTexture> textures = Map<String, SpriteTexture>();
+  final ui.Image _image;
+  Map<String, SpriteTexture> textures = <String, SpriteTexture>{};
 
   /// Creates a new sprite sheet from an [_image] and a sprite sheet [jsonDefinition].
   ///
   ///     var mySpriteSheet = new SpriteSheet(myImage, jsonString);
   SpriteSheet(this._image, String jsonDefinition) {
-    JsonDecoder decoder = JsonDecoder();
+    JsonDecoder decoder = const JsonDecoder();
     Map<dynamic, dynamic> file = decoder.convert(jsonDefinition);
 
     List<dynamic> frames = file["frames"];

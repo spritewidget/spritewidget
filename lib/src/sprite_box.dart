@@ -34,7 +34,7 @@ enum SpriteBoxTransformMode {
 class SpriteBox extends RenderBox {
   // Setup
 
-  /// Creates a new SpriteBox with a node as its content, by default uses letterboxing.
+  /// Creates a new SpriteBox with a node as its content, by default uses letter-boxing.
   ///
   /// The [rootNode] provides the content of the node tree, typically it's a custom subclass of [NodeWithSize]. The
   /// [mode] provides different ways to scale the content to best fit it to the screen. In most cases it's preferred to
@@ -44,7 +44,7 @@ class SpriteBox extends RenderBox {
   SpriteBox(NodeWithSize rootNode,
       [SpriteBoxTransformMode mode = SpriteBoxTransformMode.letterbox]) {
     // Setup transform mode
-    this.transformMode = mode;
+    transformMode = mode;
 
     // Setup root node
     this.rootNode = rootNode;
@@ -127,7 +127,7 @@ class SpriteBox extends RenderBox {
   ///     var rootNode = mySpriteBox.rootNode;
   NodeWithSize get rootNode => _rootNode!;
 
-  NodeWithSize? _rootNode = null;
+  NodeWithSize? _rootNode;
 
   set rootNode(NodeWithSize value) {
     if (value == _rootNode) return;
@@ -181,7 +181,7 @@ class SpriteBox extends RenderBox {
     List<Node> children = node?.children ?? [];
     int i = 0;
 
-    // Add childrens that are behind this node
+    // Add children that are behind this node
     while (i < children.length) {
       Node child = children[i];
       if (child.zPosition >= 0.0) break;
@@ -233,7 +233,7 @@ class SpriteBox extends RenderBox {
       entry.nodeTargets = nodeTargets;
     }
 
-    // Pass the event down to nodes that were hit by the pointerdown
+    // Pass the event down to nodes that were hit by the pointer-down
     List<Node> targets = entry.nodeTargets;
     for (Node node in targets) {
       // Check if this event should be dispatched
@@ -248,8 +248,9 @@ class SpriteBox extends RenderBox {
 
     // De-register pointer for nodes that doesn't handle multiple pointers
     for (Node node in targets) {
-      if (event is PointerUpEvent || event is PointerCancelEvent)
+      if (event is PointerUpEvent || event is PointerCancelEvent) {
         node._handlingPointer = null;
+      }
     }
   }
 
@@ -374,9 +375,6 @@ class SpriteBox extends RenderBox {
     if (!value && _paused) {
       _scheduleTick();
       markNeedsPaint();
-      print("Resume");
-    } else if (!value) {
-      print("Resume already resumed $value $_paused");
     }
     _paused = value;
   }
@@ -395,7 +393,7 @@ class SpriteBox extends RenderBox {
     if (_paused) return;
 
     // Calculate delta and frame rate
-    if (_lastTimeStamp == null) _lastTimeStamp = timeStamp;
+    _lastTimeStamp ??= timeStamp;
     double delta = (timeStamp - (_lastTimeStamp ?? Duration.zero))
             .inMicroseconds
             .toDouble() /
@@ -478,7 +476,7 @@ class SpriteBox extends RenderBox {
   }
 
   void _addConstrainedNodes(Node node, List<Node> nodes) {
-    if (node._constraints != null && node._constraints!.length > 0) {
+    if (node._constraints != null && node._constraints!.isNotEmpty) {
       nodes.add(node);
     }
 
@@ -539,7 +537,7 @@ class SpriteBoxEvent {
   ///
   ///     bool handleEvent(SpriteBoxEvent event) {
   ///       Point localPosition = convertPointToNodeSpace(event.boxPosition);
-  ///       if (event.type == 'pointerdown') {
+  ///       if (event.type == 'pointer-down') {
   ///         // Do something!
   ///       }
   ///     }
@@ -575,6 +573,6 @@ class SpriteBoxEvent {
 
   /// Creates a new SpriteBoxEvent, typically this is done internally inside the SpriteBox.
   ///
-  ///     var event = new SpriteBoxEvent(new Point(50.0, 50.0), 'pointerdown', 0);
+  ///     var event = new SpriteBoxEvent(new Point(50.0, 50.0), 'pointer-down', 0);
   SpriteBoxEvent(this.boxPosition, this.pointerEvent, this.pointer);
 }

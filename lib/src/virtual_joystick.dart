@@ -7,17 +7,17 @@ part of spritewidget;
 /// Provides a virtual joystick that can easily be added to your sprite scene.
 class VirtualJoystick extends NodeWithSize {
   /// Creates a new virtual joystick.
-  VirtualJoystick() : super(Size(160.0, 160.0)) {
+  VirtualJoystick() : super(const Size(160.0, 160.0)) {
     userInteractionEnabled = true;
     handleMultiplePointers = false;
-    position = Offset(160.0, -20.0);
-    pivot = Offset(0.5, 1.0);
+    position = const Offset(160.0, -20.0);
+    pivot = const Offset(0.5, 1.0);
     _center = Offset(size.width / 2.0, size.height / 2.0);
     _handlePos = _center;
 
-    _paintHandle = Paint()..color = Color(0xffffffff);
+    _paintHandle = Paint()..color = const Color(0xffffffff);
     _paintControl = Paint()
-      ..color = Color(0xffffffff)
+      ..color = const Color(0xffffffff)
       ..strokeWidth = 1.0
       ..style = PaintingStyle.stroke;
   }

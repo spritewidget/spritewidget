@@ -76,7 +76,7 @@ abstract class MotionInterval extends Motion {
     }
 
     double t;
-    if (this._duration == 0.0) {
+    if (_duration == 0.0) {
       t = 1.0;
     } else {
       t = (_elapsed / _duration).clamp(0.0, 1.0);
@@ -255,7 +255,7 @@ class MotionSequence extends MotionInterval {
 /// [MotionGroup] will be the maximum of the durations of the motions used to
 /// compose this motion.
 class MotionGroup extends MotionInterval {
-  List<Motion> _motions;
+  final List<Motion> _motions;
 
   /// Creates a new motion with the list of motions passed in.
   ///
@@ -343,7 +343,7 @@ abstract class MotionInstant extends Motion {
 
 /// A motion that calls a custom function when it is fired.
 class MotionCallFunction extends MotionInstant {
-  MotionCallback _function;
+  final MotionCallback _function;
 
   /// Creates a new callback motion with the supplied callback.
   ///
@@ -358,7 +358,7 @@ class MotionCallFunction extends MotionInstant {
 
 /// A motion that removes the supplied node from its parent when it's fired.
 class MotionRemoveNode extends MotionInstant {
-  Node _node;
+  final Node _node;
 
   /// Creates a new motion with the node to remove as its argument.
   ///
@@ -511,7 +511,7 @@ class MotionTween<T> extends MotionInterval {
 /// passed to the [MotionController]'s [run] method. The [MotionController]
 /// itself is typically a property of a [Node] and powered by the [SpriteBox].
 class MotionController {
-  List<Motion> _motions = <Motion>[];
+  final List<Motion> _motions = <Motion>[];
 
   /// Creates a new [MotionController]. However, for most uses a reference to
   /// an [MotionController] is acquired through the [Node.motions] property.

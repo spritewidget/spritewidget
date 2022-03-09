@@ -31,7 +31,7 @@ class Sprite extends NodeWithSize with SpritePaint {
       size = texture!.size;
       pivot = texture!.pivot;
     } else {
-      pivot = Offset(0.5, 0.5);
+      pivot = const Offset(0.5, 0.5);
     }
   }
 
@@ -42,7 +42,7 @@ class Sprite extends NodeWithSize with SpritePaint {
     texture = SpriteTexture(image);
     size = texture!.size;
 
-    pivot = Offset(0.5, 0.5);
+    pivot = const Offset(0.5, 0.5);
   }
 
   @override
@@ -83,7 +83,7 @@ class Sprite extends NodeWithSize with SpritePaint {
     } else {
       // Paint a red square for missing texture
       canvas.drawRect(Rect.fromLTRB(0.0, 0.0, size.width, size.height),
-          Paint()..color = Color.fromARGB(255, 255, 0, 0));
+          Paint()..color = const Color.fromARGB(255, 255, 0, 0));
     }
   }
 }
@@ -130,7 +130,7 @@ abstract class SpritePaint {
 
 class PixSprite extends Sprite {
   PixSprite(SpriteTexture texture) : super(texture) {
-    this._cachedPaint = Paint()
+    _cachedPaint = Paint()
       ..filterQuality = FilterQuality.none
       ..isAntiAlias = false;
   }

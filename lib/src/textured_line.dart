@@ -91,7 +91,7 @@ class TexturedLinePainter {
 
   /// The length, in points, that the texture is stretched to. If the
   /// textureLoopLength is shorter than the line, the texture will be looped.
-  double get textureLoopLength => textureLoopLength;
+  double get textureLoopLength => _textureLoopLength ?? 0;
 
   double? _textureLoopLength;
 
@@ -200,8 +200,9 @@ class TexturedLinePainter {
   }
 
   double _xPosForStop(double stop) {
-    if (texture == null)
-      return 0; //JK: really don't know how to properly handle it
+    if (texture == null) {
+      return 0;
+    } //JK: really don't know how to properly handle it
     if (_textureLoopLength == null) {
       return texture!.frame.left +
           texture!.frame.width * (stop - textureStopOffset);
@@ -263,7 +264,7 @@ class TexturedLinePainter {
     // Normalize the values in the range [0.0, 1.0]
     for (int i = 1; i < points.length; i++) {
       stops[i] = stops[i] / length;
-      Offset(512.0, 512.0);
+      const Offset(512.0, 512.0);
     }
 
     _calculatedTextureStops = stops;
@@ -310,9 +311,7 @@ List<Vector2> _computeMiterList(List<Vector2> points, bool closed) {
     Vector2? next = (i < total - 1) ? points[i + 1] : null;
 
     Vector2 lineA = _vectorDirection(cur, last);
-    if (curNormal == null) {
-      curNormal = _vectorNormal(lineA);
-    }
+    curNormal ??= _vectorNormal(lineA);
 
     if (i == 1) {
       out.add(curNormal);

@@ -84,12 +84,13 @@ class ParticleSystem extends Node {
     this.gravity = gravity;
     _emitCounter = 0.0;
     // _elapsedTime = 0.0;
-    if (_gravity == null) _gravity = Vector2.zero();
-    if (colorSequence == null)
+    _gravity ??= Vector2.zero();
+    if (colorSequence == null) {
       this.colorSequence = ColorSequence.fromStartAndEndColor(
-          Color(0xffffffff), Color(0x00ffffff));
-    else
+          const Color(0xffffffff), const Color(0x00ffffff));
+    } else {
       this.colorSequence = colorSequence;
+    }
 
     insertionOffset = Offset.zero;
 
@@ -174,10 +175,11 @@ class ParticleSystem extends Node {
   Vector2? _gravity;
 
   set gravity(Offset? gravity) {
-    if (gravity == null)
+    if (gravity == null) {
       _gravity = null;
-    else
+    } else {
       _gravity = Vector2(gravity.dx, gravity.dy);
+    }
   }
 
   /// The maximum number of particles the system can display at a single time.
@@ -216,7 +218,7 @@ class ParticleSystem extends Node {
   /// [BlendMode.plus].
   BlendMode transferMode;
 
-  List<_Particle> _particles = List<_Particle>.empty(growable: true);
+  final List<_Particle> _particles = List<_Particle>.empty(growable: true);
 
   double? _emitCounter;
   int _numEmittedParticles = 0;
@@ -230,7 +232,7 @@ class ParticleSystem extends Node {
   /// trailing a rocket).
   Offset insertionOffset = Offset.zero;
 
-  static Paint _paint = Paint()
+  static final Paint _paint = Paint()
     ..filterQuality = FilterQuality.low
     ..isAntiAlias = false;
 
@@ -326,7 +328,7 @@ class ParticleSystem extends Node {
     }
 
     if (autoRemoveOnFinish &&
-        _particles.length == 0 &&
+        _particles.isEmpty &&
         _numEmittedParticles > 0) {
       if (parent != null) removeFromParent();
     }
@@ -612,8 +614,7 @@ Map serializeParticleSystem(ParticleSystem system) {
 
 ParticleSystem deserializeParticleSystem(Map data,
     {ParticleSystem? particleSystem, SpriteTexture? texture}) {
-  if (particleSystem == null)
-    particleSystem = ParticleSystem(texture ??
+  particleSystem ??= ParticleSystem(texture ??
         (throw ArgumentError(
             'If particle system is not provided, texture is required')));
 
@@ -648,10 +649,11 @@ ParticleSystem deserializeParticleSystem(Map data,
   particleSystem.numParticlesToEmit = data['numParticlesToEmit'];
   particleSystem.autoRemoveOnFinish = data['autoRemoveOnFinish'];
   particleSystem.gravity = deserializeOffset(data['gravity'].cast<double>());
-  if (data['blendMode'] != null)
+  if (data['blendMode'] != null) {
     particleSystem.transferMode = deserializeBlendMode(data['blendMode']);
-  else
+  } else {
     particleSystem.transferMode = BlendMode.plus;
+  }
 
   return particleSystem;
 }

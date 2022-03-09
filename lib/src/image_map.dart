@@ -12,7 +12,7 @@ class ImageMap {
   ImageMap(AssetBundle bundle) : _bundle = bundle;
 
   final AssetBundle _bundle;
-  final Map<String, ui.Image> _images = Map<String, ui.Image>();
+  final Map<String, ui.Image> _images = <String, ui.Image>{};
 
   /// Loads a list of images given their urls.
   Future<List<ui.Image>> load(List<String> urls) {
@@ -61,7 +61,7 @@ class BetterImageMap extends ImageMap {
     return Future.wait(urls.map((url) {
       var name = url.split(splitter).first;
       var url0 = url.substring(name.length + splitter.length);
-      if (url0.length == 0) url0 = url;
+      if (url0.isEmpty) url0 = url;
       return loadImageWithName(name, url0);
     }));
   }

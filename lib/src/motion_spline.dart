@@ -45,7 +45,7 @@ class MotionSpline extends MotionInterval {
   /// The tension of the spline, defines the roundness of the curve.
   double tension = 0.5;
 
-  double _dt;
+  final double _dt;
 
   @override
   void update(double t) {

@@ -11,16 +11,15 @@ class SpriteTexture {
   /// Creates a new texture from an [Image] object.
   ///
   ///     var myTexture = new Texture(myImage);
-  SpriteTexture(ui.Image image)
+  SpriteTexture(this.image)
       : size = Size(image.width.toDouble(), image.height.toDouble()),
-        image = image,
         trimmed = false,
         rotated = false,
         frame = Rect.fromLTRB(
             0.0, 0.0, image.width.toDouble(), image.height.toDouble()),
         spriteSourceSize = Rect.fromLTRB(
             0.0, 0.0, image.width.toDouble(), image.height.toDouble()),
-        pivot = Offset(0.5, 0.5);
+        pivot = const Offset(0.5, 0.5);
 
   SpriteTexture._fromSpriteFrame(this.image, this.name, this.size, this.rotated,
       this.trimmed, this.frame, this.spriteSourceSize, this.pivot);
@@ -76,7 +75,7 @@ class SpriteTexture {
         rect.size.width, rect.size.height);
     Rect dstFrame = Rect.fromLTWH(0.0, 0.0, rect.size.width, rect.size.height);
     return SpriteTexture._fromSpriteFrame(image, name, rect.size, false, false,
-        srcFrame, dstFrame, Offset(0.5, 0.5));
+        srcFrame, dstFrame, const Offset(0.5, 0.5));
   }
 
   /// Draws the texture to a [Canvas] at a specified [position] and with the

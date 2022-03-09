@@ -28,8 +28,12 @@ double _dampenRotation(double src, double dst, double? dampening) {
   if (dampening == null) return dst;
 
   double delta = dst - src;
-  while (delta > 180.0) delta -= 360;
-  while (delta < -180) delta += 360;
+  while (delta > 180.0) {
+    delta -= 360;
+  }
+  while (delta < -180) {
+    delta += 360;
+  }
   delta *= dampening;
 
   return src + delta;
@@ -138,7 +142,7 @@ class ConstraintRotationToNode extends Constraint {
 /// A [Constraint] that constrains the position of a node to equal the position
 /// of another node, optionally with dampening.
 class ConstraintPositionToNode extends Constraint {
-  /// Creates a new [Constraint] that constrains the poistion of a node to be
+  /// Creates a new [Constraint] that constrains the position of a node to be
   /// equal to the position of the [targetNode]. Optionally an [offset] can
   /// be used and also [dampening]. The targetNode doesn't need to have the
   /// same parent, but they need to be added to the same [SpriteBox].
@@ -173,10 +177,11 @@ class ConstraintPositionToNode extends Constraint {
 
     targetPosition += offset;
 
-    if (dampening == null)
+    if (dampening == null) {
       node.position = targetPosition;
-    else
+    } else {
       node.position =
           GameMath.filterPoint(node.position, targetPosition, dampening!);
+    }
   }
 }
