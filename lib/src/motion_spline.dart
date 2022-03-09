@@ -25,7 +25,7 @@ Offset _cardinalSplineAt(
 /// Signature for callbacks used by the [MotionSpline] to set a [Point] value.
 typedef PointSetterCallback = void Function(Offset value);
 
-/// The spline motion is used to animate a point along a spline definied by
+/// The spline motion is used to animate a point along a spline defined by
 /// a set of points.
 class MotionSpline extends MotionInterval {
   /// Creates a new spline motion with a set of points. The [setter] is a

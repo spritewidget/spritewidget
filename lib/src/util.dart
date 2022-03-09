@@ -65,7 +65,7 @@ class _Atan2Constants {
 class GameMath {
   static final _Atan2Constants _atan2 = _Atan2Constants();
 
-  /// Returns the angle of two vector components. The result is less acurate
+  /// Returns the angle of two vector components. The result is less accurate
   /// than the standard atan2 function in the math package.
   static double atan2(double y, double x) {
     if (x >= 0) {
@@ -126,7 +126,7 @@ class GameMath {
         filter(a.dx, b.dx, filterFactor), filter(a.dy, b.dy, filterFactor));
   }
 
-  /// Returns the intersection between two line segmentss defined by p0, p1 and
+  /// Returns the intersection between two line segments defined by p0, p1 and
   /// q0, q1. If the lines are not intersecting null is returned.
   static Offset? lineIntersection(Offset p0, Offset p1, Offset q0, Offset q1) {
     double epsilon = 1e-10;

@@ -149,7 +149,7 @@ class EffectLine extends Node {
       _offset = randomDouble();
     }
 
-    // Update age of line points and remove if neccesasry
+    // Update age of line points and remove if necessary
     for (int i = _points.length - 1; i >= 0; i--) {
       _pointAges[i] += dt;
     }
@@ -231,7 +231,7 @@ class EffectLine extends Node {
 
       // Calculate the square distance from the middle point to the line of the
       // new point and the second to last point
-      double dist2 = _distToSeqment2(
+      double dist2 = _distToSegment2(
           points[points.length - 1], point, points[points.length - 2]);
 
       // If the point is on the line, remove it
@@ -249,7 +249,7 @@ class EffectLine extends Node {
 
   double _dist2(Offset v, Offset w) => _sqr(v.dx - w.dx) + _sqr(v.dy - w.dy);
 
-  double _distToSeqment2(Offset p, Offset v, Offset w) {
+  double _distToSegment2(Offset p, Offset v, Offset w) {
     double l2 = _dist2(v, w);
     if (l2 == 0.0) return _dist2(p, v);
     double t =

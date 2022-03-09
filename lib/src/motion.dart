@@ -33,7 +33,7 @@ abstract class Motion {
 
   /// Sets the motion to a specific point in time. The [t] value that is passed
   /// in is a normalized value 0.0 to 1.0 of the duration of the motion. Every
-  /// motion will always recieve a callback with the end time point (1.0),
+  /// motion will always receive a callback with the end time point (1.0),
   /// unless it is cancelled.
   void update(double t) {}
 
@@ -137,7 +137,7 @@ class MotionRepeatForever extends Motion {
 
   /// Creates a new motion with the motion that is passed in.
   ///
-  ///     var myInifiniteLoop = new MotionRepeatForever(myMotion);
+  ///     var myInfiniteLoop = new MotionRepeatForever(myMotion);
   MotionRepeatForever(this.motion);
 
   @override
@@ -251,7 +251,7 @@ class MotionSequence extends MotionInterval {
   }
 }
 
-/// A motion that plays the supplied motions in parallell. The duration of the
+/// A motion that plays the supplied motions in parallel. The duration of the
 /// [MotionGroup] will be the maximum of the durations of the motions used to
 /// compose this motion.
 class MotionGroup extends MotionInterval {
@@ -325,7 +325,7 @@ class MotionDelay extends MotionInterval {
 }
 
 /// A motion that doesn't have a duration. If this class is overridden to
-/// create custom instant motions, only the [fire] method should be overriden.
+/// create custom instant motions, only the [fire] method should be overridden.
 abstract class MotionInstant extends Motion {
   @override
   void step(double dt) {}
@@ -371,7 +371,7 @@ class MotionRemoveNode extends MotionInstant {
   }
 }
 
-/// A motion that tweens a property between two values, optionally using an
+/// A motion that tween a property between two values, optionally using an
 /// animation curve. This is one of the most common building blocks when
 /// creating motions. The tween class can be used to animate properties of the
 /// type [Point], [Size], [Rect], [double], or [Color].
@@ -499,7 +499,7 @@ class MotionTween<T> extends MotionInterval {
               .toInt();
       newVal = Color.fromARGB(aNew, rNew, gNew, bNew);
     } else {
-      // Oopses
+      // Oops
       assert(false);
     }
 

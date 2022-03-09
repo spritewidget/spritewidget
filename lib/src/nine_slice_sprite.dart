@@ -4,11 +4,11 @@
 
 part of spritewidget;
 
-/// A NineSliceSprite is similar to a [Sprite], but it it can strech its
+/// A NineSliceSprite is similar to a [Sprite], but it it can stretch its
 /// inner area to fit the size of the [Node]. This is ideal for fast drawing
 /// of things like buttons.
 class NineSliceSprite extends NodeWithSize with SpritePaint {
-  /// Creates a new NineSliceSprite from the privided [texture], [size], and
+  /// Creates a new NineSliceSprite from the provided [texture], [size], and
   /// texture [insets].
   NineSliceSprite(SpriteTexture texture, Size size, EdgeInsets insets)
       : super(size) {
@@ -88,7 +88,7 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
     _updatePaint(_cachedPaint);
 
     if (_isDirty) {
-      // Calcuate vertices and indices.
+      // Calculate vertices and indices.
       _vertices = <Offset>[
         Offset.zero,
       ];
