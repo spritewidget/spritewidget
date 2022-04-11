@@ -5,10 +5,10 @@
 part of spritewidget;
 
 /// Converts degrees to radians.
-double convertDegrees2Radians(double degrees) => degrees * math.pi/180.0;
+double convertDegrees2Radians(double degrees) => degrees * math.pi / 180.0;
 
 /// Converts radians to degrees.
-double convertRadians2Degrees(double radians) => radians * 180.0/math.pi;
+double convertRadians2Degrees(double radians) => radians * 180.0 / math.pi;
 
 /// A base class for all objects that can be added to the sprite node tree and rendered to screen using [SpriteBox] and
 /// [SpriteWidget].
@@ -20,7 +20,6 @@ double convertRadians2Degrees(double radians) => radians * 180.0/math.pi;
 /// Nodes form a hierarchical tree. Each node can have a number of children, and the transformation (positioning,
 /// rotation, and scaling) of a node also affects its children.
 class Node {
-
   // Constructors
 
   /// Creates a new [Node] without any transformation.
@@ -28,19 +27,18 @@ class Node {
   ///     Node myNode = new Node();
   Node();
 
-
   // Member variables
 
-  SpriteBox _spriteBox;
-  Node _parent;
+  SpriteBox? _spriteBox;
+  Node? _parent;
 
   Offset _position = Offset.zero;
   double _rotation = 0.0;
 
-  Matrix4 _transformMatrix = new Matrix4.identity();
-  Matrix4 _transformMatrixInverse;
-  Matrix4 _transformMatrixNodeToBox;
-  Matrix4 _transformMatrixBoxToNode;
+  Matrix4? _transformMatrix = new Matrix4.identity();
+  Matrix4? _transformMatrixInverse;
+  Matrix4? _transformMatrixNodeToBox;
+  Matrix4? _transformMatrixBoxToNode;
 
   double _scaleX = 1.0;
   double _scaleY = 1.0;
@@ -52,7 +50,7 @@ class Node {
   bool visible = true;
 
   double _zPosition = 0.0;
-  int _addedOrder;
+  late int _addedOrder;
   int _childrenLastAddedOrder = 0;
   bool _childrenNeedSorting = false;
 
@@ -73,37 +71,37 @@ class Node {
   ///       handleMultiplePointers = true;
   ///     }
   bool handleMultiplePointers = false;
-  int _handlingPointer;
+  int? _handlingPointer;
 
   List<Node> _children = <Node>[];
 
-  MotionController _motions;
+  MotionController? _motions;
 
   /// The [MotionController] associated with this node.
   ///
   ///     myNode.motions.run(myMotion);
-  MotionController get motions {
+  MotionController? get motions {
     if (_motions == null) {
       _motions = new MotionController();
-      if (_spriteBox != null) _spriteBox._motionControllers = null;
+      if (_spriteBox != null) _spriteBox!._motionControllers = null;
     }
     return _motions;
   }
 
   @Deprecated('actions has been renamed to motions')
-  MotionController get actions => motions;
+  MotionController? get actions => motions;
 
-  List<Constraint> _constraints;
+  List<Constraint>? _constraints;
 
   /// A [List] of [Constraint]s that will be applied to the node.
   /// The constraints are applied after the [update] method has been called.
-  List<Constraint> get constraints {
+  List<Constraint>? get constraints {
     return _constraints;
   }
 
-  set constraints(List<Constraint> constraints) {
+  set constraints(List<Constraint>? constraints) {
     _constraints = constraints;
-    if (_spriteBox != null) _spriteBox._constrainedNodes = null;
+    if (_spriteBox != null) _spriteBox!._constrainedNodes = null;
   }
 
   /// Called to apply the [constraints] to the node. Normally, this method is
@@ -112,11 +110,10 @@ class Node {
   void applyConstraints(double dt) {
     if (_constraints == null) return;
 
-    for (Constraint constraint in _constraints) {
+    for (Constraint constraint in _constraints!) {
       constraint.constrain(this, dt);
     }
   }
-
 
   // Property setters and getters
 
@@ -126,13 +123,13 @@ class Node {
   ///
   ///     // Get the transformMode of the sprite box
   ///     SpriteBoxTransformMode transformMode = myNode.spriteBox.transformMode;
-  SpriteBox get spriteBox => _spriteBox;
+  SpriteBox? get spriteBox => _spriteBox;
 
   /// The parent of this node, or null if it doesn't have a parent.
   ///
   ///     // Hide the parent
   ///     myNode.parent.visible = false;
-  Node get parent => _parent;
+  Node? get parent => _parent;
 
   /// The rotation of this node in degrees.
   ///
@@ -145,7 +142,6 @@ class Node {
     _rotation = rotation;
     invalidateTransformMatrix();
   }
-
 
   /// The position of this node relative to its parent.
   ///
@@ -164,7 +160,7 @@ class Node {
   ///     myNode.skewX = 45.0;
   double get skewX => _skewX;
 
-  set skewX (double skewX) {
+  set skewX(double skewX) {
     assert(skewX != null);
     _skewX = skewX;
     invalidateTransformMatrix();
@@ -175,7 +171,7 @@ class Node {
   ///     myNode.skewY = 45.0;
   double get skewY => _skewY;
 
-  set skewY (double skewY) {
+  set skewY(double skewY) {
     assert(skewY != null);
     _skewY = skewY;
     invalidateTransformMatrix();
@@ -195,7 +191,7 @@ class Node {
     assert(zPosition != null);
     _zPosition = zPosition;
     if (_parent != null) {
-      _parent._childrenNeedSorting = true;
+      _parent!._childrenNeedSorting = true;
     }
   }
 
@@ -256,7 +252,7 @@ class Node {
   bool _assertNonCircularAssignment(Node child) {
     Node node = this;
     while (node.parent != null) {
-      node = node.parent;
+      node = node.parent!;
       assert(node != child); // indicates we are about to create a cycle
     }
     return true;
@@ -280,7 +276,7 @@ class Node {
     child._spriteBox = this._spriteBox;
     _childrenLastAddedOrder += 1;
     child._addedOrder = _childrenLastAddedOrder;
-    if (_spriteBox != null) _spriteBox._registerNode(child);
+    if (_spriteBox != null) _spriteBox!._registerNode(child);
   }
 
   /// Removes a child from this node.
@@ -291,7 +287,7 @@ class Node {
     if (_children.remove(child)) {
       child._parent = null;
       child._spriteBox = null;
-      if (_spriteBox != null) _spriteBox._deregisterNode(child);
+      if (_spriteBox != null) _spriteBox!._deregisterNode(child);
     }
   }
 
@@ -300,7 +296,7 @@ class Node {
   ///     removeFromParent();
   void removeFromParent() {
     assert(_parent != null);
-    _parent.removeChild(this);
+    _parent!.removeChild(this);
   }
 
   /// Removes all children of this node.
@@ -313,7 +309,7 @@ class Node {
     }
     _children = <Node>[];
     _childrenNeedSorting = false;
-    if (_spriteBox != null) _spriteBox._deregisterNode(null);
+    if (_spriteBox != null) _spriteBox!._deregisterNode(null);
   }
 
   void _sortChildren() {
@@ -322,11 +318,9 @@ class Node {
       _children.sort((Node a, Node b) {
         if (a._zPosition == b._zPosition) {
           return a._addedOrder - b._addedOrder;
-        }
-        else if (a._zPosition > b._zPosition) {
+        } else if (a._zPosition > b._zPosition) {
           return 1;
-        }
-        else {
+        } else {
           return -1;
         }
       });
@@ -345,7 +339,7 @@ class Node {
     if (_transformMatrix == null) {
       _transformMatrix = computeTransformMatrix();
     }
-    return _transformMatrix;
+    return _transformMatrix!;
   }
 
   /// Computes the transformation matrix of this node. This method can be
@@ -359,8 +353,7 @@ class Node {
       sx = 0.0;
       cy = 1.0;
       sy = 0.0;
-    }
-    else {
+    } else {
       double radiansX = convertDegrees2Radians(_rotation);
       double radiansY = convertDegrees2Radians(_rotation);
 
@@ -371,17 +364,43 @@ class Node {
     }
 
     // Create transformation matrix for scale, position and rotation
-    Matrix4 matrix = new Matrix4(cy * _scaleX, sy * _scaleX, 0.0, 0.0,
-               -sx * _scaleY, cx * _scaleY, 0.0, 0.0,
-               0.0, 0.0, 1.0, 0.0,
-              _position.dx, _position.dy, 0.0, 1.0);
+    Matrix4 matrix = new Matrix4(
+        cy * _scaleX,
+        sy * _scaleX,
+        0.0,
+        0.0,
+        -sx * _scaleY,
+        cx * _scaleY,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        _position.dx,
+        _position.dy,
+        0.0,
+        1.0);
 
     if (_skewX != 0.0 || _skewY != 0.0) {
       // Needs skew transform
-      Matrix4 skew = new Matrix4(1.0, math.tan(radians(_skewX)), 0.0, 0.0,
-                                 math.tan(radians(_skewY)), 1.0, 0.0, 0.0,
-                                 0.0, 0.0, 1.0, 0.0,
-                                 0.0, 0.0, 0.0, 1.0);
+      Matrix4 skew = new Matrix4(
+          1.0,
+          math.tan(radians(_skewX)),
+          0.0,
+          0.0,
+          math.tan(radians(_skewY)),
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0);
       matrix.multiply(skew);
     }
 
@@ -397,7 +416,7 @@ class Node {
     _invalidateToBoxTransformMatrix();
   }
 
-  void _invalidateToBoxTransformMatrix () {
+  void _invalidateToBoxTransformMatrix() {
     _transformMatrixNodeToBox = null;
     _transformMatrixBoxToNode = null;
 
@@ -411,40 +430,41 @@ class Node {
   Matrix4 _nodeToBoxMatrix() {
     assert(_spriteBox != null);
     if (_transformMatrixNodeToBox != null) {
-      return _transformMatrixNodeToBox;
+      return _transformMatrixNodeToBox!;
     }
 
     if (_parent == null) {
       // Base case, we are at the top
-      assert(this == _spriteBox.rootNode);
-      _transformMatrixNodeToBox = _spriteBox.transformMatrix.clone()..multiply(transformMatrix);
+      assert(this == _spriteBox!.rootNode);
+      _transformMatrixNodeToBox = _spriteBox!.transformMatrix.clone()
+        ..multiply(transformMatrix);
+    } else {
+      _transformMatrixNodeToBox = _parent!._nodeToBoxMatrix().clone()
+        ..multiply(transformMatrix);
     }
-    else {
-      _transformMatrixNodeToBox = _parent._nodeToBoxMatrix().clone()..multiply(transformMatrix);
-    }
-    return _transformMatrixNodeToBox;
+    return _transformMatrixNodeToBox!;
   }
 
   Matrix4 _boxToNodeMatrix() {
     assert(_spriteBox != null);
 
     if (_transformMatrixBoxToNode != null) {
-      return _transformMatrixBoxToNode;
+      return _transformMatrixBoxToNode!;
     }
 
     _transformMatrixBoxToNode = new Matrix4.copy(_nodeToBoxMatrix());
-    _transformMatrixBoxToNode.invert();
+    _transformMatrixBoxToNode!.invert();
 
-    return _transformMatrixBoxToNode;
+    return _transformMatrixBoxToNode!;
   }
 
   /// The inverse transform matrix used by this node.
   Matrix4 get inverseTransformMatrix {
     if (_transformMatrixInverse == null) {
       _transformMatrixInverse = new Matrix4.copy(transformMatrix);
-      _transformMatrixInverse.invert();
+      _transformMatrixInverse!.invert();
     }
-    return _transformMatrixInverse;
+    return _transformMatrixInverse!;
   }
 
   /// Converts a point from the coordinate system of the [SpriteBox] to the local coordinate system of the node.
@@ -457,7 +477,8 @@ class Node {
     assert(boxPoint != null);
     assert(_spriteBox != null);
 
-    Vector4 v =_boxToNodeMatrix().transform(new Vector4(boxPoint.dx, boxPoint.dy, 0.0, 1.0));
+    Vector4 v = _boxToNodeMatrix()
+        .transform(new Vector4(boxPoint.dx, boxPoint.dy, 0.0, 1.0));
     return new Offset(v[0], v[1]);
   }
 
@@ -468,7 +489,8 @@ class Node {
     assert(nodePoint != null);
     assert(_spriteBox != null);
 
-    Vector4 v =_nodeToBoxMatrix().transform(new Vector4(nodePoint.dx, nodePoint.dy, 0.0, 1.0));
+    Vector4 v = _nodeToBoxMatrix()
+        .transform(new Vector4(nodePoint.dx, nodePoint.dy, 0.0, 1.0));
     return new Offset(v[0], v[1]);
   }
 
@@ -544,8 +566,7 @@ class Node {
   ///
   ///       canvas.restore();
   ///     }
-  void paint(Canvas canvas) {
-  }
+  void paint(Canvas canvas) {}
 
   void _visitChildren(Canvas canvas) {
     // Sort children if needed
@@ -587,8 +608,7 @@ class Node {
   ///     void update(double dt) {
   ///       rotation = rotation * 10.0 * dt;
   ///     }
-  void update(double dt) {
-  }
+  void update(double dt) {}
 
   /// Called whenever the [SpriteBox] is modified or resized, or if the device is rotated.
   ///
@@ -598,8 +618,7 @@ class Node {
   ///     void spriteBoxPerformedLayout() {
   ///       // Move some stuff around here
   ///     }
-  void spriteBoxPerformedLayout() {
-  }
+  void spriteBoxPerformedLayout() {}
 
   // Handling user interaction
 
@@ -612,7 +631,7 @@ class Node {
 
   set userInteractionEnabled(bool userInteractionEnabled) {
     _userInteractionEnabled = userInteractionEnabled;
-    if (_spriteBox != null) _spriteBox._eventTargets = null;
+    if (_spriteBox != null) _spriteBox!._eventTargets = null;
   }
 
   /// Handles an event, such as a pointer (touch or mouse) event.

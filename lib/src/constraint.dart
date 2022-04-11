@@ -25,7 +25,7 @@ abstract class Constraint {
   void constrain(Node node, double dt);
 }
 
-double _dampenRotation(double src, double dst, double dampening) {
+double _dampenRotation(double src, double dst, double? dampening) {
   if (dampening == null)
     return dst;
 
@@ -45,12 +45,12 @@ class ConstraintRotationToMovement extends Constraint {
 
   /// The filter factor used when constraining the rotation of the node. Valid
   /// values are in the range 0.0 to 1.0
-  final double dampening;
+  final double? dampening;
 
   /// The base rotation will be added to a the movement vectors rotation.
   final double baseRotation;
 
-  Offset _lastPosition;
+  Offset? _lastPosition;
 
   @override
   void preUpdate(Node node, double dt) {
@@ -63,7 +63,7 @@ class ConstraintRotationToMovement extends Constraint {
     if (_lastPosition == node.position) return;
 
     // Get the target angle
-    Offset offset = node.position - _lastPosition;
+    Offset offset = node.position - _lastPosition!;
     double target = degrees(GameMath.atan2(offset.dy, offset.dx)) + baseRotation;
 
     node.rotation = _dampenRotation(node.rotation, target, dampening);
@@ -74,7 +74,7 @@ class ConstraintRotationToMovement extends Constraint {
 class ConstraintRotationToNodeRotation extends Constraint {
   /// Creates a new constraint that copies a node's rotation, optionally
   /// with a [baseRotation] added and using [dampening].
-  ConstraintRotationToNodeRotation(this.targetNode, { this.baseRotation: 0.0, this.dampening });
+  ConstraintRotationToNodeRotation(this.targetNode, { this.baseRotation: 0.0, required this.dampening });
 
   /// The node to copy the rotation from
   final Node targetNode;
@@ -84,7 +84,7 @@ class ConstraintRotationToNodeRotation extends Constraint {
 
   /// The filter factor used when constraining the rotation of the node. Valid
   /// values are in the range 0.0 to 1.0
-  final double dampening;
+  final double/*?*/ dampening;
 
   @override
   void constrain(Node node, double dt) {
@@ -110,7 +110,7 @@ class ConstraintRotationToNode extends Constraint {
 
   /// The filter factor used when constraining the rotation of the node. Valid
   /// values are in the range 0.0 to 1.0
-  final double dampening;
+  final double? dampening;
 
   @override
   void constrain(Node node, double dt) {
@@ -150,7 +150,7 @@ class ConstraintPositionToNode extends Constraint {
   final Offset offset;
 
   /// Dampening used when following the [targetNode], value between 0.0 and 1.0.
-  final double dampening;
+  final double? dampening;
 
   @override
   void constrain(Node node, double dt) {
@@ -164,7 +164,7 @@ class ConstraintPositionToNode extends Constraint {
     if (targetNode.parent == node.parent) {
       targetPosition = targetNode.position;
     } else {
-      targetPosition = node.parent.convertPointFromNode(Offset.zero, targetNode);
+      targetPosition = node.parent!.convertPointFromNode(Offset.zero, targetNode);
     }
 
     if (offset != null)
@@ -173,6 +173,6 @@ class ConstraintPositionToNode extends Constraint {
     if (dampening == null)
       node.position = targetPosition;
     else
-      node.position = GameMath.filterPoint(node.position, targetPosition, dampening);
+      node.position = GameMath.filterPoint(node.position, targetPosition, dampening!);
   }
 }

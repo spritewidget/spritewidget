@@ -6,7 +6,6 @@ part of spritewidget;
 
 /// A Sprite is a [Node] that renders a bitmap image to the screen.
 class Sprite extends NodeWithSize with SpritePaint {
-
   /// The texture that the sprite will render to screen.
   ///
   /// If the texture is null, the sprite will be rendered as a red square
@@ -27,7 +26,7 @@ class Sprite extends NodeWithSize with SpritePaint {
   /// Creates a new sprite from the provided [texture].
   ///
   ///     var mySprite = new Sprite(myTexture)
-  Sprite([this.texture]) : super(Size.zero) {
+  Sprite(this.texture) : super(Size.zero) {
     if (texture != null) {
       size = texture.size;
       pivot = texture.pivot;
@@ -39,10 +38,11 @@ class Sprite extends NodeWithSize with SpritePaint {
   /// Creates a new sprite from the provided [image].
   ///
   /// var mySprite = new Sprite.fromImage(myImage);
-  Sprite.fromImage(ui.Image image) : super(Size.zero) {
+  Sprite.fromImage(ui.Image image)
+      : texture = SpriteTexture(image),
+        super(Size.zero) {
     assert(image != null);
 
-    texture = new SpriteTexture(image);
     size = texture.size;
 
     pivot = new Offset(0.5, 0.5);
@@ -86,7 +86,7 @@ class Sprite extends NodeWithSize with SpritePaint {
     } else {
       // Paint a red square for missing texture
       canvas.drawRect(new Rect.fromLTRB(0.0, 0.0, size.width, size.height),
-      new Paint()..color = new Color.fromARGB(255, 255, 0, 0));
+          new Paint()..color = new Color.fromARGB(255, 255, 0, 0));
     }
   }
 }
@@ -111,23 +111,24 @@ abstract class SpritePaint {
   ///
   ///     // Color the sprite red
   ///     mySprite.colorOverlay = new Color(0x77ff0000);
-  Color colorOverlay;
+  Color? colorOverlay;
 
   /// The transfer mode used when drawing the sprite to screen.
   ///
   ///     // Add the colors of the sprite with the colors of the background
   ///     mySprite.transferMode = TransferMode.plusMode;
-  BlendMode transferMode;
+  BlendMode? transferMode;
 
   void _updatePaint(Paint paint) {
-    paint.color = new Color.fromARGB((255.0*_opacity).toInt(), 255, 255, 255);
+    paint.color = new Color.fromARGB((255.0 * _opacity).toInt(), 255, 255, 255);
 
     if (colorOverlay != null) {
-      paint.colorFilter = new ColorFilter.mode(colorOverlay, BlendMode.srcATop);
+      paint.colorFilter =
+          new ColorFilter.mode(colorOverlay!, BlendMode.srcATop);
     }
 
     if (transferMode != null) {
-      paint.blendMode = transferMode;
+      paint.blendMode = transferMode!;
     }
   }
 }

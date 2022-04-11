@@ -1,5 +1,9 @@
 name: fitness
+publish_to: 'none'
 description: A new Flutter project.
+
+environment:
+  sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
   flutter:

@@ -30,7 +30,7 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
   ///     my9Sprite.texture = myTexture;
   SpriteTexture get texture => _texture;
 
-  SpriteTexture _texture;
+  late SpriteTexture _texture;
 
   set texture(SpriteTexture texture) {
     _texture = texture;
@@ -51,7 +51,7 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
   /// areas of the texture that will not be deformed as the sprite stretches.
   EdgeInsets get insets => _insets;
 
-  EdgeInsets _insets;
+  late EdgeInsets _insets;
 
   set insets(EdgeInsets insets) {
     assert(insets != null);
@@ -82,10 +82,10 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
 
   // Cached values.
   bool _isDirty = true;
-  List<Offset> _vertices;
-  List<Offset> _textureCoordinates;
-  List<Color> _colors;
-  List<int> _indices;
+  late List<Offset> _vertices;
+  late List<Offset> _textureCoordinates;
+  late List<Color> _colors;
+  late List<int> _indices;
 
   @override
   void paint(Canvas canvas) {
@@ -109,8 +109,8 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
       _colors = <Color>[];
 
       for (int y = 0; y < 4; y += 1) {
-        double vy;
-        double ty;
+        late double vy;
+        late double ty;
 
         switch(y) {
           case 0:
@@ -132,8 +132,8 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
         }
 
         for (int x = 0; x < 4; x += 1) {
-          double vx;
-          double tx;
+          late double vx;
+          late double tx;
 
           switch(x) {
             case 0:

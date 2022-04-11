@@ -34,34 +34,34 @@ class VirtualJoystick extends NodeWithSize {
   bool _isDown = false;
 
 
-  Offset _pointerDownAt;
-  Offset _center;
-  Offset _handlePos;
+  Offset? _pointerDownAt;
+  Offset? _center;
+  Offset? _handlePos;
 
-  Paint _paintHandle;
-  Paint _paintControl;
+  late Paint _paintHandle;
+  late Paint _paintControl;
 
   @override
   bool handleEvent(SpriteBoxEvent event) {
     if (event.type == PointerDownEvent) {
       _pointerDownAt = event.boxPosition;
-      motions.stopAll();
+      motions!.stopAll();
       _isDown = true;
     }
     else if (event.type == PointerUpEvent || event.type == PointerCancelEvent) {
       _pointerDownAt = null;
       _value = Offset.zero;
       MotionTween moveToCenter = new MotionTween((a) { _handlePos = a; }, _handlePos, _center, 0.4, Curves.elasticOut);
-      motions.run(moveToCenter);
+      motions!.run(moveToCenter);
       _isDown = false;
     } else if (event.type == PointerMoveEvent) {
-      Offset movedDist = event.boxPosition - _pointerDownAt;
+      Offset movedDist = event.boxPosition - _pointerDownAt!;
 
       _value = new Offset(
         (movedDist.dx / 80.0).clamp(-1.0, 1.0),
         (movedDist.dy / 80.0).clamp(-1.0, 1.0));
 
-        _handlePos = _center + new Offset(_value.dx * 40.0, _value.dy * 40.0);
+        _handlePos = _center! + new Offset(_value.dx * 40.0, _value.dy * 40.0);
     }
     return true;
   }
@@ -69,7 +69,7 @@ class VirtualJoystick extends NodeWithSize {
   @override
   void paint(Canvas canvas) {
     applyTransformForPivot(canvas);
-    canvas.drawCircle(_handlePos, 25.0, _paintHandle);
-    canvas.drawCircle(_center, 40.0, _paintControl);
+    canvas.drawCircle(_handlePos!, 25.0, _paintHandle);
+    canvas.drawCircle(_center!, 40.0, _paintControl);
   }
 }

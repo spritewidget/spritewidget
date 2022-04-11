@@ -18,7 +18,7 @@ class NodeWithSize extends Node {
   ///
   ///     // Position myNode from is middle top
   ///     myNode.pivot = new Point(0.5, 0.0);
-  Offset pivot;
+  late Offset pivot;
 
   /// Creates a new NodeWithSize.
   ///

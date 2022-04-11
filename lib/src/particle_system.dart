@@ -5,8 +5,8 @@
 part of spritewidget;
 
 class _Particle {
-  Vector2 pos;
-  Vector2 startPos;
+  late Vector2 pos;
+  Vector2? startPos;
 
   double colorPos = 0.0;
   double deltaColorPos = 0.0;
@@ -19,13 +19,13 @@ class _Particle {
 
   double timeToLive = 0.0;
 
-  Vector2 dir;
+  late Vector2 dir;
 
-  _ParticleAccelerations accelerations;
+  _ParticleAccelerations? accelerations;
 
-  Float64List simpleColorSequence;
+  Float64List? simpleColorSequence;
 
-  ColorSequence colorSequence;
+  ColorSequence? colorSequence;
 }
 
 class _ParticleAccelerations {
@@ -44,51 +44,51 @@ class _ParticleAccelerations {
 /// Particles are created and added to the system at [emissionRate], but the
 /// number of particles can never exceed the [maxParticles] limit.
 class ParticleSystem extends Node {
-
   /// Creates a new particle system with the given properties. The only
   /// required parameter is the texture, all other parameters are optional.
-  ParticleSystem(this.texture,
-                 {this.life: 1.5,
-                  this.lifeVar: 1.0,
-                  this.posVar: Offset.zero,
-                  this.startSize: 2.5,
-                  this.startSizeVar: 0.5,
-                  this.endSize: 0.0,
-                  this.endSizeVar: 0.0,
-                  this.startRotation: 0.0,
-                  this.startRotationVar: 0.0,
-                  this.endRotation: 0.0,
-                  this.endRotationVar: 0.0,
-                  this.rotateToMovement : false,
-                  this.direction: 0.0,
-                  this.directionVar: 360.0,
-                  this.speed: 100.0,
-                  this.speedVar: 50.0,
-                  this.radialAcceleration: 0.0,
-                  this.radialAccelerationVar: 0.0,
-                  this.tangentialAcceleration: 0.0,
-                  this.tangentialAccelerationVar: 0.0,
-                  this.maxParticles: 100,
-                  this.emissionRate: 50.0,
-                  this.colorSequence,
-                  this.alphaVar: 0,
-                  this.redVar: 0,
-                  this.greenVar: 0,
-                  this.blueVar: 0,
-                  this.transferMode: BlendMode.plus,
-                  this.numParticlesToEmit: 0,
-                  this.autoRemoveOnFinish: true,
-                  Offset gravity,
-                  String data,
+  ParticleSystem(
+    this.texture, {
+    this.life: 1.5,
+    this.lifeVar: 1.0,
+    this.posVar: Offset.zero,
+    this.startSize: 2.5,
+    this.startSizeVar: 0.5,
+    this.endSize: 0.0,
+    this.endSizeVar: 0.0,
+    this.startRotation: 0.0,
+    this.startRotationVar: 0.0,
+    this.endRotation: 0.0,
+    this.endRotationVar: 0.0,
+    this.rotateToMovement: false,
+    this.direction: 0.0,
+    this.directionVar: 360.0,
+    this.speed: 100.0,
+    this.speedVar: 50.0,
+    this.radialAcceleration: 0.0,
+    this.radialAccelerationVar: 0.0,
+    this.tangentialAcceleration: 0.0,
+    this.tangentialAccelerationVar: 0.0,
+    this.maxParticles: 100,
+    this.emissionRate: 50.0,
+    this.colorSequence,
+    this.alphaVar: 0,
+    this.redVar: 0,
+    this.greenVar: 0,
+    this.blueVar: 0,
+    this.transferMode: BlendMode.plus,
+    this.numParticlesToEmit: 0,
+    this.autoRemoveOnFinish: true,
+    Offset? gravity,
+    String? data,
   }) {
     this.gravity = gravity;
-    _particles = new List<_Particle>();
+    _particles = <_Particle>[];
     _emitCounter = 0.0;
     // _elapsedTime = 0.0;
-    if (_gravity == null)
-      _gravity = new Vector2.zero();
+    if (_gravity == null) _gravity = new Vector2.zero();
     if (colorSequence == null)
-      colorSequence = new ColorSequence.fromStartAndEndColor(new Color(0xffffffff), new Color(0x00ffffff));
+      colorSequence = new ColorSequence.fromStartAndEndColor(
+          new Color(0xffffffff), new Color(0x00ffffff));
 
     insertionOffset = Offset.zero;
 
@@ -164,16 +164,15 @@ class ParticleSystem extends Node {
   double tangentialAccelerationVar;
 
   /// The gravity vector of the particle system.
-  Offset get gravity {
-    if (_gravity == null)
-      return null;
+  Offset? get gravity {
+    if (_gravity == null) return null;
 
-    return new Offset(_gravity.x, _gravity.y);
+    return new Offset(_gravity!.x, _gravity!.y);
   }
 
-  Vector2 _gravity;
+  Vector2? _gravity;
 
-  set gravity(Offset gravity) {
+  set gravity(Offset? gravity) {
     if (gravity == null)
       _gravity = null;
     else
@@ -185,7 +184,7 @@ class ParticleSystem extends Node {
 
   /// Total number of particles to emit, if the value is set to 0 the system
   /// will continue to emit particles for an indifinte period of time.
-  int numParticlesToEmit;
+  int? numParticlesToEmit;
 
   /// The rate at which particles are emitted, defined in particles per second.
   double emissionRate;
@@ -198,7 +197,7 @@ class ParticleSystem extends Node {
   /// over the duration of its [life]. When applied to a particle the sequence's
   /// color stops modified in accordance with the [alphaVar], [redVar],
   /// [greenVar], and [blueVar] properties.
-  ColorSequence colorSequence;
+  ColorSequence? colorSequence;
 
   /// Alpha varience of the [colorSequence] property.
   int alphaVar;
@@ -216,9 +215,9 @@ class ParticleSystem extends Node {
   /// [BlendMode.plus].
   BlendMode transferMode;
 
-  List<_Particle> _particles;
+  late List<_Particle> _particles;
 
-  double _emitCounter;
+  late double _emitCounter;
   int _numEmittedParticles = 0;
 
   /// The over all opacity of the particle system. This value is multiplied by
@@ -228,7 +227,7 @@ class ParticleSystem extends Node {
   /// Offset of where the particles are inserted, this is useful for doing
   /// particle systems where the source of the particles move (e.g. smoke
   /// trailing a rocket).
-  Offset insertionOffset;
+  late Offset insertionOffset;
 
   static Paint _paint = new Paint()
     ..filterQuality = FilterQuality.low
@@ -251,9 +250,10 @@ class ParticleSystem extends Node {
       _emitCounter += dt;
     }
 
-    while(_particles.length < maxParticles
-       && _emitCounter > rate
-       && (numParticlesToEmit == 0 || _numEmittedParticles < numParticlesToEmit)) {
+    while (_particles.length < maxParticles &&
+        _emitCounter > rate &&
+        (numParticlesToEmit == 0 ||
+            _numEmittedParticles < numParticlesToEmit!)) {
       // Add a new particle
       _addParticle();
       _emitCounter -= rate;
@@ -262,7 +262,7 @@ class ParticleSystem extends Node {
     // _elapsedTime += dt;
 
     // Iterate over all particles
-    for (int i = _particles.length -1; i >= 0; i--) {
+    for (int i = _particles.length - 1; i >= 0; i--) {
       _Particle particle = _particles[i];
 
       // Manage life time
@@ -275,28 +275,28 @@ class ParticleSystem extends Node {
       // Update the particle
 
       if (particle.accelerations != null) {
-      // Radial acceleration
-      Vector2 radial;
+        // Radial acceleration
+        Vector2 radial;
         if (particle.pos[0] != 0 || particle.pos[1] != 0) {
           radial = new Vector2.copy(particle.pos)..normalize();
         } else {
           radial = new Vector2.zero();
         }
         Vector2 tangential = new Vector2.copy(radial);
-        radial.scale(particle.accelerations.radialAccel);
+        radial.scale(particle.accelerations!.radialAccel);
 
         // Tangential acceleration
         double newY = tangential.x;
         tangential.x = -tangential.y;
         tangential.y = newY;
-        tangential.scale(particle.accelerations.tangentialAccel);
+        tangential.scale(particle.accelerations!.tangentialAccel);
 
         // (gravity + radial + tangential) * dt
-        final Vector2 accel = (_gravity + radial + tangential)..scale(dt);
+        final Vector2 accel = (_gravity! + radial + tangential)..scale(dt);
         particle.dir += accel;
-      } else if (_gravity[0] != 0.0 || _gravity[1] != 0) {
+      } else if (_gravity![0] != 0.0 || _gravity![1] != 0) {
         // gravity
-        final Vector2 accel = _gravity.clone()..scale(dt);
+        final Vector2 accel = _gravity!.clone()..scale(dt);
         particle.dir += accel;
       }
 
@@ -313,20 +313,23 @@ class ParticleSystem extends Node {
       // Color
       if (particle.simpleColorSequence != null) {
         for (int i = 0; i < 4; i++) {
-          particle.simpleColorSequence[i] += particle.simpleColorSequence[i + 4] * dt;
+          particle.simpleColorSequence![i] +=
+              particle.simpleColorSequence![i + 4] * dt;
         }
       } else {
-        particle.colorPos = math.min(particle.colorPos + particle.deltaColorPos * dt, 1.0);
+        particle.colorPos =
+            math.min(particle.colorPos + particle.deltaColorPos * dt, 1.0);
       }
     }
 
-    if (autoRemoveOnFinish && _particles.length == 0 && _numEmittedParticles > 0) {
+    if (autoRemoveOnFinish &&
+        _particles.length == 0 &&
+        _numEmittedParticles > 0) {
       if (parent != null) removeFromParent();
     }
   }
 
   void _addParticle() {
-
     _Particle particle = new _Particle();
 
     // Time to live
@@ -335,34 +338,43 @@ class ParticleSystem extends Node {
     // Position
     Offset srcPos = insertionOffset;
     particle.pos = new Vector2(srcPos.dx + posVar.dx * randomSignedDouble(),
-                               srcPos.dy + posVar.dy * randomSignedDouble());
+        srcPos.dy + posVar.dy * randomSignedDouble());
 
     // Size
-    particle.size = math.max(startSize + startSizeVar * randomSignedDouble(), 0.0);
-    double endSizeFinal = math.max(endSize + endSizeVar * randomSignedDouble(), 0.0);
+    particle.size =
+        math.max(startSize + startSizeVar * randomSignedDouble(), 0.0);
+    double endSizeFinal =
+        math.max(endSize + endSizeVar * randomSignedDouble(), 0.0);
     particle.deltaSize = (endSizeFinal - particle.size) / particle.timeToLive;
 
     // Rotation
     particle.rotation = startRotation + startRotationVar * randomSignedDouble();
-    double endRotationFinal = endRotation + endRotationVar * randomSignedDouble();
-    particle.deltaRotation = (endRotationFinal - particle.rotation) / particle.timeToLive;
+    double endRotationFinal =
+        endRotation + endRotationVar * randomSignedDouble();
+    particle.deltaRotation =
+        (endRotationFinal - particle.rotation) / particle.timeToLive;
 
     // Direction
-    double dirRadians = convertDegrees2Radians(direction + directionVar * randomSignedDouble());
+    double dirRadians =
+        convertDegrees2Radians(direction + directionVar * randomSignedDouble());
     Vector2 dirVector = new Vector2(math.cos(dirRadians), math.sin(dirRadians));
     double speedFinal = speed + speedVar * randomSignedDouble();
     particle.dir = dirVector..scale(speedFinal);
 
     // Accelerations
-    if (radialAcceleration != 0.0 || radialAccelerationVar != 0.0 ||
-        tangentialAcceleration != 0.0 || tangentialAccelerationVar != 0.0) {
+    if (radialAcceleration != 0.0 ||
+        radialAccelerationVar != 0.0 ||
+        tangentialAcceleration != 0.0 ||
+        tangentialAccelerationVar != 0.0) {
       particle.accelerations = new _ParticleAccelerations();
 
       // Radial acceleration
-      particle.accelerations.radialAccel = radialAcceleration + radialAccelerationVar * randomSignedDouble();
+      particle.accelerations!.radialAccel =
+          radialAcceleration + radialAccelerationVar * randomSignedDouble();
 
       // Tangential acceleration
-      particle.accelerations.tangentialAccel = tangentialAcceleration + tangentialAccelerationVar * randomSignedDouble();
+      particle.accelerations!.tangentialAccel = tangentialAcceleration +
+          tangentialAccelerationVar * randomSignedDouble();
     }
 
     // Color
@@ -370,33 +382,42 @@ class ParticleSystem extends Node {
     particle.deltaColorPos = 1.0 / particle.timeToLive;
 
     if (alphaVar != 0 || redVar != 0 || greenVar != 0 || blueVar != 0) {
-      particle.colorSequence = _ColorSequenceUtil.copyWithVariance(colorSequence, alphaVar, redVar, greenVar, blueVar);
+      particle.colorSequence = _ColorSequenceUtil.copyWithVariance(
+          colorSequence!, alphaVar, redVar, greenVar, blueVar);
     }
 
     // Optimizes the case where there are only two colors in the sequence
-    if (colorSequence.colors.length == 2) {
+    if (colorSequence!.colors.length == 2) {
       Color startColor;
       Color endColor;
 
       if (particle.colorSequence != null) {
-        startColor = particle.colorSequence.colors[0];
-        endColor = particle.colorSequence.colors[1];
+        startColor = particle.colorSequence!.colors[0];
+        endColor = particle.colorSequence!.colors[1];
       } else {
-        startColor = colorSequence.colors[0];
-        endColor = colorSequence.colors[1];
+        startColor = colorSequence!.colors[0];
+        endColor = colorSequence!.colors[1];
       }
 
       // First 4 elements are start ARGB, last 4 are delta ARGB
       particle.simpleColorSequence = new Float64List(8);
-      particle.simpleColorSequence[0] = startColor.alpha.toDouble();
-      particle.simpleColorSequence[1] = startColor.red.toDouble();
-      particle.simpleColorSequence[2] = startColor.green.toDouble();
-      particle.simpleColorSequence[3] = startColor.blue.toDouble();
+      particle.simpleColorSequence![0] = startColor.alpha.toDouble();
+      particle.simpleColorSequence![1] = startColor.red.toDouble();
+      particle.simpleColorSequence![2] = startColor.green.toDouble();
+      particle.simpleColorSequence![3] = startColor.blue.toDouble();
 
-      particle.simpleColorSequence[4] = (endColor.alpha.toDouble() - startColor.alpha.toDouble()) / particle.timeToLive;
-      particle.simpleColorSequence[5] = (endColor.red.toDouble() - startColor.red.toDouble()) / particle.timeToLive;
-      particle.simpleColorSequence[6] = (endColor.green.toDouble() - startColor.green.toDouble()) / particle.timeToLive;
-      particle.simpleColorSequence[7] = (endColor.blue.toDouble() - startColor.blue.toDouble()) / particle.timeToLive;
+      particle.simpleColorSequence![4] =
+          (endColor.alpha.toDouble() - startColor.alpha.toDouble()) /
+              particle.timeToLive;
+      particle.simpleColorSequence![5] =
+          (endColor.red.toDouble() - startColor.red.toDouble()) /
+              particle.timeToLive;
+      particle.simpleColorSequence![6] =
+          (endColor.green.toDouble() - startColor.green.toDouble()) /
+              particle.timeToLive;
+      particle.simpleColorSequence![7] =
+          (endColor.blue.toDouble() - startColor.blue.toDouble()) /
+              particle.timeToLive;
     }
 
     _particles.add(particle);
@@ -405,8 +426,7 @@ class ParticleSystem extends Node {
 
   @override
   void paint(Canvas canvas) {
-    if (opacity == 0.0)
-      return;
+    if (opacity == 0.0) return;
 
     List<RSTransform> transforms = <RSTransform>[];
     List<Rect> rects = <Rect>[];
@@ -424,11 +444,17 @@ class ParticleSystem extends Node {
       double ssin;
       if (rotateToMovement) {
         double extraRotation = GameMath.atan2(particle.dir[1], particle.dir[0]);
-        scos = math.cos(convertDegrees2Radians(particle.rotation) + extraRotation) * particle.size;
-        ssin = math.sin(convertDegrees2Radians(particle.rotation) + extraRotation) * particle.size;
+        scos = math.cos(
+                convertDegrees2Radians(particle.rotation) + extraRotation) *
+            particle.size;
+        ssin = math.sin(
+                convertDegrees2Radians(particle.rotation) + extraRotation) *
+            particle.size;
       } else if (particle.rotation != 0.0) {
-        scos = math.cos(convertDegrees2Radians(particle.rotation)) * particle.size;
-        ssin = math.sin(convertDegrees2Radians(particle.rotation)) * particle.size;
+        scos =
+            math.cos(convertDegrees2Radians(particle.rotation)) * particle.size;
+        ssin =
+            math.sin(convertDegrees2Radians(particle.rotation)) * particle.size;
       } else {
         scos = particle.size;
         ssin = 0.0;
@@ -443,20 +469,22 @@ class ParticleSystem extends Node {
       // Color
       if (particle.simpleColorSequence != null) {
         Color particleColor = new Color.fromARGB(
-          (particle.simpleColorSequence[0] * opacity).toInt().clamp(0, 255),
-          particle.simpleColorSequence[1].toInt().clamp(0, 255),
-          particle.simpleColorSequence[2].toInt().clamp(0, 255),
-          particle.simpleColorSequence[3].toInt().clamp(0, 255));
+            (particle.simpleColorSequence![0] * opacity).toInt().clamp(0, 255),
+            particle.simpleColorSequence![1].toInt().clamp(0, 255),
+            particle.simpleColorSequence![2].toInt().clamp(0, 255),
+            particle.simpleColorSequence![3].toInt().clamp(0, 255));
         colors.add(particleColor);
       } else {
         Color particleColor;
         if (particle.colorSequence != null) {
-          particleColor = particle.colorSequence.colorAtPosition(particle.colorPos);
+          particleColor =
+              particle.colorSequence!.colorAtPosition(particle.colorPos);
         } else {
-          particleColor = colorSequence.colorAtPosition(particle.colorPos);
+          particleColor = colorSequence!.colorAtPosition(particle.colorPos);
         }
         if (opacity != 1.0) {
-          particleColor = particleColor.withAlpha((particleColor.alpha * opacity).toInt().clamp(0, 255));
+          particleColor = particleColor
+              .withAlpha((particleColor.alpha * opacity).toInt().clamp(0, 255));
         }
         colors.add(particleColor);
       }
@@ -468,13 +496,8 @@ class ParticleSystem extends Node {
 }
 
 class _ColorSequenceUtil {
-  static ColorSequence copyWithVariance(
-    ColorSequence sequence,
-    int alphaVar,
-    int redVar,
-    int greenVar,
-    int blueVar
-  ) {
+  static ColorSequence copyWithVariance(ColorSequence sequence, int alphaVar,
+      int redVar, int greenVar, int blueVar) {
     ColorSequence copy = new ColorSequence.copy(sequence);
 
     int i = 0;
@@ -509,7 +532,7 @@ Map serializeColorSequence(ColorSequence colorSequence) {
   List<int> colors = <int>[];
   List<double> stops = <double>[];
 
-  for (int i = 0 ; i < colorSequence.colors.length; i++) {
+  for (int i = 0; i < colorSequence.colors.length; i++) {
     colors.add(serializeColor(colorSequence.colors[i]));
     stops.add(colorSequence.colorStops[i]);
   }
@@ -572,21 +595,21 @@ Map serializeParticleSystem(ParticleSystem system) {
     'tangentialAccelerationVar': system.tangentialAccelerationVar,
     'maxParticles': system.maxParticles,
     'emissionRate': system.emissionRate,
-    'colorSequence': serializeColorSequence(system.colorSequence),
+    'colorSequence': serializeColorSequence(system.colorSequence!),
     'alphaVar': system.alphaVar,
     'redVar': system.redVar,
     'greenVar': system.greenVar,
     'blueVar': system.blueVar,
     'numParticlesToEmit': system.numParticlesToEmit,
     'autoRemoveOnFinish': system.autoRemoveOnFinish,
-    'gravity': serializeOffset(system.gravity),
+    'gravity': serializeOffset(system.gravity!),
     'blendMode': serializeBlendMode(system.transferMode),
   };
 }
 
-ParticleSystem deserializeParticleSystem(Map data, {ParticleSystem particleSystem, SpriteTexture texture}) {
-  if (particleSystem == null)
-    particleSystem = new ParticleSystem(texture);
+ParticleSystem deserializeParticleSystem(Map data,
+    {ParticleSystem? particleSystem, SpriteTexture? texture}) {
+  if (particleSystem == null) particleSystem = new ParticleSystem(texture!);
 
   particleSystem.life = data['life'];
   particleSystem.lifeVar = data['lifeVar'];
@@ -610,7 +633,8 @@ ParticleSystem deserializeParticleSystem(Map data, {ParticleSystem particleSyste
   particleSystem.tangentialAccelerationVar = data['tangentialAccelerationVar'];
   particleSystem.maxParticles = data['maxParticles'];
   particleSystem.emissionRate = data['emissionRate'];
-  particleSystem.colorSequence = deserializeColorSequence(data['colorSequence']);
+  particleSystem.colorSequence =
+      deserializeColorSequence(data['colorSequence']);
   particleSystem.alphaVar = data['alphaVar'];
   particleSystem.redVar = data['redVar'];
   particleSystem.greenVar = data['greenVar'];
