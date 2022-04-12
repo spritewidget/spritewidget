@@ -93,9 +93,9 @@ class _FitnessDemoContentsState extends State<_FitnessDemoContents> {
     }
 
     return new Material(
-        child: new Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
+      child: new Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
           new Flexible(
             child: new Container(
               decoration: new BoxDecoration(color: Colors.grey[800]),
@@ -106,32 +106,44 @@ class _FitnessDemoContentsState extends State<_FitnessDemoContents> {
             ),
           ),
           new Padding(
-              padding: new EdgeInsets.only(top: 20.0),
-              child: new Text('JUMPING JACKS',
-                  style: Theme.of(context).textTheme.titleMedium)),
+            padding: new EdgeInsets.only(top: 20.0),
+            child: new Text('JUMPING JACKS',
+                style: Theme.of(context).textTheme.titleMedium),
+          ),
           new Padding(
-              padding: new EdgeInsets.only(top: 20.0, bottom: 20.0),
-              child: new Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    _createInfoPanelCell(
-                        Icons.accessibility, '$_count', 'COUNT'),
-                    _createInfoPanelCell(
-                        Icons.timer, _formatSeconds(_time), 'TIME'),
-                    _createInfoPanelCell(Icons.flash_on, '$kcal', 'KCAL')
-                  ])),
+            padding: new EdgeInsets.only(top: 20.0, bottom: 20.0),
+            child: new Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                _createInfoPanelCell(Icons.accessibility, '$_count', 'COUNT'),
+                _createInfoPanelCell(
+                    Icons.timer, _formatSeconds(_time), 'TIME'),
+                _createInfoPanelCell(Icons.flash_on, '$kcal', 'KCAL'),
+              ],
+            ),
+          ),
           new Padding(
-              padding: new EdgeInsets.only(bottom: 16.0),
-              child: new SizedBox(
-                  width: 300.0,
-                  height: 72.0,
-                  child: new RaisedButton(
-                      onPressed: onButtonPressed,
-                      color: buttonColor,
-                      child: new Text(buttonText,
-                          style: new TextStyle(
-                              color: Colors.white, fontSize: 20.0)))))
-        ]));
+            padding: new EdgeInsets.only(bottom: 16.0),
+            child: new SizedBox(
+              width: 300.0,
+              height: 72.0,
+              child: new ElevatedButton(
+                onPressed: onButtonPressed,
+                // color: buttonColor,
+                style: ElevatedButton.styleFrom(primary: buttonColor),
+                child: new Text(
+                  buttonText,
+                  style: new TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   Widget _createInfoPanelCell(IconData icon, String value, String description) {
@@ -180,7 +192,7 @@ class _FitnessDemoContentsState extends State<_FitnessDemoContents> {
                 content: new Text(
                     'You have completed $_count jumping jacks. Good going!'),
                 actions: <Widget>[
-                  new FlatButton(
+                  new TextButton(
                       child: new Text('SWEET'),
                       onPressed: () {
                         Navigator.pop(context);

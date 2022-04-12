@@ -13,44 +13,46 @@ class ColorSequenceWell extends StatelessWidget {
   final ColorSequence colorSequence;
   final VoidCallback onTap;
 
-  static final String _baseEncodedImage =
+  static const String _baseEncodedImage =
       'iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==';
   final Uint8List _chessTexture = base64.decode(_baseEncodedImage);
 
-  ColorSequenceWell({required this.colorSequence, required this.onTap});
+  ColorSequenceWell({
+    required this.colorSequence,
+    required this.onTap,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    LinearGradient gradient = new LinearGradient(
+    LinearGradient gradient = LinearGradient(
       colors: colorSequence.colors,
       stops: colorSequence.colorStops,
     );
 
-    return new Container(
+    return SizedBox(
       height: 30.0,
-      child: new Stack(
+      child: Stack(
         fit: StackFit.expand,
         children: <Widget>[
-          new DecoratedBox(
-              decoration: new BoxDecoration(
-            image: new DecorationImage(
-              image: new MemoryImage(_chessTexture),
+          DecoratedBox(
+              decoration: BoxDecoration(
+            image: DecorationImage(
+              image: MemoryImage(_chessTexture),
               repeat: ImageRepeat.repeat,
             ),
           )),
-          new DecoratedBox(
-            decoration: new BoxDecoration(
+          DecoratedBox(
+            decoration: BoxDecoration(
               gradient: gradient,
             ),
           ),
-          new Material(
+          Material(
             type: MaterialType.transparency,
-            child: onTap != null
-                ? new InkWell(
-                    onTap: onTap,
-                  )
-                : null,
+            child: InkWell(
+              onTap: onTap,
+            ),
           ),
         ],
       ),
@@ -58,26 +60,29 @@ class ColorSequenceWell extends StatelessWidget {
   }
 }
 
-typedef void ColorSequenceDesignerCallback(ColorSequence value);
+typedef ColorSequenceDesignerCallback = void Function(ColorSequence value);
 
 class ColorSequenceDesigner extends StatefulWidget {
   final ColorSequence colorSequence;
   final ColorSequenceDesignerCallback onChanged;
 
-  ColorSequenceDesigner({required this.colorSequence, required this.onChanged});
+  const ColorSequenceDesigner({
+    required this.colorSequence,
+    required this.onChanged,
+    Key? key,
+  }) : super(key: key);
 
   @override
-  _ColorSequenceDesignerState createState() =>
-      new _ColorSequenceDesignerState();
+  _ColorSequenceDesignerState createState() => _ColorSequenceDesignerState();
 }
 
 class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
-  static final int _numMaxStops = 4;
+  static const int _numMaxStops = 4;
 
   late ColorSequence _colorSequence;
 
-  List<Color?> _colors = <Color?>[];
-  List<double?> _stops = <double?>[];
+  final List<Color?> _colors = <Color?>[];
+  final List<double?> _stops = <double?>[];
 
   @override
   void initState() {
@@ -97,9 +102,9 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
     List<Widget> children = <Widget>[];
 
     children.add(
-      new Padding(
+      Padding(
         padding: const EdgeInsets.only(bottom: 16.0),
-        child: new ColorSequenceWell(
+        child: ColorSequenceWell(
           colorSequence: _colorSequence,
           onTap: () {},
         ),
@@ -110,10 +115,10 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
       int stopNum = i;
 
       children.add(
-        new Row(
+        Row(
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            new Checkbox(
+            Checkbox(
               value: _colors[stopNum] != null,
               onChanged: (bool? value) {
                 setState(() {
@@ -125,8 +130,8 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
                 });
               },
             ),
-            new Expanded(
-              child: new Slider(
+            Expanded(
+              child: Slider(
                 value: _stops[stopNum] ?? 0.0,
                 onChanged: (double value) {
                   setState(() {
@@ -136,11 +141,11 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
                 max: _stops[stopNum] != null ? 1.0 : 0.0,
               ),
             ),
-            new Container(
+            Container(
               width: 50.0,
               height: 30.0,
-              color: _colors[stopNum] != null ? _colors[stopNum] : Colors.grey,
-              child: new GestureDetector(
+              color: _colors[stopNum] ?? Colors.grey,
+              child: GestureDetector(
                 onTap: () {
                   _pickColor(stopNum);
                 },
@@ -151,7 +156,7 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
       );
     }
 
-    return new Column(
+    return Column(
       mainAxisSize: MainAxisSize.min,
       children: children,
     );
@@ -179,11 +184,11 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
       if (_colors[i] != null && i > lastStop) lastStop = i;
     }
 
-    if (stopNum < firstStop)
+    if (stopNum < firstStop) {
       _stops[stopNum] = 0.0;
-    else if (stopNum > lastStop)
+    } else if (stopNum > lastStop) {
       _stops[stopNum] = 1.0;
-    else {
+    } else {
       int prevStop = 0;
       for (int i = stopNum - 1; i >= 0; i--) {
         if (_stops[i] != null) {
@@ -225,10 +230,10 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return new AlertDialog(
+        return AlertDialog(
           title: const Text('Color stop'),
-          content: new SingleChildScrollView(
-            child: new ColorPicker(
+          content: SingleChildScrollView(
+            child: ColorPicker(
               pickerColor: _colors[stopNum]!,
               onColorChanged: (Color c) {
                 setState(() {
@@ -241,8 +246,8 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
             ),
           ),
           actions: <Widget>[
-            new FlatButton(
-              child: new Text('DONE'),
+            TextButton(
+              child: const Text('DONE'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -266,8 +271,8 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
       }
     }
 
-    _colorSequence = new ColorSequence(colors, stops);
+    _colorSequence = ColorSequence(colors, stops);
 
-    if (widget.onChanged != null) return widget.onChanged(_colorSequence);
+    return widget.onChanged(_colorSequence);
   }
 }

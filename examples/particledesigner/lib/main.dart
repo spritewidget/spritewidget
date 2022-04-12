@@ -11,29 +11,31 @@ import 'package:spritewidget/spritewidget.dart';
 import 'particle_designer.dart';
 
 void main() {
-  runApp(new MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       title: 'Flutter Demo',
-      theme: new ThemeData(
+      theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: new MyHomePage(title: 'Particle Designer'),
+      home: const MyHomePage(title: 'Particle Designer'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -44,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
 
-    _images = new ImageMap(rootBundle);
+    _images = ImageMap(rootBundle);
     _images.load([
       'assets/particle-0.png',
       'assets/particle-1.png',
@@ -59,9 +61,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       body: _loaded
-          ? new ParticleDesigner(
+          ? ParticleDesigner(
               images: _images,
             )
           : null,

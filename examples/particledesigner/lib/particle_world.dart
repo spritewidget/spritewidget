@@ -16,7 +16,7 @@ class ParticleWorld extends NodeWithSize {
 
   set selectedTexture(int texture) {
     particleSystem.texture =
-        new SpriteTexture(images['assets/particle-$texture.png']!);
+        SpriteTexture(images['assets/particle-$texture.png']!);
     _selectedTexture = texture;
   }
 
@@ -24,9 +24,9 @@ class ParticleWorld extends NodeWithSize {
     userInteractionEnabled = true;
 
     SpriteTexture texture =
-        new SpriteTexture(images['assets/particle-$_selectedTexture.png']!);
+        SpriteTexture(images['assets/particle-$_selectedTexture.png']!);
 
-    particleSystem = new ParticleSystem(
+    particleSystem = ParticleSystem(
       texture,
       autoRemoveOnFinish: false,
     );
