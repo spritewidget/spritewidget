@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:spritewidget/spritewidget.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'package:url_launcher/url_launcher.dart';
+// import 'package:url_launcher/url_launcher.dart';
 
 import 'particle_presets.dart';
 import 'particle_world.dart';
@@ -502,7 +502,7 @@ class ParticleDesignerState extends State<ParticleDesigner> with SingleTickerPro
                         serializeParticleSystem(_particleWorld.particleSystem)
                       )
                     );
-                    launch('mailto:?subject=ParticleSystem&body=' + body);
+                    // launch('mailto:?subject=ParticleSystem&body=' + body);
                   },
                 ),
               ),

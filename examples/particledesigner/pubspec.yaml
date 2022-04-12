@@ -1,15 +1,16 @@
 name: particledesigner
+publish_to: 'none'
 description: A new Flutter project.
+
+environment:
+  sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.0
   flutter_colorpicker: ^0.0.3
-  url_launcher: ^3.0.0
+#  url_launcher: ^6.0.20
   spritewidget:
     path: ../../
 
