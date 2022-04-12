@@ -5,7 +5,6 @@ import 'weather_demo.dart';
 void main() => runApp(new WeatherDemoApp());
 
 class WeatherDemoApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(

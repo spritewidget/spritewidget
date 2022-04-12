@@ -14,7 +14,8 @@ class Sprite extends NodeWithSize with SpritePaint {
   ///     mySprite.texture = myTexture;
   SpriteTexture texture;
 
-  /// If true, constrains the proportions of the image by scaling it down, if its proportions doesn't match the [size].
+  /// If true, constrains the proportions of the image by scaling it down, if
+  /// its proportions doesn't match the [size].
   ///
   ///     mySprite.constrainProportions = true;
   bool constrainProportions = false;
@@ -63,7 +64,8 @@ class Sprite extends NodeWithSize with SpritePaint {
       double scaleY = size.height / h;
 
       if (constrainProportions) {
-        // Constrain proportions, using the smallest scale and by centering the image
+        // Constrain proportions, using the smallest scale and by centering the
+        // image
         if (scaleX < scaleY) {
           canvas.translate(0.0, (size.height - scaleX * h) / 2.0);
           scaleY = scaleX;

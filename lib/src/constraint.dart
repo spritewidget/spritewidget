@@ -16,8 +16,7 @@ abstract class Constraint {
   /// Called before the node's update method is called. This method can be
   /// overridden to create setup work that needs to happen before the the
   /// node is updated, e.g. to calculate the node's speed.
-  void preUpdate(Node node, double dt) {
-  }
+  void preUpdate(Node node, double dt) {}
 
   /// Called after update is complete, if the constraint has been added to a
   /// [Node]. Override this method to modify the node's property according to
@@ -26,8 +25,7 @@ abstract class Constraint {
 }
 
 double _dampenRotation(double src, double dst, double? dampening) {
-  if (dampening == null)
-    return dst;
+  if (dampening == null) return dst;
 
   double delta = dst - src;
   while (delta > 180.0) delta -= 360;
@@ -64,7 +62,8 @@ class ConstraintRotationToMovement extends Constraint {
 
     // Get the target angle
     Offset offset = node.position - _lastPosition!;
-    double target = degrees(GameMath.atan2(offset.dy, offset.dx)) + baseRotation;
+    double target =
+        degrees(GameMath.atan2(offset.dy, offset.dx)) + baseRotation;
 
     node.rotation = _dampenRotation(node.rotation, target, dampening);
   }
@@ -74,17 +73,19 @@ class ConstraintRotationToMovement extends Constraint {
 class ConstraintRotationToNodeRotation extends Constraint {
   /// Creates a new constraint that copies a node's rotation, optionally
   /// with a [baseRotation] added and using [dampening].
-  ConstraintRotationToNodeRotation(this.targetNode, { this.baseRotation: 0.0, required this.dampening });
+  ConstraintRotationToNodeRotation(this.targetNode,
+      {this.baseRotation: 0.0, required this.dampening});
 
   /// The node to copy the rotation from
   final Node targetNode;
 
-  /// The base rotation will be added to the rotation that copied from the targetNode
+  /// The base rotation will be added to the rotation that copied from the
+  /// targetNode
   final double baseRotation;
 
   /// The filter factor used when constraining the rotation of the node. Valid
   /// values are in the range 0.0 to 1.0
-  final double/*?*/ dampening;
+  final double /*?*/ dampening;
 
   @override
   void constrain(Node node, double dt) {
@@ -100,7 +101,8 @@ class ConstraintRotationToNode extends Constraint {
   /// Creates a new [Constraint] that rotates the node towards the [targetNode].
   /// The [baseRotation] will be added to the nodes rotation, and [dampening]
   /// can be used to ease the rotation.
-  ConstraintRotationToNode(this.targetNode, {this.baseRotation: 0.0, this.dampening});
+  ConstraintRotationToNode(this.targetNode,
+      {this.baseRotation: 0.0, this.dampening});
 
   /// The node to rotate towards.
   final Node targetNode;
@@ -124,11 +126,12 @@ class ConstraintRotationToNode extends Constraint {
     if (targetNode.parent == node.parent) {
       offset = targetNode.position - node.position;
     } else {
-      offset = node.convertPointToBoxSpace(Offset.zero)
-        - targetNode.convertPointToBoxSpace(Offset.zero);
+      offset = node.convertPointToBoxSpace(Offset.zero) -
+          targetNode.convertPointToBoxSpace(Offset.zero);
     }
 
-    double target = degrees(GameMath.atan2(offset.dy, offset.dx)) + baseRotation;
+    double target =
+        degrees(GameMath.atan2(offset.dy, offset.dx)) + baseRotation;
 
     node.rotation = _dampenRotation(node.rotation, target, dampening);
   }
@@ -141,7 +144,8 @@ class ConstraintPositionToNode extends Constraint {
   /// equal to the position of the [targetNode]. Optionally an [offset] can
   /// be used and also [dampening]. The targetNode doesn't need to have the
   /// same parent, but they need to be added to the same [SpriteBox].
-  ConstraintPositionToNode(this.targetNode, {this.dampening, this.offset: Offset.zero});
+  ConstraintPositionToNode(this.targetNode,
+      {this.dampening, this.offset: Offset.zero});
 
   /// Target node to follow.
   final Node targetNode;
@@ -164,15 +168,16 @@ class ConstraintPositionToNode extends Constraint {
     if (targetNode.parent == node.parent) {
       targetPosition = targetNode.position;
     } else {
-      targetPosition = node.parent!.convertPointFromNode(Offset.zero, targetNode);
+      targetPosition =
+          node.parent!.convertPointFromNode(Offset.zero, targetNode);
     }
 
-    if (offset != null)
-      targetPosition += offset;
+    if (offset != null) targetPosition += offset;
 
     if (dampening == null)
       node.position = targetPosition;
     else
-      node.position = GameMath.filterPoint(node.position, targetPosition, dampening!);
+      node.position =
+          GameMath.filterPoint(node.position, targetPosition, dampening!);
   }
 }

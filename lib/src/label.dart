@@ -8,11 +8,9 @@ part of spritewidget;
 /// the label, the textAlign property of the [TextStyle] can be set.
 class Label extends Node {
   /// Creates a new Label with the provided [text] and [textStyle].
-  Label(this._text, {
-    TextStyle? textStyle,
-    TextAlign? textAlign
-  }) : _textStyle = textStyle ?? const TextStyle(),
-       textAlign = textAlign ?? TextAlign.left;
+  Label(this._text, {TextStyle? textStyle, TextAlign? textAlign})
+      : _textStyle = textStyle ?? const TextStyle(),
+        textAlign = textAlign ?? TextAlign.left;
 
   /// The text being drawn by the label.
   String get text => _text;

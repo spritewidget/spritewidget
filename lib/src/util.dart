@@ -4,7 +4,6 @@
 
 part of spritewidget;
 
-
 math.Random _random = new math.Random();
 
 // Random methods
@@ -32,7 +31,6 @@ bool randomBool() {
 // atan2
 
 class _Atan2Constants {
-
   _Atan2Constants() {
     for (int i = 0; i <= size; i++) {
       double f = i.toDouble() / size.toDouble();
@@ -105,23 +103,23 @@ class GameMath {
     if (dx < 0.0) dx = -dx;
     if (dy < 0.0) dy = -dy;
     if (dx > dy) {
-      return dx + dy/2.0;
-    }
-    else {
-      return dy + dx/2.0;
+      return dx + dy / 2.0;
+    } else {
+      return dy + dx / 2.0;
     }
   }
 
   /// Interpolates a [double] between [a] and [b] according to the
   /// [filterFactor], which should be in the range of 0.0 to 1.0.
-  static double filter (double a, double b, double filterFactor) {
-      return (a * (1-filterFactor)) + b * filterFactor;
+  static double filter(double a, double b, double filterFactor) {
+    return (a * (1 - filterFactor)) + b * filterFactor;
   }
 
   /// Interpolates a [Point] between [a] and [b] according to the
   /// [filterFactor], which should be in the range of 0.0 to 1.0.
   static Offset filterPoint(Offset a, Offset b, double filterFactor) {
-    return new Offset(filter(a.dx, b.dx, filterFactor), filter(a.dy, b.dy, filterFactor));
+    return new Offset(
+        filter(a.dx, b.dx, filterFactor), filter(a.dy, b.dy, filterFactor));
   }
 
   /// Returns the intersection between two line segmentss defined by p0, p1 and

@@ -56,7 +56,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      body: _loaded ? new ParticleDesigner(images: _images,) : null,
+      body: _loaded
+          ? new ParticleDesigner(
+              images: _images,
+            )
+          : null,
     );
   }
 }

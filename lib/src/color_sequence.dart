@@ -57,7 +57,7 @@ class ColorSequence {
       lastStop = currentStop;
       lastColor = currentColor;
     }
-    return colors[colors.length-1];
+    return colors[colors.length - 1];
   }
 }
 

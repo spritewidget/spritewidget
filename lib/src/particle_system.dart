@@ -88,7 +88,9 @@ class ParticleSystem extends Node {
     if (_gravity == null) _gravity = new Vector2.zero();
     if (colorSequence == null)
       colorSequence = new ColorSequence.fromStartAndEndColor(
-          new Color(0xffffffff), new Color(0x00ffffff));
+        new Color(0xffffffff),
+        new Color(0x00ffffff),
+      );
 
     insertionOffset = Offset.zero;
 

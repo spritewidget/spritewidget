@@ -11,15 +11,16 @@ class ParticleWorld extends NodeWithSize {
   int get selectedTexture => _selectedTexture;
 
   set selectedTexture(int texture) {
-    particleSystem.texture = new SpriteTexture(images['assets/particle-$texture.png']);
+    particleSystem.texture =
+        new SpriteTexture(images['assets/particle-$texture.png']);
     _selectedTexture = texture;
   }
-
 
   ParticleWorld({this.images}) : super(const Size(1024.0, 1024.0)) {
     userInteractionEnabled = true;
 
-    SpriteTexture texture = new SpriteTexture(images['assets/particle-$_selectedTexture.png']);
+    SpriteTexture texture =
+        new SpriteTexture(images['assets/particle-$_selectedTexture.png']);
 
     particleSystem = new ParticleSystem(
       texture,
@@ -30,9 +31,12 @@ class ParticleWorld extends NodeWithSize {
     addChild(particleSystem);
   }
 
-  @override bool handleEvent(SpriteBoxEvent event) {
+  @override
+  bool handleEvent(SpriteBoxEvent event) {
     if (event.type == PointerDownEvent || event.type == PointerMoveEvent) {
-      particleSystem.insertionOffset = convertPointToNodeSpace(event.boxPosition) - const Offset(512.0, 512.0);
+      particleSystem.insertionOffset =
+          convertPointToNodeSpace(event.boxPosition) -
+              const Offset(512.0, 512.0);
     }
 
     if (event.type == PointerDownEvent) {

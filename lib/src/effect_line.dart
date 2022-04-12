@@ -6,7 +6,6 @@ part of spritewidget;
 
 /// Used by [EffectLine] to determine how the width of the line is calculated.
 enum EffectLineWidthMode {
-
   /// Linear interpolation between minWidth at the start and maxWidth at the
   /// end of the line.
   linear,
@@ -18,7 +17,6 @@ enum EffectLineWidthMode {
 
 /// Used by [EffectLine] to determine how the texture of the line is animated.
 enum EffectLineAnimationMode {
-
   /// The texture of the line isn't animated.
   none,
 
@@ -34,14 +32,13 @@ enum EffectLineAnimationMode {
 /// lines. These can be used to draw things such as smoke trails, electricity
 /// effects, or other animated types of lines.
 class EffectLine extends Node {
-
   /// Creates a new EffectLine with the specified parameters. Only the
   /// [texture] parameter is required, all other parameters are optional.
   EffectLine({
     required this.texture,
     this.transferMode: BlendMode.dstOver,
     required List<Offset> points,
-    this.widthMode : EffectLineWidthMode.linear,
+    this.widthMode: EffectLineWidthMode.linear,
     this.minWidth: 10.0,
     this.maxWidth: 10.0,
     this.widthGrowthSpeed: 0.0,
@@ -52,7 +49,7 @@ class EffectLine extends Node {
     this.fadeAfterDelay,
     this.textureLoopLength,
     this.simplify: true,
-    ColorSequence? colorSequence
+    ColorSequence? colorSequence,
   }) {
     if (points == null)
       this.points = <Offset>[];
@@ -63,7 +60,7 @@ class EffectLine extends Node {
     if (_colorSequence == null) {
       _colorSequence = new ColorSequence.fromStartAndEndColor(
         const Color(0xffffffff),
-        const Color(0xffffffff)
+        const Color(0xffffffff),
       );
     }
 
@@ -161,8 +158,10 @@ class EffectLine extends Node {
       }
 
       // Check if the first/oldest point should be removed
-      while(_points.length > 0 && _pointAges[0] > (fadeDuration! + fadeAfterDelay!)) {
-        // Update scroll if it isn't the last and only point that is about to removed
+      while (_points.length > 0 &&
+          _pointAges[0] > (fadeDuration! + fadeAfterDelay!)) {
+        // Update scroll if it isn't the last and only point that is about to
+        // removed
         if (_points.length > 1 && textureLoopLength != null) {
           double dist = GameMath.distanceBetweenPoints(_points[0], _points[1]);
           _offset = (_offset - (dist / textureLoopLength!)) % 1.0;
@@ -211,7 +210,9 @@ class EffectLine extends Node {
         double width = minWidth + (maxWidth - minWidth) * stop + growth;
         widths.add(width);
       } else if (widthMode == EffectLineWidthMode.barrel) {
-        double width = minWidth + math.sin(stop * math.pi) * (maxWidth - minWidth) + growth;
+        double width = minWidth +
+            math.sin(stop * math.pi) * (maxWidth - minWidth) +
+            growth;
         widths.add(width);
       }
     }
@@ -225,19 +226,20 @@ class EffectLine extends Node {
   /// Adds a new point to the end of the line.
   void addPoint(Offset point) {
     // Skip duplicate points
-    if (points.length > 0 && point.dx == points[points.length - 1].dx && point.dy == points[points.length - 1].dy)
-      return;
+    if (points.length > 0 &&
+        point.dx == points[points.length - 1].dx &&
+        point.dy == points[points.length - 1].dy) return;
 
-    if (simplify && points.length >= 2 && GameMath.distanceBetweenPoints(point, points[points.length - 2]) < 10.0) {
+    if (simplify &&
+        points.length >= 2 &&
+        GameMath.distanceBetweenPoints(point, points[points.length - 2]) <
+            10.0) {
       // Check if we should remove last point before adding the new one
 
       // Calculate the square distance from the middle point to the line of the
       // new point and the second to last point
       double dist2 = _distToSeqment2(
-        points[points.length - 1],
-        point,
-        points[points.length - 2]
-      );
+          points[points.length - 1], point, points[points.length - 2]);
 
       // If the point is on the line, remove it
       if (dist2 < 1.0) {
@@ -257,9 +259,11 @@ class EffectLine extends Node {
   double _distToSeqment2(Offset p, Offset v, Offset w) {
     double l2 = _dist2(v, w);
     if (l2 == 0.0) return _dist2(p, v);
-    double t = ((p.dx - v.dx) * (w.dx - v.dx) + (p.dy - v.dy) * (w.dy - v.dy)) / l2;
+    double t =
+        ((p.dx - v.dx) * (w.dx - v.dx) + (p.dy - v.dy) * (w.dy - v.dy)) / l2;
     if (t < 0) return _dist2(p, v);
     if (t > 1) return _dist2(p, w);
-    return _dist2(p, new Offset(v.dx + t * (w.dx - v.dx), v.dy + t * (w.dy - v.dy)));
+    return _dist2(
+        p, new Offset(v.dx + t * (w.dx - v.dx), v.dy + t * (w.dy - v.dy)));
   }
 }

@@ -34,13 +34,15 @@ enum SpriteBoxTransformMode {
 class SpriteBox extends RenderBox {
   // Setup
 
-  /// Creates a new SpriteBox with a node as its content, by default uses letterboxing.
+  /// Creates a new SpriteBox with a node as its content, by default uses
+  /// letterboxing.
   ///
-  /// The [rootNode] provides the content of the node tree, typically it's a custom subclass of [NodeWithSize]. The
-  /// [mode] provides different ways to scale the content to best fit it to the screen. In most cases it's preferred to
-  /// use a [SpriteWidget] that automatically wraps the SpriteBox.
+  /// The [rootNode] provides the content of the node tree, typically it's a
+  /// custom subclass of [NodeWithSize]. The [mode] provides different ways to
+  /// scale the content to best fit it to the screen. In most cases it's
+  /// preferred to use a [SpriteWidget] that automatically wraps the SpriteBox.
   ///
-  ///     var spriteBox = new SpriteBox(myNode, SpriteBoxTransformMode.fixedHeight);
+  ///     var spriteBox = SpriteBox(myNode, SpriteBoxTransformMode.fixedHeight);
   SpriteBox(NodeWithSize rootNode,
       [SpriteBoxTransformMode mode = SpriteBoxTransformMode.letterbox]) {
     assert(rootNode != null);
@@ -86,7 +88,8 @@ class SpriteBox extends RenderBox {
   Duration? _lastTimeStamp;
   double _frameRate = 0.0;
 
-  /// An instantaneous estimate of the number of frames per second this sprite box is producing.
+  /// An instantaneous estimate of the number of frames per second this sprite
+  /// box is producing.
   double get frameRate => _frameRate;
 
   // Transformation mode
@@ -261,7 +264,8 @@ class SpriteBox extends RenderBox {
 
   // Rendering
 
-  /// The transformation matrix used to transform the root node to the space of the box.
+  /// The transformation matrix used to transform the root node to the space of
+  /// the box.
   ///
   /// It's uncommon to need access to this property.
   ///
@@ -479,8 +483,8 @@ class SpriteBox extends RenderBox {
 
   /// Finds all nodes at a position defined in the box's coordinates.
   ///
-  /// Use this method with caution. It searches the complete node tree to locate the nodes, which can be slow if the
-  /// node tree is large.
+  /// Use this method with caution. It searches the complete node tree to locate
+  /// the nodes, which can be slow if the node tree is large.
   ///
   ///     List nodes = mySpriteBox.findNodesAtPosition(new Point(50.0, 50.0));
   List<Node> findNodesAtPosition(Offset position) {
@@ -513,12 +517,13 @@ class _SpriteBoxHitTestEntry extends BoxHitTestEntry {
       : super(target, localPosition);
 }
 
-/// An event that is passed down the node tree when pointer events occur. The SpriteBoxEvent is typically handled in
-/// the handleEvent method of [Node].
+/// An event that is passed down the node tree when pointer events occur. The
+/// SpriteBoxEvent is typically handled in the handleEvent method of [Node].
 class SpriteBoxEvent {
   /// The position of the event in box coordinates.
   ///
-  /// You can use the convertPointToNodeSpace of [Node] to convert the position to local coordinates.
+  /// You can use the convertPointToNodeSpace of [Node] to convert the position
+  /// to local coordinates.
   ///
   ///     bool handleEvent(SpriteBoxEvent event) {
   ///       Point localPosition = convertPointToNodeSpace(event.boxPosition);
@@ -528,22 +533,24 @@ class SpriteBoxEvent {
   ///     }
   final Offset boxPosition;
 
-  /// The type of event, there are currently four valid types, PointerDownEvent, PointerMoveEvent, PointerUpEvent, and
-  /// PointerCancelEvent.
+  /// The type of event, there are currently four valid types, PointerDownEvent,
+  /// PointerMoveEvent, PointerUpEvent, and PointerCancelEvent.
   ///
   ///     if (event.type == PointerDownEvent) {
   ///       // Do something!
   ///     }
   final Type type;
 
-  /// The id of the pointer. Each pointer on the screen will have a unique pointer id.
+  /// The id of the pointer. Each pointer on the screen will have a unique
+  /// pointer id.
   ///
   ///     if (event.pointer == firstPointerId) {
   ///       // Do something
   ///     }
   final int pointer;
 
-  /// Creates a new SpriteBoxEvent, typically this is done internally inside the SpriteBox.
+  /// Creates a new SpriteBoxEvent, typically this is done internally inside the
+  /// SpriteBox.
   ///
   ///     var event = new SpriteBoxEvent(new Point(50.0, 50.0), 'pointerdown', 0);
   SpriteBoxEvent(this.boxPosition, this.type, this.pointer);

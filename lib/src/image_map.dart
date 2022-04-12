@@ -7,7 +7,6 @@ part of spritewidget;
 /// The ImageMap is a helper class for loading and keeping references to
 /// multiple images.
 class ImageMap {
-
   /// Creates a new ImageMap where images will be loaded from the specified
   /// [bundle].
   ImageMap(AssetBundle bundle) : _bundle = bundle;
@@ -22,11 +21,11 @@ class ImageMap {
 
   /// Loads a single image given the image's [url] and adds it to the [ImageMap].
   Future<ui.Image> loadImage(String url) async {
-    ImageStream stream = new AssetImage(url, bundle: _bundle).resolve(ImageConfiguration.empty);
+    ImageStream stream =
+        new AssetImage(url, bundle: _bundle).resolve(ImageConfiguration.empty);
     Completer<ui.Image> completer = new Completer<ui.Image>();
     late ImageStreamListener listener;
-    listener = new ImageStreamListener(
-    (ImageInfo frame, bool synchronousCall) {
+    listener = new ImageStreamListener((ImageInfo frame, bool synchronousCall) {
       final ui.Image image = frame.image;
       _images[url] = image;
       completer.complete(image);

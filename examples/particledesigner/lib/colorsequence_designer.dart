@@ -9,14 +9,14 @@ class ColorSequenceWell extends StatelessWidget {
   final ColorSequence colorSequence;
   final VoidCallback onTap;
 
-  static final String _baseEncodedImage = 'iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==';
+  static final String _baseEncodedImage =
+      'iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==';
   final Uint8List _chessTexture = base64.decode(_baseEncodedImage);
 
   ColorSequenceWell({this.colorSequence, this.onTap});
 
   @override
   Widget build(BuildContext context) {
-
     // TODO: implement build
     LinearGradient gradient = new LinearGradient(
       colors: colorSequence.colors,
@@ -29,13 +29,12 @@ class ColorSequenceWell extends StatelessWidget {
         fit: StackFit.expand,
         children: <Widget>[
           new DecoratedBox(
-            decoration: new BoxDecoration(
-              image: new DecorationImage(
-                image: new MemoryImage(_chessTexture),
-                repeat: ImageRepeat.repeat,
-              ),
-            )
-          ),
+              decoration: new BoxDecoration(
+            image: new DecorationImage(
+              image: new MemoryImage(_chessTexture),
+              repeat: ImageRepeat.repeat,
+            ),
+          )),
           new DecoratedBox(
             decoration: new BoxDecoration(
               gradient: gradient,
@@ -43,9 +42,11 @@ class ColorSequenceWell extends StatelessWidget {
           ),
           new Material(
             type: MaterialType.transparency,
-            child: onTap != null ? new InkWell(
-              onTap: onTap,
-            ) : null,
+            child: onTap != null
+                ? new InkWell(
+                    onTap: onTap,
+                  )
+                : null,
           ),
         ],
       ),
@@ -62,7 +63,8 @@ class ColorSequenceDesigner extends StatefulWidget {
   ColorSequenceDesigner({this.colorSequence, this.onChanged});
 
   @override
-  _ColorSequenceDesignerState createState() => new _ColorSequenceDesignerState();
+  _ColorSequenceDesignerState createState() =>
+      new _ColorSequenceDesignerState();
 }
 
 class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
@@ -151,29 +153,25 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
   }
 
   void _updateStop(int stop, double value) {
-    for (int i = 0; i < stop; i ++) {
-      if (_stops[i] != null && _stops[i] > value)
-        _stops[i] = value;
+    for (int i = 0; i < stop; i++) {
+      if (_stops[i] != null && _stops[i] > value) _stops[i] = value;
     }
 
     _stops[stop] = value;
 
     for (int i = stop + 1; i < _numMaxStops; i++) {
-      if (_stops[i] != null && _stops[i] < value)
-        _stops[i] = value;
+      if (_stops[i] != null && _stops[i] < value) _stops[i] = value;
     }
 
     _updateColorSequence();
   }
 
   void _addColorStop(int stopNum) {
-    int firstStop = _numMaxStops -1;
+    int firstStop = _numMaxStops - 1;
     int lastStop = 0;
     for (int i = 0; i < _numMaxStops; i++) {
-      if (_colors[i] != null && i < firstStop)
-        firstStop = i;
-      if (_colors[i] != null && i > lastStop)
-        lastStop = i;
+      if (_colors[i] != null && i < firstStop) firstStop = i;
+      if (_colors[i] != null && i > lastStop) lastStop = i;
     }
 
     if (stopNum < firstStop)
@@ -182,7 +180,7 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
       _stops[stopNum] = 1.0;
     else {
       int prevStop = 0;
-      for (int i = stopNum - 1; i >= 0; i --) {
+      for (int i = stopNum - 1; i >= 0; i--) {
         if (_stops[i] != null) {
           prevStop = i;
           break;
@@ -207,12 +205,10 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
   void _removeColorStop(int stopNum) {
     int numStops = 0;
     for (int i = 0; i < _numMaxStops; i++) {
-      if (_stops[i] != null)
-        numStops += 1;
+      if (_stops[i] != null) numStops += 1;
     }
 
-    if (numStops <= 1)
-      return;
+    if (numStops <= 1) return;
 
     _stops[stopNum] = null;
     _colors[stopNum] = null;
@@ -267,7 +263,6 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
 
     _colorSequence = new ColorSequence(colors, stops);
 
-    if (widget.onChanged != null)
-      return widget.onChanged(_colorSequence);
+    if (widget.onChanged != null) return widget.onChanged(_colorSequence);
   }
 }

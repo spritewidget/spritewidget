@@ -6,16 +6,19 @@ part of spritewidget;
 
 /// A sprite sheet packs a number of smaller images into a single large image.
 ///
-/// The placement of the smaller images are defined by a json file. The larger image and json file is typically created
-/// by a tool such as TexturePacker. The [SpriteSheet] class will take a reference to a larger image and a json string.
-/// From the image and the string the [SpriteSheet] creates a number of [SpriteTexture] objects. The names of the frames in
-/// the sprite sheet definition are used to reference the different textures.
+/// The placement of the smaller images are defined by a json file. The larger
+/// image and json file is typically created by a tool such as TexturePacker.
+/// The [SpriteSheet] class will take a reference to a larger image and a json
+/// string. From the image and the string the [SpriteSheet] creates a number of
+/// [SpriteTexture] objects. The names of the frames in the sprite sheet
+/// definition are used to reference the different textures.
 class SpriteSheet {
   ui.Image _image;
   Map<String?, SpriteTexture> _textures = new Map<String, SpriteTexture>();
   Map<String?, SpriteTexture> get textures => _textures;
 
-  /// Creates a new sprite sheet from an [_image] and a sprite sheet [jsonDefinition].
+  /// Creates a new sprite sheet from an [_image] and a sprite sheet
+  /// [jsonDefinition].
   ///
   ///     var mySpriteSheet = new SpriteSheet(myImage, jsonString);
   SpriteSheet(this._image, String jsonDefinition) {
@@ -38,14 +41,15 @@ class SpriteSheet {
       Offset pivot = _readJsonPoint(frameInfo["pivot"]);
 
       SpriteTexture texture = new SpriteTexture._fromSpriteFrame(
-          _image,
-          fileName,
-          sourceSize,
-          rotated,
-          trimmed,
-          frame,
-          spriteSourceSize,
-          pivot);
+        _image,
+        fileName,
+        sourceSize,
+        rotated,
+        trimmed,
+        frame,
+        spriteSourceSize,
+        pivot,
+      );
       _textures[fileName] = texture;
     }
   }

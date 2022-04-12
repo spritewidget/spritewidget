@@ -4,19 +4,20 @@
 
 part of spritewidget;
 
-Offset _cardinalSplineAt(Offset p0, Offset p1, Offset p2, Offset p3, double tension, double t) {
+Offset _cardinalSplineAt(
+    Offset p0, Offset p1, Offset p2, Offset p3, double tension, double t) {
   double t2 = t * t;
   double t3 = t2 * t;
 
   double s = (1.0 - tension) / 2.0;
 
   double b1 = s * ((-t3 + (2.0 * t2)) - t);
-	double b2 = s * (-t3 + t2) + (2.0 * t3 - 3.0 * t2 + 1.0);
-	double b3 = s * (t3 - 2.0 * t2 + t) + (-2.0 * t3 + 3.0 * t2);
-	double b4 = s * (t3 - t2);
+  double b2 = s * (-t3 + t2) + (2.0 * t3 - 3.0 * t2 + 1.0);
+  double b3 = s * (t3 - 2.0 * t2 + t) + (-2.0 * t3 + 3.0 * t2);
+  double b4 = s * (t3 - t2);
 
   double x = p0.dx * b1 + p1.dx * b2 + p2.dx * b3 + p3.dx * b4;
-	double y = p0.dy * b1 + p1.dy * b2 + p2.dy * b3 + p3.dy * b4;
+  double y = p0.dy * b1 + p1.dy * b2 + p2.dy * b3 + p3.dy * b4;
 
   return new Offset(x, y);
 }
@@ -27,12 +28,12 @@ typedef void PointSetterCallback(Offset value);
 /// The spline motion is used to animate a point along a spline definied by
 /// a set of points.
 class MotionSpline extends MotionInterval {
-
   /// Creates a new spline motion with a set of points. The [setter] is a
   /// callback for setting the positions, [points] define the spline, and
   /// [duration] is the time for the motion to complete. Optionally a [curve]
   /// can be used for easing.
-  MotionSpline(this.setter, this.points, double duration, [Curve? curve]) : super(duration, curve) {
+  MotionSpline(this.setter, this.points, double duration, [Curve? curve])
+      : super(duration, curve) {
     _dt = 1.0 / (points.length - 1.0);
   }
 
@@ -49,7 +50,6 @@ class MotionSpline extends MotionInterval {
 
   @override
   void update(double t) {
-
     int p;
     double lt;
 

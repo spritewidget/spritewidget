@@ -24,7 +24,8 @@ class ParticleDesigner extends StatefulWidget {
   ParticleDesignerState createState() => new ParticleDesignerState();
 }
 
-class ParticleDesignerState extends State<ParticleDesigner> with SingleTickerProviderStateMixin {
+class ParticleDesignerState extends State<ParticleDesigner>
+    with SingleTickerProviderStateMixin {
   ParticleWorld _particleWorld;
   TabController _tabController;
   Color _backgroundColor;
@@ -66,11 +67,21 @@ class ParticleDesignerState extends State<ParticleDesigner> with SingleTickerPro
             controller: _tabController,
             isScrollable: true,
             tabs: <Tab>[
-              new Tab(text: 'PRESETS',),
-              new Tab(text: 'EMISSION',),
-              new Tab(text: 'MOVEMENT',),
-              new Tab(text: 'SIZE & ROTATION',),
-              new Tab(text: 'TEXTURE & COLORS',),
+              new Tab(
+                text: 'PRESETS',
+              ),
+              new Tab(
+                text: 'EMISSION',
+              ),
+              new Tab(
+                text: 'MOVEMENT',
+              ),
+              new Tab(
+                text: 'SIZE & ROTATION',
+              ),
+              new Tab(
+                text: 'TEXTURE & COLORS',
+              ),
             ],
           ),
         ),
@@ -110,12 +121,14 @@ class ParticleDesignerState extends State<ParticleDesigner> with SingleTickerPro
                   new PropertyDouble(
                     name: 'Max particles',
                     digits: false,
-                    value: _particleWorld.particleSystem.maxParticles.toDouble(),
+                    value:
+                        _particleWorld.particleSystem.maxParticles.toDouble(),
                     minValue: 0.0,
                     maxValue: 500.0,
                     onUpdated: (double value) {
                       setState(() {
-                        _particleWorld.particleSystem.maxParticles = value.toInt();
+                        _particleWorld.particleSystem.maxParticles =
+                            value.toInt();
                       });
                     },
                   ),
@@ -133,12 +146,14 @@ class ParticleDesignerState extends State<ParticleDesigner> with SingleTickerPro
                   new PropertyDouble(
                     name: 'Num particles to emit',
                     digits: false,
-                    value: _particleWorld.particleSystem.numParticlesToEmit.toDouble(),
+                    value: _particleWorld.particleSystem.numParticlesToEmit
+                        .toDouble(),
                     minValue: 0.0,
                     maxValue: 500.0,
                     onUpdated: (double value) {
                       setState(() {
-                        _particleWorld.particleSystem.numParticlesToEmit = value.toInt();
+                        _particleWorld.particleSystem.numParticlesToEmit =
+                            value.toInt();
                       });
                     },
                   ),
@@ -155,7 +170,8 @@ class ParticleDesignerState extends State<ParticleDesigner> with SingleTickerPro
                     onUpdated: (double value) {
                       setState(() {
                         Offset oldVar = _particleWorld.particleSystem.posVar;
-                        _particleWorld.particleSystem.posVar = new Offset(value, oldVar.dy);
+                        _particleWorld.particleSystem.posVar =
+                            new Offset(value, oldVar.dy);
                       });
                     },
                   ),
@@ -167,7 +183,8 @@ class ParticleDesignerState extends State<ParticleDesigner> with SingleTickerPro
                     onUpdated: (double value) {
                       setState(() {
                         Offset oldVar = _particleWorld.particleSystem.posVar;
-                        _particleWorld.particleSystem.posVar = new Offset(oldVar.dx, value);
+                        _particleWorld.particleSystem.posVar =
+                            new Offset(oldVar.dx, value);
                       });
                     },
                   ),
@@ -179,7 +196,8 @@ class ParticleDesignerState extends State<ParticleDesigner> with SingleTickerPro
                     onUpdated: (double value) {
                       setState(() {
                         Offset oldVar = _particleWorld.particleSystem.gravity;
-                        _particleWorld.particleSystem.gravity = new Offset(value, oldVar.dy);
+                        _particleWorld.particleSystem.gravity =
+                            new Offset(value, oldVar.dy);
                       });
                     },
                   ),
@@ -191,7 +209,8 @@ class ParticleDesignerState extends State<ParticleDesigner> with SingleTickerPro
                     onUpdated: (double value) {
                       setState(() {
                         Offset oldVar = _particleWorld.particleSystem.gravity;
-                        _particleWorld.particleSystem.gravity = new Offset(oldVar.dx, value);
+                        _particleWorld.particleSystem.gravity =
+                            new Offset(oldVar.dx, value);
                       });
                     },
                   ),
@@ -246,7 +265,8 @@ class ParticleDesignerState extends State<ParticleDesigner> with SingleTickerPro
                     maxValue: 500.0,
                     onUpdated: (double value) {
                       setState(() {
-                        _particleWorld.particleSystem.radialAcceleration = value;
+                        _particleWorld.particleSystem.radialAcceleration =
+                            value;
                       });
                     },
                   ),
@@ -257,7 +277,8 @@ class ParticleDesignerState extends State<ParticleDesigner> with SingleTickerPro
                     maxValue: 500.0,
                     onUpdated: (double value) {
                       setState(() {
-                        _particleWorld.particleSystem.radialAccelerationVar = value;
+                        _particleWorld.particleSystem.radialAccelerationVar =
+                            value;
                       });
                     },
                   ),
@@ -268,18 +289,21 @@ class ParticleDesignerState extends State<ParticleDesigner> with SingleTickerPro
                     maxValue: 500.0,
                     onUpdated: (double value) {
                       setState(() {
-                        _particleWorld.particleSystem.tangentialAcceleration = value;
+                        _particleWorld.particleSystem.tangentialAcceleration =
+                            value;
                       });
                     },
                   ),
                   new PropertyDouble(
                     name: 'Tangential acceleration variance',
-                    value: _particleWorld.particleSystem.tangentialAccelerationVar,
+                    value:
+                        _particleWorld.particleSystem.tangentialAccelerationVar,
                     minValue: 0.0,
                     maxValue: 500.0,
                     onUpdated: (double value) {
                       setState(() {
-                        _particleWorld.particleSystem.tangentialAccelerationVar = value;
+                        _particleWorld
+                            .particleSystem.tangentialAccelerationVar = value;
                       });
                     },
                   ),
@@ -497,11 +521,9 @@ class ParticleDesignerState extends State<ParticleDesigner> with SingleTickerPro
                   icon: new Icon(Icons.email),
                   color: Colors.white,
                   onPressed: () {
-                    String body = Uri.encodeComponent(
-                      json.encode(
-                        serializeParticleSystem(_particleWorld.particleSystem)
-                      )
-                    );
+                    String body = Uri.encodeComponent(json.encode(
+                        serializeParticleSystem(
+                            _particleWorld.particleSystem)));
                     // launch('mailto:?subject=ParticleSystem&body=' + body);
                   },
                 ),
@@ -517,7 +539,6 @@ class ParticleDesignerState extends State<ParticleDesigner> with SingleTickerPro
 
 UniqueKey _myKey = new UniqueKey();
 
-
 class PropertyDouble extends StatelessWidget {
   final String name;
   final double value;
@@ -526,7 +547,13 @@ class PropertyDouble extends StatelessWidget {
   final PropertyDoubleCallback onUpdated;
   final bool digits;
 
-  PropertyDouble({this.name, this.value, this.minValue, this.maxValue, this.onUpdated, this.digits=true});
+  PropertyDouble(
+      {this.name,
+      this.value,
+      this.minValue,
+      this.maxValue,
+      this.onUpdated,
+      this.digits = true});
 
   @override
   Widget build(BuildContext context) {
@@ -542,7 +569,9 @@ class PropertyDouble extends StatelessWidget {
           ),
           new Slider(
             value: value,
-            onChanged: (double value) { onUpdated(value); },
+            onChanged: (double value) {
+              onUpdated(value);
+            },
             min: minValue,
             max: maxValue,
           ),
@@ -586,8 +615,7 @@ class PropertyBlendMode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<DropdownMenuItem<BlendMode>> items = <DropdownMenuItem<BlendMode>>[];
-    for (BlendMode mode in BlendMode.values)
-      items.add(_buildItem(mode));
+    for (BlendMode mode in BlendMode.values) items.add(_buildItem(mode));
 
     return new Padding(
       padding: const EdgeInsets.only(left: 16.0, right: 16.0),
@@ -609,7 +637,8 @@ class PropertyBlendMode extends StatelessWidget {
 
   DropdownMenuItem<BlendMode> _buildItem(BlendMode mode) {
     return new DropdownMenuItem<BlendMode>(
-      child: new Text(mode.toString().substring(10, 11).toUpperCase() + mode.toString().substring(11)),
+      child: new Text(mode.toString().substring(10, 11).toUpperCase() +
+          mode.toString().substring(11)),
       value: mode,
     );
   }
@@ -649,29 +678,28 @@ class PropertyColor extends StatelessWidget {
 
   void _openColorPickerDialog(BuildContext context) {
     showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return new AlertDialog(
-          title: const Text('Background color'),
-          content: new SingleChildScrollView(
-            child: new ColorPicker(
-              pickerColor: value,
-              onColorChanged: onUpdated,
-              enableLabel: false,
-              pickerAreaHeightPercent: 0.8,
+        context: context,
+        builder: (BuildContext context) {
+          return new AlertDialog(
+            title: const Text('Background color'),
+            content: new SingleChildScrollView(
+              child: new ColorPicker(
+                pickerColor: value,
+                onColorChanged: onUpdated,
+                enableLabel: false,
+                pickerAreaHeightPercent: 0.8,
+              ),
             ),
-          ),
-          actions: <Widget>[
-            new FlatButton(
-              child: new Text('DONE'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      }
-    );
+            actions: <Widget>[
+              new FlatButton(
+                child: new Text('DONE'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        });
   }
 }
 
@@ -714,30 +742,29 @@ class PropertyColorSequenceState extends State<PropertyColorSequence> {
 
   void _openColorSequenceDesignerDialog(BuildContext context) {
     showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return new AlertDialog(
-          title: const Text('Color sequence'),
-          content: new SingleChildScrollView(
-            child: new ColorSequenceDesigner(
-              colorSequence: widget.value,
-              onChanged: (ColorSequence cs) {
-                _newColorSequence = cs;
-              },
+        context: context,
+        builder: (BuildContext context) {
+          return new AlertDialog(
+            title: const Text('Color sequence'),
+            content: new SingleChildScrollView(
+              child: new ColorSequenceDesigner(
+                colorSequence: widget.value,
+                onChanged: (ColorSequence cs) {
+                  _newColorSequence = cs;
+                },
+              ),
             ),
-          ),
-          actions: <Widget>[
-            new FlatButton(
-              child: new Text('DONE'),
-              onPressed: () {
-                Navigator.of(context).pop();
-                widget.onUpdated(_newColorSequence);
-              },
-            ),
-          ],
-        );
-      }
-    );
+            actions: <Widget>[
+              new FlatButton(
+                child: new Text('DONE'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  widget.onUpdated(_newColorSequence);
+                },
+              ),
+            ],
+          );
+        });
   }
 }
 
@@ -760,8 +787,7 @@ class PropertyTexture extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<DropdownMenuItem<int>> items = <DropdownMenuItem<int>>[];
-    for (int i = 0; i < _textureNames.length; i++)
-      items.add(_buildItem(i));
+    for (int i = 0; i < _textureNames.length; i++) items.add(_buildItem(i));
 
     return new Padding(
       padding: const EdgeInsets.only(left: 16.0, right: 16.0),

@@ -6,7 +6,6 @@ part of spritewidget;
 
 /// Provides a virtual joystick that can easily be added to your sprite scene.
 class VirtualJoystick extends NodeWithSize {
-
   /// Creates a new virtual joystick.
   VirtualJoystick() : super(new Size(160.0, 160.0)) {
     userInteractionEnabled = true;
@@ -16,10 +15,9 @@ class VirtualJoystick extends NodeWithSize {
     _center = new Offset(size.width / 2.0, size.height / 2.0);
     _handlePos = _center;
 
-    _paintHandle = new Paint()
-      ..color=new Color(0xffffffff);
+    _paintHandle = new Paint()..color = new Color(0xffffffff);
     _paintControl = new Paint()
-      ..color=new Color(0xffffffff)
+      ..color = new Color(0xffffffff)
       ..strokeWidth = 1.0
       ..style = PaintingStyle.stroke;
   }
@@ -32,7 +30,6 @@ class VirtualJoystick extends NodeWithSize {
   /// True if the user is currently touching the joystick.
   bool get isDown => _isDown;
   bool _isDown = false;
-
 
   Offset? _pointerDownAt;
   Offset? _center;
@@ -47,21 +44,22 @@ class VirtualJoystick extends NodeWithSize {
       _pointerDownAt = event.boxPosition;
       motions!.stopAll();
       _isDown = true;
-    }
-    else if (event.type == PointerUpEvent || event.type == PointerCancelEvent) {
+    } else if (event.type == PointerUpEvent ||
+        event.type == PointerCancelEvent) {
       _pointerDownAt = null;
       _value = Offset.zero;
-      MotionTween moveToCenter = new MotionTween((a) { _handlePos = a; }, _handlePos, _center, 0.4, Curves.elasticOut);
+      MotionTween moveToCenter = new MotionTween((a) {
+        _handlePos = a;
+      }, _handlePos, _center, 0.4, Curves.elasticOut);
       motions!.run(moveToCenter);
       _isDown = false;
     } else if (event.type == PointerMoveEvent) {
       Offset movedDist = event.boxPosition - _pointerDownAt!;
 
-      _value = new Offset(
-        (movedDist.dx / 80.0).clamp(-1.0, 1.0),
-        (movedDist.dy / 80.0).clamp(-1.0, 1.0));
+      _value = new Offset((movedDist.dx / 80.0).clamp(-1.0, 1.0),
+          (movedDist.dy / 80.0).clamp(-1.0, 1.0));
 
-        _handlePos = _center! + new Offset(_value.dx * 40.0, _value.dy * 40.0);
+      _handlePos = _center! + new Offset(_value.dx * 40.0, _value.dy * 40.0);
     }
     return true;
   }

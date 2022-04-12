@@ -8,10 +8,10 @@ part of spritewidget;
 /// inner area to fit the size of the [Node]. This is ideal for fast drawing
 /// of things like buttons.
 class NineSliceSprite extends NodeWithSize with SpritePaint {
-
   /// Creates a new NineSliceSprite from the privided [texture], [size], and
   /// texture [insets].
-  NineSliceSprite(SpriteTexture texture, Size size, EdgeInsets insets) : super(size) {
+  NineSliceSprite(SpriteTexture texture, Size size, EdgeInsets insets)
+      : super(size) {
     assert(texture != null && !texture.rotated);
     assert(size != null);
     assert(insets != null);
@@ -23,7 +23,7 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
   /// Creates a new NineSliceSprite from the provided [image], [size], and
   /// texture [insets].
   NineSliceSprite.fromImage(ui.Image image, Size size, EdgeInsets insets)
-    : this(new SpriteTexture(image), size, insets);
+      : this(new SpriteTexture(image), size, insets);
 
   /// The texture that the sprite will render to screen. Cannot be null.
   ///
@@ -39,11 +39,10 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
       _cachedPaint = new Paint();
     } else {
       Matrix4 matrix = new Matrix4.identity();
-      ImageShader shader = new ImageShader(texture.image,
-        TileMode.repeated, TileMode.repeated, matrix.storage);
+      ImageShader shader = new ImageShader(
+          texture.image, TileMode.repeated, TileMode.repeated, matrix.storage);
 
-      _cachedPaint = new Paint()
-        ..shader = shader;
+      _cachedPaint = new Paint()..shader = shader;
     }
   }
 
@@ -98,7 +97,6 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
       // Calcuate vertices and indices.
       _vertices = <Offset>[
         Offset.zero,
-
       ];
 
       // Texture width and height.
@@ -112,7 +110,7 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
         late double vy;
         late double ty;
 
-        switch(y) {
+        switch (y) {
           case 0:
             vy = 0.0;
             ty = texture.frame.top;
@@ -135,7 +133,7 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
           late double vx;
           late double tx;
 
-          switch(x) {
+          switch (x) {
             case 0:
               vx = 0.0;
               tx = texture.frame.left;
@@ -165,8 +163,7 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
       for (int y = 0; y < 3; y += 1) {
         for (int x = 0; x < 3; x += 1) {
           // Check if we should skip the middle rectangle.
-          if (!drawCenterPart && x == 1 && y == 1)
-            continue;
+          if (!drawCenterPart && x == 1 && y == 1) continue;
 
           // Add a rectangle (two triangles).
           int index = y * 4 + x;
