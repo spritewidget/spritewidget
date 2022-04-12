@@ -3,13 +3,13 @@ publish_to: 'none'
 description: A new Flutter project.
 
 environment:
-  sdk: ">=2.2.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.0
-  flutter_colorpicker: ^0.0.3
+  flutter_colorpicker: ^1.0.3
 #  url_launcher: ^6.0.20
   spritewidget:
     path: ../../
@@ -17,6 +17,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^1.0.0
 
 
 # For information on the generic Dart part of this file, see the

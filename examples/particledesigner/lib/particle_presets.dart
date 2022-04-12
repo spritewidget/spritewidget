@@ -10,7 +10,7 @@ import 'package:spritewidget/spritewidget.dart';
 import 'particle_designer.dart';
 import 'particle_world.dart';
 
-String saved;
+String? saved;
 
 final String _pDefault =
     '{"life":1.5,"lifeVar":1.0,"posVar":[0.0,0.0],"startSize":2.5,"startSizeVar":0.5,"endSize":0.0,"endSizeVar":0.0,"startRotation":0.0,"startRotationVar":0.0,"endRotation":0.0,"endRotationVar":0.0,"rotateToMovement":false,"direction":0.0,"directionVar":360.0,"speed":100.0,"speedVar":50.0,"radialAcceleration":0.0,"radialAccelerationVar":0.0,"tangentialAcceleration":0.0,"tangentialAccelerationVar":0.0,"maxParticles":100,"emissionRate":50.0,"colorSequence":{"colors":[4294967295,16777215],"colorStops":[0.0,1.0]},"alphaVar":0,"redVar":0,"greenVar":0,"blueVar":0,"numParticlesToEmit":0,"autoRemoveOnFinish":false,"gravity":[0.0,0.0]}';
@@ -45,25 +45,25 @@ class ParticlePreset {
         deserializeParticleSystem(json.decode(_pDefault),
             particleSystem: world.particleSystem);
         world.selectedTexture = 5;
-        updateColor(Colors.blueGrey[700]);
+        updateColor(Colors.blueGrey[700]!);
         break;
       case ParticlePresetType.Stars:
         deserializeParticleSystem(json.decode(_pStars),
             particleSystem: world.particleSystem);
         world.selectedTexture = 2;
-        updateColor(Colors.cyan[700]);
+        updateColor(Colors.cyan[700]!);
         break;
       case ParticlePresetType.Fireworks:
         deserializeParticleSystem(json.decode(_pFireworks),
             particleSystem: world.particleSystem);
         world.selectedTexture = 1;
-        updateColor(Colors.blueGrey[900]);
+        updateColor(Colors.blueGrey[900]!);
         break;
       case ParticlePresetType.Disco:
         deserializeParticleSystem(json.decode(_pDisco),
             particleSystem: world.particleSystem);
         world.selectedTexture = 0;
-        updateColor(Colors.purple[800]);
+        updateColor(Colors.purple[800]!);
         break;
       case ParticlePresetType.Fire:
         deserializeParticleSystem(json.decode(_pFire),
@@ -75,13 +75,13 @@ class ParticlePreset {
         deserializeParticleSystem(json.decode(_pMagic),
             particleSystem: world.particleSystem);
         world.selectedTexture = 5;
-        updateColor(Colors.blueGrey[800]);
+        updateColor(Colors.blueGrey[800]!);
         break;
       case ParticlePresetType.Smoke:
         deserializeParticleSystem(json.decode(_pSmoke),
             particleSystem: world.particleSystem);
         world.selectedTexture = 4;
-        updateColor(Colors.lightBlue[200]);
+        updateColor(Colors.lightBlue[200]!);
         break;
     }
 

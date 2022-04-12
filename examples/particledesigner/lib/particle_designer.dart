@@ -24,16 +24,16 @@ typedef void PropertyColorSequenceCallback(ColorSequence value);
 class ParticleDesigner extends StatefulWidget {
   final ImageMap images;
 
-  ParticleDesigner({this.images});
+  ParticleDesigner({required this.images});
 
   ParticleDesignerState createState() => new ParticleDesignerState();
 }
 
 class ParticleDesignerState extends State<ParticleDesigner>
     with SingleTickerProviderStateMixin {
-  ParticleWorld _particleWorld;
-  TabController _tabController;
-  Color _backgroundColor;
+  late ParticleWorld _particleWorld;
+  late TabController _tabController;
+  late Color _backgroundColor;
 
   @override
   void initState() {
@@ -41,7 +41,7 @@ class ParticleDesignerState extends State<ParticleDesigner>
     _particleWorld = new ParticleWorld(images: widget.images);
     _tabController = new TabController(length: 5, vsync: this);
     _tabController.index = 0;
-    _backgroundColor = Colors.blueGrey[700];
+    _backgroundColor = Colors.blueGrey[700]!;
   }
 
   Widget build(BuildContext context) {
@@ -151,7 +151,7 @@ class ParticleDesignerState extends State<ParticleDesigner>
                   new PropertyDouble(
                     name: 'Num particles to emit',
                     digits: false,
-                    value: _particleWorld.particleSystem.numParticlesToEmit
+                    value: _particleWorld.particleSystem.numParticlesToEmit!
                         .toDouble(),
                     minValue: 0.0,
                     maxValue: 500.0,
@@ -195,12 +195,12 @@ class ParticleDesignerState extends State<ParticleDesigner>
                   ),
                   new PropertyDouble(
                     name: 'Gravity x',
-                    value: _particleWorld.particleSystem.gravity.dx,
+                    value: _particleWorld.particleSystem.gravity!.dx,
                     minValue: -512.0,
                     maxValue: 512.0,
                     onUpdated: (double value) {
                       setState(() {
-                        Offset oldVar = _particleWorld.particleSystem.gravity;
+                        Offset oldVar = _particleWorld.particleSystem.gravity!;
                         _particleWorld.particleSystem.gravity =
                             new Offset(value, oldVar.dy);
                       });
@@ -208,12 +208,12 @@ class ParticleDesignerState extends State<ParticleDesigner>
                   ),
                   new PropertyDouble(
                     name: 'Gravity y',
-                    value: _particleWorld.particleSystem.gravity.dy,
+                    value: _particleWorld.particleSystem.gravity!.dy,
                     minValue: -512.0,
                     maxValue: 512.0,
                     onUpdated: (double value) {
                       setState(() {
-                        Offset oldVar = _particleWorld.particleSystem.gravity;
+                        Offset oldVar = _particleWorld.particleSystem.gravity!;
                         _particleWorld.particleSystem.gravity =
                             new Offset(oldVar.dx, value);
                       });
@@ -430,7 +430,7 @@ class ParticleDesignerState extends State<ParticleDesigner>
                   ),
                   new PropertyColorSequence(
                     name: 'Color sequence',
-                    value: _particleWorld.particleSystem.colorSequence,
+                    value: _particleWorld.particleSystem.colorSequence!,
                     onUpdated: (ColorSequence c) {
                       setState(() {
                         _particleWorld.particleSystem.colorSequence = c;
@@ -553,11 +553,11 @@ class PropertyDouble extends StatelessWidget {
   final bool digits;
 
   PropertyDouble(
-      {this.name,
-      this.value,
-      this.minValue,
-      this.maxValue,
-      this.onUpdated,
+      {required this.name,
+      required this.value,
+      required this.minValue,
+      required this.maxValue,
+      required this.onUpdated,
       this.digits = true});
 
   @override
@@ -591,7 +591,8 @@ class PropertyBool extends StatelessWidget {
   final bool value;
   final PropertyBoolCallback onUpdated;
 
-  PropertyBool({this.name, this.value, this.onUpdated});
+  PropertyBool(
+      {required this.name, required this.value, required this.onUpdated});
 
   @override
   Widget build(BuildContext context) {
@@ -603,7 +604,11 @@ class PropertyBool extends StatelessWidget {
           new Expanded(
             child: new Container(),
           ),
-          new Checkbox(value: value, onChanged: onUpdated),
+          new Checkbox(
+              value: value,
+              onChanged: (value) {
+                onUpdated(value!);
+              }),
         ],
       ),
     );
@@ -615,7 +620,8 @@ class PropertyBlendMode extends StatelessWidget {
   final BlendMode value;
   final PropertyBlendModeCallback onUpdated;
 
-  PropertyBlendMode({this.name, this.value, this.onUpdated});
+  PropertyBlendMode(
+      {required this.name, required this.value, required this.onUpdated});
 
   @override
   Widget build(BuildContext context) {
@@ -633,7 +639,9 @@ class PropertyBlendMode extends StatelessWidget {
           new DropdownButton<BlendMode>(
             items: items,
             value: value,
-            onChanged: onUpdated,
+            onChanged: (value) {
+              onUpdated(value!);
+            },
           ),
         ],
       ),
@@ -654,7 +662,8 @@ class PropertyColor extends StatelessWidget {
   final Color value;
   final PropertyColorCallback onUpdated;
 
-  PropertyColor({this.name, this.value, this.onUpdated});
+  PropertyColor(
+      {required this.name, required this.value, required this.onUpdated});
 
   @override
   Widget build(BuildContext context) {
@@ -691,7 +700,7 @@ class PropertyColor extends StatelessWidget {
               child: new ColorPicker(
                 pickerColor: value,
                 onColorChanged: onUpdated,
-                enableLabel: false,
+                // enableLabel: false,
                 pickerAreaHeightPercent: 0.8,
               ),
             ),
@@ -713,14 +722,15 @@ class PropertyColorSequence extends StatefulWidget {
   final ColorSequence value;
   final PropertyColorSequenceCallback onUpdated;
 
-  PropertyColorSequence({this.name, this.value, this.onUpdated});
+  PropertyColorSequence(
+      {required this.name, required this.value, required this.onUpdated});
 
   @override
   PropertyColorSequenceState createState() => new PropertyColorSequenceState();
 }
 
 class PropertyColorSequenceState extends State<PropertyColorSequence> {
-  ColorSequence _newColorSequence;
+  late ColorSequence _newColorSequence;
 
   @override
   Widget build(BuildContext context) {
@@ -787,7 +797,8 @@ class PropertyTexture extends StatelessWidget {
   final int value;
   final PropertyIntCallback onUpdated;
 
-  PropertyTexture({this.name, this.value, this.onUpdated});
+  PropertyTexture(
+      {required this.name, required this.value, required this.onUpdated});
 
   @override
   Widget build(BuildContext context) {
@@ -805,7 +816,9 @@ class PropertyTexture extends StatelessWidget {
           new DropdownButton<int>(
             items: items,
             value: value,
-            onChanged: onUpdated,
+            onChanged: (value) {
+              onUpdated(value!);
+            },
           ),
         ],
       ),
@@ -824,7 +837,7 @@ class PropertyDescription extends StatelessWidget {
   final String name;
   final String value;
 
-  PropertyDescription({this.name, this.value});
+  PropertyDescription({required this.name, required this.value});
 
   @override
   Widget build(BuildContext context) {
@@ -845,7 +858,7 @@ class PropertyDescription extends StatelessWidget {
 }
 
 class MainEditorLayout extends StatelessWidget {
-  MainEditorLayout({this.spriteDisplay, this.propertyEditor});
+  MainEditorLayout({required this.spriteDisplay, required this.propertyEditor});
 
   final Widget spriteDisplay;
   final Widget propertyEditor;

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:spritewidget/spritewidget.dart';
 
 class ParticleWorld extends NodeWithSize {
-  ParticleSystem particleSystem;
+  late ParticleSystem particleSystem;
 
   final ImageMap images;
 
@@ -16,15 +16,15 @@ class ParticleWorld extends NodeWithSize {
 
   set selectedTexture(int texture) {
     particleSystem.texture =
-        new SpriteTexture(images['assets/particle-$texture.png']);
+        new SpriteTexture(images['assets/particle-$texture.png']!);
     _selectedTexture = texture;
   }
 
-  ParticleWorld({this.images}) : super(const Size(1024.0, 1024.0)) {
+  ParticleWorld({required this.images}) : super(const Size(1024.0, 1024.0)) {
     userInteractionEnabled = true;
 
     SpriteTexture texture =
-        new SpriteTexture(images['assets/particle-$_selectedTexture.png']);
+        new SpriteTexture(images['assets/particle-$_selectedTexture.png']!);
 
     particleSystem = new ParticleSystem(
       texture,
