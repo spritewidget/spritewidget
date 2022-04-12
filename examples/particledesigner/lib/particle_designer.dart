@@ -1,13 +1,18 @@
+// Copyright 2022 The SpriteWidget Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:spritewidget/spritewidget.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:spritewidget/spritewidget.dart';
+
+import 'colorsequence_designer.dart';
 // import 'package:url_launcher/url_launcher.dart';
 
 import 'particle_presets.dart';
 import 'particle_world.dart';
-import 'colorsequence_designer.dart';
 
 typedef void PropertyDoubleCallback(double value);
 typedef void PropertyIntCallback(int value);

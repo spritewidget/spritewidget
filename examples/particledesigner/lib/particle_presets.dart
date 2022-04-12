@@ -1,9 +1,14 @@
+// Copyright 2022 The SpriteWidget Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:spritewidget/spritewidget.dart';
-import 'particle_world.dart';
+
 import 'particle_designer.dart';
+import 'particle_world.dart';
 
 String saved;
 

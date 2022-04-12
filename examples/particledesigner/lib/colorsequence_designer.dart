@@ -1,9 +1,13 @@
+// Copyright 2022 The SpriteWidget Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
 import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:spritewidget/spritewidget.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:spritewidget/spritewidget.dart';
 
 class ColorSequenceWell extends StatelessWidget {
   final ColorSequence colorSequence;
