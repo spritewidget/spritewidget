@@ -13,9 +13,7 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
   /// texture [insets].
   NineSliceSprite(SpriteTexture texture, Size size, EdgeInsets insets)
       : super(size) {
-    assert(texture != null && !texture.rotated);
-    assert(size != null);
-    assert(insets != null);
+    assert(!texture.rotated);
     pivot = const Offset(0.5, 0.5);
     this.texture = texture;
     this.insets = insets;
@@ -24,7 +22,7 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
   /// Creates a new NineSliceSprite from the provided [image], [size], and
   /// texture [insets].
   NineSliceSprite.fromImage(ui.Image image, Size size, EdgeInsets insets)
-      : this(new SpriteTexture(image), size, insets);
+      : this(SpriteTexture(image), size, insets);
 
   /// The texture that the sprite will render to screen. Cannot be null.
   ///
@@ -36,15 +34,11 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
   set texture(SpriteTexture texture) {
     _texture = texture;
     _isDirty = true;
-    if (texture == null) {
-      _cachedPaint = new Paint();
-    } else {
-      Matrix4 matrix = new Matrix4.identity();
-      ImageShader shader = new ImageShader(
-          texture.image, TileMode.repeated, TileMode.repeated, matrix.storage);
+    Matrix4 matrix = Matrix4.identity();
+    ImageShader shader = ImageShader(
+        texture.image, TileMode.repeated, TileMode.repeated, matrix.storage);
 
-      _cachedPaint = new Paint()..shader = shader;
-    }
+    _cachedPaint = Paint()..shader = shader;
   }
 
   /// The insets of the texture as normalized values. The insets define the
@@ -54,7 +48,6 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
   late EdgeInsets _insets;
 
   set insets(EdgeInsets insets) {
-    assert(insets != null);
     _insets = insets;
     _isDirty = true;
   }
@@ -76,7 +69,7 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
     _isDirty = true;
   }
 
-  Paint _cachedPaint = new Paint()
+  Paint _cachedPaint = Paint()
     ..filterQuality = FilterQuality.low
     ..isAntiAlias = false;
 
@@ -153,8 +146,8 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
               break;
           }
 
-          _vertices.add(new Offset(vx, vy));
-          _textureCoordinates.add(new Offset(tx, ty));
+          _vertices.add(Offset(vx, vy));
+          _textureCoordinates.add(Offset(tx, ty));
           _colors.add(const Color(0xffffffff));
         }
       }

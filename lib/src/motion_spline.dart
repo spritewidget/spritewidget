@@ -20,11 +20,11 @@ Offset _cardinalSplineAt(
   double x = p0.dx * b1 + p1.dx * b2 + p2.dx * b3 + p3.dx * b4;
   double y = p0.dy * b1 + p1.dy * b2 + p2.dy * b3 + p3.dy * b4;
 
-  return new Offset(x, y);
+  return Offset(x, y);
 }
 
 /// Signature for callbacks used by the [MotionSpline] to set a [Point] value.
-typedef void PointSetterCallback(Offset value);
+typedef PointSetterCallback = void Function(Offset value);
 
 /// The spline motion is used to animate a point along a spline definied by
 /// a set of points.

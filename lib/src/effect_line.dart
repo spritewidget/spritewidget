@@ -37,37 +37,32 @@ class EffectLine extends Node {
   /// [texture] parameter is required, all other parameters are optional.
   EffectLine({
     required this.texture,
-    this.transferMode: BlendMode.dstOver,
+    this.transferMode = BlendMode.dstOver,
     required List<Offset> points,
-    this.widthMode: EffectLineWidthMode.linear,
-    this.minWidth: 10.0,
-    this.maxWidth: 10.0,
-    this.widthGrowthSpeed: 0.0,
-    this.animationMode: EffectLineAnimationMode.none,
-    this.scrollSpeed: 0.1,
-    double scrollStart: 0.0,
+    this.widthMode = EffectLineWidthMode.linear,
+    this.minWidth = 10.0,
+    this.maxWidth = 10.0,
+    this.widthGrowthSpeed = 0.0,
+    this.animationMode = EffectLineAnimationMode.none,
+    this.scrollSpeed = 0.1,
+    double scrollStart = 0.0,
     this.fadeDuration,
     this.fadeAfterDelay,
     this.textureLoopLength,
-    this.simplify: true,
+    this.simplify = true,
     ColorSequence? colorSequence,
   }) {
-    if (points == null)
-      this.points = <Offset>[];
-    else
-      this.points = points;
+    this.points = points;
 
     _colorSequence = colorSequence;
-    if (_colorSequence == null) {
-      _colorSequence = new ColorSequence.fromStartAndEndColor(
-        const Color(0xffffffff),
-        const Color(0xffffffff),
-      );
-    }
+    _colorSequence ??= ColorSequence.fromStartAndEndColor(
+      const Color(0xffffffff),
+      const Color(0xffffffff),
+    );
 
     _offset = scrollStart;
 
-    _painter = new TexturedLinePainter(points, _colors, _widths, texture);
+    _painter = TexturedLinePainter(points, _colors, _widths, texture);
     _painter.textureLoopLength = textureLoopLength;
   }
 
@@ -159,7 +154,7 @@ class EffectLine extends Node {
       }
 
       // Check if the first/oldest point should be removed
-      while (_points.length > 0 &&
+      while (_points.isNotEmpty &&
           _pointAges[0] > (fadeDuration! + fadeAfterDelay!)) {
         // Update scroll if it isn't the last and only point that is about to
         // removed
@@ -195,7 +190,7 @@ class EffectLine extends Node {
         if (age > fadeAfterDelay!) {
           double fade = 1.0 - (age - fadeAfterDelay!) / fadeDuration!;
           int alpha = (color.alpha * fade).toInt().clamp(0, 255);
-          color = new Color.fromARGB(alpha, color.red, color.green, color.blue);
+          color = Color.fromARGB(alpha, color.red, color.green, color.blue);
         }
       }
       colors.add(color);
@@ -227,7 +222,7 @@ class EffectLine extends Node {
   /// Adds a new point to the end of the line.
   void addPoint(Offset point) {
     // Skip duplicate points
-    if (points.length > 0 &&
+    if (points.isNotEmpty &&
         point.dx == points[points.length - 1].dx &&
         point.dy == points[points.length - 1].dy) return;
 
@@ -265,6 +260,6 @@ class EffectLine extends Node {
     if (t < 0) return _dist2(p, v);
     if (t > 1) return _dist2(p, w);
     return _dist2(
-        p, new Offset(v.dx + t * (w.dx - v.dx), v.dy + t * (w.dy - v.dy)));
+        p, Offset(v.dx + t * (w.dx - v.dx), v.dy + t * (w.dy - v.dy)));
   }
 }

@@ -46,8 +46,6 @@ class SpriteBox extends RenderBox {
   ///     var spriteBox = SpriteBox(myNode, SpriteBoxTransformMode.fixedHeight);
   SpriteBox(NodeWithSize rootNode,
       [SpriteBoxTransformMode mode = SpriteBoxTransformMode.letterbox]) {
-    assert(rootNode != null);
-
     // Setup transform mode
     _transformMode = mode;
     // this.transformMode = mode;
@@ -170,7 +168,7 @@ class SpriteBox extends RenderBox {
   void _registerNode(Node node) {
     _motionControllers = null;
     _eventTargets = null;
-    if (node == null || node.constraints != null) _constrainedNodes = null;
+    if (node.constraints != null) _constrainedNodes = null;
   }
 
   void _deregisterNode(Node? node) {
@@ -244,22 +242,23 @@ class SpriteBox extends RenderBox {
       if (node.handleMultiplePointers ||
           event.pointer == node._handlingPointer) {
         // Dispatch event
-        bool consumedEvent = node.handleEvent(new SpriteBoxEvent(
+        bool consumedEvent = node.handleEvent(SpriteBoxEvent(
             globalToLocal(event.position), event.runtimeType, event.pointer));
-        if (consumedEvent == null || consumedEvent) break;
+        if (consumedEvent) break;
       }
     }
 
     // De-register pointer for nodes that doesn't handle multiple pointers
     for (Node node in targets) {
-      if (event is PointerUpEvent || event is PointerCancelEvent)
+      if (event is PointerUpEvent || event is PointerCancelEvent) {
         node._handlingPointer = null;
+      }
     }
   }
 
   @override
   bool hitTest(HitTestResult result, {required Offset position}) {
-    result.add(new _SpriteBoxHitTestEntry(this, position));
+    result.add(_SpriteBoxHitTestEntry(this, position));
     return true;
   }
 
@@ -280,7 +279,7 @@ class SpriteBox extends RenderBox {
   }
 
   void _calcTransformMatrix() {
-    _transformMatrix = new Matrix4.identity();
+    _transformMatrix = Matrix4.identity();
 
     // Calculate matrix
     double scaleX = 1.0;
@@ -322,13 +321,13 @@ class SpriteBox extends RenderBox {
         scaleX = size.width / systemWidth;
         scaleY = scaleX;
         systemHeight = size.height / scaleX;
-        rootNode.size = new Size(systemWidth, systemHeight);
+        rootNode.size = Size(systemWidth, systemHeight);
         break;
       case SpriteBoxTransformMode.fixedHeight:
         scaleY = size.height / systemHeight;
         scaleX = scaleY;
         systemWidth = size.width / scaleY;
-        rootNode.size = new Size(systemWidth, systemHeight);
+        rootNode.size = Size(systemWidth, systemHeight);
         break;
       case SpriteBoxTransformMode.nativePoints:
         systemWidth = size.width;
@@ -339,7 +338,7 @@ class SpriteBox extends RenderBox {
         break;
     }
 
-    _visibleArea = new Rect.fromLTRB(-offsetX / scaleX, -offsetY / scaleY,
+    _visibleArea = Rect.fromLTRB(-offsetX / scaleX, -offsetY / scaleY,
         systemWidth + offsetX / scaleX, systemHeight + offsetY / scaleY);
 
     _transformMatrix!.translate(offsetX, offsetY);
@@ -383,7 +382,7 @@ class SpriteBox extends RenderBox {
     if (!attached) return;
 
     // Calculate delta and frame rate
-    if (_lastTimeStamp == null) _lastTimeStamp = timeStamp;
+    _lastTimeStamp ??= timeStamp;
     double delta = (timeStamp - _lastTimeStamp!).inMicroseconds.toDouble() /
         Duration.microsecondsPerSecond;
     _lastTimeStamp = timeStamp;
@@ -464,7 +463,7 @@ class SpriteBox extends RenderBox {
   }
 
   void _addConstrainedNodes(Node node, List<Node>? nodes) {
-    if (node._constraints != null && node._constraints!.length > 0) {
+    if (node._constraints != null && node._constraints!.isNotEmpty) {
       nodes!.add(node);
     }
 
@@ -489,8 +488,6 @@ class SpriteBox extends RenderBox {
   ///
   ///     List nodes = mySpriteBox.findNodesAtPosition(new Point(50.0, 50.0));
   List<Node> findNodesAtPosition(Offset position) {
-    assert(position != null);
-
     List<Node> nodes = <Node>[];
 
     // Traverse the render tree and find objects at the position

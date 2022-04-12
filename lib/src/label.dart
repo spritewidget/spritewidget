@@ -38,8 +38,8 @@ class Label extends Node {
   @override
   void paint(Canvas canvas) {
     if (_painter == null) {
-      _painter = new TextPainter(
-        text: new TextSpan(style: _textStyle, text: _text),
+      _painter = TextPainter(
+        text: TextSpan(style: _textStyle, text: _text),
         textDirection: TextDirection.ltr,
       )..layout();
       _width = _painter!.size.width;
@@ -47,9 +47,9 @@ class Label extends Node {
 
     Offset offset = Offset.zero;
     if (textAlign == TextAlign.center) {
-      offset = new Offset(-_width / 2.0, 0.0);
+      offset = Offset(-_width / 2.0, 0.0);
     } else if (textAlign == TextAlign.right) {
-      offset = new Offset(-_width, 0.0);
+      offset = Offset(-_width, 0.0);
     }
 
     _painter!.paint(canvas, offset);

@@ -13,7 +13,7 @@ class TexturedLine extends Node {
   TexturedLine(List<Offset> points, List<Color> colors, List<double> widths,
       [SpriteTexture? texture, List<double>? textureStops]) {
     painter =
-        new TexturedLinePainter(points, colors, widths, texture, textureStops);
+        TexturedLinePainter(points, colors, widths, texture, textureStops);
   }
 
   /// The painter used to draw the line.
@@ -59,13 +59,13 @@ class TexturedLinePainter {
   set texture(SpriteTexture? texture) {
     _texture = texture;
     if (texture == null) {
-      _cachedPaint = new Paint();
+      _cachedPaint = Paint();
     } else {
-      Matrix4 matrix = new Matrix4.identity();
-      ImageShader shader = new ImageShader(
+      Matrix4 matrix = Matrix4.identity();
+      ImageShader shader = ImageShader(
           texture.image, TileMode.repeated, TileMode.repeated, matrix.storage);
 
-      _cachedPaint = new Paint()..shader = shader;
+      _cachedPaint = Paint()..shader = shader;
     }
   }
 
@@ -93,7 +93,7 @@ class TexturedLinePainter {
 
   /// The length, in points, that the texture is stretched to. If the
   /// textureLoopLength is shorter than the line, the texture will be looped.
-  double get textureLoopLength => textureLoopLength;
+  double? get textureLoopLength => _textureLoopLength;
 
   double? _textureLoopLength;
 
@@ -109,12 +109,11 @@ class TexturedLinePainter {
   /// The [TransferMode] used to draw the line to the [Canvas].
   BlendMode transferMode = BlendMode.srcOver;
 
-  Paint _cachedPaint = new Paint();
+  Paint _cachedPaint = Paint();
 
   /// Paints the line to the [canvas].
   void paint(Canvas canvas) {
     // Check input values
-    assert(_points != null);
     if (_points.length < 2) return;
 
     assert(_points.length == colors.length);
@@ -125,7 +124,7 @@ class TexturedLinePainter {
     // Calculate normals
     List<Vector2> vectors = <Vector2>[];
     for (Offset pt in _points) {
-      vectors.add(new Vector2(pt.dx, pt.dy));
+      vectors.add(Vector2(pt.dx, pt.dy));
     }
     List<Vector2> miters = _computeMiterList(vectors, false);
 
@@ -165,8 +164,8 @@ class TexturedLinePainter {
 
       // Texture coordinate points
       double xPos = _xPosForStop(stops![0]);
-      textureCoordinates.add(new Offset(xPos, textureTop));
-      textureCoordinates.add(new Offset(xPos, textureBottom));
+      textureCoordinates.add(Offset(xPos, textureTop));
+      textureCoordinates.add(Offset(xPos, textureBottom));
     }
 
     // Add the rest of the points
@@ -191,8 +190,8 @@ class TexturedLinePainter {
       if (texture != null) {
         // Texture coordinate points
         double xPos = _xPosForStop(stops![i]);
-        textureCoordinates!.add(new Offset(xPos, textureTop));
-        textureCoordinates.add(new Offset(xPos, textureBottom));
+        textureCoordinates!.add(Offset(xPos, textureTop));
+        textureCoordinates.add(Offset(xPos, textureBottom));
       }
 
       // Update last values
@@ -225,8 +224,8 @@ class TexturedLinePainter {
       List<Offset> vertices, Offset point, Vector2 miter, double width) {
     double halfWidth = width / 2.0;
 
-    Offset offset0 = new Offset(miter[0] * halfWidth, miter[1] * halfWidth);
-    Offset offset1 = new Offset(-miter[0] * halfWidth, -miter[1] * halfWidth);
+    Offset offset0 = Offset(miter[0] * halfWidth, miter[1] * halfWidth);
+    Offset offset1 = Offset(-miter[0] * halfWidth, -miter[1] * halfWidth);
 
     Offset vertex0 = point + offset0;
     Offset vertex1 = point + offset1;
@@ -272,7 +271,7 @@ class TexturedLinePainter {
     // Normalize the values in the range [0.0, 1.0]
     for (int i = 1; i < points.length; i++) {
       stops[i] = stops[i] / length;
-      new Offset(512.0, 512.0);
+      const Offset(512.0, 512.0);
     }
 
     _calculatedTextureStops = stops;
@@ -281,10 +280,10 @@ class TexturedLinePainter {
 }
 
 Vector2 _computeMiter(Vector2 lineA, Vector2 lineB) {
-  Vector2 miter = new Vector2(-(lineA[1] + lineB[1]), lineA[0] + lineB[0]);
+  Vector2 miter = Vector2(-(lineA[1] + lineB[1]), lineA[0] + lineB[0]);
   miter.normalize();
 
-  double dot = dot2(miter, new Vector2(-lineA[1], lineA[0]));
+  double dot = dot2(miter, Vector2(-lineA[1], lineA[0]));
   if (dot.abs() < 0.1) {
     miter = _vectorNormal(lineA)..normalize();
     return miter;
@@ -295,7 +294,7 @@ Vector2 _computeMiter(Vector2 lineA, Vector2 lineB) {
 }
 
 Vector2 _vectorNormal(Vector2 v) {
-  return new Vector2(-v[1], v[0]);
+  return Vector2(-v[1], v[0]);
 }
 
 Vector2 _vectorDirection(Vector2 a, Vector2 b) {
@@ -308,7 +307,7 @@ List<Vector2> _computeMiterList(List<Vector2> points, bool closed) {
   Vector2? curNormal;
 
   if (closed) {
-    points = new List<Vector2>.from(points);
+    points = List<Vector2>.from(points);
     points.add(points[0]);
   }
 
@@ -319,9 +318,7 @@ List<Vector2> _computeMiterList(List<Vector2> points, bool closed) {
     Vector2? next = (i < total - 1) ? points[i + 1] : null;
 
     Vector2 lineA = _vectorDirection(cur, last);
-    if (curNormal == null) {
-      curNormal = _vectorNormal(lineA);
-    }
+    curNormal ??= _vectorNormal(lineA);
 
     if (i == 1) {
       out.add(curNormal);

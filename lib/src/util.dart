@@ -5,7 +5,7 @@
 
 part of spritewidget;
 
-math.Random _random = new math.Random();
+math.Random _random = math.Random();
 
 // Random methods
 
@@ -51,47 +51,51 @@ class _Atan2Constants {
 
   static const int ezis = -size;
 
-  final Float64List ppy = new Float64List(size + 1);
-  final Float64List ppx = new Float64List(size + 1);
-  final Float64List pny = new Float64List(size + 1);
-  final Float64List pnx = new Float64List(size + 1);
-  final Float64List npy = new Float64List(size + 1);
-  final Float64List npx = new Float64List(size + 1);
-  final Float64List nny = new Float64List(size + 1);
-  final Float64List nnx = new Float64List(size + 1);
+  final Float64List ppy = Float64List(size + 1);
+  final Float64List ppx = Float64List(size + 1);
+  final Float64List pny = Float64List(size + 1);
+  final Float64List pnx = Float64List(size + 1);
+  final Float64List npy = Float64List(size + 1);
+  final Float64List npx = Float64List(size + 1);
+  final Float64List nny = Float64List(size + 1);
+  final Float64List nnx = Float64List(size + 1);
 }
 
 /// Provides convenience methods for calculations often carried out in graphics.
 /// Some of the methods are returning approximations.
 class GameMath {
-  static final _Atan2Constants _atan2 = new _Atan2Constants();
+  static final _Atan2Constants _atan2 = _Atan2Constants();
 
   /// Returns the angle of two vector components. The result is less acurate
   /// than the standard atan2 function in the math package.
   static double atan2(double y, double x) {
     if (x >= 0) {
       if (y >= 0) {
-        if (x >= y)
+        if (x >= y) {
           return _atan2.ppy[(_Atan2Constants.size * y / x + 0.5).toInt()];
-        else
+        } else {
           return _atan2.ppx[(_Atan2Constants.size * x / y + 0.5).toInt()];
+        }
       } else {
-        if (x >= -y)
+        if (x >= -y) {
           return _atan2.pny[(_Atan2Constants.ezis * y / x + 0.5).toInt()];
-        else
+        } else {
           return _atan2.pnx[(_Atan2Constants.ezis * x / y + 0.5).toInt()];
+        }
       }
     } else {
       if (y >= 0) {
-        if (-x >= y)
+        if (-x >= y) {
           return _atan2.npy[(_Atan2Constants.ezis * y / x + 0.5).toInt()];
-        else
+        } else {
           return _atan2.npx[(_Atan2Constants.ezis * x / y + 0.5).toInt()];
+        }
       } else {
-        if (x <= y)
+        if (x <= y) {
           return _atan2.nny[(_Atan2Constants.size * y / x + 0.5).toInt()];
-        else
+        } else {
           return _atan2.nnx[(_Atan2Constants.size * x / y + 0.5).toInt()];
+        }
       }
     }
   }
@@ -119,7 +123,7 @@ class GameMath {
   /// Interpolates a [Point] between [a] and [b] according to the
   /// [filterFactor], which should be in the range of 0.0 to 1.0.
   static Offset filterPoint(Offset a, Offset b, double filterFactor) {
-    return new Offset(
+    return Offset(
         filter(a.dx, b.dx, filterFactor), filter(a.dy, b.dy, filterFactor));
   }
 
@@ -128,9 +132,9 @@ class GameMath {
   static Offset? lineIntersection(Offset p0, Offset p1, Offset q0, Offset q1) {
     double epsilon = 1e-10;
 
-    Vector2 r = new Vector2(p1.dx - p0.dx, p1.dy - p0.dy);
-    Vector2 s = new Vector2(q1.dx - q0.dx, q1.dy - q0.dy);
-    Vector2 qp = new Vector2(q0.dx - p0.dx, q0.dy - p0.dy);
+    Vector2 r = Vector2(p1.dx - p0.dx, p1.dy - p0.dy);
+    Vector2 s = Vector2(q1.dx - q0.dx, q1.dy - q0.dy);
+    Vector2 qp = Vector2(q0.dx - p0.dx, q0.dy - p0.dy);
 
     double rxs = cross2(r, s);
 
@@ -143,7 +147,7 @@ class GameMath {
     double u = cross2(qp, r) / rxs;
 
     if ((0.0 <= t && t <= 1.0) && (0.0 <= u && u <= 1.0)) {
-      return new Offset(p0.dx + t * r.x, p0.dy + t * r.y);
+      return Offset(p0.dx + t * r.x, p0.dy + t * r.y);
     }
 
     // No intersection between the lines

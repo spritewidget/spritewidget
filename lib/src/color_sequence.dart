@@ -19,8 +19,6 @@ class ColorSequence {
   /// Creates a new color sequence from a list of [colors] and a list of
   /// [colorStops].
   ColorSequence(this.colors, this.colorStops) {
-    assert(colors != null);
-    assert(colorStops != null);
     assert(colors.length == colorStops.length);
   }
 
@@ -32,8 +30,8 @@ class ColorSequence {
 
   /// Creates a new color sequence by copying an existing sequence.
   ColorSequence.copy(ColorSequence sequence) {
-    colors = new List<Color>.from(sequence.colors);
-    colorStops = new List<double>.from(sequence.colorStops);
+    colors = List<Color>.from(sequence.colors);
+    colorStops = List<double>.from(sequence.colorStops);
   }
 
   /// Returns the color at a normalized (0.0 to 1.0) position in the color
@@ -78,5 +76,5 @@ Color _interpolateColor(Color a, Color b, double blend) {
   int ng = (ag * (1.0 - blend) + bg * blend).toInt();
   int nb = (ab * (1.0 - blend) + bb * blend).toInt();
 
-  return new Color.fromARGB(na, nr, ng, nb);
+  return Color.fromARGB(na, nr, ng, nb);
 }

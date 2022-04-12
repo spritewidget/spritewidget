@@ -27,7 +27,6 @@ class NodeWithSize extends Node {
   ///
   ///     var myNodeWithSize = new NodeWithSize(new Size(1024.0, 1024.0));
   NodeWithSize(this.size) {
-    if (size == null) size = Size.zero;
     pivot = Offset.zero;
   }
 
@@ -54,14 +53,14 @@ class NodeWithSize extends Node {
   }
 
   @override
-  bool isPointInside(Offset nodePoint) {
+  bool isPointInside(Offset point) {
     double minX = -size.width * pivot.dx;
     double minY = -size.height * pivot.dy;
     double maxX = minX + size.width;
     double maxY = minY + size.height;
-    return (nodePoint.dx >= minX &&
-        nodePoint.dx < maxX &&
-        nodePoint.dy >= minY &&
-        nodePoint.dy < maxY);
+    return (point.dx >= minX &&
+        point.dx < maxX &&
+        point.dy >= minY &&
+        point.dy < maxY);
   }
 }

@@ -76,8 +76,8 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
 
   ColorSequence _colorSequence;
 
-  List<Color> _colors = new List<Color>(4);
-  List<double> _stops = new List<double>(4);
+  List<Color> _colors = <Color>[];
+  List<double> _stops = <double>[];
 
   @override
   void initState() {

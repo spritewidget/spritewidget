@@ -48,8 +48,8 @@ class Node3D extends Node {
     Matrix4 matrix = super.computeTransformMatrix();
 
     // Apply perspective projection
-    Matrix4 projection = new Matrix4(1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0,
-        0.0, 0.0, 1.0, -1.0 / _projectionDepth, 0.0, 0.0, 0.0, 1.0);
+    Matrix4 projection = Matrix4(1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+        0.0, 1.0, -1.0 / _projectionDepth, 0.0, 0.0, 0.0, 1.0);
     matrix.multiply(projection);
 
     // Rotate around x and y axis

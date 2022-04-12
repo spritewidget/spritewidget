@@ -13,7 +13,7 @@ class ImageMap {
   ImageMap(AssetBundle bundle) : _bundle = bundle;
 
   final AssetBundle _bundle;
-  final Map<String, ui.Image> _images = new Map<String, ui.Image>();
+  final _images = <String, ui.Image>{};
 
   /// Loads a list of images given their urls.
   Future<List<ui.Image>> load(List<String> urls) {
@@ -23,10 +23,10 @@ class ImageMap {
   /// Loads a single image given the image's [url] and adds it to the [ImageMap].
   Future<ui.Image> loadImage(String url) async {
     ImageStream stream =
-        new AssetImage(url, bundle: _bundle).resolve(ImageConfiguration.empty);
-    Completer<ui.Image> completer = new Completer<ui.Image>();
+        AssetImage(url, bundle: _bundle).resolve(ImageConfiguration.empty);
+    Completer<ui.Image> completer = Completer<ui.Image>();
     late ImageStreamListener listener;
-    listener = new ImageStreamListener((ImageInfo frame, bool synchronousCall) {
+    listener = ImageStreamListener((ImageInfo frame, bool synchronousCall) {
       final ui.Image image = frame.image;
       _images[url] = image;
       completer.complete(image);

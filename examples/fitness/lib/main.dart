@@ -97,10 +97,14 @@ class _FitnessDemoContentsState extends State<_FitnessDemoContents> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
           new Flexible(
-              child: new Container(
-                  decoration: new BoxDecoration(color: Colors.grey[800]),
-                  child: new SpriteWidget(
-                      workoutAnimation, SpriteBoxTransformMode.scaleToFit))),
+            child: new Container(
+              decoration: new BoxDecoration(color: Colors.grey[800]),
+              child: new SpriteWidget(
+                workoutAnimation,
+                transformMode: SpriteBoxTransformMode.scaleToFit,
+              ),
+            ),
+          ),
           new Padding(
               padding: new EdgeInsets.only(top: 20.0),
               child: new Text('JUMPING JACKS',

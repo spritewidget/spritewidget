@@ -14,16 +14,15 @@ class SpriteTexture {
   /// Creates a new texture from an [Image] object.
   ///
   ///     var myTexture = new Texture(myImage);
-  SpriteTexture(ui.Image image)
-      : size = new Size(image.width.toDouble(), image.height.toDouble()),
-        image = image,
+  SpriteTexture(this.image)
+      : size = Size(image.width.toDouble(), image.height.toDouble()),
         trimmed = false,
         rotated = false,
-        frame = new Rect.fromLTRB(
+        frame = Rect.fromLTRB(
             0.0, 0.0, image.width.toDouble(), image.height.toDouble()),
-        spriteSourceSize = new Rect.fromLTRB(
+        spriteSourceSize = Rect.fromLTRB(
             0.0, 0.0, image.width.toDouble(), image.height.toDouble()),
-        pivot = new Offset(0.5, 0.5);
+        pivot = const Offset(0.5, 0.5);
 
   SpriteTexture._fromSpriteFrame(this.image, this.name, this.size, this.rotated,
       this.trimmed, this.frame, this.spriteSourceSize, this.pivot);
@@ -77,13 +76,11 @@ class SpriteTexture {
 
   /// Creates a new Texture from a part of the current texture.
   SpriteTexture textureFromRect(Rect rect, [String? name]) {
-    assert(rect != null);
     assert(!rotated);
-    Rect srcFrame = new Rect.fromLTWH(rect.left + frame.left,
-        rect.top + frame.top, rect.size.width, rect.size.height);
-    Rect dstFrame =
-        new Rect.fromLTWH(0.0, 0.0, rect.size.width, rect.size.height);
-    return new SpriteTexture._fromSpriteFrame(
+    Rect srcFrame = Rect.fromLTWH(rect.left + frame.left, rect.top + frame.top,
+        rect.size.width, rect.size.height);
+    Rect dstFrame = Rect.fromLTWH(0.0, 0.0, rect.size.width, rect.size.height);
+    return SpriteTexture._fromSpriteFrame(
       image,
       name,
       rect.size,
@@ -91,7 +88,7 @@ class SpriteTexture {
       false,
       srcFrame,
       dstFrame,
-      new Offset(0.5, 0.5),
+      const Offset(0.5, 0.5),
     );
   }
 
@@ -113,13 +110,13 @@ class SpriteTexture {
       // Calculate the rotated frame and spriteSourceSize
       Size originalFrameSize = frame.size;
       Rect rotatedFrame = frame.topLeft &
-          new Size(originalFrameSize.height, originalFrameSize.width);
-      Offset rotatedSpriteSourcePoint = new Offset(
+          Size(originalFrameSize.height, originalFrameSize.width);
+      Offset rotatedSpriteSourcePoint = Offset(
           -spriteSourceSize.top -
               (spriteSourceSize.bottom - spriteSourceSize.top),
           spriteSourceSize.left);
       Rect rotatedSpriteSourceSize = rotatedSpriteSourcePoint &
-          new Size(originalFrameSize.height, originalFrameSize.width);
+          Size(originalFrameSize.height, originalFrameSize.width);
 
       // Draw the rotated sprite
       canvas.rotate(-math.pi / 2.0);
@@ -132,7 +129,7 @@ class SpriteTexture {
       }
     } else {
       // Draw the sprite
-      Rect dstRect = new Rect.fromLTWH(
+      Rect dstRect = Rect.fromLTWH(
           x + spriteSourceSize.left,
           y + spriteSourceSize.top,
           spriteSourceSize.width,

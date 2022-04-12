@@ -21,7 +21,7 @@ class Sprite extends NodeWithSize with SpritePaint {
   ///     mySprite.constrainProportions = true;
   bool constrainProportions = false;
 
-  Paint _cachedPaint = new Paint()
+  final Paint _cachedPaint = Paint()
     ..filterQuality = FilterQuality.low
     ..isAntiAlias = false;
 
@@ -29,12 +29,8 @@ class Sprite extends NodeWithSize with SpritePaint {
   ///
   ///     var mySprite = new Sprite(myTexture)
   Sprite(this.texture) : super(Size.zero) {
-    if (texture != null) {
-      size = texture.size;
-      pivot = texture.pivot;
-    } else {
-      pivot = new Offset(0.5, 0.5);
-    }
+    size = texture.size;
+    pivot = texture.pivot;
   }
 
   /// Creates a new sprite from the provided [image].
@@ -43,11 +39,8 @@ class Sprite extends NodeWithSize with SpritePaint {
   Sprite.fromImage(ui.Image image)
       : texture = SpriteTexture(image),
         super(Size.zero) {
-    assert(image != null);
-
     size = texture.size;
-
-    pivot = new Offset(0.5, 0.5);
+    pivot = const Offset(0.5, 0.5);
   }
 
   @override
@@ -55,42 +48,36 @@ class Sprite extends NodeWithSize with SpritePaint {
     // Account for pivot point
     applyTransformForPivot(canvas);
 
-    if (texture != null) {
-      double w = texture.size.width;
-      double h = texture.size.height;
+    double w = texture.size.width;
+    double h = texture.size.height;
 
-      if (w <= 0 || h <= 0) return;
+    if (w <= 0 || h <= 0) return;
 
-      double scaleX = size.width / w;
-      double scaleY = size.height / h;
+    double scaleX = size.width / w;
+    double scaleY = size.height / h;
 
-      if (constrainProportions) {
-        // Constrain proportions, using the smallest scale and by centering the
-        // image
-        if (scaleX < scaleY) {
-          canvas.translate(0.0, (size.height - scaleX * h) / 2.0);
-          scaleY = scaleX;
-        } else {
-          canvas.translate((size.width - scaleY * w) / 2.0, 0.0);
-          scaleX = scaleY;
-        }
+    if (constrainProportions) {
+      // Constrain proportions, using the smallest scale and by centering the
+      // image
+      if (scaleX < scaleY) {
+        canvas.translate(0.0, (size.height - scaleX * h) / 2.0);
+        scaleY = scaleX;
+      } else {
+        canvas.translate((size.width - scaleY * w) / 2.0, 0.0);
+        scaleX = scaleY;
       }
-
-      canvas.scale(scaleX, scaleY);
-
-      // Setup paint object for opacity and transfer mode
-      _updatePaint(_cachedPaint);
-
-      // Do actual drawing of the sprite
-      texture.drawTexture(canvas, Offset.zero, _cachedPaint);
-
-      // Debug drawing
-//      canvas.drawRect(Offset.zero & texture.size, new Paint()..color=const Color(0x33ff0000));
-    } else {
-      // Paint a red square for missing texture
-      canvas.drawRect(new Rect.fromLTRB(0.0, 0.0, size.width, size.height),
-          new Paint()..color = new Color.fromARGB(255, 255, 0, 0));
     }
+
+    canvas.scale(scaleX, scaleY);
+
+    // Setup paint object for opacity and transfer mode
+    _updatePaint(_cachedPaint);
+
+    // Do actual drawing of the sprite
+    texture.drawTexture(canvas, Offset.zero, _cachedPaint);
+
+    // Debug drawing
+//      canvas.drawRect(Offset.zero & texture.size, new Paint()..color=const Color(0x33ff0000));
   }
 }
 
@@ -105,7 +92,6 @@ abstract class SpritePaint {
   double get opacity => _opacity;
 
   set opacity(double opacity) {
-    assert(opacity != null);
     assert(opacity >= 0.0 && opacity <= 1.0);
     _opacity = opacity;
   }
@@ -123,11 +109,10 @@ abstract class SpritePaint {
   BlendMode? transferMode;
 
   void _updatePaint(Paint paint) {
-    paint.color = new Color.fromARGB((255.0 * _opacity).toInt(), 255, 255, 255);
+    paint.color = Color.fromARGB((255.0 * _opacity).toInt(), 255, 255, 255);
 
     if (colorOverlay != null) {
-      paint.colorFilter =
-          new ColorFilter.mode(colorOverlay!, BlendMode.srcATop);
+      paint.colorFilter = ColorFilter.mode(colorOverlay!, BlendMode.srcATop);
     }
 
     if (transferMode != null) {

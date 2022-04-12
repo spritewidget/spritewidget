@@ -6,7 +6,7 @@
 part of spritewidget;
 
 /// Signature for callbacks used by the [MotionCallFunction].
-typedef void MotionCallback();
+typedef MotionCallback = void Function();
 
 @Deprecated('Action has been renamed to Motion to avoid conflict with Flutter')
 abstract class Action {}
@@ -47,7 +47,7 @@ abstract class Motion {
 }
 
 /// Signature for callbacks for setting properties, used by [MotionTween].
-typedef void SetterCallback(dynamic value);
+typedef SetterCallback = void Function(dynamic value);
 
 /// The abstract class for an motion that changes properties over a time
 /// interval, optionally using an easing curve.
@@ -77,7 +77,7 @@ abstract class MotionInterval extends Motion {
     }
 
     double t;
-    if (this._duration == 0.0) {
+    if (_duration == 0.0) {
       t = 1.0;
     } else {
       t = (_elapsed / _duration).clamp(0.0, 1.0);
@@ -182,7 +182,7 @@ class MotionSequence extends MotionInterval {
       _b = motions[1];
     } else {
       _a = motions[0];
-      _b = new MotionSequence(motions.sublist(1));
+      _b = MotionSequence(motions.sublist(1));
     }
 
     // Calculate split and duration
@@ -256,7 +256,7 @@ class MotionSequence extends MotionInterval {
 /// [MotionGroup] will be the maximum of the durations of the motions used to
 /// compose this motion.
 class MotionGroup extends MotionInterval {
-  List<Motion> _motions;
+  final List<Motion> _motions;
 
   /// Creates a new motion with the list of motions passed in.
   ///
@@ -344,7 +344,7 @@ abstract class MotionInstant extends Motion {
 
 /// A motion that calls a custom function when it is fired.
 class MotionCallFunction extends MotionInstant {
-  MotionCallback _function;
+  final MotionCallback _function;
 
   /// Creates a new callback motion with the supplied callback.
   ///
@@ -359,7 +359,7 @@ class MotionCallFunction extends MotionInstant {
 
 /// A motion that removes the supplied node from its parent when it's fired.
 class MotionRemoveNode extends MotionInstant {
-  Node _node;
+  final Node _node;
 
   /// Creates a new motion with the node to remove as its argument.
   ///
@@ -416,14 +416,14 @@ class MotionTween<T> extends MotionInterval {
       double yStart = (startVal as Offset).dy;
       double xEnd = (endVal as Offset).dx;
       double yEnd = (endVal as Offset).dy;
-      _delta = new Offset(xEnd - xStart, yEnd - yStart);
+      _delta = Offset(xEnd - xStart, yEnd - yStart);
     } else if (startVal is Size) {
       // Size
       double wStart = (startVal as Size).width;
       double hStart = (startVal as Size).height;
       double wEnd = (endVal as Size).width;
       double hEnd = (endVal as Size).height;
-      _delta = new Size(wEnd - wStart, hEnd - hStart);
+      _delta = Size(wEnd - wStart, hEnd - hStart);
     } else if (startVal is Rect) {
       // Rect
       double lStart = (startVal as Rect).left;
@@ -434,7 +434,7 @@ class MotionTween<T> extends MotionInterval {
       double tEnd = (endVal as Rect).top;
       double rEnd = (endVal as Rect).right;
       double bEnd = (endVal as Rect).bottom;
-      _delta = new Rect.fromLTRB(
+      _delta = Rect.fromLTRB(
           lEnd - lStart, tEnd - tStart, rEnd - rStart, bEnd - bStart);
     } else if (startVal is double) {
       // Double
@@ -445,7 +445,7 @@ class MotionTween<T> extends MotionInterval {
       int rDelta = (endVal as Color).red - (startVal as Color).red;
       int gDelta = (endVal as Color).green - (startVal as Color).green;
       int bDelta = (endVal as Color).blue - (startVal as Color).blue;
-      _delta = new _ColorDiff(aDelta, rDelta, gDelta, bDelta);
+      _delta = _ColorDiff(aDelta, rDelta, gDelta, bDelta);
     } else {
       assert(false);
     }
@@ -461,14 +461,14 @@ class MotionTween<T> extends MotionInterval {
       double yStart = (startVal as Offset).dy;
       double xDelta = _delta.dx;
       double yDelta = _delta.dy;
-      newVal = new Offset(xStart + xDelta * t, yStart + yDelta * t);
+      newVal = Offset(xStart + xDelta * t, yStart + yDelta * t);
     } else if (startVal is Size) {
       // Size
       double wStart = (startVal as Size).width;
       double hStart = (startVal as Size).height;
       double wDelta = _delta.width;
       double hDelta = _delta.height;
-      newVal = new Size(wStart + wDelta * t, hStart + hDelta * t);
+      newVal = Size(wStart + wDelta * t, hStart + hDelta * t);
     } else if (startVal is Rect) {
       // Rect
       double lStart = (startVal as Rect).left;
@@ -479,7 +479,7 @@ class MotionTween<T> extends MotionInterval {
       double tDelta = _delta.top;
       double rDelta = _delta.right;
       double bDelta = _delta.bottom;
-      newVal = new Rect.fromLTRB(lStart + lDelta * t, tStart + tDelta * t,
+      newVal = Rect.fromLTRB(lStart + lDelta * t, tStart + tDelta * t,
           rStart + rDelta * t, bStart + bDelta * t);
     } else if (startVal is double) {
       // Doubles
@@ -494,7 +494,7 @@ class MotionTween<T> extends MotionInterval {
           .clamp(0, 255) as int;
       int bNew = ((startVal as Color).blue + (_delta.blue * t).toInt())
           .clamp(0, 255) as int;
-      newVal = new Color.fromARGB(aNew, rNew, gNew, bNew);
+      newVal = Color.fromARGB(aNew, rNew, gNew, bNew);
     } else {
       // Oopses
       assert(false);
@@ -508,7 +508,7 @@ class MotionTween<T> extends MotionInterval {
 /// passed to the [MotionController]'s [run] method. The [MotionController]
 /// itself is typically a property of a [Node] and powered by the [SpriteBox].
 class MotionController {
-  List<Motion> _motions = <Motion>[];
+  final List<Motion> _motions = <Motion>[];
 
   /// Creates a new [MotionController]. However, for most uses a reference to
   /// an [MotionController] is acquired through the [Node.motions] property.

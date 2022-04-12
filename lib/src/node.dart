@@ -39,7 +39,7 @@ class Node {
   Offset _position = Offset.zero;
   double _rotation = 0.0;
 
-  Matrix4? _transformMatrix = new Matrix4.identity();
+  Matrix4? _transformMatrix = Matrix4.identity();
   Matrix4? _transformMatrixInverse;
   Matrix4? _transformMatrixNodeToBox;
   Matrix4? _transformMatrixBoxToNode;
@@ -89,7 +89,7 @@ class Node {
   ///     myNode.motions.run(myMotion);
   MotionController? get motions {
     if (_motions == null) {
-      _motions = new MotionController();
+      _motions = MotionController();
       if (_spriteBox != null) _spriteBox!._motionControllers = null;
     }
     return _motions;
@@ -146,8 +146,6 @@ class Node {
   double get rotation => _rotation;
 
   set rotation(double rotation) {
-    assert(rotation != null);
-
     _rotation = rotation;
     invalidateTransformMatrix();
   }
@@ -158,8 +156,6 @@ class Node {
   Offset get position => _position;
 
   set position(Offset position) {
-    assert(position != null);
-
     _position = position;
     invalidateTransformMatrix();
   }
@@ -170,7 +166,6 @@ class Node {
   double get skewX => _skewX;
 
   set skewX(double skewX) {
-    assert(skewX != null);
     _skewX = skewX;
     invalidateTransformMatrix();
   }
@@ -181,7 +176,6 @@ class Node {
   double get skewY => _skewY;
 
   set skewY(double skewY) {
-    assert(skewY != null);
     _skewY = skewY;
     invalidateTransformMatrix();
   }
@@ -199,7 +193,6 @@ class Node {
   double get zPosition => _zPosition;
 
   set zPosition(double zPosition) {
-    assert(zPosition != null);
     _zPosition = zPosition;
     if (_parent != null) {
       _parent!._childrenNeedSorting = true;
@@ -218,8 +211,6 @@ class Node {
   }
 
   set scale(double scale) {
-    assert(scale != null);
-
     _scaleX = _scaleY = scale;
     invalidateTransformMatrix();
   }
@@ -230,8 +221,6 @@ class Node {
   double get scaleX => _scaleX;
 
   set scaleX(double scaleX) {
-    assert(scaleX != null);
-
     _scaleX = scaleX;
     invalidateTransformMatrix();
   }
@@ -242,8 +231,6 @@ class Node {
   double get scaleY => _scaleY;
 
   set scaleY(double scaleY) {
-    assert(scaleY != null);
-
     _scaleY = scaleY;
     invalidateTransformMatrix();
   }
@@ -279,14 +266,13 @@ class Node {
   ///
   ///     addChild(new Sprite(myImage));
   void addChild(Node child) {
-    assert(child != null);
     assert(child._parent == null);
     assert(_assertNonCircularAssignment(child));
 
     _childrenNeedSorting = true;
     _children.add(child);
     child._parent = this;
-    child._spriteBox = this._spriteBox;
+    child._spriteBox = _spriteBox;
     _childrenLastAddedOrder += 1;
     child._addedOrder = _childrenLastAddedOrder;
     if (_spriteBox != null) _spriteBox!._registerNode(child);
@@ -296,7 +282,6 @@ class Node {
   ///
   ///     removeChild(myChildNode);
   void removeChild(Node child) {
-    assert(child != null);
     if (_children.remove(child)) {
       child._parent = null;
       child._spriteBox = null;
@@ -350,9 +335,7 @@ class Node {
   ///
   ///     Matrix4 matrix = myNode.transformMatrix;
   Matrix4 get transformMatrix {
-    if (_transformMatrix == null) {
-      _transformMatrix = computeTransformMatrix();
-    }
+    _transformMatrix ??= computeTransformMatrix();
     return _transformMatrix!;
   }
 
@@ -378,7 +361,7 @@ class Node {
     }
 
     // Create transformation matrix for scale, position and rotation
-    Matrix4 matrix = new Matrix4(
+    Matrix4 matrix = Matrix4(
         cy * _scaleX,
         sy * _scaleX,
         0.0,
@@ -398,7 +381,7 @@ class Node {
 
     if (_skewX != 0.0 || _skewY != 0.0) {
       // Needs skew transform
-      Matrix4 skew = new Matrix4(
+      Matrix4 skew = Matrix4(
           1.0,
           math.tan(radians(_skewX)),
           0.0,
@@ -466,7 +449,7 @@ class Node {
       return _transformMatrixBoxToNode!;
     }
 
-    _transformMatrixBoxToNode = new Matrix4.copy(_nodeToBoxMatrix());
+    _transformMatrixBoxToNode = Matrix4.copy(_nodeToBoxMatrix());
     _transformMatrixBoxToNode!.invert();
 
     return _transformMatrixBoxToNode!;
@@ -475,7 +458,7 @@ class Node {
   /// The inverse transform matrix used by this node.
   Matrix4 get inverseTransformMatrix {
     if (_transformMatrixInverse == null) {
-      _transformMatrixInverse = new Matrix4.copy(transformMatrix);
+      _transformMatrixInverse = Matrix4.copy(transformMatrix);
       _transformMatrixInverse!.invert();
     }
     return _transformMatrixInverse!;
@@ -490,12 +473,11 @@ class Node {
   ///
   ///     Point localPoint = myNode.convertPointToNodeSpace(pointInBoxCoordinates);
   Offset convertPointToNodeSpace(Offset boxPoint) {
-    assert(boxPoint != null);
     assert(_spriteBox != null);
 
     Vector4 v = _boxToNodeMatrix()
-        .transform(new Vector4(boxPoint.dx, boxPoint.dy, 0.0, 1.0));
-    return new Offset(v[0], v[1]);
+        .transform(Vector4(boxPoint.dx, boxPoint.dy, 0.0, 1.0));
+    return Offset(v[0], v[1]);
   }
 
   /// Converts a point from the local coordinate system of the node to the
@@ -503,12 +485,11 @@ class Node {
   ///
   ///     Point pointInBoxCoordinates = myNode.convertPointToBoxSpace(localPoint);
   Offset convertPointToBoxSpace(Offset nodePoint) {
-    assert(nodePoint != null);
     assert(_spriteBox != null);
 
     Vector4 v = _nodeToBoxMatrix()
-        .transform(new Vector4(nodePoint.dx, nodePoint.dy, 0.0, 1.0));
-    return new Offset(v[0], v[1]);
+        .transform(Vector4(nodePoint.dx, nodePoint.dy, 0.0, 1.0));
+    return Offset(v[0], v[1]);
   }
 
   /// Converts a [point] from another [node]s coordinate system into the local
@@ -517,8 +498,6 @@ class Node {
   ///     Point pointInNodeASpace =
   ///       nodeA.convertPointFromNode(pointInNodeBSpace, nodeB);
   Offset convertPointFromNode(Offset point, Node node) {
-    assert(node != null);
-    assert(point != null);
     assert(_spriteBox != null);
     assert(_spriteBox == node._spriteBox);
 
@@ -547,15 +526,12 @@ class Node {
   ///       nodePoint.y >= minY && nodePoint.y < maxY);
   ///     }
   bool isPointInside(Offset point) {
-    assert(point != null);
-
     return false;
   }
 
   // Rendering
 
   void _visit(Canvas canvas) {
-    assert(canvas != null);
     if (!visible) return;
 
     _prePaint(canvas);
