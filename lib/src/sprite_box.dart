@@ -73,12 +73,14 @@ class SpriteBox extends RenderBox {
   void attach(PipelineOwner owner) {
     super.attach(owner);
     _scheduleTick();
+    _attachKeyboard();
   }
 
   @override
   void detach() {
     super.detach();
     _unscheduleTick();
+    _detachKeyboard();
   }
 
   // Member variables
@@ -177,9 +179,10 @@ class SpriteBox extends RenderBox {
     if (node == null || node.constraints != null) _constrainedNodes = null;
   }
 
-  // Event handling
+  void _addEventTargets([Node? node]) {
+    _eventTargets ??= <Node>[];
+    node ??= _rootNode;
 
-  void _addEventTargets(Node node, List<Node>? eventTargets) {
     List<Node> children = node.children;
     int i = 0;
 
@@ -187,21 +190,49 @@ class SpriteBox extends RenderBox {
     while (i < children.length) {
       Node child = children[i];
       if (child.zPosition >= 0.0) break;
-      _addEventTargets(child, eventTargets);
+      _addEventTargets(child);
       i++;
     }
 
     // Add this node
     if (node.userInteractionEnabled) {
-      eventTargets!.add(node);
+      _eventTargets!.add(node);
     }
 
     // Add children in front of this node
     while (i < children.length) {
       Node child = children[i];
-      _addEventTargets(child, eventTargets);
+      _addEventTargets(child);
       i++;
     }
+  }
+
+  bool _keyboardAttached = false;
+
+  void _attachKeyboard() {
+    assert(!_keyboardAttached);
+    HardwareKeyboard.instance.addHandler(_handleKeyboardEvent);
+    _keyboardAttached = true;
+  }
+
+  void _detachKeyboard() {
+    HardwareKeyboard.instance.removeHandler(_handleKeyboardEvent);
+    _keyboardAttached = false;
+  }
+
+  bool _handleKeyboardEvent(KeyEvent event) {
+    if (!attached) return false;
+
+    _addEventTargets();
+    bool consumed = false;
+    for (final node in _eventTargets!) {
+      consumed = node.handleKeyboardEvent(event);
+      if (consumed) {
+        break;
+      }
+    }
+
+    return consumed;
   }
 
   @override
@@ -210,10 +241,7 @@ class SpriteBox extends RenderBox {
 
     if (event is PointerDownEvent) {
       // Build list of event targets
-      if (_eventTargets == null) {
-        _eventTargets = <Node>[];
-        _addEventTargets(_rootNode, _eventTargets);
-      }
+      _addEventTargets();
 
       // Find the once that are hit by the pointer
       List<Node> nodeTargets = <Node>[];

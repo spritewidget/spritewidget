@@ -667,4 +667,15 @@ class Node {
   bool handleEvent(SpriteBoxEvent event) {
     return false;
   }
+
+  /// Handles a keyboard event.
+  ///
+  /// Override this method to handle keyboard events. The node will only receive
+  /// events if the [userInteractionEnabled] property is set to true.
+  ///
+  /// Return true if the node has consumed the event, if an event is consumed it
+  /// will not be passed on to nodes behind the current node.
+  bool handleKeyboardEvent(KeyEvent event) {
+    return false;
+  }
 }
