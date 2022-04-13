@@ -14,35 +14,36 @@ late ImageMap _images;
 late SpriteSheet _sprites;
 
 class FitnessDemo extends StatelessWidget {
-  FitnessDemo({Key? key}) : super(key: key);
+  const FitnessDemo({Key? key}) : super(key: key);
 
   static const String routeName = '/fitness';
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: new AppBar(title: new Text('Fitness')),
-        body: new _FitnessDemoContents());
+    return Scaffold(
+      appBar: AppBar(title: const Text('Fitness')),
+      body: const _FitnessDemoContents(),
+    );
   }
 }
 
 class _FitnessDemoContents extends StatefulWidget {
-  _FitnessDemoContents({Key? key}) : super(key: key);
+  const _FitnessDemoContents({Key? key}) : super(key: key);
 
   @override
-  _FitnessDemoContentsState createState() => new _FitnessDemoContentsState();
+  _FitnessDemoContentsState createState() => _FitnessDemoContentsState();
 }
 
 class _FitnessDemoContentsState extends State<_FitnessDemoContents> {
-  Future<Null> _loadAssets(AssetBundle bundle) async {
-    _images = new ImageMap(rootBundle);
+  Future<void> _loadAssets(AssetBundle bundle) async {
+    _images = ImageMap(rootBundle);
     await _images.load(<String>[
       'assets/jumpingjack.png',
     ]);
 
     String json = await DefaultAssetBundle.of(context)
         .loadString('assets/jumpingjack.json');
-    _sprites = new SpriteSheet(_images['assets/jumpingjack.png']!, json);
+    _sprites = SpriteSheet(_images['assets/jumpingjack.png']!, json);
   }
 
   @override
@@ -53,8 +54,7 @@ class _FitnessDemoContentsState extends State<_FitnessDemoContents> {
     _loadAssets(rootBundle).then((_) {
       setState(() {
         _assetsLoaded = true;
-        workoutAnimation =
-            new _WorkoutAnimationNode(onPerformedJumpingJack: () {
+        workoutAnimation = _WorkoutAnimationNode(onPerformedJumpingJack: () {
           setState(() {
             _count += 1;
           });
@@ -76,7 +76,7 @@ class _FitnessDemoContentsState extends State<_FitnessDemoContents> {
 
   @override
   Widget build(BuildContext context) {
-    if (!_assetsLoaded) return new Container();
+    if (!_assetsLoaded) return Container();
 
     Color buttonColor;
     String buttonText;
@@ -92,27 +92,27 @@ class _FitnessDemoContentsState extends State<_FitnessDemoContents> {
       onButtonPressed = startWorkout;
     }
 
-    return new Material(
-      child: new Column(
+    return Material(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          new Flexible(
-            child: new Container(
-              decoration: new BoxDecoration(color: Colors.grey[800]),
-              child: new SpriteWidget(
+          Flexible(
+            child: Container(
+              decoration: BoxDecoration(color: Colors.grey[800]),
+              child: SpriteWidget(
                 workoutAnimation,
                 transformMode: SpriteBoxTransformMode.scaleToFit,
               ),
             ),
           ),
-          new Padding(
-            padding: new EdgeInsets.only(top: 20.0),
-            child: new Text('JUMPING JACKS',
+          Padding(
+            padding: const EdgeInsets.only(top: 20.0),
+            child: Text('JUMPING JACKS',
                 style: Theme.of(context).textTheme.titleMedium),
           ),
-          new Padding(
-            padding: new EdgeInsets.only(top: 20.0, bottom: 20.0),
-            child: new Row(
+          Padding(
+            padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 _createInfoPanelCell(Icons.accessibility, '$_count', 'COUNT'),
@@ -122,18 +122,18 @@ class _FitnessDemoContentsState extends State<_FitnessDemoContents> {
               ],
             ),
           ),
-          new Padding(
-            padding: new EdgeInsets.only(bottom: 16.0),
-            child: new SizedBox(
+          Padding(
+            padding: const EdgeInsets.only(bottom: 16.0),
+            child: SizedBox(
               width: 300.0,
               height: 72.0,
-              child: new ElevatedButton(
+              child: ElevatedButton(
                 onPressed: onButtonPressed,
                 // color: buttonColor,
                 style: ElevatedButton.styleFrom(primary: buttonColor),
-                child: new Text(
+                child: Text(
                   buttonText,
-                  style: new TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 20.0,
                   ),
@@ -148,19 +148,24 @@ class _FitnessDemoContentsState extends State<_FitnessDemoContents> {
 
   Widget _createInfoPanelCell(IconData icon, String value, String description) {
     Color color;
-    if (workoutAnimation.workingOut)
+    if (workoutAnimation.workingOut) {
       color = Colors.black87;
-    else
+    } else {
       color = Theme.of(context).disabledColor;
+    }
 
-    return new Container(
-        width: 100.0,
-        child: new Center(
-            child: new Column(children: <Widget>[
-          new Icon(icon, size: 48.0, color: color),
-          new Text(value, style: new TextStyle(fontSize: 24.0, color: color)),
-          new Text(description, style: new TextStyle(color: color))
-        ])));
+    return SizedBox(
+      width: 100.0,
+      child: Center(
+        child: Column(
+          children: <Widget>[
+            Icon(icon, size: 48.0, color: color),
+            Text(value, style: TextStyle(fontSize: 24.0, color: color)),
+            Text(description, style: TextStyle(color: color))
+          ],
+        ),
+      ),
+    );
   }
 
   String _formatSeconds(int seconds) {
@@ -178,36 +183,40 @@ class _FitnessDemoContentsState extends State<_FitnessDemoContents> {
   }
 
   void endWorkout() {
-    setState(() {
-      workoutAnimation.stop();
+    setState(
+      () {
+        workoutAnimation.stop();
 
-      if (_count >= 3) {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return new Stack(children: <Widget>[
-              new _Fireworks(),
-              new AlertDialog(
-                title: new Text('Awesome workout'),
-                content: new Text(
-                    'You have completed $_count jumping jacks. Good going!'),
-                actions: <Widget>[
-                  new TextButton(
-                      child: new Text('SWEET'),
+        if (_count >= 3) {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return Stack(children: <Widget>[
+                const _Fireworks(),
+                AlertDialog(
+                  title: const Text('Awesome workout'),
+                  content: Text(
+                    'You have completed $_count jumping jacks. Good going!',
+                  ),
+                  actions: <Widget>[
+                    TextButton(
+                      child: const Text('SWEET'),
                       onPressed: () {
                         Navigator.pop(context);
-                      }),
-                ],
-              ),
-            ]);
-          },
-        );
-      }
-    });
+                      },
+                    ),
+                  ],
+                ),
+              ]);
+            },
+          );
+        }
+      },
+    );
   }
 }
 
-typedef void _SecondPassedCallback(int seconds);
+typedef _SecondPassedCallback = void Function(int seconds);
 
 class _WorkoutAnimationNode extends NodeWithSize {
   _WorkoutAnimationNode({
@@ -216,12 +225,12 @@ class _WorkoutAnimationNode extends NodeWithSize {
   }) : super(const Size(1024.0, 1024.0)) {
     reset();
 
-    _progress = new _ProgressCircle(const Size(800.0, 800.0));
+    _progress = _ProgressCircle(const Size(800.0, 800.0));
     _progress.pivot = const Offset(0.5, 0.5);
     _progress.position = const Offset(512.0, 512.0);
     addChild(_progress);
 
-    _jumpingJack = new _JumpingJack(() {
+    _jumpingJack = _JumpingJack(() {
       onPerformedJumpingJack();
     });
     _jumpingJack.scale = 0.5;
@@ -248,7 +257,7 @@ class _WorkoutAnimationNode extends NodeWithSize {
 
   void start() {
     reset();
-    _startTimeMillis = new DateTime.now().millisecondsSinceEpoch;
+    _startTimeMillis = DateTime.now().millisecondsSinceEpoch;
     workingOut = true;
     _jumpingJack.animateJumping();
   }
@@ -261,7 +270,7 @@ class _WorkoutAnimationNode extends NodeWithSize {
   @override
   void update(double dt) {
     if (workingOut) {
-      int millis = new DateTime.now().millisecondsSinceEpoch - _startTimeMillis;
+      int millis = DateTime.now().millisecondsSinceEpoch - _startTimeMillis;
       int newSeconds = (millis) ~/ 1000;
       if (newSeconds != seconds) {
         seconds = newSeconds;
@@ -288,30 +297,32 @@ class _ProgressCircle extends NodeWithSize {
   void paint(Canvas canvas) {
     applyTransformForPivot(canvas);
 
-    Paint circlePaint = new Paint()
+    Paint circlePaint = Paint()
       ..color = Colors.white30
       ..strokeWidth = 24.0
       ..style = PaintingStyle.stroke;
 
-    canvas.drawCircle(new Offset(size.width / 2.0, size.height / 2.0),
-        size.width / 2.0, circlePaint);
+    canvas.drawCircle(
+      Offset(size.width / 2.0, size.height / 2.0),
+      size.width / 2.0,
+      circlePaint,
+    );
 
-    Paint pathPaint = new Paint()
+    Paint pathPaint = Paint()
       ..color = Colors.purple[500]!
       ..strokeWidth = 25.0
       ..style = PaintingStyle.stroke;
 
     double angle = value.clamp(0.0, 1.0) * _kSweep;
-    Path path = new Path()
-      ..arcTo(Offset.zero & size, -math.pi / 2.0, angle, false);
+    Path path = Path()..arcTo(Offset.zero & size, -math.pi / 2.0, angle, false);
     canvas.drawPath(path, pathPaint);
   }
 }
 
 class _JumpingJack extends Node {
   _JumpingJack(VoidCallback onPerformedJumpingJack) {
-    left = new _JumpingJackSide(false, onPerformedJumpingJack);
-    right = new _JumpingJackSide(true, null);
+    left = _JumpingJackSide(false, onPerformedJumpingJack);
+    right = _JumpingJackSide(true, null);
     addChild(left);
     addChild(right);
   }
@@ -376,25 +387,28 @@ class _JumpingJackSide extends Node {
   final VoidCallback? onPerformedJumpingJack;
 
   _JumpingJackPart _createPart(String textureName, Offset pivotPosition) {
-    return new _JumpingJackPart(_sprites[textureName]!, pivotPosition,
-        name: textureName);
+    return _JumpingJackPart(
+      _sprites[textureName]!,
+      pivotPosition,
+      name: textureName,
+    );
   }
 
   void animateJumping() {
     motions!.stopAll();
-    motions!.run(new MotionSequence(<Motion>[
+    motions!.run(MotionSequence(<Motion>[
       _createPoseAction(null, 0, 0.5),
-      new MotionCallFunction(_animateJumpingLoop)
+      MotionCallFunction(_animateJumpingLoop)
     ]));
   }
 
   void _animateJumpingLoop() {
-    motions!.run(new MotionRepeatForever(new MotionSequence(<Motion>[
+    motions!.run(MotionRepeatForever(MotionSequence(<Motion>[
       _createPoseAction(0, 1, 0.30),
       _createPoseAction(1, 2, 0.30),
       _createPoseAction(2, 1, 0.30),
       _createPoseAction(1, 0, 0.30),
-      new MotionCallFunction(() {
+      MotionCallFunction(() {
         if (onPerformedJumpingJack != null) onPerformedJumpingJack!();
       })
     ])));
@@ -412,7 +426,7 @@ class _JumpingJackSide extends Node {
       upperLeg.rotation = d[3];
       lowerLeg.rotation = d[4];
       foot.rotation = d[5];
-      torso.position = new Offset(0.0, d[6]);
+      torso.position = Offset(0.0, d[6]);
     }
   }
 
@@ -428,16 +442,16 @@ class _JumpingJackSide extends Node {
       _tweenRotation(upperLeg, d0[3], d1[3], duration),
       _tweenRotation(lowerLeg, d0[4], d1[4], duration),
       _tweenRotation(foot, d0[5], d1[5], duration),
-      new MotionTween<Offset>((a) => torso.position = a, new Offset(0.0, d0[6]),
-          new Offset(0.0, d1[6]), duration)
+      MotionTween<Offset>((a) => torso.position = a, Offset(0.0, d0[6]),
+          Offset(0.0, d1[6]), duration)
     ];
 
-    return new MotionGroup(tweens);
+    return MotionGroup(tweens);
   }
 
   MotionTween _tweenRotation(
       _JumpingJackPart part, double r0, double r1, double duration) {
-    return new MotionTween((a) => part.rotation = a, r0, r1, duration);
+    return MotionTween((a) => part.rotation = a, r0, r1, duration);
   }
 
   List<double> _dataForPose(int? pose) {
@@ -476,18 +490,17 @@ class _JumpingJackSide extends Node {
 class _JumpingJackPart extends Sprite {
   String name;
 
-  _JumpingJackPart(SpriteTexture texture, this.pivotPosition, {this.name: ''})
+  _JumpingJackPart(SpriteTexture texture, this.pivotPosition, {this.name = ''})
       : super(texture);
   final Offset pivotPosition;
 
   void setPivotAndPosition(Offset newPosition) {
-    pivot = new Offset(pivotPosition.dx / 1024.0, pivotPosition.dy / 1024.0);
+    pivot = Offset(pivotPosition.dx / 1024.0, pivotPosition.dy / 1024.0);
     position = newPosition;
 
     for (Node child in children) {
       _JumpingJackPart subPart = child as _JumpingJackPart;
-      subPart.setPivotAndPosition(new Offset(
-          subPart.pivotPosition.dx - pivot.dx,
+      subPart.setPivotAndPosition(Offset(subPart.pivotPosition.dx - pivot.dx,
           subPart.pivotPosition.dy - pivot.dy));
       /*subPart.setPivotAndPosition(
           new Offset(subPart.pivotPosition.dx, subPart.pivotPosition.dy));*/
@@ -496,24 +509,24 @@ class _JumpingJackPart extends Sprite {
 }
 
 class _Fireworks extends StatefulWidget {
-  _Fireworks({Key? key}) : super(key: key);
+  const _Fireworks({Key? key}) : super(key: key);
 
   @override
-  _FireworksState createState() => new _FireworksState();
+  _FireworksState createState() => _FireworksState();
 }
 
 class _FireworksState extends State<_Fireworks> {
   @override
   void initState() {
     super.initState();
-    fireworks = new _FireworksNode();
+    fireworks = _FireworksNode();
   }
 
   late _FireworksNode fireworks;
 
   @override
   Widget build(BuildContext context) {
-    return new SpriteWidget(fireworks);
+    return SpriteWidget(fireworks);
   }
 }
 
@@ -533,39 +546,45 @@ class _FireworksNode extends NodeWithSize {
 
   Color _randomExplosionColor() {
     double rand = randomDouble();
-    if (rand < 0.25)
+    if (rand < 0.25) {
       return Colors.pink[200]!;
-    else if (rand < 0.5)
+    } else if (rand < 0.5) {
       return Colors.lightBlue[200]!;
-    else if (rand < 0.75)
+    } else if (rand < 0.75) {
       return Colors.purple[200]!;
-    else
+    } else {
       return Colors.cyan[200]!;
+    }
   }
 
   void _addExplosion() {
     Color startColor = _randomExplosionColor();
     Color endColor = startColor.withAlpha(0);
 
-    ParticleSystem system = new ParticleSystem(_sprites['particle-0.png']!,
-        numParticlesToEmit: 100,
-        emissionRate: 1000.0,
-        rotateToMovement: true,
-        startRotation: 90.0,
-        endRotation: 90.0,
-        speed: 100.0,
-        speedVar: 50.0,
-        startSize: 1.0,
-        startSizeVar: 0.5,
-        gravity: const Offset(0.0, 30.0),
-        colorSequence:
-            new ColorSequence.fromStartAndEndColor(startColor, endColor));
-    system.position =
-        new Offset(randomDouble() * 1024.0, randomDouble() * 1024.0);
+    ParticleSystem system = ParticleSystem(
+      _sprites['particle-0.png']!,
+      numParticlesToEmit: 100,
+      emissionRate: 1000.0,
+      rotateToMovement: true,
+      startRotation: 90.0,
+      endRotation: 90.0,
+      speed: 100.0,
+      speedVar: 50.0,
+      startSize: 1.0,
+      startSizeVar: 0.5,
+      gravity: const Offset(0.0, 30.0),
+      colorSequence: ColorSequence.fromStartAndEndColor(startColor, endColor),
+    );
+    system.position = Offset(randomDouble() * 1024.0, randomDouble() * 1024.0);
     addChild(system);
   }
 }
 
 void main() {
-  runApp(new MaterialApp(title: 'Fitness', home: new FitnessDemo()));
+  runApp(
+    const MaterialApp(
+      title: 'Fitness',
+      home: FitnessDemo(),
+    ),
+  );
 }

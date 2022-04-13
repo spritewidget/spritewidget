@@ -1,6 +1,6 @@
 name: fitness
 publish_to: 'none'
-description: A new Flutter project.
+description: A demo project for SpriteWidget.
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
@@ -11,10 +11,11 @@ dependencies:
   spritewidget:
     path: ../../
 
-# For information on the generic Dart part of this file, see the
-# following page: https://www.dartlang.org/tools/pub/pubspec
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
 
-# The following section is specific to Flutter.
 flutter:
   uses-material-design: true
   assets:
