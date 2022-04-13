@@ -242,8 +242,13 @@ class SpriteBox extends RenderBox {
       if (node.handleMultiplePointers ||
           event.pointer == node._handlingPointer) {
         // Dispatch event
-        bool consumedEvent = node.handleEvent(SpriteBoxEvent(
-            globalToLocal(event.position), event.runtimeType, event.pointer));
+        bool consumedEvent = node.handleEvent(
+          SpriteBoxEvent(
+            globalToLocal(event.position),
+            _eventToEventType(event),
+            event.pointer,
+          ),
+        );
         if (consumedEvent) break;
       }
     }
@@ -537,7 +542,7 @@ class SpriteBoxEvent {
   ///     if (event.type == PointerDownEvent) {
   ///       // Do something!
   ///     }
-  final Type type;
+  final PointerEventType type;
 
   /// The id of the pointer. Each pointer on the screen will have a unique
   /// pointer id.
@@ -552,4 +557,25 @@ class SpriteBoxEvent {
   ///
   ///     var event = new SpriteBoxEvent(new Point(50.0, 50.0), 'pointerdown', 0);
   SpriteBoxEvent(this.boxPosition, this.type, this.pointer);
+}
+
+enum PointerEventType {
+  down,
+  move,
+  up,
+  cancel,
+}
+
+PointerEventType _eventToEventType(PointerEvent event) {
+  if (event is PointerDownEvent) {
+    return PointerEventType.down;
+  } else if (event is PointerMoveEvent) {
+    return PointerEventType.move;
+  } else if (event is PointerUpEvent) {
+    return PointerEventType.up;
+  } else if (event is PointerCancelEvent) {
+    return PointerEventType.cancel;
+  } else {
+    throw Exception('Illegal event type $event');
+  }
 }
