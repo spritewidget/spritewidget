@@ -10,11 +10,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:spritewidget/spritewidget.dart';
 
-ImageMap _images;
-SpriteSheet _sprites;
+late ImageMap _images;
+late SpriteSheet _sprites;
 
 class FitnessDemo extends StatelessWidget {
-  FitnessDemo({Key key}) : super(key: key);
+  FitnessDemo({Key? key}) : super(key: key);
 
   static const String routeName = '/fitness';
 
@@ -27,7 +27,7 @@ class FitnessDemo extends StatelessWidget {
 }
 
 class _FitnessDemoContents extends StatefulWidget {
-  _FitnessDemoContents({Key key}) : super(key: key);
+  _FitnessDemoContents({Key? key}) : super(key: key);
 
   @override
   _FitnessDemoContentsState createState() => new _FitnessDemoContentsState();
@@ -42,7 +42,7 @@ class _FitnessDemoContentsState extends State<_FitnessDemoContents> {
 
     String json = await DefaultAssetBundle.of(context)
         .loadString('assets/jumpingjack.json');
-    _sprites = new SpriteSheet(_images['assets/jumpingjack.png'], json);
+    _sprites = new SpriteSheet(_images['assets/jumpingjack.png']!, json);
   }
 
   @override
@@ -72,7 +72,7 @@ class _FitnessDemoContentsState extends State<_FitnessDemoContents> {
   int _time = 0;
   int get kcal => (_count * 0.2).toInt();
 
-  _WorkoutAnimationNode workoutAnimation;
+  late _WorkoutAnimationNode workoutAnimation;
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +83,7 @@ class _FitnessDemoContentsState extends State<_FitnessDemoContents> {
     VoidCallback onButtonPressed;
 
     if (workoutAnimation.workingOut) {
-      buttonColor = Colors.red[500];
+      buttonColor = Colors.red[500]!;
       buttonText = "STOP WORKOUT";
       onButtonPressed = endWorkout;
     } else {
@@ -210,8 +210,10 @@ class _FitnessDemoContentsState extends State<_FitnessDemoContents> {
 typedef void _SecondPassedCallback(int seconds);
 
 class _WorkoutAnimationNode extends NodeWithSize {
-  _WorkoutAnimationNode({this.onPerformedJumpingJack, this.onSecondPassed})
-      : super(const Size(1024.0, 1024.0)) {
+  _WorkoutAnimationNode({
+    required this.onPerformedJumpingJack,
+    required this.onSecondPassed,
+  }) : super(const Size(1024.0, 1024.0)) {
     reset();
 
     _progress = new _ProgressCircle(const Size(800.0, 800.0));
@@ -230,14 +232,14 @@ class _WorkoutAnimationNode extends NodeWithSize {
   final VoidCallback onPerformedJumpingJack;
   final _SecondPassedCallback onSecondPassed;
 
-  int seconds;
+  int seconds = 0;
 
-  bool workingOut;
+  late bool workingOut;
 
   static const int _kTargetMillis = 1000 * 30;
-  int _startTimeMillis;
-  _ProgressCircle _progress;
-  _JumpingJack _jumpingJack;
+  late int _startTimeMillis;
+  late _ProgressCircle _progress;
+  late _JumpingJack _jumpingJack;
 
   void reset() {
     seconds = 0;
@@ -295,7 +297,7 @@ class _ProgressCircle extends NodeWithSize {
         size.width / 2.0, circlePaint);
 
     Paint pathPaint = new Paint()
-      ..color = Colors.purple[500]
+      ..color = Colors.purple[500]!
       ..strokeWidth = 25.0
       ..style = PaintingStyle.stroke;
 
@@ -324,8 +326,8 @@ class _JumpingJack extends Node {
     right.neutralPosition(true);
   }
 
-  _JumpingJackSide left;
-  _JumpingJackSide right;
+  late _JumpingJackSide left;
+  late _JumpingJackSide right;
 }
 
 class _JumpingJackSide extends Node {
@@ -362,46 +364,46 @@ class _JumpingJackSide extends Node {
     neutralPosition(false);
   }
 
-  _JumpingJackPart torso;
-  _JumpingJackPart head;
-  _JumpingJackPart upperArm;
-  _JumpingJackPart lowerArm;
-  _JumpingJackPart hand;
-  _JumpingJackPart lowerLeg;
-  _JumpingJackPart upperLeg;
-  _JumpingJackPart foot;
+  late _JumpingJackPart torso;
+  late _JumpingJackPart head;
+  late _JumpingJackPart upperArm;
+  late _JumpingJackPart lowerArm;
+  late _JumpingJackPart hand;
+  late _JumpingJackPart lowerLeg;
+  late _JumpingJackPart upperLeg;
+  late _JumpingJackPart foot;
 
-  final VoidCallback onPerformedJumpingJack;
+  final VoidCallback? onPerformedJumpingJack;
 
   _JumpingJackPart _createPart(String textureName, Offset pivotPosition) {
-    return new _JumpingJackPart(_sprites[textureName], pivotPosition,
+    return new _JumpingJackPart(_sprites[textureName]!, pivotPosition,
         name: textureName);
   }
 
   void animateJumping() {
-    motions.stopAll();
-    motions.run(new MotionSequence(<Motion>[
+    motions!.stopAll();
+    motions!.run(new MotionSequence(<Motion>[
       _createPoseAction(null, 0, 0.5),
       new MotionCallFunction(_animateJumpingLoop)
     ]));
   }
 
   void _animateJumpingLoop() {
-    motions.run(new MotionRepeatForever(new MotionSequence(<Motion>[
+    motions!.run(new MotionRepeatForever(new MotionSequence(<Motion>[
       _createPoseAction(0, 1, 0.30),
       _createPoseAction(1, 2, 0.30),
       _createPoseAction(2, 1, 0.30),
       _createPoseAction(1, 0, 0.30),
       new MotionCallFunction(() {
-        if (onPerformedJumpingJack != null) onPerformedJumpingJack();
+        if (onPerformedJumpingJack != null) onPerformedJumpingJack!();
       })
     ])));
   }
 
   void neutralPosition(bool animate) {
-    motions.stopAll();
+    motions!.stopAll();
     if (animate) {
-      motions.run(_createPoseAction(null, 1, 0.5));
+      motions!.run(_createPoseAction(null, 1, 0.5));
     } else {
       List<double> d = _dataForPose(1);
       upperArm.rotation = d[0];
@@ -415,7 +417,7 @@ class _JumpingJackSide extends Node {
   }
 
   MotionInterval _createPoseAction(
-      int startPose, int endPose, double duration) {
+      int? startPose, int endPose, double duration) {
     List<double> d0 = _dataForPose(startPose);
     List<double> d1 = _dataForPose(endPose);
 
@@ -438,7 +440,7 @@ class _JumpingJackSide extends Node {
     return new MotionTween((a) => part.rotation = a, r0, r1, duration);
   }
 
-  List<double> _dataForPose(int pose) {
+  List<double> _dataForPose(int? pose) {
     if (pose == null) return _dataForCurrentPose();
 
     if (pose == 0) {
@@ -483,7 +485,7 @@ class _JumpingJackPart extends Sprite {
     position = newPosition;
 
     for (Node child in children) {
-      _JumpingJackPart subPart = child;
+      _JumpingJackPart subPart = child as _JumpingJackPart;
       subPart.setPivotAndPosition(new Offset(
           subPart.pivotPosition.dx - pivot.dx,
           subPart.pivotPosition.dy - pivot.dy));
@@ -494,7 +496,7 @@ class _JumpingJackPart extends Sprite {
 }
 
 class _Fireworks extends StatefulWidget {
-  _Fireworks({Key key}) : super(key: key);
+  _Fireworks({Key? key}) : super(key: key);
 
   @override
   _FireworksState createState() => new _FireworksState();
@@ -507,7 +509,7 @@ class _FireworksState extends State<_Fireworks> {
     fireworks = new _FireworksNode();
   }
 
-  _FireworksNode fireworks;
+  late _FireworksNode fireworks;
 
   @override
   Widget build(BuildContext context) {
@@ -532,20 +534,20 @@ class _FireworksNode extends NodeWithSize {
   Color _randomExplosionColor() {
     double rand = randomDouble();
     if (rand < 0.25)
-      return Colors.pink[200];
+      return Colors.pink[200]!;
     else if (rand < 0.5)
-      return Colors.lightBlue[200];
+      return Colors.lightBlue[200]!;
     else if (rand < 0.75)
-      return Colors.purple[200];
+      return Colors.purple[200]!;
     else
-      return Colors.cyan[200];
+      return Colors.cyan[200]!;
   }
 
   void _addExplosion() {
     Color startColor = _randomExplosionColor();
     Color endColor = startColor.withAlpha(0);
 
-    ParticleSystem system = new ParticleSystem(_sprites['particle-0.png'],
+    ParticleSystem system = new ParticleSystem(_sprites['particle-0.png']!,
         numParticlesToEmit: 100,
         emissionRate: 1000.0,
         rotateToMovement: true,
