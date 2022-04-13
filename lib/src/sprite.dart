@@ -28,7 +28,7 @@ class Sprite extends NodeWithSize with SpritePaint {
   /// Creates a new sprite from the provided [texture].
   ///
   ///     var mySprite = new Sprite(myTexture)
-  Sprite(this.texture) : super(Size.zero) {
+  Sprite({required this.texture}) : super(Size.zero) {
     size = texture.size;
     pivot = texture.pivot;
   }

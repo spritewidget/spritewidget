@@ -10,10 +10,20 @@ part of spritewidget;
 /// an animated line, consider using the [EffectLine] instead.
 class TexturedLine extends Node {
   /// Creates a new TexturedLine.
-  TexturedLine(List<Offset> points, List<Color> colors, List<double> widths,
-      [SpriteTexture? texture, List<double>? textureStops]) {
-    painter =
-        TexturedLinePainter(points, colors, widths, texture, textureStops);
+  TexturedLine({
+    required List<Offset> points,
+    required List<Color> colors,
+    required List<double> widths,
+    required SpriteTexture texture,
+    List<double>? textureStops,
+  }) {
+    painter = TexturedLinePainter(
+      points,
+      colors,
+      widths,
+      texture,
+      textureStops,
+    );
   }
 
   /// The painter used to draw the line.
@@ -29,8 +39,13 @@ class TexturedLine extends Node {
 /// [SpriteTexture].
 class TexturedLinePainter {
   /// Creates a painter that draws a polyline with a texture.
-  TexturedLinePainter(this._points, this.colors, this.widths,
-      [SpriteTexture? texture, this.textureStops]) {
+  TexturedLinePainter(
+    this._points,
+    this.colors,
+    this.widths,
+    SpriteTexture texture,
+    this.textureStops,
+  ) {
     this.texture = texture;
   }
 
@@ -52,21 +67,18 @@ class TexturedLinePainter {
   List<double> widths;
 
   /// The texture this line will be drawn using.
-  SpriteTexture? get texture => _texture;
+  SpriteTexture get texture => _texture;
 
-  SpriteTexture? _texture;
+  late SpriteTexture _texture;
 
-  set texture(SpriteTexture? texture) {
+  set texture(SpriteTexture texture) {
     _texture = texture;
-    if (texture == null) {
-      _cachedPaint = Paint();
-    } else {
-      Matrix4 matrix = Matrix4.identity();
-      ImageShader shader = ImageShader(
-          texture.image, TileMode.repeated, TileMode.repeated, matrix.storage);
 
-      _cachedPaint = Paint()..shader = shader;
-    }
+    Matrix4 matrix = Matrix4.identity();
+    ImageShader shader = ImageShader(
+        texture.image, TileMode.repeated, TileMode.repeated, matrix.storage);
+
+    _cachedPaint = Paint()..shader = shader;
   }
 
   /// Defines the position in the texture for each point on the polyline.
@@ -145,28 +157,26 @@ class TexturedLinePainter {
     verticeColors.add(colors[0]);
     verticeColors.add(colors[0]);
 
-    if (texture != null) {
-      assert(texture!.rotated == false);
+    assert(texture.rotated == false);
 
-      // Setup for calculating texture coordinates
-      textureTop = texture!.frame.top;
-      textureBottom = texture!.frame.bottom;
-      textureCoordinates = <Offset>[];
+    // Setup for calculating texture coordinates
+    textureTop = texture.frame.top;
+    textureBottom = texture.frame.bottom;
+    textureCoordinates = <Offset>[];
 
-      // Use correct stops
-      if (textureStops != null) {
-        assert(_points.length == textureStops!.length);
-        stops = textureStops;
-      } else {
-        if (_calculatedTextureStops == null) _calculateTextureStops();
-        stops = _calculatedTextureStops;
-      }
-
-      // Texture coordinate points
-      double xPos = _xPosForStop(stops![0]);
-      textureCoordinates.add(Offset(xPos, textureTop));
-      textureCoordinates.add(Offset(xPos, textureBottom));
+    // Use correct stops
+    if (textureStops != null) {
+      assert(_points.length == textureStops!.length);
+      stops = textureStops;
+    } else {
+      if (_calculatedTextureStops == null) _calculateTextureStops();
+      stops = _calculatedTextureStops;
     }
+
+    // Texture coordinate points
+    double xPos = _xPosForStop(stops![0]);
+    textureCoordinates.add(Offset(xPos, textureTop));
+    textureCoordinates.add(Offset(xPos, textureBottom));
 
     // Add the rest of the points
     for (int i = 1; i < _points.length; i++) {
@@ -187,12 +197,10 @@ class TexturedLinePainter {
       verticeColors.add(colors[i]);
       verticeColors.add(colors[i]);
 
-      if (texture != null) {
-        // Texture coordinate points
-        double xPos = _xPosForStop(stops![i]);
-        textureCoordinates!.add(Offset(xPos, textureTop));
-        textureCoordinates.add(Offset(xPos, textureBottom));
-      }
+      // Texture coordinate points
+      double xPos = _xPosForStop(stops[i]);
+      textureCoordinates.add(Offset(xPos, textureTop));
+      textureCoordinates.add(Offset(xPos, textureBottom));
 
       // Update last values
       lastPoint = currentPoint;
@@ -210,11 +218,11 @@ class TexturedLinePainter {
 
   double _xPosForStop(double stop) {
     if (_textureLoopLength == null) {
-      return texture!.frame.left +
-          texture!.frame.width * (stop - textureStopOffset);
+      return texture.frame.left +
+          texture.frame.width * (stop - textureStopOffset);
     } else {
-      return texture!.frame.left +
-          texture!.frame.width *
+      return texture.frame.left +
+          texture.frame.width *
               (stop - textureStopOffset * (_textureLoopLength! / length!)) *
               (length! / _textureLoopLength!);
     }

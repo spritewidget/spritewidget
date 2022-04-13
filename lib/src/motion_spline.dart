@@ -33,8 +33,12 @@ class MotionSpline extends MotionInterval {
   /// callback for setting the positions, [points] define the spline, and
   /// [duration] is the time for the motion to complete. Optionally a [curve]
   /// can be used for easing.
-  MotionSpline(this.setter, this.points, double duration, [Curve? curve])
-      : super(duration, curve) {
+  MotionSpline({
+    required this.setter,
+    required this.points,
+    required double duration,
+    Curve? curve,
+  }) : super(duration, curve) {
     _dt = 1.0 / (points.length - 1.0);
   }
 

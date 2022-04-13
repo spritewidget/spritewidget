@@ -47,8 +47,8 @@ class _ParticleAccelerations {
 class ParticleSystem extends Node {
   /// Creates a new particle system with the given properties. The only
   /// required parameter is the texture, all other parameters are optional.
-  ParticleSystem(
-    this.texture, {
+  ParticleSystem({
+    required this.texture,
     this.life = 1.5,
     this.lifeVar = 1.0,
     this.posVar = Offset.zero,
@@ -613,7 +613,7 @@ ParticleSystem deserializeParticleSystem(
   ParticleSystem? particleSystem,
   SpriteTexture? texture,
 }) {
-  particleSystem ??= ParticleSystem(texture!);
+  particleSystem ??= ParticleSystem(texture: texture!);
 
   particleSystem.life = data['life'];
   particleSystem.lifeVar = data['lifeVar'];

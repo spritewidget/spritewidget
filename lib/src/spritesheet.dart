@@ -22,7 +22,8 @@ class SpriteSheet {
   /// [jsonDefinition].
   ///
   ///     var mySpriteSheet = new SpriteSheet(myImage, jsonString);
-  SpriteSheet(this._image, String jsonDefinition) {
+  SpriteSheet({required ui.Image image, required String jsonDefinition})
+      : _image = image {
     JsonDecoder decoder = const JsonDecoder();
     Map<dynamic, dynamic> file = decoder.convert(jsonDefinition);
 

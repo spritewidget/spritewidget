@@ -27,7 +27,7 @@ class ParticleWorld extends NodeWithSize {
         SpriteTexture(images['assets/particle-$_selectedTexture.png']!);
 
     particleSystem = ParticleSystem(
-      texture,
+      texture: texture,
       autoRemoveOnFinish: false,
     );
     particleSystem.position = const Offset(512.0, 512.0);

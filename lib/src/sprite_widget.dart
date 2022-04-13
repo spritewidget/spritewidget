@@ -37,8 +37,10 @@ class SpriteWidget extends SingleChildRenderObjectWidget {
   }) : super(key: key);
 
   @override
-  SpriteBox createRenderObject(BuildContext context) =>
-      SpriteBox(rootNode, transformMode);
+  SpriteBox createRenderObject(BuildContext context) => SpriteBox(
+        rootNode: rootNode,
+        transformMode: transformMode,
+      );
 
   @override
   void updateRenderObject(BuildContext context, SpriteBox renderObject) {

@@ -49,7 +49,10 @@ class _WeatherDemoState extends State<WeatherDemo> {
     // Load the sprite sheet, which contains snowflakes and rain drops.
     String json = await DefaultAssetBundle.of(context)
         .loadString('assets/weathersprites.json');
-    _sprites = SpriteSheet(_images['assets/weathersprites.png']!, json);
+    _sprites = SpriteSheet(
+      image: _images['assets/weathersprites.png']!,
+      jsonDefinition: json,
+    );
   }
 
   @override
@@ -409,7 +412,7 @@ class Sun extends Node {
               MotionTween<double>(
                 setter: (a) => ray.opacity = a,
                 start: ray.opacity,
-                end: ray.maxOpacity!,
+                end: ray.maxOpacity,
                 duration: 1.5,
               ),
             ],
@@ -441,7 +444,7 @@ class Ray extends Sprite {
     transferMode = BlendMode.plus;
     rotation = randomDouble() * 360.0;
     maxOpacity = randomDouble() * 0.2;
-    opacity = maxOpacity!;
+    opacity = maxOpacity;
     scaleX = 2.5 + randomDouble();
     scaleY = 0.3;
     _rotationSpeed = randomSignedDouble() * 2.0;
@@ -490,7 +493,7 @@ class Rain extends Node {
 
   void _addParticles(double distance) {
     ParticleSystem particles = ParticleSystem(
-      _sprites['raindrop.png']!,
+      texture: _sprites['raindrop.png']!,
       transferMode: BlendMode.srcATop,
       posVar: const Offset(1300.0, 0.0),
       direction: 90.0,
@@ -559,7 +562,7 @@ class Snow extends Node {
 
   void _addParticles(SpriteTexture texture, double distance) {
     ParticleSystem particles = ParticleSystem(
-      texture,
+      texture: texture,
       transferMode: BlendMode.srcATop,
       posVar: const Offset(1300.0, 0.0),
       direction: 90.0,

@@ -11,8 +11,11 @@ part of spritewidget;
 class NineSliceSprite extends NodeWithSize with SpritePaint {
   /// Creates a new NineSliceSprite from the privided [texture], [size], and
   /// texture [insets].
-  NineSliceSprite(SpriteTexture texture, Size size, EdgeInsets insets)
-      : super(size) {
+  NineSliceSprite({
+    required SpriteTexture texture,
+    required Size size,
+    required EdgeInsets insets,
+  }) : super(size) {
     assert(!texture.rotated);
     pivot = const Offset(0.5, 0.5);
     this.texture = texture;
@@ -21,8 +24,15 @@ class NineSliceSprite extends NodeWithSize with SpritePaint {
 
   /// Creates a new NineSliceSprite from the provided [image], [size], and
   /// texture [insets].
-  NineSliceSprite.fromImage(ui.Image image, Size size, EdgeInsets insets)
-      : this(SpriteTexture(image), size, insets);
+  NineSliceSprite.fromImage({
+    required ui.Image image,
+    required Size size,
+    required insets,
+  }) : this(
+          texture: SpriteTexture(image),
+          size: size,
+          insets: insets,
+        );
 
   /// The texture that the sprite will render to screen. Cannot be null.
   ///

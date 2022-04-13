@@ -39,15 +39,17 @@ class SpriteBox extends RenderBox {
   /// letterboxing.
   ///
   /// The [rootNode] provides the content of the node tree, typically it's a
-  /// custom subclass of [NodeWithSize]. The [mode] provides different ways to
+  /// custom subclass of [NodeWithSize]. The [transformMode] provides different ways to
   /// scale the content to best fit it to the screen. In most cases it's
   /// preferred to use a [SpriteWidget] that automatically wraps the SpriteBox.
   ///
   ///     var spriteBox = SpriteBox(myNode, SpriteBoxTransformMode.fixedHeight);
-  SpriteBox(NodeWithSize rootNode,
-      [SpriteBoxTransformMode mode = SpriteBoxTransformMode.letterbox]) {
+  SpriteBox({
+    required NodeWithSize rootNode,
+    SpriteBoxTransformMode transformMode = SpriteBoxTransformMode.letterbox,
+  }) {
     // Setup transform mode
-    _transformMode = mode;
+    _transformMode = transformMode;
     // this.transformMode = mode;
 
     // Setup root node

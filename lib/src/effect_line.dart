@@ -62,7 +62,7 @@ class EffectLine extends Node {
 
     _offset = scrollStart;
 
-    _painter = TexturedLinePainter(points, _colors, _widths, texture);
+    _painter = TexturedLinePainter(points, _colors, _widths, texture, null);
     _painter.textureLoopLength = textureLoopLength;
   }
 

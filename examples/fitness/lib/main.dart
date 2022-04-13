@@ -43,7 +43,10 @@ class _FitnessDemoContentsState extends State<_FitnessDemoContents> {
 
     String json = await DefaultAssetBundle.of(context)
         .loadString('assets/jumpingjack.json');
-    _sprites = SpriteSheet(_images['assets/jumpingjack.png']!, json);
+    _sprites = SpriteSheet(
+      image: _images['assets/jumpingjack.png']!,
+      jsonDefinition: json,
+    );
   }
 
   @override
@@ -512,7 +515,7 @@ class _JumpingJackPart extends Sprite {
   String name;
 
   _JumpingJackPart(SpriteTexture texture, this.pivotPosition, {this.name = ''})
-      : super(texture);
+      : super(texture: texture);
   final Offset pivotPosition;
 
   void setPivotAndPosition(Offset newPosition) {
@@ -583,7 +586,7 @@ class _FireworksNode extends NodeWithSize {
     Color endColor = startColor.withAlpha(0);
 
     ParticleSystem system = ParticleSystem(
-      _sprites['particle-0.png']!,
+      texture: _sprites['particle-0.png']!,
       numParticlesToEmit: 100,
       emissionRate: 1000.0,
       rotateToMovement: true,
