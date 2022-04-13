@@ -9,8 +9,8 @@ part of spritewidget;
 /// multiple images.
 class ImageMap {
   /// Creates a new ImageMap where images will be loaded from the specified
-  /// [bundle].
-  ImageMap(AssetBundle bundle) : _bundle = bundle;
+  /// [bundle], or from the [rootBundle] if no bundle is provided.
+  ImageMap({AssetBundle? bundle}) : _bundle = bundle ?? rootBundle;
 
   final AssetBundle _bundle;
   final _images = <String, ui.Image>{};
@@ -20,7 +20,8 @@ class ImageMap {
     return Future.wait(urls.map(loadImage));
   }
 
-  /// Loads a single image given the image's [url] and adds it to the [ImageMap].
+  /// Loads a single image given the image's [url] and adds it to the
+  /// [ImageMap].
   Future<ui.Image> loadImage(String url) async {
     ImageStream stream =
         AssetImage(url, bundle: _bundle).resolve(ImageConfiguration.empty);

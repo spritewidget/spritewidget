@@ -36,7 +36,7 @@ class _FitnessDemoContents extends StatefulWidget {
 
 class _FitnessDemoContentsState extends State<_FitnessDemoContents> {
   Future<void> _loadAssets(AssetBundle bundle) async {
-    _images = ImageMap(rootBundle);
+    _images = ImageMap();
     await _images.load(<String>[
       'assets/jumpingjack.png',
     ]);
@@ -396,22 +396,34 @@ class _JumpingJackSide extends Node {
 
   void animateJumping() {
     motions.stopAll();
-    motions.run(MotionSequence(<Motion>[
-      _createPoseAction(null, 0, 0.5),
-      MotionCallFunction(_animateJumpingLoop)
-    ]));
+    motions.run(
+      MotionSequence(
+        motions: [
+          _createPoseAction(null, 0, 0.5),
+          MotionCallFunction(callback: _animateJumpingLoop),
+        ],
+      ),
+    );
   }
 
   void _animateJumpingLoop() {
-    motions.run(MotionRepeatForever(MotionSequence(<Motion>[
-      _createPoseAction(0, 1, 0.30),
-      _createPoseAction(1, 2, 0.30),
-      _createPoseAction(2, 1, 0.30),
-      _createPoseAction(1, 0, 0.30),
-      MotionCallFunction(() {
-        if (onPerformedJumpingJack != null) onPerformedJumpingJack!();
-      })
-    ])));
+    motions.run(
+      MotionRepeatForever(
+        motion: MotionSequence(
+          motions: [
+            _createPoseAction(0, 1, 0.30),
+            _createPoseAction(1, 2, 0.30),
+            _createPoseAction(2, 1, 0.30),
+            _createPoseAction(1, 0, 0.30),
+            MotionCallFunction(
+              callback: () {
+                if (onPerformedJumpingJack != null) onPerformedJumpingJack!();
+              },
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   void neutralPosition(bool animate) {
@@ -442,16 +454,25 @@ class _JumpingJackSide extends Node {
       _tweenRotation(upperLeg, d0[3], d1[3], duration),
       _tweenRotation(lowerLeg, d0[4], d1[4], duration),
       _tweenRotation(foot, d0[5], d1[5], duration),
-      MotionTween<Offset>((a) => torso.position = a, Offset(0.0, d0[6]),
-          Offset(0.0, d1[6]), duration)
+      MotionTween<Offset>(
+        setter: (a) => torso.position = a,
+        start: Offset(0.0, d0[6]),
+        end: Offset(0.0, d1[6]),
+        duration: duration,
+      )
     ];
 
-    return MotionGroup(tweens);
+    return MotionGroup(motions: tweens);
   }
 
   MotionTween _tweenRotation(
       _JumpingJackPart part, double r0, double r1, double duration) {
-    return MotionTween((a) => part.rotation = a, r0, r1, duration);
+    return MotionTween(
+      setter: (a) => part.rotation = a,
+      start: r0,
+      end: r1,
+      duration: duration,
+    );
   }
 
   List<double> _dataForPose(int? pose) {
@@ -573,7 +594,10 @@ class _FireworksNode extends NodeWithSize {
       startSize: 1.0,
       startSizeVar: 0.5,
       gravity: const Offset(0.0, 30.0),
-      colorSequence: ColorSequence.fromStartAndEndColor(startColor, endColor),
+      colorSequence: ColorSequence.fromStartAndEndColor(
+        start: startColor,
+        end: endColor,
+      ),
     );
     system.position = Offset(randomDouble() * 1024.0, randomDouble() * 1024.0);
     addChild(system);

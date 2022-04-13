@@ -8,9 +8,6 @@ part of spritewidget;
 /// Signature for callbacks used by the [MotionCallFunction].
 typedef MotionCallback = void Function();
 
-@Deprecated('Action has been renamed to Motion to avoid conflict with Flutter')
-abstract class Action {}
-
 /// Motions are used to animate properties of nodes or any other type of
 /// objects. The motions are powered by an [MotionController], typically
 /// associated with a [Node]. The most commonly used motion is the
@@ -106,7 +103,7 @@ class MotionRepeat extends MotionInterval {
   /// of times.
   ///
   ///     var myLoop = new MotionRepeat(myMotion);
-  MotionRepeat(this.motion, this.numRepeats) {
+  MotionRepeat({required this.motion, required this.numRepeats}) {
     _duration = motion.duration * numRepeats;
   }
 
@@ -139,7 +136,7 @@ class MotionRepeatForever extends Motion {
   /// Creates a new motion with the motion that is passed in.
   ///
   ///     var myInifiniteLoop = new MotionRepeatForever(myMotion);
-  MotionRepeatForever(this.motion);
+  MotionRepeatForever({required this.motion});
 
   @override
   void step(double dt) {
@@ -173,7 +170,7 @@ class MotionSequence extends MotionInterval {
   /// Creates a new motion with the list of motions passed in.
   ///
   ///     var mySequence = new MotionSequence([myMotion0, myMotion1, myMotion2]);
-  MotionSequence(List<Motion> motions) {
+  MotionSequence({required List<Motion> motions}) {
     assert(motions.length >= 2);
 
     if (motions.length == 2) {
@@ -182,7 +179,7 @@ class MotionSequence extends MotionInterval {
       _b = motions[1];
     } else {
       _a = motions[0];
-      _b = MotionSequence(motions.sublist(1));
+      _b = MotionSequence(motions: motions.sublist(1));
     }
 
     // Calculate split and duration
@@ -256,12 +253,12 @@ class MotionSequence extends MotionInterval {
 /// [MotionGroup] will be the maximum of the durations of the motions used to
 /// compose this motion.
 class MotionGroup extends MotionInterval {
-  final List<Motion> _motions;
+  late final List<Motion> _motions;
 
   /// Creates a new motion with the list of motions passed in.
   ///
   ///     var myGroup = new MotionGroup([myMotion0, myMotion1, myMotion2]);
-  MotionGroup(this._motions) {
+  MotionGroup({required List<Motion> motions}) : _motions = motions {
     for (Motion motion in _motions) {
       if (motion.duration > _duration) {
         _duration = motion.duration;
@@ -322,7 +319,7 @@ class MotionGroup extends MotionInterval {
 /// is typically used in a sequence to space out other events.
 class MotionDelay extends MotionInterval {
   /// Creates a new motion with the specified [delay]
-  MotionDelay(double delay) : super(delay);
+  MotionDelay({required double delay}) : super(delay);
 }
 
 /// A motion that doesn't have a duration. If this class is overridden to
@@ -344,16 +341,18 @@ abstract class MotionInstant extends Motion {
 
 /// A motion that calls a custom function when it is fired.
 class MotionCallFunction extends MotionInstant {
-  final MotionCallback _function;
+  final MotionCallback _callback;
 
   /// Creates a new callback motion with the supplied callback.
   ///
   ///     var myMotion = new MotionCallFunction(() { print("Hello!";) });
-  MotionCallFunction(this._function);
+  MotionCallFunction({
+    required MotionCallback callback,
+  }) : _callback = callback;
 
   @override
   void fire() {
-    _function();
+    _callback();
   }
 }
 
@@ -364,7 +363,7 @@ class MotionRemoveNode extends MotionInstant {
   /// Creates a new motion with the node to remove as its argument.
   ///
   ///     var myMotion = new MotionRemoveNode(myNode);
-  MotionRemoveNode(this._node);
+  MotionRemoveNode({required Node node}) : _node = node;
 
   @override
   void fire() {
@@ -378,7 +377,7 @@ class MotionRemoveNode extends MotionInstant {
 /// type [Point], [Size], [Rect], [double], or [Color].
 class MotionTween<T> extends MotionInterval {
   /// Creates a new tween motion. The [setter] will be called to update the
-  /// animated property from [startVal] to [endVal] over the [duration] time in
+  /// animated property from [start] to [end] over the [duration] time in
   /// seconds. Optionally an animation [curve] can be passed in for easing the
   /// animation.
   ///
@@ -392,9 +391,13 @@ class MotionTween<T> extends MotionInterval {
   ///       bounceOut
   ///     );
   ///     myNode.motions.run(myTween);
-  MotionTween(this.setter, this.startVal, this.endVal, double duration,
-      [Curve? curve])
-      : super(duration, curve) {
+  MotionTween({
+    required this.setter,
+    required this.start,
+    required this.end,
+    required double duration,
+    Curve? curve,
+  }) : super(duration, curve) {
     _computeDelta();
   }
 
@@ -402,49 +405,49 @@ class MotionTween<T> extends MotionInterval {
   final SetterCallback setter;
 
   /// The start value of the animation.
-  final T startVal;
+  final T start;
 
   /// The end value of the animation.
-  final T endVal;
+  final T end;
 
   late dynamic _delta;
 
   void _computeDelta() {
-    if (startVal is Offset) {
+    if (start is Offset) {
       // Point
-      double xStart = (startVal as Offset).dx;
-      double yStart = (startVal as Offset).dy;
-      double xEnd = (endVal as Offset).dx;
-      double yEnd = (endVal as Offset).dy;
+      double xStart = (start as Offset).dx;
+      double yStart = (start as Offset).dy;
+      double xEnd = (end as Offset).dx;
+      double yEnd = (end as Offset).dy;
       _delta = Offset(xEnd - xStart, yEnd - yStart);
-    } else if (startVal is Size) {
+    } else if (start is Size) {
       // Size
-      double wStart = (startVal as Size).width;
-      double hStart = (startVal as Size).height;
-      double wEnd = (endVal as Size).width;
-      double hEnd = (endVal as Size).height;
+      double wStart = (start as Size).width;
+      double hStart = (start as Size).height;
+      double wEnd = (end as Size).width;
+      double hEnd = (end as Size).height;
       _delta = Size(wEnd - wStart, hEnd - hStart);
-    } else if (startVal is Rect) {
+    } else if (start is Rect) {
       // Rect
-      double lStart = (startVal as Rect).left;
-      double tStart = (startVal as Rect).top;
-      double rStart = (startVal as Rect).right;
-      double bStart = (startVal as Rect).bottom;
-      double lEnd = (endVal as Rect).left;
-      double tEnd = (endVal as Rect).top;
-      double rEnd = (endVal as Rect).right;
-      double bEnd = (endVal as Rect).bottom;
+      double lStart = (start as Rect).left;
+      double tStart = (start as Rect).top;
+      double rStart = (start as Rect).right;
+      double bStart = (start as Rect).bottom;
+      double lEnd = (end as Rect).left;
+      double tEnd = (end as Rect).top;
+      double rEnd = (end as Rect).right;
+      double bEnd = (end as Rect).bottom;
       _delta = Rect.fromLTRB(
           lEnd - lStart, tEnd - tStart, rEnd - rStart, bEnd - bStart);
-    } else if (startVal is double) {
+    } else if (start is double) {
       // Double
-      _delta = (endVal as double) - (startVal as double);
-    } else if (startVal is Color) {
+      _delta = (end as double) - (start as double);
+    } else if (start is Color) {
       // Color
-      int aDelta = (endVal as Color).alpha - (startVal as Color).alpha;
-      int rDelta = (endVal as Color).red - (startVal as Color).red;
-      int gDelta = (endVal as Color).green - (startVal as Color).green;
-      int bDelta = (endVal as Color).blue - (startVal as Color).blue;
+      int aDelta = (end as Color).alpha - (start as Color).alpha;
+      int rDelta = (end as Color).red - (start as Color).red;
+      int gDelta = (end as Color).green - (start as Color).green;
+      int bDelta = (end as Color).blue - (start as Color).blue;
       _delta = _ColorDiff(aDelta, rDelta, gDelta, bDelta);
     } else {
       assert(false);
@@ -455,44 +458,44 @@ class MotionTween<T> extends MotionInterval {
   void update(double t) {
     dynamic newVal;
 
-    if (startVal is Offset) {
+    if (start is Offset) {
       // Point
-      double xStart = (startVal as Offset).dx;
-      double yStart = (startVal as Offset).dy;
+      double xStart = (start as Offset).dx;
+      double yStart = (start as Offset).dy;
       double xDelta = _delta.dx;
       double yDelta = _delta.dy;
       newVal = Offset(xStart + xDelta * t, yStart + yDelta * t);
-    } else if (startVal is Size) {
+    } else if (start is Size) {
       // Size
-      double wStart = (startVal as Size).width;
-      double hStart = (startVal as Size).height;
+      double wStart = (start as Size).width;
+      double hStart = (start as Size).height;
       double wDelta = _delta.width;
       double hDelta = _delta.height;
       newVal = Size(wStart + wDelta * t, hStart + hDelta * t);
-    } else if (startVal is Rect) {
+    } else if (start is Rect) {
       // Rect
-      double lStart = (startVal as Rect).left;
-      double tStart = (startVal as Rect).top;
-      double rStart = (startVal as Rect).right;
-      double bStart = (startVal as Rect).bottom;
+      double lStart = (start as Rect).left;
+      double tStart = (start as Rect).top;
+      double rStart = (start as Rect).right;
+      double bStart = (start as Rect).bottom;
       double lDelta = _delta.left;
       double tDelta = _delta.top;
       double rDelta = _delta.right;
       double bDelta = _delta.bottom;
       newVal = Rect.fromLTRB(lStart + lDelta * t, tStart + tDelta * t,
           rStart + rDelta * t, bStart + bDelta * t);
-    } else if (startVal is double) {
+    } else if (start is double) {
       // Doubles
-      newVal = (startVal as double) + _delta * t;
-    } else if (startVal is Color) {
+      newVal = (start as double) + _delta * t;
+    } else if (start is Color) {
       // Colors
-      int aNew = ((startVal as Color).alpha + (_delta.alpha * t).toInt())
+      int aNew = ((start as Color).alpha + (_delta.alpha * t).toInt())
           .clamp(0, 255) as int;
-      int rNew = ((startVal as Color).red + (_delta.red * t).toInt())
+      int rNew = ((start as Color).red + (_delta.red * t).toInt()).clamp(0, 255)
+          as int;
+      int gNew = ((start as Color).green + (_delta.green * t).toInt())
           .clamp(0, 255) as int;
-      int gNew = ((startVal as Color).green + (_delta.green * t).toInt())
-          .clamp(0, 255) as int;
-      int bNew = ((startVal as Color).blue + (_delta.blue * t).toInt())
+      int bNew = ((start as Color).blue + (_delta.blue * t).toInt())
           .clamp(0, 255) as int;
       newVal = Color.fromARGB(aNew, rNew, gNew, bNew);
     } else {

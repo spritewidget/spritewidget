@@ -5,7 +5,6 @@
 import 'dart:ui' as ui show Image;
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:spritewidget/spritewidget.dart';
 
 import 'particle_designer.dart';
@@ -46,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
 
-    _images = ImageMap(rootBundle);
+    _images = ImageMap();
     _images.load([
       'assets/particle-0.png',
       'assets/particle-1.png',

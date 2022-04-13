@@ -34,7 +34,7 @@ class _WeatherDemoState extends State<WeatherDemo> {
   // This method loads all assets that are needed for the demo.
   Future<void> _loadAssets(AssetBundle bundle) async {
     // Load images using an ImageMap
-    _images = ImageMap(bundle);
+    _images = ImageMap();
     await _images.load(<String>[
       'assets/clouds-0.png',
       'assets/clouds-1.png',
@@ -233,19 +233,19 @@ class WeatherWorld extends NodeWithSize {
     // Fade the background from one gradient to another.
     _background.motions.run(
       MotionTween<Color>(
-        (a) => _background.colorTop = a,
-        _background.colorTop,
-        _kBackgroundColorsTop[weatherType.index],
-        1.0,
+        setter: (a) => _background.colorTop = a,
+        start: _background.colorTop,
+        end: _kBackgroundColorsTop[weatherType.index],
+        duration: 1.0,
       ),
     );
 
     _background.motions.run(
       MotionTween<Color>(
-        (a) => _background.colorBottom = a,
-        _background.colorBottom,
-        _kBackgroundColorsBottom[weatherType.index],
-        1.0,
+        setter: (a) => _background.colorBottom = a,
+        start: _background.colorBottom,
+        end: _kBackgroundColorsBottom[weatherType.index],
+        duration: 1.0,
       ),
     );
 
@@ -308,11 +308,11 @@ class CloudLayer extends Node {
     // Animates the clouds across the screen.
     motions.run(
       MotionRepeatForever(
-        MotionTween<Offset>(
-          (a) => position = a,
-          Offset.zero,
-          const Offset(-2048.0, 0.0),
-          loopTime,
+        motion: MotionTween<Offset>(
+          setter: (a) => position = a,
+          start: Offset.zero,
+          end: const Offset(-2048.0, 0.0),
+          duration: loopTime,
         ),
       ),
     );
@@ -346,7 +346,11 @@ class CloudLayer extends Node {
       sprite.motions.stopAll();
       sprite.motions.run(
         MotionTween<double>(
-            (a) => sprite.opacity = a, sprite.opacity, opacity, 1.0),
+          setter: (a) => sprite.opacity = a,
+          start: sprite.opacity,
+          end: opacity,
+          duration: 1.0,
+        ),
       );
     }
   }
@@ -387,17 +391,27 @@ class Sun extends Node {
       targetOpacity = 1.0;
     }
 
-    motions.run(MotionTween<double>(
-        (a) => _sun.opacity = a, _sun.opacity, targetOpacity, 2.0));
+    motions.run(
+      MotionTween<double>(
+        setter: (a) => _sun.opacity = a,
+        start: _sun.opacity,
+        end: targetOpacity,
+        duration: 2.0,
+      ),
+    );
 
     if (active) {
       for (Ray ray in _rays) {
         motions.run(
           MotionSequence(
-            <Motion>[
-              MotionDelay(1.5),
-              MotionTween<double?>(
-                  (a) => ray.opacity = a, ray.opacity, ray.maxOpacity, 1.5),
+            motions: [
+              MotionDelay(delay: 1.5),
+              MotionTween<double>(
+                setter: (a) => ray.opacity = a,
+                start: ray.opacity,
+                end: ray.maxOpacity!,
+                duration: 1.5,
+              ),
             ],
           ),
         );
@@ -406,10 +420,10 @@ class Sun extends Node {
       for (Ray ray in _rays) {
         motions.run(
           MotionTween<double>(
-            (a) => ray.opacity = a,
-            ray.opacity,
-            0.0,
-            0.2,
+            setter: (a) => ray.opacity = a,
+            start: ray.opacity,
+            end: 0.0,
+            duration: 0.2,
           ),
         );
       }
@@ -420,7 +434,7 @@ class Sun extends Node {
 // An animated sun ray
 class Ray extends Sprite {
   late double _rotationSpeed;
-  double? maxOpacity;
+  late double maxOpacity;
 
   Ray() : super.fromImage(_images['assets/ray.png']!) {
     pivot = const Offset(0.0, 0.5);
@@ -435,10 +449,26 @@ class Ray extends Sprite {
     // Scale animation
     double scaleTime = randomSignedDouble() * 2.0 + 4.0;
 
-    motions.run(MotionRepeatForever(MotionSequence(<Motion>[
-      MotionTween<double>((a) => scaleX = a, scaleX, scaleX * 0.5, scaleTime),
-      MotionTween<double>((a) => scaleX = a, scaleX * 0.5, scaleX, scaleTime)
-    ])));
+    motions.run(
+      MotionRepeatForever(
+        motion: MotionSequence(
+          motions: [
+            MotionTween<double>(
+              setter: (a) => scaleX = a,
+              start: scaleX,
+              end: scaleX * 0.5,
+              duration: scaleTime,
+            ),
+            MotionTween<double>(
+              setter: (a) => scaleX = a,
+              start: scaleX * 0.5,
+              end: scaleX,
+              duration: scaleTime,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   @override
@@ -488,12 +518,20 @@ class Rain extends Node {
       if (active) {
         motions.run(
           MotionTween<double>(
-              (a) => system.opacity = a, system.opacity, 1.0, 2.0),
+            setter: (a) => system.opacity = a,
+            start: system.opacity,
+            end: 1.0,
+            duration: 2.0,
+          ),
         );
       } else {
         motions.run(
           MotionTween<double>(
-              (a) => system.opacity = a, system.opacity, 0.0, 0.5),
+            setter: (a) => system.opacity = a,
+            start: system.opacity,
+            end: 0.0,
+            duration: 0.5,
+          ),
         );
       }
     }
@@ -553,19 +591,19 @@ class Snow extends Node {
       if (active) {
         motions.run(
           MotionTween<double>(
-            (a) => system.opacity = a,
-            system.opacity,
-            1.0,
-            2.0,
+            setter: (a) => system.opacity = a,
+            start: system.opacity,
+            end: 1.0,
+            duration: 2.0,
           ),
         );
       } else {
         motions.run(
           MotionTween<double>(
-            (a) => system.opacity = a,
-            system.opacity,
-            0.0,
-            0.5,
+            setter: (a) => system.opacity = a,
+            start: system.opacity,
+            end: 0.0,
+            duration: 0.5,
           ),
         );
       }

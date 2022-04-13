@@ -56,8 +56,8 @@ class EffectLine extends Node {
 
     _colorSequence = colorSequence;
     _colorSequence ??= ColorSequence.fromStartAndEndColor(
-      const Color(0xffffffff),
-      const Color(0xffffffff),
+      start: const Color(0xffffffff),
+      end: const Color(0xffffffff),
     );
 
     _offset = scrollStart;

@@ -88,8 +88,8 @@ class ParticleSystem extends Node {
     // _elapsedTime = 0.0;
     _gravity ??= Vector2.zero();
     colorSequence ??= ColorSequence.fromStartAndEndColor(
-      const Color(0xffffffff),
-      const Color(0x00ffffff),
+      start: const Color(0xffffffff),
+      end: const Color(0x00ffffff),
     );
 
     insertionOffset = Offset.zero;
@@ -535,7 +535,7 @@ Map serializeColorSequence(ColorSequence colorSequence) {
 
   for (int i = 0; i < colorSequence.colors.length; i++) {
     colors.add(serializeColor(colorSequence.colors[i]));
-    stops.add(colorSequence.colorStops[i]);
+    stops.add(colorSequence.stops[i]);
   }
 
   return {
@@ -553,7 +553,7 @@ ColorSequence deserializeColorSequence(Map data) {
     colors.add(deserializeColor(colorsData[i]));
   }
 
-  return ColorSequence(colors, stops);
+  return ColorSequence(colors: colors, stops: stops);
 }
 
 List<double> serializeOffset(Offset offset) {

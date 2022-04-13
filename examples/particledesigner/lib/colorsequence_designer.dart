@@ -28,7 +28,7 @@ class ColorSequenceWell extends StatelessWidget {
     // TODO: implement build
     LinearGradient gradient = LinearGradient(
       colors: colorSequence.colors,
-      stops: colorSequence.colorStops,
+      stops: colorSequence.stops,
     );
 
     return SizedBox(
@@ -91,7 +91,7 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
     int numColors = widget.colorSequence.colors.length;
     for (int i = 0; i < numColors; i++) {
       _colors[i] = widget.colorSequence.colors[i];
-      _stops[i] = widget.colorSequence.colorStops[i];
+      _stops[i] = widget.colorSequence.stops[i];
     }
 
     _updateColorSequence();
@@ -271,7 +271,7 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
       }
     }
 
-    _colorSequence = ColorSequence(colors, stops);
+    _colorSequence = ColorSequence(colors: colors, stops: stops);
 
     return widget.onChanged(_colorSequence);
   }

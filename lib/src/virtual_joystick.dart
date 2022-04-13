@@ -79,13 +79,11 @@ class VirtualJoystick extends NodeWithSize {
       _pointerDownAt = null;
       _value = Offset.zero;
       MotionTween moveToCenter = MotionTween(
-        (a) {
-          _handlePos = a;
-        },
-        _handlePos,
-        _center,
-        0.4,
-        Curves.elasticOut,
+        setter: (a) => _handlePos = a,
+        start: _handlePos,
+        end: _center,
+        duration: 0.4,
+        curve: Curves.elasticOut,
       );
       motions.run(moveToCenter);
       _isDown = false;
@@ -158,11 +156,11 @@ class VirtualJoystick extends NodeWithSize {
     motions.stopAll();
 
     MotionTween handleTween = MotionTween(
-      (a) => _handlePos = a,
-      _handlePos,
-      _center! + Offset(_value.dx * 40, _value.dy * 40),
-      0.4,
-      Curves.elasticOut,
+      setter: (a) => _handlePos = a,
+      start: _handlePos,
+      end: _center! + Offset(_value.dx * 40, _value.dy * 40),
+      duration: 0.4,
+      curve: Curves.elasticOut,
     );
     motions.run(handleTween);
   }
