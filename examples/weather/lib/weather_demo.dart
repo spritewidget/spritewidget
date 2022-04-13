@@ -13,16 +13,16 @@ import 'package:spritewidget/spritewidget.dart';
 import 'weather_button.dart';
 
 // The image map hold all of our image assets.
-ImageMap _images;
+late ImageMap _images;
 
 // The sprite sheet contains an image and a set of rectangles defining the
 // individual sprites.
-SpriteSheet _sprites;
+late SpriteSheet _sprites;
 
 enum WeatherType { sun, rain, snow }
 
 class WeatherDemo extends StatefulWidget {
-  WeatherDemo({Key key}) : super(key: key);
+  WeatherDemo({Key? key}) : super(key: key);
 
   static const String routeName = '/weather';
 
@@ -49,7 +49,7 @@ class _WeatherDemoState extends State<WeatherDemo> {
     // Load the sprite sheet, which contains snowflakes and rain drops.
     String json = await DefaultAssetBundle.of(context)
         .loadString('assets/weathersprites.json');
-    _sprites = new SpriteSheet(_images['assets/weathersprites.png'], json);
+    _sprites = new SpriteSheet(_images['assets/weathersprites.png']!, json);
   }
 
   @override
@@ -74,7 +74,7 @@ class _WeatherDemoState extends State<WeatherDemo> {
 
   // The weather world is our sprite tree that handles the weather
   // animations.
-  WeatherWorld weatherWorld;
+  late WeatherWorld weatherWorld;
 
   @override
   Widget build(BuildContext context) {
@@ -172,21 +172,21 @@ class WeatherWorld extends NodeWithSize {
 
     // Then three layers of clouds, that will be scrolled in parallax.
     _cloudsSharp = new CloudLayer(
-        image: _images['assets/clouds-0.png'],
+        image: _images['assets/clouds-0.png']!,
         rotated: false,
         dark: false,
         loopTime: 20.0);
     addChild(_cloudsSharp);
 
     _cloudsDark = new CloudLayer(
-        image: _images['assets/clouds-1.png'],
+        image: _images['assets/clouds-1.png']!,
         rotated: true,
         dark: true,
         loopTime: 40.0);
     addChild(_cloudsDark);
 
     _cloudsSoft = new CloudLayer(
-        image: _images['assets/clouds-1.png'],
+        image: _images['assets/clouds-1.png']!,
         rotated: false,
         dark: false,
         loopTime: 60.0);
@@ -206,13 +206,13 @@ class WeatherWorld extends NodeWithSize {
     addChild(_snow);
   }
 
-  GradientNode _background;
-  CloudLayer _cloudsSharp;
-  CloudLayer _cloudsSoft;
-  CloudLayer _cloudsDark;
-  Sun _sun;
-  Rain _rain;
-  Snow _snow;
+  late GradientNode _background;
+  late CloudLayer _cloudsSharp;
+  late CloudLayer _cloudsSoft;
+  late CloudLayer _cloudsDark;
+  late Sun _sun;
+  late Rain _rain;
+  late Snow _snow;
 
   WeatherType get weatherType => _weatherType;
 
@@ -225,16 +225,16 @@ class WeatherWorld extends NodeWithSize {
     _weatherType = weatherType;
 
     // Fade the background
-    _background.motions.stopAll();
+    _background.motions!.stopAll();
 
     // Fade the background from one gradient to another.
-    _background.motions.run(new MotionTween<Color>(
+    _background.motions!.run(new MotionTween<Color>(
         (a) => _background.colorTop = a,
         _background.colorTop,
         _kBackgroundColorsTop[weatherType.index],
         1.0));
 
-    _background.motions.run(new MotionTween<Color>(
+    _background.motions!.run(new MotionTween<Color>(
         (a) => _background.colorBottom = a,
         _background.colorBottom,
         _kBackgroundColorsBottom[weatherType.index],
@@ -251,7 +251,8 @@ class WeatherWorld extends NodeWithSize {
   void spriteBoxPerformedLayout() {
     // If the device is rotated or if the size of the SpriteWidget changes we
     // are adjusting the position of the sun.
-    _sun.position = spriteBox.visibleArea.topLeft + const Offset(350.0, 180.0);
+    _sun.position =
+        spriteBox!.visibleArea!.topLeft + const Offset(350.0, 180.0);
   }
 }
 
@@ -280,7 +281,11 @@ class GradientNode extends NodeWithSize {
 
 // Draws and animates a cloud layer using two sprites.
 class CloudLayer extends Node {
-  CloudLayer({ui.Image image, bool dark, bool rotated, double loopTime}) {
+  CloudLayer(
+      {required ui.Image image,
+      required bool dark,
+      required bool rotated,
+      required double loopTime}) {
     // Creates and positions the two cloud sprites.
     _sprites.add(_createSprite(image, dark, rotated));
     _sprites[0].position = const Offset(1024.0, 1024.0);
@@ -291,7 +296,7 @@ class CloudLayer extends Node {
     addChild(_sprites[1]);
 
     // Animates the clouds across the screen.
-    motions.run(new MotionRepeatForever(new MotionTween<Offset>(
+    motions!.run(new MotionRepeatForever(new MotionTween<Offset>(
         (a) => position = a,
         Offset.zero,
         const Offset(-2048.0, 0.0),
@@ -322,8 +327,8 @@ class CloudLayer extends Node {
       opacity = 0.0;
 
     for (Sprite sprite in _sprites) {
-      sprite.motions.stopAll();
-      sprite.motions.run(new MotionTween<double>(
+      sprite.motions!.stopAll();
+      sprite.motions!.run(new MotionTween<double>(
           (a) => sprite.opacity = a, sprite.opacity, opacity, 1.0));
     }
   }
@@ -335,7 +340,7 @@ const double _kNumSunRays = 50.0;
 class Sun extends Node {
   Sun() {
     // Create the sun
-    _sun = new Sprite.fromImage(_images['assets/sun.png']);
+    _sun = new Sprite.fromImage(_images['assets/sun.png']!);
     _sun.scale = 4.0;
     _sun.transferMode = BlendMode.plus;
     addChild(_sun);
@@ -349,13 +354,13 @@ class Sun extends Node {
     }
   }
 
-  Sprite _sun;
-  List<Ray> _rays;
+  late Sprite _sun;
+  late List<Ray> _rays;
 
   set active(bool active) {
     // Toggle visibility of the sun
 
-    motions.stopAll();
+    motions!.stopAll();
 
     double targetOpacity;
     if (!active)
@@ -363,20 +368,20 @@ class Sun extends Node {
     else
       targetOpacity = 1.0;
 
-    motions.run(new MotionTween<double>(
+    motions!.run(new MotionTween<double>(
         (a) => _sun.opacity = a, _sun.opacity, targetOpacity, 2.0));
 
     if (active) {
       for (Ray ray in _rays) {
-        motions.run(new MotionSequence(<Motion>[
+        motions!.run(new MotionSequence(<Motion>[
           new MotionDelay(1.5),
-          new MotionTween<double>(
+          new MotionTween<double?>(
               (a) => ray.opacity = a, ray.opacity, ray.maxOpacity, 1.5)
         ]));
       }
     } else {
       for (Ray ray in _rays) {
-        motions.run(new MotionTween<double>(
+        motions!.run(new MotionTween<double>(
             (a) => ray.opacity = a, ray.opacity, 0.0, 0.2));
       }
     }
@@ -385,15 +390,15 @@ class Sun extends Node {
 
 // An animated sun ray
 class Ray extends Sprite {
-  double _rotationSpeed;
-  double maxOpacity;
+  late double _rotationSpeed;
+  double? maxOpacity;
 
-  Ray() : super.fromImage(_images['assets/ray.png']) {
+  Ray() : super.fromImage(_images['assets/ray.png']!) {
     pivot = const Offset(0.0, 0.5);
     transferMode = BlendMode.plus;
     rotation = randomDouble() * 360.0;
     maxOpacity = randomDouble() * 0.2;
-    opacity = maxOpacity;
+    opacity = maxOpacity!;
     scaleX = 2.5 + randomDouble();
     scaleY = 0.3;
     _rotationSpeed = randomSignedDouble() * 2.0;
@@ -401,7 +406,7 @@ class Ray extends Sprite {
     // Scale animation
     double scaleTime = randomSignedDouble() * 2.0 + 4.0;
 
-    motions.run(new MotionRepeatForever(new MotionSequence(<Motion>[
+    motions!.run(new MotionRepeatForever(new MotionSequence(<Motion>[
       new MotionTween<double>(
           (a) => scaleX = a, scaleX, scaleX * 0.5, scaleTime),
       new MotionTween<double>(
@@ -427,7 +432,7 @@ class Rain extends Node {
   List<ParticleSystem> _particles = <ParticleSystem>[];
 
   void _addParticles(double distance) {
-    ParticleSystem particles = new ParticleSystem(_sprites['raindrop.png'],
+    ParticleSystem particles = new ParticleSystem(_sprites['raindrop.png']!,
         transferMode: BlendMode.srcATop,
         posVar: const Offset(1300.0, 0.0),
         direction: 90.0,
@@ -449,13 +454,13 @@ class Rain extends Node {
   }
 
   set active(bool active) {
-    motions.stopAll();
+    motions!.stopAll();
     for (ParticleSystem system in _particles) {
       if (active) {
-        motions.run(new MotionTween<double>(
+        motions!.run(new MotionTween<double>(
             (a) => system.opacity = a, system.opacity, 1.0, 2.0));
       } else {
-        motions.run(new MotionTween<double>(
+        motions!.run(new MotionTween<double>(
             (a) => system.opacity = a, system.opacity, 0.0, 0.5));
       }
     }
@@ -466,17 +471,17 @@ class Rain extends Node {
 // different distances.
 class Snow extends Node {
   Snow() {
-    _addParticles(_sprites['flake-0.png'], 1.0);
-    _addParticles(_sprites['flake-1.png'], 1.0);
-    _addParticles(_sprites['flake-2.png'], 1.0);
+    _addParticles(_sprites['flake-0.png']!, 1.0);
+    _addParticles(_sprites['flake-1.png']!, 1.0);
+    _addParticles(_sprites['flake-2.png']!, 1.0);
 
-    _addParticles(_sprites['flake-3.png'], 1.5);
-    _addParticles(_sprites['flake-4.png'], 1.5);
-    _addParticles(_sprites['flake-5.png'], 1.5);
+    _addParticles(_sprites['flake-3.png']!, 1.5);
+    _addParticles(_sprites['flake-4.png']!, 1.5);
+    _addParticles(_sprites['flake-5.png']!, 1.5);
 
-    _addParticles(_sprites['flake-6.png'], 2.0);
-    _addParticles(_sprites['flake-7.png'], 2.0);
-    _addParticles(_sprites['flake-8.png'], 2.0);
+    _addParticles(_sprites['flake-6.png']!, 2.0);
+    _addParticles(_sprites['flake-7.png']!, 2.0);
+    _addParticles(_sprites['flake-8.png']!, 2.0);
   }
 
   List<ParticleSystem> _particles = <ParticleSystem>[];
@@ -508,13 +513,13 @@ class Snow extends Node {
   }
 
   set active(bool active) {
-    motions.stopAll();
+    motions!.stopAll();
     for (ParticleSystem system in _particles) {
       if (active) {
-        motions.run(new MotionTween<double>(
+        motions!.run(new MotionTween<double>(
             (a) => system.opacity = a, system.opacity, 1.0, 2.0));
       } else {
-        motions.run(new MotionTween<double>(
+        motions!.run(new MotionTween<double>(
             (a) => system.opacity = a, system.opacity, 0.0, 0.5));
       }
     }

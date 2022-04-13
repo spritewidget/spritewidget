@@ -11,7 +11,7 @@ const double _kWeatherIconSize = 36.0;
 // The WeatherButton is a round material design styled button with an
 // image asset as its icon.
 class WeatherButton extends StatelessWidget {
-  WeatherButton({this.icon, this.selected, this.onPressed, Key key})
+  WeatherButton({required this.icon, required this.selected, required this.onPressed, Key? key})
       : super(key: key);
 
   final String icon;

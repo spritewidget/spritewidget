@@ -3,7 +3,7 @@ description: A demo for SpriteWidget.
 publish_to: 'none'
 
 environment:
-  sdk: ">=2.2.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
