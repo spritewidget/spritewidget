@@ -8,17 +8,19 @@ import 'package:flutter/material.dart';
 import 'weather_demo.dart';
 
 // Create a new MaterialApp with the WeatherDemo as its main Widget.
-void main() => runApp(new WeatherDemoApp());
+void main() => runApp(const WeatherDemoApp());
 
 class WeatherDemoApp extends StatelessWidget {
+  const WeatherDemoApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       title: 'Weather Demo',
-      theme: new ThemeData(
+      theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: new WeatherDemo(),
+      home: const WeatherDemo(),
     );
   }
 }
