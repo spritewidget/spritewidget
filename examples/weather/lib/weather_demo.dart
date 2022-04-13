@@ -228,10 +228,10 @@ class WeatherWorld extends NodeWithSize {
     _weatherType = weatherType;
 
     // Fade the background
-    _background.motions!.stopAll();
+    _background.motions.stopAll();
 
     // Fade the background from one gradient to another.
-    _background.motions!.run(
+    _background.motions.run(
       MotionTween<Color>(
         (a) => _background.colorTop = a,
         _background.colorTop,
@@ -240,7 +240,7 @@ class WeatherWorld extends NodeWithSize {
       ),
     );
 
-    _background.motions!.run(
+    _background.motions.run(
       MotionTween<Color>(
         (a) => _background.colorBottom = a,
         _background.colorBottom,
@@ -306,7 +306,7 @@ class CloudLayer extends Node {
     addChild(_sprites[1]);
 
     // Animates the clouds across the screen.
-    motions!.run(
+    motions.run(
       MotionRepeatForever(
         MotionTween<Offset>(
           (a) => position = a,
@@ -343,8 +343,8 @@ class CloudLayer extends Node {
     }
 
     for (Sprite sprite in _sprites) {
-      sprite.motions!.stopAll();
-      sprite.motions!.run(
+      sprite.motions.stopAll();
+      sprite.motions.run(
         MotionTween<double>(
             (a) => sprite.opacity = a, sprite.opacity, opacity, 1.0),
       );
@@ -378,7 +378,7 @@ class Sun extends Node {
   set active(bool active) {
     // Toggle visibility of the sun
 
-    motions!.stopAll();
+    motions.stopAll();
 
     double targetOpacity;
     if (!active) {
@@ -387,12 +387,12 @@ class Sun extends Node {
       targetOpacity = 1.0;
     }
 
-    motions!.run(MotionTween<double>(
+    motions.run(MotionTween<double>(
         (a) => _sun.opacity = a, _sun.opacity, targetOpacity, 2.0));
 
     if (active) {
       for (Ray ray in _rays) {
-        motions!.run(
+        motions.run(
           MotionSequence(
             <Motion>[
               MotionDelay(1.5),
@@ -404,7 +404,7 @@ class Sun extends Node {
       }
     } else {
       for (Ray ray in _rays) {
-        motions!.run(
+        motions.run(
           MotionTween<double>(
             (a) => ray.opacity = a,
             ray.opacity,
@@ -435,7 +435,7 @@ class Ray extends Sprite {
     // Scale animation
     double scaleTime = randomSignedDouble() * 2.0 + 4.0;
 
-    motions!.run(MotionRepeatForever(MotionSequence(<Motion>[
+    motions.run(MotionRepeatForever(MotionSequence(<Motion>[
       MotionTween<double>((a) => scaleX = a, scaleX, scaleX * 0.5, scaleTime),
       MotionTween<double>((a) => scaleX = a, scaleX * 0.5, scaleX, scaleTime)
     ])));
@@ -483,15 +483,15 @@ class Rain extends Node {
   }
 
   set active(bool active) {
-    motions!.stopAll();
+    motions.stopAll();
     for (ParticleSystem system in _particles) {
       if (active) {
-        motions!.run(
+        motions.run(
           MotionTween<double>(
               (a) => system.opacity = a, system.opacity, 1.0, 2.0),
         );
       } else {
-        motions!.run(
+        motions.run(
           MotionTween<double>(
               (a) => system.opacity = a, system.opacity, 0.0, 0.5),
         );
@@ -548,10 +548,10 @@ class Snow extends Node {
   }
 
   set active(bool active) {
-    motions!.stopAll();
+    motions.stopAll();
     for (ParticleSystem system in _particles) {
       if (active) {
-        motions!.run(
+        motions.run(
           MotionTween<double>(
             (a) => system.opacity = a,
             system.opacity,
@@ -560,7 +560,7 @@ class Snow extends Node {
           ),
         );
       } else {
-        motions!.run(
+        motions.run(
           MotionTween<double>(
             (a) => system.opacity = a,
             system.opacity,

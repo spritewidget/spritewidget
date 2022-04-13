@@ -87,12 +87,12 @@ class Node {
   /// The [MotionController] associated with this node.
   ///
   ///     myNode.motions.run(myMotion);
-  MotionController? get motions {
+  MotionController get motions {
     if (_motions == null) {
       _motions = MotionController();
       if (_spriteBox != null) _spriteBox!._motionControllers = null;
     }
-    return _motions;
+    return _motions!;
   }
 
   @Deprecated('actions has been renamed to motions')

@@ -395,15 +395,15 @@ class _JumpingJackSide extends Node {
   }
 
   void animateJumping() {
-    motions!.stopAll();
-    motions!.run(MotionSequence(<Motion>[
+    motions.stopAll();
+    motions.run(MotionSequence(<Motion>[
       _createPoseAction(null, 0, 0.5),
       MotionCallFunction(_animateJumpingLoop)
     ]));
   }
 
   void _animateJumpingLoop() {
-    motions!.run(MotionRepeatForever(MotionSequence(<Motion>[
+    motions.run(MotionRepeatForever(MotionSequence(<Motion>[
       _createPoseAction(0, 1, 0.30),
       _createPoseAction(1, 2, 0.30),
       _createPoseAction(2, 1, 0.30),
@@ -415,9 +415,9 @@ class _JumpingJackSide extends Node {
   }
 
   void neutralPosition(bool animate) {
-    motions!.stopAll();
+    motions.stopAll();
     if (animate) {
-      motions!.run(_createPoseAction(null, 1, 0.5));
+      motions.run(_createPoseAction(null, 1, 0.5));
     } else {
       List<double> d = _dataForPose(1);
       upperArm.rotation = d[0];
