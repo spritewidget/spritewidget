@@ -1,17 +1,23 @@
 # Changelog
 
+## 2.0.0
+
+* Null-safety.
+* Updates documentation.
+* Makes SpriteWidget APIs more in-line with modern Dart/Flutter practises.
+
 ## 0.9.24
 
-* Cleans up directory structure
-* Fixes EffectLine
+* Cleans up directory structure.
+* Fixes EffectLine.
 
 ## 0.9.23
 
-* Lowers required Flutter version
+* Lowers required Flutter version.
 
 ## 0.9.22
 
-* Lowers the Dart requirement to support generation of docs at pub.dev
+* Lowers the Dart requirement to support generation of docs at pub.dev.
 
 ## 0.9.21
 

@@ -1,6 +1,6 @@
 # SpriteWidget
 
-SpriteWidget is a toolkit for building complex, high performance animations and 2D games with [Flutter](https://flutter.io). Your sprite render tree lives inside a widget that mixes seamlessly with other Flutter and Material widgets. You can use SpriteWidget to create anything from an animated icon to a full fledged game.
+SpriteWidget is a toolkit for building complex, high performance animations and 2D games with [Flutter](https://flutter.dev). Your sprite render tree lives inside a widget that mixes seamlessly with other Flutter and Material widgets. You can use SpriteWidget to create anything from an animated icon to a full fledged game.
 
 This guide assumes a basic knowledge of Flutter and Dart. Get support by posting a question tagged `spritewidget` on [StackOverflow](https://stackoverflow.com/).
 
