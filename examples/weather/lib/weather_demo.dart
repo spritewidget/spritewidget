@@ -494,7 +494,7 @@ class Rain extends Node {
   void _addParticles(double distance) {
     ParticleSystem particles = ParticleSystem(
       texture: _sprites['raindrop.png']!,
-      transferMode: BlendMode.srcATop,
+      blendMode: BlendMode.srcATop,
       posVar: const Offset(1300.0, 0.0),
       direction: 90.0,
       directionVar: 0.0,
@@ -563,7 +563,7 @@ class Snow extends Node {
   void _addParticles(SpriteTexture texture, double distance) {
     ParticleSystem particles = ParticleSystem(
       texture: texture,
-      transferMode: BlendMode.srcATop,
+      blendMode: BlendMode.srcATop,
       posVar: const Offset(1300.0, 0.0),
       direction: 90.0,
       directionVar: 0.0,

@@ -448,10 +448,10 @@ class ParticleDesignerState extends State<ParticleDesigner>
                   ),
                   PropertyBlendMode(
                     name: 'Transfer Mode',
-                    value: _particleWorld.particleSystem.transferMode,
+                    value: _particleWorld.particleSystem.blendMode,
                     onUpdated: (BlendMode value) {
                       setState(() {
-                        _particleWorld.particleSystem.transferMode = value;
+                        _particleWorld.particleSystem.blendMode = value;
                       });
                     },
                   ),

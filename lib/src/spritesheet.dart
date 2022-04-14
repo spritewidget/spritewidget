@@ -16,7 +16,9 @@ part of spritewidget;
 class SpriteSheet {
   final ui.Image _image;
   final _textures = <String, SpriteTexture>{};
-  Map<String?, SpriteTexture> get textures => _textures;
+
+  /// Returns a map containing the textures of this sprite sheet.
+  Map<String, SpriteTexture> get textures => _textures;
 
   /// Creates a new sprite sheet from an [_image] and a sprite sheet
   /// [jsonDefinition].

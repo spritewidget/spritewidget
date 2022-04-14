@@ -95,9 +95,6 @@ class Node {
     return _motions!;
   }
 
-  @Deprecated('actions has been renamed to motions')
-  MotionController? get actions => motions;
-
   List<Constraint>? _constraints;
 
   /// A [List] of [Constraint]s that will be applied to the node.

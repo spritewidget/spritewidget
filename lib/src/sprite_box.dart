@@ -589,10 +589,18 @@ class SpriteBoxEvent {
   SpriteBoxEvent(this.boxPosition, this.type, this.pointer);
 }
 
+/// Defines types for pointer events.
 enum PointerEventType {
+  /// A pointer was down.
   down,
+
+  /// A pointer was moved.
   move,
+
+  /// A pointer was released.
   up,
+
+  /// A pointer was cancelled.
   cancel,
 }
 
