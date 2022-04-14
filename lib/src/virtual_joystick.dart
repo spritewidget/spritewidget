@@ -54,14 +54,19 @@ class VirtualJoystick extends NodeWithSize {
     _KeyDirection.right: false,
   };
 
+  /// True if the up arrow key on the keyboard is currently pressed.
   bool get arrowUp => _pressedKeys[_KeyDirection.up]!;
 
+  /// True if the down arrow key on the keyboard is currently pressed.
   bool get arrowDown => _pressedKeys[_KeyDirection.down]!;
 
+  /// True if the left arrow key on the keyboard is currently pressed.
   bool get arrowLeft => _pressedKeys[_KeyDirection.left]!;
 
+  /// True if the righ arrow key on the keyboard is currently pressed.
   bool get arrowRight => _pressedKeys[_KeyDirection.right]!;
 
+  /// True if any arrow key on the keyboard is currently pressed.
   bool get arrowKeyPressed => arrowUp || arrowDown || arrowLeft || arrowRight;
 
   @override
