@@ -117,7 +117,7 @@ class _WeatherDemoState extends State<WeatherDemo> {
                       });
                     },
                     selected: weatherWorld.weatherType == WeatherType.sun,
-                    icon: "assets/icon-sun.png",
+                    icon: 'assets/icon-sun.png',
                   ),
                   WeatherButton(
                     onPressed: () {
@@ -126,7 +126,7 @@ class _WeatherDemoState extends State<WeatherDemo> {
                       });
                     },
                     selected: weatherWorld.weatherType == WeatherType.rain,
-                    icon: "assets/icon-rain.png",
+                    icon: 'assets/icon-rain.png',
                   ),
                   WeatherButton(
                     onPressed: () {
@@ -135,7 +135,7 @@ class _WeatherDemoState extends State<WeatherDemo> {
                       });
                     },
                     selected: weatherWorld.weatherType == WeatherType.snow,
-                    icon: "assets/icon-snow.png",
+                    icon: 'assets/icon-snow.png',
                   ),
                 ],
               ),

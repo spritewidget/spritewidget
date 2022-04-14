@@ -87,11 +87,11 @@ class _FitnessDemoContentsState extends State<_FitnessDemoContents> {
 
     if (workoutAnimation.workingOut) {
       buttonColor = Colors.red[500]!;
-      buttonText = "STOP WORKOUT";
+      buttonText = 'STOP WORKOUT';
       onButtonPressed = endWorkout;
     } else {
       buttonColor = Theme.of(context).primaryColor;
-      buttonText = "START WORKOUT";
+      buttonText = 'START WORKOUT';
       onButtonPressed = startWorkout;
     }
 
@@ -173,8 +173,8 @@ class _FitnessDemoContentsState extends State<_FitnessDemoContents> {
 
   String _formatSeconds(int seconds) {
     int minutes = seconds ~/ 60;
-    String secondsStr = "${seconds % 60}".padLeft(2, "0");
-    return "$minutes:$secondsStr";
+    String secondsStr = '${seconds % 60}'.padLeft(2, '0');
+    return '$minutes:$secondsStr';
   }
 
   void startWorkout() {
