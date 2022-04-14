@@ -38,7 +38,7 @@ class EffectLine extends Node {
   EffectLine({
     required this.texture,
     this.transferMode = BlendMode.dstOver,
-    required List<Offset> points,
+    List<Offset>? points,
     this.widthMode = EffectLineWidthMode.linear,
     this.minWidth = 10.0,
     this.maxWidth = 10.0,
@@ -52,7 +52,7 @@ class EffectLine extends Node {
     this.simplify = true,
     ColorSequence? colorSequence,
   }) {
-    this.points = points;
+    this.points = points ?? [];
 
     _colorSequence = colorSequence;
     _colorSequence ??= ColorSequence.fromStartAndEndColor(
@@ -62,7 +62,7 @@ class EffectLine extends Node {
 
     _offset = scrollStart;
 
-    _painter = TexturedLinePainter(points, _colors, _widths, texture, null);
+    _painter = TexturedLinePainter(this.points, [], [], texture, null);
     _painter.textureLoopLength = textureLoopLength;
   }
 
@@ -114,8 +114,6 @@ class EffectLine extends Node {
   late List<Offset> _points;
 
   late List<double> _pointAges;
-  late List<Color> _colors;
-  late List<double> _widths;
 
   /// The time it takes for an added point to fade out. It's total life time is
   /// [fadeDuration] + [fadeAfterDelay].
