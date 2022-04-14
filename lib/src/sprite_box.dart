@@ -560,7 +560,7 @@ class SpriteBoxEvent {
   ///
   ///     bool handleEvent(SpriteBoxEvent event) {
   ///       Point localPosition = convertPointToNodeSpace(event.boxPosition);
-  ///       if (event.type == 'pointerdown') {
+  ///       if (event.type == PointerEventType.down) {
   ///         // Do something!
   ///       }
   ///     }
@@ -569,7 +569,7 @@ class SpriteBoxEvent {
   /// The type of event, there are currently four valid types, PointerDownEvent,
   /// PointerMoveEvent, PointerUpEvent, and PointerCancelEvent.
   ///
-  ///     if (event.type == PointerDownEvent) {
+  ///     if (event.type == PointerEventType.down) {
   ///       // Do something!
   ///     }
   final PointerEventType type;

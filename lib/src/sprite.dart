@@ -27,7 +27,7 @@ class Sprite extends NodeWithSize with SpritePaint {
 
   /// Creates a new sprite from the provided [texture].
   ///
-  ///     var mySprite = new Sprite(myTexture)
+  ///     var mySprite = Sprite(myTexture)
   Sprite({required this.texture}) : super(Size.zero) {
     size = texture.size;
     pivot = texture.pivot;
@@ -35,7 +35,7 @@ class Sprite extends NodeWithSize with SpritePaint {
 
   /// Creates a new sprite from the provided [image].
   ///
-  /// var mySprite = new Sprite.fromImage(myImage);
+  /// var mySprite = Sprite.fromImage(myImage);
   Sprite.fromImage(ui.Image image)
       : texture = SpriteTexture(image),
         super(Size.zero) {
@@ -81,7 +81,7 @@ class Sprite extends NodeWithSize with SpritePaint {
   }
 }
 
-/// Defines properties, such as [opacity] and [transferMode] that are shared
+/// Defines properties, such as [opacity] and [blendMode] that are shared
 /// between [Node]s that render textures to screen.
 abstract class SpritePaint {
   double _opacity = 1.0;
@@ -99,14 +99,14 @@ abstract class SpritePaint {
   /// The color to draw on top of the sprite, null if no color overlay is used.
   ///
   ///     // Color the sprite red
-  ///     mySprite.colorOverlay = new Color(0x77ff0000);
+  ///     mySprite.colorOverlay = Color(0x77ff0000);
   Color? colorOverlay;
 
   /// The transfer mode used when drawing the sprite to screen.
   ///
   ///     // Add the colors of the sprite with the colors of the background
-  ///     mySprite.transferMode = TransferMode.plusMode;
-  BlendMode? transferMode;
+  ///     mySprite.blendMode = BlendMode.plusMode;
+  BlendMode blendMode = BlendMode.srcOver;
 
   void _updatePaint(Paint paint) {
     paint.color = Color.fromARGB((255.0 * _opacity).toInt(), 255, 255, 255);
@@ -115,8 +115,6 @@ abstract class SpritePaint {
       paint.colorFilter = ColorFilter.mode(colorOverlay!, BlendMode.srcATop);
     }
 
-    if (transferMode != null) {
-      paint.blendMode = transferMode!;
-    }
+    paint.blendMode = blendMode;
   }
 }

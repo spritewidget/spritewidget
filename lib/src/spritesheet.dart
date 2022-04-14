@@ -21,7 +21,10 @@ class SpriteSheet {
   /// Creates a new sprite sheet from an [_image] and a sprite sheet
   /// [jsonDefinition].
   ///
-  ///     var mySpriteSheet = new SpriteSheet(myImage, jsonString);
+  ///     var mySpriteSheet = SpriteSheet(
+  ///       image: myImage,
+  ///       jsonDefinition: jsonString,
+  ///     );
   SpriteSheet({required ui.Image image, required String jsonDefinition})
       : _image = image {
     JsonDecoder decoder = const JsonDecoder();
@@ -87,6 +90,6 @@ class SpriteSheet {
 
   /// Returns a texture by its name.
   ///
-  ///     var myTexture = mySpriteSheet["example.png"];
+  ///     var myTexture = mySpriteSheet["example.png"]!;
   SpriteTexture? operator [](String fileName) => _textures[fileName];
 }

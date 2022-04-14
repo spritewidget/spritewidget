@@ -131,7 +131,7 @@ class Node {
   /// directly.
   ///
   ///     // Get the transformMode of the sprite box
-  ///     SpriteBoxTransformMode transformMode = myNode.spriteBox.transformMode;
+  ///     var transformMode = myNode.spriteBox!.transformMode;
   SpriteBox? get spriteBox => _spriteBox;
 
   /// The parent of this node, or null if it doesn't have a parent.
@@ -241,7 +241,7 @@ class Node {
   /// [removeChild] methods.
   ///
   ///     // Iterate over a nodes children
-  ///     for (Node child in myNode.children) {
+  ///     for (final child in myNode.children) {
   ///       // Do something with the child
   ///     }
   List<Node> get children {
@@ -264,7 +264,7 @@ class Node {
   ///
   /// The same node cannot be added to multiple nodes.
   ///
-  ///     addChild(new Sprite(myImage));
+  ///     addChild(Sprite(myImage));
   void addChild(Node child) {
     assert(child._parent == null);
     assert(_assertNonCircularAssignment(child));
@@ -471,7 +471,8 @@ class Node {
   /// the pointers position in a local
   /// coordinate space.
   ///
-  ///     Point localPoint = myNode.convertPointToNodeSpace(pointInBoxCoordinates);
+  ///     var localPoint =
+  ///       myNode.convertPointToNodeSpace(pointInBoxCoordinates);
   Offset convertPointToNodeSpace(Offset boxPoint) {
     assert(_spriteBox != null);
 
@@ -483,7 +484,8 @@ class Node {
   /// Converts a point from the local coordinate system of the node to the
   /// coordinate system of the [SpriteBox].
   ///
-  ///     Point pointInBoxCoordinates = myNode.convertPointToBoxSpace(localPoint);
+  ///     var pointInBoxCoordinates =
+  ///       myNode.convertPointToBoxSpace(localPoint);
   Offset convertPointToBoxSpace(Offset nodePoint) {
     assert(_spriteBox != null);
 
@@ -523,7 +525,7 @@ class Node {
   ///       double maxX = minX + size.width;
   ///       double maxY = minY + size.height;
   ///       return (nodePoint.x >= minX && nodePoint.x < maxX &&
-  ///       nodePoint.y >= minY && nodePoint.y < maxY);
+  ///         nodePoint.y >= minY && nodePoint.y < maxY);
   ///     }
   bool isPointInside(Offset point) {
     return false;
@@ -655,10 +657,10 @@ class Node {
   ///       }
   ///
   ///       bool handleEvent(SpriteBoxEvent event) {
-  ///         if (event.type == PointerDownEvent) {
+  ///         if (event.type == PointerEventType.down) {
   ///           opacity = 0.5;
   ///         }
-  ///         else if (event.type == PointerUpEvent) {
+  ///         else if (event.type == PointerEventType.up) {
   ///           opacity = 1.0;
   ///         }
   ///         return true;

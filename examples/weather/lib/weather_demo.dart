@@ -367,7 +367,7 @@ class Sun extends Node {
     // Create the sun
     _sun = Sprite.fromImage(_images['assets/sun.png']!);
     _sun.scale = 4.0;
-    _sun.transferMode = BlendMode.plus;
+    _sun.blendMode = BlendMode.plus;
     addChild(_sun);
 
     // Create rays
@@ -441,7 +441,7 @@ class Ray extends Sprite {
 
   Ray() : super.fromImage(_images['assets/ray.png']!) {
     pivot = const Offset(0.0, 0.5);
-    transferMode = BlendMode.plus;
+    blendMode = BlendMode.plus;
     rotation = randomDouble() * 360.0;
     maxOpacity = randomDouble() * 0.2;
     opacity = maxOpacity;

@@ -11,13 +11,13 @@ part of spritewidget;
 class NodeWithSize extends Node {
   /// Changing the size will affect the size of the rendering of the node.
   ///
-  ///     myNode.size = new Size(1024.0, 1024.0);
+  ///     myNode.size = Size(1024.0, 1024.0);
   Size size;
 
   /// The normalized point which the node is transformed around.
   ///
   ///     // Position myNode from is middle top
-  ///     myNode.pivot = new Point(0.5, 0.0);
+  ///     myNode.pivot = Offset(0.5, 0.0);
   late Offset pivot;
 
   /// Creates a new NodeWithSize.
@@ -25,7 +25,7 @@ class NodeWithSize extends Node {
   /// The default [size] is zero and the default [pivot] point is the origin.
   /// Subclasses may change the default values.
   ///
-  ///     var myNodeWithSize = new NodeWithSize(new Size(1024.0, 1024.0));
+  ///     var myNodeWithSize = NodeWithSize(Size(1024.0, 1024.0));
   NodeWithSize(this.size) {
     pivot = Offset.zero;
   }

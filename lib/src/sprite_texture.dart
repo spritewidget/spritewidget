@@ -40,7 +40,7 @@ class SpriteTexture {
 
   /// The name of the image acts as a tag when acquiring a reference to it.
   ///
-  ///     myTexture.name = "new_texture_name";
+  ///     myTexture.name = 'new_texture_name';
   String? name;
 
   /// The texture was rotated 90 degrees when being packed into a sprite sheet.

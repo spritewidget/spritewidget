@@ -8,9 +8,9 @@ part of spritewidget;
 /// An node that transforms its children using a 3D perspective projection. This
 /// node type can be used to create 3D flips and other similar effects.
 ///
-///     var myNode3D = new Node3D();
+///     var myNode3D = Node3D();
 ///     myNode3D.rotationY = 45.0;
-///     myNode3D.addChild(new Sprite(myTexture));
+///     myNode3D.addChild(Sprite(myTexture));
 class Node3D extends Node {
   double _rotationX = 0.0;
 

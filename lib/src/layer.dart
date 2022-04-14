@@ -16,14 +16,14 @@ class Layer extends Node with SpritePaint {
   /// treated as a hint to the rendering system and may in some cases be
   /// ignored. If the area isn't known, the layerRect can be set to [null].
   ///
-  ///     myLayer.layerRect = new Rect.fromLTRB(0.0, 0.0, 200.0, 100.0);
+  ///     myLayer.layerRect = Rect.fromLTRB(0.0, 0.0, 200.0, 100.0);
   Rect? layerRect;
 
   /// Creates a new layer. The layerRect can optionally be passed as an argument
   /// if it is known.
   ///
-  ///     var myLayer = new Layer();
-  Layer([this.layerRect]);
+  ///     var myLayer = Layer();
+  Layer({this.layerRect});
 
   final _cachedPaint = Paint()
     ..filterQuality = FilterQuality.low

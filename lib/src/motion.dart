@@ -135,7 +135,7 @@ class MotionRepeatForever extends Motion {
 
   /// Creates a new motion with the motion that is passed in.
   ///
-  ///     var myInifiniteLoop = new MotionRepeatForever(myMotion);
+  ///     var myInifiniteLoop = MotionRepeatForever(motion: myMotion);
   MotionRepeatForever({required this.motion});
 
   @override
@@ -169,7 +169,9 @@ class MotionSequence extends MotionInterval {
 
   /// Creates a new motion with the list of motions passed in.
   ///
-  ///     var mySequence = new MotionSequence([myMotion0, myMotion1, myMotion2]);
+  ///     var mySequence = MotionSequence(
+  ///       motions: [myMotion0, myMotion1, myMotion2],
+  ///     );
   MotionSequence({required List<Motion> motions}) {
     assert(motions.length >= 2);
 
@@ -345,7 +347,9 @@ class MotionCallFunction extends MotionInstant {
 
   /// Creates a new callback motion with the supplied callback.
   ///
-  ///     var myMotion = new MotionCallFunction(() { print("Hello!";) });
+  ///     var myMotion = MotionCallFunction(
+  ///       callback: () { print("Hello!";) },
+  ///     );
   MotionCallFunction({
     required MotionCallback callback,
   }) : _callback = callback;
@@ -362,7 +366,7 @@ class MotionRemoveNode extends MotionInstant {
 
   /// Creates a new motion with the node to remove as its argument.
   ///
-  ///     var myMotion = new MotionRemoveNode(myNode);
+  ///     var myMotion = MotionRemoveNode(node: myNode);
   MotionRemoveNode({required Node node}) : _node = node;
 
   @override
@@ -383,12 +387,12 @@ class MotionTween<T> extends MotionInterval {
   ///
   ///     // Animate myNode from its current position to 100.0, 100.0 during
   ///     // 1.0 second and a bounceOut easing
-  ///     var myTween = new MotionTween(
-  ///       (a) => myNode.position = a,
-  ///       myNode.position,
-  ///       new Point(100.0, 100.0,
-  ///       1.0,
-  ///       bounceOut
+  ///     var myTween = MotionTween(
+  ///       setter: (a) => myNode.position = a,
+  ///       start: myNode.position,
+  ///       end: new Point(100.0, 100.0,
+  ///       duration: 1.0,
+  ///       curve: Curves.bounceOut,
   ///     );
   ///     myNode.motions.run(myTween);
   MotionTween({
@@ -520,8 +524,8 @@ class MotionController {
   /// Runs an [motion], can optionally be passed a [tag]. The [tag] can be used
   /// to reference the motion or a set of motions with the same tag.
   ///
-  ///     myNode.motions.run(myMotion, "myMotionGroup");
-  void run(Motion motion, [Object? tag]) {
+  ///     myNode.motions.run(myMotion, tag: 'myMotionGroup');
+  void run(Motion motion, {Object? tag}) {
     assert(!motion._added);
 
     motion._tag = tag;
@@ -550,7 +554,7 @@ class MotionController {
   /// Stops all motions with the specified tag and removes them from the
   /// controller.
   ///
-  ///     myNode.motions.stopWithTag("myMotionGroup");
+  ///     myNode.motions.stopWithTag('myMotionGroup');
   void stopWithTag(Object tag) {
     for (int i = _motions.length - 1; i >= 0; i--) {
       Motion motion = _motions[i];
