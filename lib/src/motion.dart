@@ -44,7 +44,7 @@ abstract class Motion {
 }
 
 /// Signature for callbacks for setting properties, used by [MotionTween].
-typedef SetterCallback = void Function(dynamic value);
+typedef SetterCallback<T> = void Function(T value);
 
 /// The abstract class for an motion that changes properties over a time
 /// interval, optionally using an easing curve.
@@ -406,7 +406,7 @@ class MotionTween<T> extends MotionInterval {
   }
 
   /// The setter method used to set the property being animated.
-  final SetterCallback setter;
+  final SetterCallback<T> setter;
 
   /// The start value of the animation.
   final T start;
