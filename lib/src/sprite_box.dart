@@ -163,7 +163,6 @@ class SpriteBox extends RenderBox {
   void performLayout() {
     size = constraints.biggest;
     _invalidateTransformMatrix();
-    _callSpriteBoxPerformedLayout(_rootNode);
     _initialized = true;
   }
 
@@ -378,6 +377,8 @@ class SpriteBox extends RenderBox {
 
     _transformMatrix!.translate(offsetX, offsetY);
     _transformMatrix!.scale(scaleX, scaleY);
+
+    _callSpriteBoxPerformedLayout(rootNode);
   }
 
   void _invalidateTransformMatrix() {
