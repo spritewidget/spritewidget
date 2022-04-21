@@ -1,0 +1,5 @@
+#!/bin/sh
+
+flutter build web --web-renderer canvaskit --base-href "/particledesigner/"
+cp -r build/web/ ../../../spritewidget_web/docs/particledesigner/
+
