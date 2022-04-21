@@ -37,7 +37,7 @@ class EffectLine extends Node {
   /// [texture] parameter is required, all other parameters are optional.
   EffectLine({
     required this.texture,
-    this.transferMode = BlendMode.dstOver,
+    this.blendMode = BlendMode.dstOver,
     List<Offset>? points,
     this.widthMode = EffectLineWidthMode.linear,
     this.minWidth = 10.0,
@@ -71,7 +71,7 @@ class EffectLine extends Node {
 
   /// The transfer mode used to draw the line, default is
   /// [TransferMode.dstOver].
-  final BlendMode transferMode;
+  final BlendMode blendMode;
 
   /// Mode used to calculate the width of the line.
   final EffectLineWidthMode widthMode;
