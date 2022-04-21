@@ -2,8 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:particledesigner/code_view_dialog.dart';
 import 'package:spritewidget/spritewidget.dart';
 
 import 'colorsequence_designer.dart';
@@ -447,7 +450,7 @@ class ParticleDesignerState extends State<ParticleDesigner>
                     },
                   ),
                   PropertyBlendMode(
-                    name: 'Transfer Mode',
+                    name: 'Blend Mode',
                     value: _particleWorld.particleSystem.blendMode,
                     onUpdated: (BlendMode value) {
                       setState(() {
@@ -522,14 +525,19 @@ class ParticleDesignerState extends State<ParticleDesigner>
               Positioned(
                 right: 16.0,
                 bottom: 16.0,
-                child: IconButton(
-                  icon: const Icon(Icons.email),
-                  color: Colors.white,
+                child: ElevatedButton(
+                  child: const Text('View Code'),
+                  // icon: const Icon(Icons.code),
+                  // color: Colors.white,
                   onPressed: () {
-                    // String body = Uri.encodeComponent(json.encode(
-                    //     serializeParticleSystem(
-                    //         _particleWorld.particleSystem)));
-                    // launch('mailto:?subject=ParticleSystem&body=' + body);
+                    showCodeViewDialog(
+                      context,
+                      jsonEncode(
+                        serializeParticleSystem(
+                          _particleWorld.particleSystem,
+                        ),
+                      ),
+                    );
                   },
                 ),
               ),

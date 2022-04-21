@@ -25,7 +25,6 @@ class ColorSequenceWell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     LinearGradient gradient = LinearGradient(
       colors: colorSequence.colors,
       stops: colorSequence.stops,
@@ -87,6 +86,11 @@ class _ColorSequenceDesignerState extends State<ColorSequenceDesigner> {
   @override
   void initState() {
     super.initState();
+
+    for (var i = 0; i < _numMaxStops; i++) {
+      _colors.add(null);
+      _stops.add(null);
+    }
 
     int numColors = widget.colorSequence.colors.length;
     for (int i = 0; i < numColors; i++) {
