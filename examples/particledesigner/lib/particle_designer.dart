@@ -37,6 +37,12 @@ class ParticleDesignerState extends State<ParticleDesigner>
   late TabController _tabController;
   late Color _backgroundColor;
 
+  final ScrollController _presetsScrollController = ScrollController();
+  final ScrollController _emissionScrollController = ScrollController();
+  final ScrollController _movementScrollController = ScrollController();
+  final ScrollController _sizeScrollController = ScrollController();
+  final ScrollController _textureScrollController = ScrollController();
+
   @override
   void initState() {
     super.initState();
@@ -68,6 +74,7 @@ class ParticleDesignerState extends State<ParticleDesigner>
     }
 
     Widget propertyEditor = Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         Container(
           color: Theme.of(context).colorScheme.secondary,
@@ -98,10 +105,12 @@ class ParticleDesignerState extends State<ParticleDesigner>
             controller: _tabController,
             children: <Widget>[
               ListView(
+                controller: _presetsScrollController,
                 padding: EdgeInsets.zero,
                 children: presets,
               ),
               ListView(
+                controller: _emissionScrollController,
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 children: <Widget>[
                   PropertyDouble(
@@ -168,6 +177,7 @@ class ParticleDesignerState extends State<ParticleDesigner>
                 ],
               ),
               ListView(
+                controller: _movementScrollController,
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 children: <Widget>[
                   PropertyDouble(
@@ -318,6 +328,7 @@ class ParticleDesignerState extends State<ParticleDesigner>
                 ],
               ),
               ListView(
+                controller: _sizeScrollController,
                 padding: const EdgeInsets.only(bottom: 16.0),
                 children: <Widget>[
                   PropertyBool(
@@ -420,6 +431,7 @@ class ParticleDesignerState extends State<ParticleDesigner>
                 ],
               ),
               ListView(
+                controller: _textureScrollController,
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 children: <Widget>[
                   PropertyColor(
@@ -526,7 +538,7 @@ class ParticleDesignerState extends State<ParticleDesigner>
                 right: 16.0,
                 bottom: 16.0,
                 child: ElevatedButton(
-                  child: const Text('View Code'),
+                  child: const Text('< CODE >'),
                   // icon: const Icon(Icons.code),
                   // color: Colors.white,
                   onPressed: () {
