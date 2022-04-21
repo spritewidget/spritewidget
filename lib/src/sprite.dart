@@ -111,8 +111,10 @@ abstract class SpritePaint {
   void _updatePaint(Paint paint) {
     paint.color = Color.fromARGB((255.0 * _opacity).toInt(), 255, 255, 255);
 
-    if (colorOverlay != null) {
+    if (colorOverlay != null && colorOverlay!.opacity > 0) {
       paint.colorFilter = ColorFilter.mode(colorOverlay!, BlendMode.srcATop);
+    } else {
+      paint.colorFilter = null;
     }
 
     paint.blendMode = blendMode;
