@@ -517,6 +517,10 @@ class MotionTween<T> extends MotionInterval {
 class MotionController {
   final List<Motion> _motions = <Motion>[];
 
+  /// Set to true to pause the MotionController. No of the actions associated
+  /// with the controller will run while it's paused.
+  bool paused = false;
+
   /// Creates a new [MotionController]. However, for most uses a reference to
   /// an [MotionController] is acquired through the [Node.motions] property.
   MotionController();
@@ -576,6 +580,10 @@ class MotionController {
   /// Steps the motion forward by the specified time, typically there is no need
   /// to directly call this method.
   void step(double dt) {
+    if (paused) {
+      return;
+    }
+
     for (int i = _motions.length - 1; i >= 0; i--) {
       Motion motion = _motions[i];
       motion.step(dt);
