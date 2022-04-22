@@ -24,8 +24,8 @@ abstract class Motion {
   bool _finished = false;
   bool _added = false;
 
-  /// Allows to check if a motion is finished
-  bool get finished => _finished;	
+  /// Returns true if the [Motion] has completed.
+  bool get isFinished => _finished;
 
   /// Moves to the next time step in an motion, [dt] is the delta time since
   /// the last time step in seconds. Typically this method is called from the
