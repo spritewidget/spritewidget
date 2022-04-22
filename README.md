@@ -296,6 +296,8 @@ void paint(Canvas canvas) {
 
 Particle systems are great for creating effects such as rain, smoke, or fire. It's easy to setup a particle system, but there are very many properties that can be tweaked. The best way of to get a feel for how they work is to simply play around with them.
 
+If you want to play around with particle systems, try out the [Particle Designer](https://spritewidget.com/particledesigner) (web app).
+
 This is an example of how a particle system can be created, configured, and added to the scene:
 
 ```dart
