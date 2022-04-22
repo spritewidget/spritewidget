@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.1
+
+* Fixes minor issues for pub.dev to be happier.
+
 ## 2.0.0
 
 * Null-safety.
