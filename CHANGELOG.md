@@ -5,6 +5,9 @@
 * Null-safety.
 * Updates documentation.
 * Makes SpriteWidget APIs more in-line with modern Dart/Flutter practises.
+* Support for web and desktop.
+* Bug fixes and pull requests from the community.
+* Brings demos up-to-date.
 
 ## 0.9.24
 
