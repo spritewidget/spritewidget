@@ -6,7 +6,7 @@ ___SpriteWidget is sponsored by [Serverpod](https://serverpod.dev), the missing 
 
 This guide assumes a basic knowledge of Flutter and Dart. Get support by posting a question tagged `spritewidget` on [StackOverflow](https://stackoverflow.com/).
 
-You can find examples in the [examples](https://github.com/spritewidget/spritewidget/tree/master/examples) directory, or check out the complete [Space Blast](https://github.com/spritewidget/spaceblast) game.
+You can find examples in the [example](https://github.com/spritewidget/spritewidget/tree/master/example) directory, or check out the complete [Space Blast](https://github.com/spritewidget/spaceblast) game.
 
 ![SpriteWidget](https://static1.squarespace.com/static/593b245d1e5b6ca18c9ffd52/t/5aa2b91324a6948406f5dee5/1520613684486/SpriteWidget?format=2500w)
 
