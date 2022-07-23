@@ -255,6 +255,14 @@ class Node {
     return true;
   }
 
+  // Assign _spriteBox recursively to a child tree
+  void _assignSpriteBoxToChild(Node child) {
+    child._spriteBox = _spriteBox;
+    for (var grandChild in child.children) {
+      _assignSpriteBoxToChild(grandChild);
+    }
+  }
+
   // Adding and removing children
 
   /// Adds a child to this node.
@@ -269,7 +277,9 @@ class Node {
     _childrenNeedSorting = true;
     _children.add(child);
     child._parent = this;
-    child._spriteBox = _spriteBox;
+
+    _assignSpriteBoxToChild(child);
+
     _childrenLastAddedOrder += 1;
     child._addedOrder = _childrenLastAddedOrder;
     if (_spriteBox != null) _spriteBox!._registerNode(child);
